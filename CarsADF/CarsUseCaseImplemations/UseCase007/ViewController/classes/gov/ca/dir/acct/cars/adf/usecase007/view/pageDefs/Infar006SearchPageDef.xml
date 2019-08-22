@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.64.93" id="Infar006SearchPageDef"
+                Package="gov.ca.dir.acct.cars.adf.usecase007.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="Infar006_1" RangeSize="25"
+              DataControl="Infar006SearchAMDataControl"
+              id="Infar006_1Iterator"/>
+    <searchRegion Criteria="Infar006SearcViewCriteria"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="Infar006_1Iterator"
+                  id="Infar006SearcViewCriteriaQuery"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="Infar006_1Iterator" id="Infar006_1">
+      <nodeDefinition DefName="gov.ca.dir.acct.cars.adf.usecase007.model.view.Infar006VO"
+                      Name="Infar006_10">
+        <AttrNames>
+          <Item Value="Account"/>
+          <Item Value="Altacct"/>
+          <Item Value="Product"/>
+          <Item Value="Chartfield1"/>
+          <Item Value="Deptid"/>
+          <Item Value="FundCode"/>
+          <Item Value="BatchId"/>
+          <Item Value="AccountingDt"/>
+          <Item Value="AcctgEntryId"/>
+          <Item Value="CustId"/>
+          <Item Value="ProgramCode"/>
+          <Item Value="ProgramUnitCode"/>
+          <Item Value="ActivityId"/>
+          <Item Value="AddressSeqNum"/>
+          <Item Value="Affiliate"/>
+          <Item Value="AffiliateIntra1"/>
+          <Item Value="AffiliateIntra2"/>
+          <Item Value="AnalysisType"/>
+          <Item Value="AsofDt"/>
+          <Item Value="BudgetDt"/>
+          <Item Value="BudgetRef"/>
+          <Item Value="BusinessUnitGl"/>
+          <Item Value="BusinessUnitPc"/>
+          <Item Value="Chartfield2"/>
+          <Item Value="Chartfield3"/>
+          <Item Value="ClassFld"/>
+          <Item Value="CollectionChkbox"/>
+          <Item Value="CollectionDt"/>
+          <Item Value="CollectionStatus"/>
+          <Item Value="Collector"/>
+          <Item Value="ContractNum"/>
+          <Item Value="ControlAmt"/>
+          <Item Value="ControlCnt"/>
+          <Item Value="CrAnalyst"/>
+          <Item Value="CreatedBy"/>
+          <Item Value="CreatedDate"/>
+          <Item Value="DataSourceCode"/>
+          <Item Value="DisputeAmount"/>
+          <Item Value="DisputeChkbox"/>
+          <Item Value="DisputeDate"/>
+          <Item Value="DisputeStatus"/>
+          <Item Value="Document"/>
+          <Item Value="DstSeqNum"/>
+          <Item Value="DueDt"/>
+          <Item Value="EntryAmt"/>
+          <Item Value="EntryReason"/>
+          <Item Value="EntryType"/>
+          <Item Value="GroupBu"/>
+          <Item Value="GroupIdStg"/>
+          <Item Value="GroupSeqNum"/>
+          <Item Value="GroupType"/>
+          <Item Value="Infar006OutboundId"/>
+          <Item Value="Item"/>
+          <Item Value="ItemLine"/>
+          <Item Value="ModifiedBy"/>
+          <Item Value="ModifiedDate"/>
+          <Item Value="MonetaryAmount"/>
+          <Item Value="NoteText"/>
+          <Item Value="OperatingUnit"/>
+          <Item Value="PoRef"/>
+          <Item Value="PostAction"/>
+          <Item Value="ProjectId"/>
+          <Item Value="PymntTermsCd"/>
+          <Item Value="ResourceCategory"/>
+          <Item Value="ResourceSubCat"/>
+          <Item Value="ResourceType"/>
+          <Item Value="Status"/>
+          <Item Value="SystemDefined"/>
+          <Item Value="UserDt1"/>
+          <Item Value="UserDt2"/>
+          <Item Value="UserDt3"/>
+          <Item Value="UserDt4"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

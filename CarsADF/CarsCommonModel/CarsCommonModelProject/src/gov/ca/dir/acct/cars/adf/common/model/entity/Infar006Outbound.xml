@@ -1,0 +1,1629 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="Infar006Outbound"
+  Version="11.1.1.64.93"
+  InheritPersonalization="true"
+  DBObjectType="table"
+  DBObjectName="INFAR006_OUTBOUND"
+  AliasName="Infar006Outbound"
+  BindingStyle="OracleName"
+  UseGlueCode="false"
+  RowClass="gov.ca.dir.acct.cars.adf.common.code.EntityImpl">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access"/>
+    <AttrArray Name="_publishEvents"/>
+  </DesignTime>
+  <Attribute
+    Name="BatchId"
+    IsNotNull="true"
+    ColumnName="BATCH_ID"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="INFAR006_OUTBOUND">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Infar006OutboundId"
+    IsNotNull="true"
+    ColumnName="INFAR006_OUTBOUND_ID"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="INFAR006_OUTBOUND"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="GroupBu"
+    Precision="5"
+    ColumnName="GROUP_BU"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="INFAR006_OUTBOUND"
+    IsNotNull="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="5"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="GroupIdStg"
+    Precision="15"
+    ColumnName="GROUP_ID_STG"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="INFAR006_OUTBOUND"
+    IsNotNull="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="AccountingDt"
+    ColumnName="ACCOUNTING_DT"
+    SQLType="TIMESTAMP"
+    Type="java.sql.Date"
+    ColumnType="DATE"
+    TableName="INFAR006_OUTBOUND"
+    IsNotNull="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="GroupType"
+    Precision="1"
+    ColumnName="GROUP_TYPE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="INFAR006_OUTBOUND"
+    IsNotNull="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ControlAmt"
+    Precision="28"
+    Scale="3"
+    ColumnName="CONTROL_AMT"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="INFAR006_OUTBOUND"
+    IsNotNull="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="27"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ControlCnt"
+    Precision="6"
+    Scale="0"
+    ColumnName="CONTROL_CNT"
+    SQLType="NUMERIC"
+    Type="java.lang.Integer"
+    ColumnType="NUMBER"
+    TableName="INFAR006_OUTBOUND"
+    IsNotNull="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="PostAction"
+    Precision="1"
+    ColumnName="POST_ACTION"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="INFAR006_OUTBOUND"
+    IsNotNull="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="GroupSeqNum"
+    Precision="6"
+    Scale="0"
+    ColumnName="GROUP_SEQ_NUM"
+    SQLType="NUMERIC"
+    Type="java.lang.Integer"
+    ColumnType="NUMBER"
+    TableName="INFAR006_OUTBOUND"
+    IsNotNull="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="CustId"
+    Precision="15"
+    ColumnName="CUST_ID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="INFAR006_OUTBOUND"
+    IsNotNull="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Item"
+    Precision="30"
+    ColumnName="ITEM"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="INFAR006_OUTBOUND"
+    IsNotNull="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="30"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ItemLine"
+    Precision="6"
+    Scale="0"
+    ColumnName="ITEM_LINE"
+    SQLType="NUMERIC"
+    Type="java.lang.Integer"
+    ColumnType="NUMBER"
+    TableName="INFAR006_OUTBOUND">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="EntryType"
+    Precision="5"
+    ColumnName="ENTRY_TYPE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="INFAR006_OUTBOUND"
+    IsNotNull="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="5"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="EntryReason"
+    Precision="5"
+    ColumnName="ENTRY_REASON"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="INFAR006_OUTBOUND">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="5"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="EntryAmt"
+    Precision="28"
+    Scale="3"
+    ColumnName="ENTRY_AMT"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="INFAR006_OUTBOUND"
+    IsNotNull="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="27"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="AsofDt"
+    ColumnName="ASOF_DT"
+    SQLType="TIMESTAMP"
+    Type="java.sql.Date"
+    ColumnType="DATE"
+    TableName="INFAR006_OUTBOUND">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="PymntTermsCd"
+    Precision="5"
+    ColumnName="PYMNT_TERMS_CD"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="INFAR006_OUTBOUND">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="5"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="DueDt"
+    ColumnName="DUE_DT"
+    SQLType="TIMESTAMP"
+    Type="java.sql.Date"
+    ColumnType="DATE"
+    TableName="INFAR006_OUTBOUND">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="CrAnalyst"
+    Precision="8"
+    ColumnName="CR_ANALYST"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="INFAR006_OUTBOUND">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="8"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Collector"
+    Precision="8"
+    ColumnName="COLLECTOR"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="INFAR006_OUTBOUND">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="8"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="PoRef"
+    Precision="30"
+    ColumnName="PO_REF"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="INFAR006_OUTBOUND">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="30"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Document"
+    Precision="30"
+    ColumnName="DOCUMENT"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="INFAR006_OUTBOUND">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="30"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ContractNum"
+    Precision="25"
+    ColumnName="CONTRACT_NUM"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="INFAR006_OUTBOUND">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="25"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="DisputeChkbox"
+    Precision="1"
+    ColumnName="DISPUTE_CHKBOX"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="INFAR006_OUTBOUND"
+    IsNotNull="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="DisputeStatus"
+    Precision="3"
+    ColumnName="DISPUTE_STATUS"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="INFAR006_OUTBOUND">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="3"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="DisputeDate"
+    ColumnName="DISPUTE_DATE"
+    SQLType="TIMESTAMP"
+    Type="java.sql.Date"
+    ColumnType="DATE"
+    TableName="INFAR006_OUTBOUND">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="DisputeAmount"
+    Precision="28"
+    Scale="3"
+    ColumnName="DISPUTE_AMOUNT"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="INFAR006_OUTBOUND">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="27"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="CollectionChkbox"
+    Precision="1"
+    ColumnName="COLLECTION_CHKBOX"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="INFAR006_OUTBOUND"
+    IsNotNull="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="CollectionStatus"
+    Precision="3"
+    ColumnName="COLLECTION_STATUS"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="INFAR006_OUTBOUND">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="3"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="CollectionDt"
+    ColumnName="COLLECTION_DT"
+    SQLType="TIMESTAMP"
+    Type="java.sql.Date"
+    ColumnType="DATE"
+    TableName="INFAR006_OUTBOUND">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="AddressSeqNum"
+    Precision="5"
+    Scale="0"
+    ColumnName="ADDRESS_SEQ_NUM"
+    SQLType="NUMERIC"
+    Type="java.lang.Integer"
+    ColumnType="NUMBER"
+    TableName="INFAR006_OUTBOUND">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="6"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="UserDt1"
+    ColumnName="USER_DT1"
+    SQLType="TIMESTAMP"
+    Type="java.sql.Date"
+    ColumnType="DATE"
+    TableName="INFAR006_OUTBOUND">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="UserDt2"
+    ColumnName="USER_DT2"
+    SQLType="TIMESTAMP"
+    Type="java.sql.Date"
+    ColumnType="DATE"
+    TableName="INFAR006_OUTBOUND">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="UserDt3"
+    ColumnName="USER_DT3"
+    SQLType="TIMESTAMP"
+    Type="java.sql.Date"
+    ColumnType="DATE"
+    TableName="INFAR006_OUTBOUND">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="UserDt4"
+    ColumnName="USER_DT4"
+    SQLType="TIMESTAMP"
+    Type="java.sql.Date"
+    ColumnType="DATE"
+    TableName="INFAR006_OUTBOUND">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="DstSeqNum"
+    Precision="6"
+    Scale="0"
+    ColumnName="DST_SEQ_NUM"
+    SQLType="NUMERIC"
+    Type="java.lang.Integer"
+    ColumnType="NUMBER"
+    TableName="INFAR006_OUTBOUND"
+    IsNotNull="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="SystemDefined"
+    Precision="1"
+    ColumnName="SYSTEM_DEFINED"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="INFAR006_OUTBOUND"
+    IsNotNull="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="MonetaryAmount"
+    Precision="28"
+    Scale="3"
+    ColumnName="MONETARY_AMOUNT"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="INFAR006_OUTBOUND"
+    IsNotNull="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="27"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="BusinessUnitGl"
+    Precision="5"
+    ColumnName="BUSINESS_UNIT_GL"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="INFAR006_OUTBOUND">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="5"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Account"
+    Precision="10"
+    ColumnName="ACCOUNT"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="INFAR006_OUTBOUND"
+    IsNotNull="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="10"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Altacct"
+    Precision="10"
+    ColumnName="ALTACCT"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="INFAR006_OUTBOUND">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="10"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Deptid"
+    Precision="10"
+    ColumnName="DEPTID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="INFAR006_OUTBOUND">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="10"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="OperatingUnit"
+    Precision="8"
+    ColumnName="OPERATING_UNIT"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="INFAR006_OUTBOUND">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="8"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Product"
+    Precision="6"
+    ColumnName="PRODUCT"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="INFAR006_OUTBOUND">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="6"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="FundCode"
+    Precision="9"
+    ColumnName="FUND_CODE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="INFAR006_OUTBOUND">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="9"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ClassFld"
+    Precision="5"
+    ColumnName="CLASS_FLD"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="INFAR006_OUTBOUND">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="5"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ProgramCode"
+    Precision="10"
+    ColumnName="PROGRAM_CODE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="INFAR006_OUTBOUND">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="10"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="BudgetRef"
+    Precision="8"
+    ColumnName="BUDGET_REF"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="INFAR006_OUTBOUND">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="8"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Affiliate"
+    Precision="5"
+    ColumnName="AFFILIATE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="INFAR006_OUTBOUND">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="5"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="AffiliateIntra1"
+    Precision="10"
+    ColumnName="AFFILIATE_INTRA1"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="INFAR006_OUTBOUND">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="10"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="AffiliateIntra2"
+    Precision="10"
+    ColumnName="AFFILIATE_INTRA2"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="INFAR006_OUTBOUND">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="10"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Chartfield1"
+    Precision="10"
+    ColumnName="CHARTFIELD1"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="INFAR006_OUTBOUND">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="10"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Chartfield2"
+    Precision="10"
+    ColumnName="CHARTFIELD2"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="INFAR006_OUTBOUND">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="10"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Chartfield3"
+    Precision="10"
+    ColumnName="CHARTFIELD3"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="INFAR006_OUTBOUND">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="10"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="BusinessUnitPc"
+    Precision="5"
+    ColumnName="BUSINESS_UNIT_PC"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="INFAR006_OUTBOUND">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="5"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ProjectId"
+    Precision="15"
+    ColumnName="PROJECT_ID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="INFAR006_OUTBOUND">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ActivityId"
+    Precision="15"
+    ColumnName="ACTIVITY_ID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="INFAR006_OUTBOUND">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ResourceType"
+    Precision="5"
+    ColumnName="RESOURCE_TYPE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="INFAR006_OUTBOUND">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="5"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ResourceCategory"
+    Precision="5"
+    ColumnName="RESOURCE_CATEGORY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="INFAR006_OUTBOUND">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="5"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ResourceSubCat"
+    Precision="5"
+    ColumnName="RESOURCE_SUB_CAT"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="INFAR006_OUTBOUND">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="5"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="AnalysisType"
+    Precision="3"
+    ColumnName="ANALYSIS_TYPE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="INFAR006_OUTBOUND">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="3"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ZzFund"
+    Precision="4"
+    ColumnName="ZZ_FUND"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="INFAR006_OUTBOUND">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="4"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ZzSubFund"
+    Precision="3"
+    ColumnName="ZZ_SUB_FUND"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="INFAR006_OUTBOUND">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="3"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ZzProgram"
+    Precision="2"
+    ColumnName="ZZ_PROGRAM"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="INFAR006_OUTBOUND">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="2"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ZzElement"
+    Precision="2"
+    ColumnName="ZZ_ELEMENT"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="INFAR006_OUTBOUND">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="2"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ZzComponent"
+    Precision="3"
+    ColumnName="ZZ_COMPONENT"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="INFAR006_OUTBOUND">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="3"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ZzTask"
+    Precision="3"
+    ColumnName="ZZ_TASK"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="INFAR006_OUTBOUND">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="3"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ZzProgCostAcct"
+    Precision="5"
+    ColumnName="ZZ_PROG_COST_ACCT"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="INFAR006_OUTBOUND">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="5"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ZzOrgCode"
+    Precision="4"
+    ColumnName="ZZ_ORG_CODE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="INFAR006_OUTBOUND">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="4"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ZzIntStruct1"
+    Precision="10"
+    ColumnName="ZZ_INT_STRUCT1"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="INFAR006_OUTBOUND">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="10"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ZzIntStruct2"
+    Precision="10"
+    ColumnName="ZZ_INT_STRUCT2"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="INFAR006_OUTBOUND">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="10"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ZzIntStruct3"
+    Precision="10"
+    ColumnName="ZZ_INT_STRUCT3"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="INFAR006_OUTBOUND">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="10"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ZzIntStruct4"
+    Precision="10"
+    ColumnName="ZZ_INT_STRUCT4"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="INFAR006_OUTBOUND">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="10"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ZzIntStruct5"
+    Precision="10"
+    ColumnName="ZZ_INT_STRUCT5"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="INFAR006_OUTBOUND">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="10"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ZzIndex"
+    Precision="4"
+    ColumnName="ZZ_INDEX"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="INFAR006_OUTBOUND">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="4"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ZzObjDetail"
+    Precision="3"
+    ColumnName="ZZ_OBJ_DETAIL"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="INFAR006_OUTBOUND">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="3"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ZzAgncyObj"
+    Precision="10"
+    ColumnName="ZZ_AGNCY_OBJ"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="INFAR006_OUTBOUND">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="10"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ZzSource"
+    Precision="6"
+    ColumnName="ZZ_SOURCE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="INFAR006_OUTBOUND">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="6"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ZzAgncySrc"
+    Precision="10"
+    ColumnName="ZZ_AGNCY_SRC"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="INFAR006_OUTBOUND">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="10"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ZzGlAccount"
+    Precision="4"
+    ColumnName="ZZ_GL_ACCOUNT"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="INFAR006_OUTBOUND">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="4"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ZzSubsidiary"
+    Precision="8"
+    ColumnName="ZZ_SUBSIDIARY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="INFAR006_OUTBOUND">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="8"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ZzFundSrc"
+    Precision="1"
+    ColumnName="ZZ_FUND_SRC"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="INFAR006_OUTBOUND">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ZzCharacter"
+    Precision="1"
+    ColumnName="ZZ_CHARACTER"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="INFAR006_OUTBOUND">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ZzMethod"
+    Precision="1"
+    ColumnName="ZZ_METHOD"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="INFAR006_OUTBOUND">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ZzEnactmentYear"
+    Precision="4"
+    ColumnName="ZZ_ENACTMENT_YEAR"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="INFAR006_OUTBOUND">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="4"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ZzReference"
+    Precision="3"
+    ColumnName="ZZ_REFERENCE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="INFAR006_OUTBOUND">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="3"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ZzFiscalYear"
+    Precision="4"
+    ColumnName="ZZ_FISCAL_YEAR"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="INFAR006_OUTBOUND">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="4"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ZzAppropSymb"
+    Precision="3"
+    ColumnName="ZZ_APPROP_SYMB"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="INFAR006_OUTBOUND">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="3"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ZzProject"
+    Precision="10"
+    ColumnName="ZZ_PROJECT"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="INFAR006_OUTBOUND">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="10"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ZzWorkPhase"
+    Precision="10"
+    ColumnName="ZZ_WORK_PHASE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="INFAR006_OUTBOUND">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="10"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ZzMultipurpose"
+    Precision="12"
+    ColumnName="ZZ_MULTIPURPOSE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="INFAR006_OUTBOUND">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="12"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ZzLocation"
+    Precision="6"
+    ColumnName="ZZ_LOCATION"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="INFAR006_OUTBOUND">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="6"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ZzDeptUse1"
+    Precision="20"
+    ColumnName="ZZ_DEPT_USE_1"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="INFAR006_OUTBOUND">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ZzDeptUse2"
+    Precision="20"
+    ColumnName="ZZ_DEPT_USE_2"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="INFAR006_OUTBOUND">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="BudgetDt"
+    ColumnName="BUDGET_DT"
+    SQLType="TIMESTAMP"
+    Type="java.sql.Date"
+    ColumnType="DATE"
+    TableName="INFAR006_OUTBOUND">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="NoteText"
+    Precision="500"
+    ColumnName="NOTE_TEXT"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="INFAR006_OUTBOUND">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="500"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="AcctgEntryId"
+    ColumnName="ACCTG_ENTRY_ID"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="INFAR006_OUTBOUND"
+    IsNotNull="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ProgramUnitCode"
+    Precision="25"
+    ColumnName="PROGRAM_UNIT_CODE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="INFAR006_OUTBOUND"
+    IsNotNull="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="25"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Status"
+    IsNotNull="true"
+    Precision="25"
+    ColumnName="STATUS"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="INFAR006_OUTBOUND">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="25"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="DataSourceCode"
+    Precision="25"
+    ColumnName="DATA_SOURCE_CODE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="INFAR006_OUTBOUND"
+    IsNotNull="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="25"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="CreatedBy"
+    IsNotNull="true"
+    Precision="25"
+    ColumnName="CREATED_BY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="INFAR006_OUTBOUND">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="25"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="CreatedDate"
+    IsNotNull="true"
+    ColumnName="CREATED_DATE"
+    SQLType="TIMESTAMP"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="INFAR006_OUTBOUND">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ModifiedBy"
+    Precision="25"
+    ColumnName="MODIFIED_BY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="INFAR006_OUTBOUND">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="25"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ModifiedDate"
+    ColumnName="MODIFIED_DATE"
+    SQLType="TIMESTAMP"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="INFAR006_OUTBOUND">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="BillOfLading"
+    Precision="30"
+    ColumnName="BILL_OF_LADING"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="INFAR006_OUTBOUND">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="30"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.common.model.entity.Infar006Outbound.BillOfLading_LABEL"/>
+        <TOOLTIP
+          ResId="gov.ca.dir.acct.cars.adf.common.model.entity.Infar006Outbound.BillOfLading_TOOLTIP"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <AccessorAttribute
+    Name="Batch"
+    Association="gov.ca.dir.acct.cars.adf.common.model.entity.I6odBatchFkAssoc"
+    AssociationEnd="gov.ca.dir.acct.cars.adf.common.model.entity.I6odBatchFkAssoc.Batch"
+    AssociationOtherEnd="gov.ca.dir.acct.cars.adf.common.model.entity.I6odBatchFkAssoc.Infar006Outbound"
+    Type="gov.ca.dir.acct.cars.adf.common.code.EntityImpl"
+    IsUpdateable="true"/>
+  <Key
+    Name="Infar006OutboundPk"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="INFAR006_OUTBOUND_PK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="gov.ca.dir.acct.cars.adf.common.model.entity.Infar006Outbound.Infar006OutboundId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC00160391">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C00160391"/>
+      <Attr Name="_checkCondition" Value='"BATCH_ID" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="gov.ca.dir.acct.cars.adf.common.model.entity.Infar006Outbound.BatchId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC00160392">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C00160392"/>
+      <Attr Name="_checkCondition" Value='"INFAR006_OUTBOUND_ID" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="gov.ca.dir.acct.cars.adf.common.model.entity.Infar006Outbound.Infar006OutboundId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC00160393">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C00160393"/>
+      <Attr Name="_checkCondition" Value='"ACCTG_ENTRY_ID" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="gov.ca.dir.acct.cars.adf.common.model.entity.Infar006Outbound.AcctgEntryId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC00160394">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C00160394"/>
+      <Attr Name="_checkCondition" Value='"GROUP_BU" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="gov.ca.dir.acct.cars.adf.common.model.entity.Infar006Outbound.GroupBu"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC00160395">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C00160395"/>
+      <Attr Name="_checkCondition" Value='"GROUP_ID_STG" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="gov.ca.dir.acct.cars.adf.common.model.entity.Infar006Outbound.GroupIdStg"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC00160396">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C00160396"/>
+      <Attr Name="_checkCondition" Value='"ACCOUNTING_DT" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="gov.ca.dir.acct.cars.adf.common.model.entity.Infar006Outbound.AccountingDt"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC00160397">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C00160397"/>
+      <Attr Name="_checkCondition" Value='"GROUP_TYPE" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="gov.ca.dir.acct.cars.adf.common.model.entity.Infar006Outbound.GroupType"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC00160398">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C00160398"/>
+      <Attr Name="_checkCondition" Value='"CONTROL_AMT" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="gov.ca.dir.acct.cars.adf.common.model.entity.Infar006Outbound.ControlAmt"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC00160399">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C00160399"/>
+      <Attr Name="_checkCondition" Value='"CONTROL_CNT" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="gov.ca.dir.acct.cars.adf.common.model.entity.Infar006Outbound.ControlCnt"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC00160400">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C00160400"/>
+      <Attr Name="_checkCondition" Value='"POST_ACTION" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="gov.ca.dir.acct.cars.adf.common.model.entity.Infar006Outbound.PostAction"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC00160401">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C00160401"/>
+      <Attr Name="_checkCondition" Value='"GROUP_SEQ_NUM" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="gov.ca.dir.acct.cars.adf.common.model.entity.Infar006Outbound.GroupSeqNum"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC00160402">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C00160402"/>
+      <Attr Name="_checkCondition" Value='"CUST_ID" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="gov.ca.dir.acct.cars.adf.common.model.entity.Infar006Outbound.CustId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC00160403">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C00160403"/>
+      <Attr Name="_checkCondition" Value='"ITEM" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="gov.ca.dir.acct.cars.adf.common.model.entity.Infar006Outbound.Item"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC00160404">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C00160404"/>
+      <Attr Name="_checkCondition" Value='"ENTRY_TYPE" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="gov.ca.dir.acct.cars.adf.common.model.entity.Infar006Outbound.EntryType"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC00160405">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C00160405"/>
+      <Attr Name="_checkCondition" Value='"ENTRY_AMT" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="gov.ca.dir.acct.cars.adf.common.model.entity.Infar006Outbound.EntryAmt"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC00160406">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C00160406"/>
+      <Attr Name="_checkCondition" Value='"DISPUTE_CHKBOX" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="gov.ca.dir.acct.cars.adf.common.model.entity.Infar006Outbound.DisputeChkbox"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC00160407">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C00160407"/>
+      <Attr Name="_checkCondition" Value='"COLLECTION_CHKBOX" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="gov.ca.dir.acct.cars.adf.common.model.entity.Infar006Outbound.CollectionChkbox"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC00160408">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C00160408"/>
+      <Attr Name="_checkCondition" Value='"DST_SEQ_NUM" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="gov.ca.dir.acct.cars.adf.common.model.entity.Infar006Outbound.DstSeqNum"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC00160409">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C00160409"/>
+      <Attr Name="_checkCondition" Value='"SYSTEM_DEFINED" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="gov.ca.dir.acct.cars.adf.common.model.entity.Infar006Outbound.SystemDefined"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC00160410">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C00160410"/>
+      <Attr Name="_checkCondition" Value='"MONETARY_AMOUNT" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="gov.ca.dir.acct.cars.adf.common.model.entity.Infar006Outbound.MonetaryAmount"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC00160411">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C00160411"/>
+      <Attr Name="_checkCondition" Value='"PROGRAM_UNIT_CODE" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="gov.ca.dir.acct.cars.adf.common.model.entity.Infar006Outbound.ProgramUnitCode"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC00160412">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C00160412"/>
+      <Attr Name="_checkCondition" Value='"STATUS" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="gov.ca.dir.acct.cars.adf.common.model.entity.Infar006Outbound.Status"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC00160413">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C00160413"/>
+      <Attr Name="_checkCondition" Value='"DATA_SOURCE_CODE" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="gov.ca.dir.acct.cars.adf.common.model.entity.Infar006Outbound.DataSourceCode"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC00160414">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C00160414"/>
+      <Attr Name="_checkCondition" Value='"CREATED_BY" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="gov.ca.dir.acct.cars.adf.common.model.entity.Infar006Outbound.CreatedBy"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC00160415">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C00160415"/>
+      <Attr Name="_checkCondition" Value='"CREATED_DATE" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="gov.ca.dir.acct.cars.adf.common.model.entity.Infar006Outbound.CreatedDate"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="I6odBatchFk">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="BATCH_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="I6OD_BATCH_FK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="gov.ca.dir.acct.cars.adf.common.model.entity.Infar006Outbound.BatchId"/>
+    </AttrArray>
+  </Key>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="gov.ca.dir.acct.cars.adf.common.model.CarsCommonModelProjectBundle"/>
+  </ResourceBundle>
+</Entity>

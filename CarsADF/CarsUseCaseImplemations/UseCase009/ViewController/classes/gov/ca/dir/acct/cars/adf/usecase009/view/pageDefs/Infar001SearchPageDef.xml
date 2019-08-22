@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.64.93" id="Infar001SearchPageDef"
+                Package="gov.ca.dir.acct.cars.adf.usecase009.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="Infar001_2" RangeSize="25" DataControl="InfarAMDataControl"
+              id="Infar001_2Iterator"/>
+    <searchRegion Binds="Infar001_2Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="Infar001_2Query"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="Infar001_2Iterator" id="Infar001_2">
+      <nodeDefinition DefName="gov.ca.dir.acct.cars.adf.usecase009.model.view.Infar001VO"
+                      Name="Infar001_20">
+        <AttrNames>
+          <Item Value="BatchId"/>
+          <Item Value="EventTypeCode"/>
+          <Item Value="EventTypeName"/>
+          <Item Value="FsRowId"/>
+          <Item Value="ProgramUnitCode"/>
+          <Item Value="Status"/>
+          <Item Value="ArRootDocument"/>
+          <Item Value="ZzBnkDepositNum"/>
+          <Item Value="AccountingDt"/>
+          <Item Value="BankAcctKey"/>
+          <Item Value="BankCd"/>
+          <Item Value="ControlAmt"/>
+          <Item Value="ControlCnt"/>
+          <Item Value="ControlCurrency"/>
+          <Item Value="CreatedDttm"/>
+          <Item Value="DepositBu"/>
+          <Item Value="DepositCnt"/>
+          <Item Value="DepositId"/>
+          <Item Value="PaymentAmt"/>
+          <Item Value="PaymentCurrency"/>
+          <Item Value="PaymentId"/>
+          <Item Value="PaymentSeqNum"/>
+          <Item Value="ReceivedDt"/>
+          <Item Value="TotalAmt"/>
+          <Item Value="Account"/>
+          <Item Value="AcctgEntryId"/>
+          <Item Value="ActivityId"/>
+          <Item Value="Affiliate"/>
+          <Item Value="AffiliateIntra1"/>
+          <Item Value="AffiliateIntra2"/>
+          <Item Value="Altacct"/>
+          <Item Value="AnalysisType"/>
+          <Item Value="BudgetRef"/>
+          <Item Value="BusinessUnitGl"/>
+          <Item Value="BusinessUnitPc"/>
+          <Item Value="Chartfield1"/>
+          <Item Value="Chartfield2"/>
+          <Item Value="Chartfield3"/>
+          <Item Value="CheckDt"/>
+          <Item Value="City"/>
+          <Item Value="ClassFld"/>
+          <Item Value="County"/>
+          <Item Value="CreatedBy"/>
+          <Item Value="CreatedDate"/>
+          <Item Value="CustId"/>
+          <Item Value="DataSourceCode"/>
+          <Item Value="DepositType"/>
+          <Item Value="Deptid"/>
+          <Item Value="Descr50Mixed"/>
+          <Item Value="Document"/>
+          <Item Value="DstSeqNum"/>
+          <Item Value="FundCode"/>
+          <Item Value="IdSeqNum"/>
+          <Item Value="IndexCode"/>
+          <Item Value="Infar001OutboundId"/>
+          <Item Value="LineNoteText"/>
+          <Item Value="Method"/>
+          <Item Value="MiscPayment"/>
+          <Item Value="ModifiedBy"/>
+          <Item Value="ModifiedDate"/>
+          <Item Value="MonetaryAmount"/>
+          <Item Value="NoteText"/>
+          <Item Value="OperatingUnit"/>
+          <Item Value="Pca"/>
+          <Item Value="PpSw"/>
+          <Item Value="Product"/>
+          <Item Value="ProgramCode"/>
+          <Item Value="ProjectId"/>
+          <Item Value="RefQualifierCode"/>
+          <Item Value="RefValue"/>
+          <Item Value="ResourceCategory"/>
+          <Item Value="ResourceSubCat"/>
+          <Item Value="ResourceType"/>
+          <Item Value="SpeedchartKey"/>
+          <Item Value="TaxAmt"/>
+          <Item Value="ZzCashType"/>
+          <Item Value="ZzIdentifier"/>
+          <Item Value="ZzPaymentMethod"/>
+          <Item Value="ZzReceivedBySco"/>
+          <Item Value="ZzLegDepId"/>
+          <Item Value="TotalChecks"/>
+          <Item Value="Flag"/>
+          <Item Value="BankOperNum"/>
+          <Item Value="ItemLine"/>
+          <Item Value="Item"/>
+          <Item Value="PayAmt"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

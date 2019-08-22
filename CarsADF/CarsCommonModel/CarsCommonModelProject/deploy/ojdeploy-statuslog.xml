@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<ojdeploy-log>
+  <deploy-task>
+    <target>
+      <profile>adflibCarsCommonModel</profile>
+      <workspace>/C:/Eclipse/workspace/CarsADF/CarsCommonModel/CarsCommonModelWorkspace.jws</workspace>
+      <project>CarsCommonModelProject.jpr</project>
+      <output-file>/C:/Temp/carslibrary/adflibCarsCommonModel.jar</output-file>
+    </target>
+    <status exitcode="0">SUCCESS</status>
+  </deploy-task>
+  <summary>
+    <start-time>2019-06-12 15:54:10 PDT</start-time>
+    <end-time>2019-06-12 15:54:41 PDT</end-time>
+    <total-tasks>1</total-tasks>
+    <failures>0</failures>
+    <status exitcode="0">SUCCESS</status>
+  </summary>
+</ojdeploy-log>

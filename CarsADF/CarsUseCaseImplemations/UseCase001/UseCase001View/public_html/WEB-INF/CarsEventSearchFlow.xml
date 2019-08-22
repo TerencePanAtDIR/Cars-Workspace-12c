@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="CarsEventSearchFlow">
+    <default-activity id="__17">searchCarsEvents</default-activity>
+    <transaction id="__18">
+      <new-transaction/>
+    </transaction>
+    <data-control-scope id="__19">
+      <isolated/>
+    </data-control-scope>
+    <managed-bean id="__38">
+      <managed-bean-name id="__40">carsEventSearchBackingBean</managed-bean-name>
+      <managed-bean-class id="__39">gov.ca.dir.acct.cars.adf.usecase001.view.CarsEventSearchBackingBean</managed-bean-class>
+      <managed-bean-scope id="__41">backingBean</managed-bean-scope>
+    </managed-bean>
+    <view id="searchCarsEvents">
+      <page>/Cars_Event_Details/searchCarsEvents.jsff</page>
+    </view>
+    <view id="viewEventDetails">
+      <page>/Cars_Event_Details/viewEventDetails.jsff</page>
+    </view>
+    <method-call id="ExecuteWithParams">
+      <method>#{bindings.ExecuteWithParams.execute}</method>
+      <outcome id="__1">
+        <fixed-outcome>ExecuteWithParams</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="ExecuteWithParams1">
+      <method>#{bindings.ExecuteWithParams.execute}</method>
+      <outcome id="__20">
+        <fixed-outcome>ExecuteWithParams</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="ExecuteWithParams2">
+      <method>#{bindings.ExecuteWithParams.execute}</method>
+      <outcome id="__26">
+        <fixed-outcome>ExecuteWithParams</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="SetCurrentRowWithKeyValue">
+      <method>#{bindings.setCurrentRowWithKeyValue.execute}</method>
+      <outcome id="__32">
+        <fixed-outcome>setCurrentRowWithKeyValue</fixed-outcome>
+      </outcome>
+    </method-call>
+    <control-flow-rule id="__7">
+      <from-activity-id id="__8">viewEventDetails</from-activity-id>
+      <control-flow-case id="__9">
+        <from-outcome id="__11">backToSearchCarsEvents</from-outcome>
+        <to-activity-id id="__10">searchCarsEvents</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__2">
+      <from-activity-id id="__3">searchCarsEvents</from-activity-id>
+      <control-flow-case id="__5">
+        <from-outcome id="__6">viewEventDetails</from-outcome>
+        <to-activity-id id="__4">SetCurrentRowWithKeyValue</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__12">
+      <from-activity-id id="__13">ExecuteWithParams</from-activity-id>
+      <control-flow-case id="__15">
+        <from-outcome id="__14">ExecuteWithParams</from-outcome>
+        <to-activity-id id="__16">ExecuteWithParams1</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__21">
+      <from-activity-id id="__22">ExecuteWithParams1</from-activity-id>
+      <control-flow-case id="__25">
+        <from-outcome id="__24">ExecuteWithParams</from-outcome>
+        <to-activity-id id="__23">ExecuteWithParams2</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__27">
+      <from-activity-id id="__28">ExecuteWithParams2</from-activity-id>
+      <control-flow-case id="__31">
+        <from-outcome id="__29">ExecuteWithParams</from-outcome>
+        <to-activity-id id="__30">viewEventDetails</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__33">
+      <from-activity-id id="__34">SetCurrentRowWithKeyValue</from-activity-id>
+      <control-flow-case id="__37">
+        <from-outcome id="__35">setCurrentRowWithKeyValue</from-outcome>
+        <to-activity-id id="__36">ExecuteWithParams</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

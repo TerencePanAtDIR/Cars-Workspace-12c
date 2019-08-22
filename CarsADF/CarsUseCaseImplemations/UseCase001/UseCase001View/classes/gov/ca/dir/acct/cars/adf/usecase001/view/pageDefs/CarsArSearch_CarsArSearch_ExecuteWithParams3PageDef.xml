@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.64.93"
+                id="CarsArSearch_CarsArSearch_ExecuteWithParams3PageDef"
+                Package="gov.ca.dir.acct.cars.adf.usecase001.view.pageDefs"
+                SkipValidation="true">
+  <parameters/>
+  <executables>
+    <iterator Binds="ViewInitiatingEvents1" RangeSize="25"
+              DataControl="CarsSearchEventsDataControl"
+              id="ViewInitiatingEvents1Iterator" Refresh="never"/>
+  </executables>
+  <bindings>
+    <action IterBinding="ViewInitiatingEvents1Iterator" id="ExecuteWithParams"
+            RequiresUpdateModel="true" Action="executeWithParams">
+      <NamedData NDName="varArRootDocument"
+                 NDValue="#{pageFlowScope.varRootDocument}"
+                 NDType="java.lang.String"/>
+    </action>
+  </bindings>
+</pageDefinition>

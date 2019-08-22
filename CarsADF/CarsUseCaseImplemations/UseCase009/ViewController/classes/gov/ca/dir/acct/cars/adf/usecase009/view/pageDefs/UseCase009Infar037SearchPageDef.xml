@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.64.93" id="UseCase009Infar037SearchPageDef"
+                Package="gov.ca.dir.acct.cars.adf.usecase009.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="Infar037_2" RangeSize="25" DataControl="InfarAMDataControl"
+              id="Infar037_2Iterator"/>
+    <searchRegion Binds="Infar037_2Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="Infar037_2Query"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="Infar037_2Iterator" id="Infar037_2">
+      <nodeDefinition DefName="gov.ca.dir.acct.cars.adf.usecase009.model.view.Infar037VO"
+                      Name="Infar037_20">
+        <AttrNames>
+          <Item Value="BatchId"/>
+          <Item Value="ArRootDocument"/>
+          <Item Value="Name1"/>
+          <Item Value="CustomerId"/>
+          <Item Value="CustStatus"/>
+          <Item Value="Effdt"/>
+          <Item Value="FsRowId"/>
+          <Item Value="CountHdrFl"/>
+          <Item Value="CreatedDatetime"/>
+          <Item Value="AddressSeqNum"/>
+          <Item Value="Address1"/>
+          <Item Value="City"/>
+          <Item Value="County"/>
+          <Item Value="State"/>
+          <Item Value="Country"/>
+          <Item Value="Postal"/>
+          <Item Value="Nameshort"/>
+          <Item Value="Account"/>
+          <Item Value="ActivityId"/>
+          <Item Value="AddDt"/>
+          <Item Value="Address2"/>
+          <Item Value="Address3"/>
+          <Item Value="AddressEffStatus"/>
+          <Item Value="AddressEffdt"/>
+          <Item Value="Affiliate"/>
+          <Item Value="AffiliateIntra1"/>
+          <Item Value="Altacct"/>
+          <Item Value="AnalysisType"/>
+          <Item Value="ArSpecialist"/>
+          <Item Value="AssessOcFlag"/>
+          <Item Value="BillCycleId"/>
+          <Item Value="BillInquiryPhone"/>
+          <Item Value="BillTypeId"/>
+          <Item Value="BillingSpecialist"/>
+          <Item Value="BizUnitGl"/>
+          <Item Value="BudgetRef"/>
+          <Item Value="BusinessUnit"/>
+          <Item Value="BusinessUnitGl"/>
+          <Item Value="BusinessUnitPc"/>
+          <Item Value="Chartfield1"/>
+          <Item Value="CntAddressSeqNum"/>
+          <Item Value="CollectionChkbox"/>
+          <Item Value="CollectionDt"/>
+          <Item Value="CollectionStatus"/>
+          <Item Value="Collector"/>
+          <Item Value="CommMethod"/>
+          <Item Value="Comments"/>
+          <Item Value="ContactEffStatus"/>
+          <Item Value="ContactEffdt"/>
+          <Item Value="ContactFlag"/>
+          <Item Value="ContactId"/>
+          <Item Value="ContactName1"/>
+          <Item Value="CorporateCustId"/>
+          <Item Value="CorrespondenceEffStatus"/>
+          <Item Value="CorrespondenceEffdt"/>
+          <Item Value="CountryCode"/>
+          <Item Value="CrAnalyst"/>
+          <Item Value="CreatedBy"/>
+          <Item Value="CreatedDate"/>
+          <Item Value="CrspdAddr"/>
+          <Item Value="CrspdCntct"/>
+          <Item Value="CustFieldC1A"/>
+          <Item Value="CustFieldC30A"/>
+          <Item Value="CustId"/>
+          <Item Value="CustomerType"/>
+          <Item Value="DataExtractDate"/>
+          <Item Value="DataSourceCode"/>
+          <Item Value="Deptid"/>
+          <Item Value="Descr"/>
+          <Item Value="DstIdAr"/>
+          <Item Value="DunHold"/>
+          <Item Value="DunId"/>
+          <Item Value="EffStatus"/>
+          <Item Value="Emailid"/>
+          <Item Value="Extension"/>
+          <Item Value="FiscalYear"/>
+          <Item Value="FromDate"/>
+          <Item Value="FundCode"/>
+          <Item Value="InterunitFlg"/>
+          <Item Value="Ledger"/>
+          <Item Value="LedgerGroup"/>
+          <Item Value="ModifiedBy"/>
+          <Item Value="ModifiedDate"/>
+          <Item Value="Name2"/>
+          <Item Value="OperatingUnit"/>
+          <Item Value="ParentCustId"/>
+          <Item Value="PaymentMethod"/>
+          <Item Value="Phone"/>
+          <Item Value="PhoneCntct"/>
+          <Item Value="PhoneType"/>
+          <Item Value="PrimaryBillCntct"/>
+          <Item Value="PrimaryBillTo"/>
+          <Item Value="PrimaryShipCntct"/>
+          <Item Value="PrimaryShipTo"/>
+          <Item Value="PrimarySoldCntct"/>
+          <Item Value="PrimarySoldTo"/>
+          <Item Value="Product"/>
+          <Item Value="ProgramCode"/>
+          <Item Value="ProgramUnitCode"/>
+          <Item Value="ProjectId"/>
+          <Item Value="PymntTermsCd"/>
+          <Item Value="RemitFromCustId"/>
+          <Item Value="ResourceCategory"/>
+          <Item Value="ResourceSubCat"/>
+          <Item Value="ResourceType"/>
+          <Item Value="SalutationCd"/>
+          <Item Value="SetId"/>
+          <Item Value="SinceDt"/>
+          <Item Value="StatisticsCode"/>
+          <Item Value="Status"/>
+          <Item Value="Title"/>
+          <Item Value="ToDate"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

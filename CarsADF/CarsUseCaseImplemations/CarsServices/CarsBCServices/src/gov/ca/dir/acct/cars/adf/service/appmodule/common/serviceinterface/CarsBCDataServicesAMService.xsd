@@ -1,0 +1,607 @@
+<schema xmlns="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="/gov/ca/dir/acct/cars/adf/service/appmodule/common/types/"
+     xmlns:tns="/gov/ca/dir/acct/cars/adf/service/appmodule/common/types/" xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/"
+     xmlns:ns1="http://xmlns.oracle.com/adf/svc/types/">
+    <import namespace="/gov/ca/dir/acct/cars/adf/service/view/common/" schemaLocation="../../../view/common/AcctgTransactEventAssocViewSDO.xsd"/>
+    <import namespace="/gov/ca/dir/acct/cars/adf/service/view/common/" schemaLocation="../../../view/common/AccountingReceivableStatusViewSDO.xsd"/>
+    <import namespace="/gov/ca/dir/acct/cars/adf/service/view/common/" schemaLocation="../../../view/common/GlAccountBalanceViewSDO.xsd"/>
+    <import namespace="/gov/ca/dir/acct/cars/adf/service/view/common/" schemaLocation="../../../view/common/EventViewSDO.xsd"/>
+    <import namespace="/gov/ca/dir/acct/cars/adf/service/view/common/" schemaLocation="../../../view/common/AccountingEntryViewSDO.xsd"/>
+    <import namespace="/gov/ca/dir/acct/cars/adf/service/view/common/" schemaLocation="../../../view/common/ReceivableViewSDO.xsd"/>
+    <import namespace="/gov/ca/dir/acct/cars/adf/service/view/common/" schemaLocation="../../../view/common/AddressViewSDO.xsd"/>
+    <import namespace="http://xmlns.oracle.com/adf/svc/types/" schemaLocation="classpath:/META-INF/wsdl/BC4JService.xsd"/>
+    <import namespace="/gov/ca/dir/acct/cars/adf/service/view/common/" schemaLocation="../../../view/common/OrganizationViewSDO.xsd"/>
+    <import namespace="/gov/ca/dir/acct/cars/adf/service/view/common/" schemaLocation="../../../view/common/OtherAccountTransViewSDO.xsd"/>
+    <import namespace="/gov/ca/dir/acct/cars/adf/service/view/common/" schemaLocation="../../../view/common/ParticipantRoleViewSDO.xsd"/>
+    <import namespace="/gov/ca/dir/acct/cars/adf/service/view/common/" schemaLocation="../../../view/common/NoteViewSDO.xsd"/>
+    <import namespace="/gov/ca/dir/acct/cars/adf/service/view/common/" schemaLocation="../../../view/common/PersonViewSDO.xsd"/>
+    <import namespace="/gov/ca/dir/acct/cars/adf/service/view/common/" schemaLocation="../../../view/common/AccountingTransactionAssocViewSDO.xsd"/>
+    <import namespace="/gov/ca/dir/acct/cars/adf/service/view/common/" schemaLocation="../../../view/common/PartyViewSDO.xsd"/>
+    <import namespace="/gov/ca/dir/acct/cars/adf/service/view/common/" schemaLocation="../../../view/common/DebitViewSDO.xsd"/>
+    <import namespace="/gov/ca/dir/acct/cars/adf/service/view/common/" schemaLocation="../../../view/common/AccountingTransactionViewSDO.xsd"/>
+    <import namespace="/gov/ca/dir/acct/cars/adf/service/view/common/" schemaLocation="../../../view/common/ReceiptViewSDO.xsd"/>
+    <import namespace="/gov/ca/dir/acct/cars/adf/service/view/common/" schemaLocation="../../../view/common/CreditViewSDO.xsd"/>
+    <import namespace="/gov/ca/dir/acct/cars/adf/service/view/common/" schemaLocation="../../../view/common/ContactMethodViewSDO.xsd"/>
+    <import namespace="/gov/ca/dir/acct/cars/adf/service/view/common/" schemaLocation="../../../view/common/PartyRoleFSCustStatusViewSDO.xsd"/>
+    <import namespace="/gov/ca/dir/acct/cars/adf/service/view/common/" schemaLocation="../../../view/common/AccountingEntryStatusViewSDO.xsd"/>
+    <import namespace="/gov/ca/dir/acct/cars/adf/service/view/common/" schemaLocation="../../../view/common/PartyAssociationViewSDO.xsd"/>
+    <import namespace="/gov/ca/dir/acct/cars/adf/service/view/common/" schemaLocation="../../../view/common/AdjustmentViewSDO.xsd"/>
+    <import namespace="/gov/ca/dir/acct/cars/adf/service/view/common/" schemaLocation="../../../view/common/EventAssociationViewSDO.xsd"/>
+    <element name="createAccountingReceivableStatus">
+        <complexType>
+            <sequence>
+                <element name="accountingReceivableStatusView1" type="ns0:AccountingReceivableStatusViewSDO"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="createAccountingReceivableStatusResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="ns0:AccountingReceivableStatusViewSDO"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="createAccountingTransactionAssoc">
+        <complexType>
+            <sequence>
+                <element name="accountingTransactionAssocView1" type="ns0:AccountingTransactionAssocViewSDO"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="createAccountingTransactionAssocResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="ns0:AccountingTransactionAssocViewSDO"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="createAcctgTransactEventAssoc">
+        <complexType>
+            <sequence>
+                <element name="acctgTransactEventAssocView1" type="ns0:AcctgTransactEventAssocViewSDO"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="createAcctgTransactEventAssocResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="ns0:AcctgTransactEventAssocViewSDO"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="createAddress">
+        <complexType>
+            <sequence>
+                <element name="addressView1" type="ns0:AddressViewSDO"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="createAddressResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="ns0:AddressViewSDO"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="createAdjustment">
+        <complexType>
+            <sequence>
+                <element name="adjustmentView1" type="ns0:AdjustmentViewSDO"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="createAdjustmentResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="ns0:AdjustmentViewSDO"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="createContactMethod">
+        <complexType>
+            <sequence>
+                <element name="contactMethodView1" type="ns0:ContactMethodViewSDO"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="createContactMethodResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="ns0:ContactMethodViewSDO"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="createEventAssociation">
+        <complexType>
+            <sequence>
+                <element name="eventAssociationView1" type="ns0:EventAssociationViewSDO"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="createEventAssociationResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="ns0:EventAssociationViewSDO"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="createEvent">
+        <complexType>
+            <sequence>
+                <element name="eventView1" type="ns0:EventViewSDO"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="createEventResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="ns0:EventViewSDO"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="createGlAccountBalance">
+        <complexType>
+            <sequence>
+                <element name="glAccountBalanceView1" type="ns0:GlAccountBalanceViewSDO"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="createGlAccountBalanceResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="ns0:GlAccountBalanceViewSDO"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="createNote">
+        <complexType>
+            <sequence>
+                <element name="noteView1" type="ns0:NoteViewSDO"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="createNoteResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="ns0:NoteViewSDO"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="createOrganization">
+        <complexType>
+            <sequence>
+                <element name="organizationView1" type="ns0:OrganizationViewSDO"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="createOrganizationResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="ns0:OrganizationViewSDO"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="createOtherAccountTrans">
+        <complexType>
+            <sequence>
+                <element name="otherAccountTransView1" type="ns0:OtherAccountTransViewSDO"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="createOtherAccountTransResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="ns0:OtherAccountTransViewSDO"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="createParticipantRole">
+        <complexType>
+            <sequence>
+                <element name="participantRoleView1" type="ns0:ParticipantRoleViewSDO"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="createParticipantRoleResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="ns0:ParticipantRoleViewSDO"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="createPartyAssociation">
+        <complexType>
+            <sequence>
+                <element name="partyAssociationView1" type="ns0:PartyAssociationViewSDO"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="createPartyAssociationResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="ns0:PartyAssociationViewSDO"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="createParty">
+        <complexType>
+            <sequence>
+                <element name="partyView1" type="ns0:PartyViewSDO"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="createPartyResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="ns0:PartyViewSDO"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="createPerson">
+        <complexType>
+            <sequence>
+                <element name="personView1" type="ns0:PersonViewSDO"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="createPersonResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="ns0:PersonViewSDO"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="createAccountingTransaction">
+        <complexType>
+            <sequence>
+                <element name="accountingTransactionView1" type="ns0:AccountingTransactionViewSDO"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="createAccountingTransactionResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="ns0:AccountingTransactionViewSDO"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="updateAccountingReceivableStatus">
+        <complexType>
+            <sequence>
+                <element name="accountingReceivableStatusView1" type="ns0:AccountingReceivableStatusViewSDO"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="updateAccountingReceivableStatusResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="ns0:AccountingReceivableStatusViewSDO"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="createCredit">
+        <complexType>
+            <sequence>
+                <element name="creditView1" type="ns0:CreditViewSDO"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="createCreditResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="ns0:CreditViewSDO"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="createDebit">
+        <complexType>
+            <sequence>
+                <element name="debitView1" type="ns0:DebitViewSDO"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="createDebitResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="ns0:DebitViewSDO"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="createReceivable">
+        <complexType>
+            <sequence>
+                <element name="receivableView1" type="ns0:ReceivableViewSDO"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="createReceivableResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="ns0:ReceivableViewSDO"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="updateAddress">
+        <complexType>
+            <sequence>
+                <element name="addressView1" type="ns0:AddressViewSDO"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="updateAddressResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="ns0:AddressViewSDO"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="updateAdjustment">
+        <complexType>
+            <sequence>
+                <element name="adjustmentView1" type="ns0:AdjustmentViewSDO"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="updateAdjustmentResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="ns0:AdjustmentViewSDO"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="updateContactMethod">
+        <complexType>
+            <sequence>
+                <element name="contactMethodView1" type="ns0:ContactMethodViewSDO"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="updateContactMethodResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="ns0:ContactMethodViewSDO"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="updateEvent">
+        <complexType>
+            <sequence>
+                <element name="eventView1" type="ns0:EventViewSDO"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="updateEventResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="ns0:EventViewSDO"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="updateOrganization">
+        <complexType>
+            <sequence>
+                <element name="organizationView1" type="ns0:OrganizationViewSDO"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="updateOrganizationResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="ns0:OrganizationViewSDO"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="updateOtherAccountTrans">
+        <complexType>
+            <sequence>
+                <element name="otherAccountTransView1" type="ns0:OtherAccountTransViewSDO"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="updateOtherAccountTransResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="ns0:OtherAccountTransViewSDO"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="updatePerson">
+        <complexType>
+            <sequence>
+                <element name="personView1" type="ns0:PersonViewSDO"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="updatePersonResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="ns0:PersonViewSDO"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="updateReceivable">
+        <complexType>
+            <sequence>
+                <element name="receivableView1" type="ns0:ReceivableViewSDO"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="updateReceivableResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="ns0:ReceivableViewSDO"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="updateAcctgTransactEventAssoc">
+        <complexType>
+            <sequence>
+                <element name="acctgTransactEventAssocView1" type="ns0:AcctgTransactEventAssocViewSDO"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="updateAcctgTransactEventAssocResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="ns0:AcctgTransactEventAssocViewSDO"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="updateAccountingTransactionAssoc">
+        <complexType>
+            <sequence>
+                <element name="accountingTransactionAssocView1" type="ns0:AccountingTransactionAssocViewSDO"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="updateAccountingTransactionAssocResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="ns0:AccountingTransactionAssocViewSDO"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="updateAccountingTransaction">
+        <complexType>
+            <sequence>
+                <element name="accountingTransactionView1" type="ns0:AccountingTransactionViewSDO"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="updateAccountingTransactionResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="ns0:AccountingTransactionViewSDO"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="updateEventAssociation">
+        <complexType>
+            <sequence>
+                <element name="eventAssociationView1" type="ns0:EventAssociationViewSDO"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="updateEventAssociationResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="ns0:EventAssociationViewSDO"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="updateParticipantRole">
+        <complexType>
+            <sequence>
+                <element name="participantRoleView1" type="ns0:ParticipantRoleViewSDO"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="updateParticipantRoleResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="ns0:ParticipantRoleViewSDO"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findContactMethodWithParam">
+        <complexType>
+            <sequence>
+                <element name="findCriteria" type="ns1:FindCriteria"/>
+                <element name="varPartyId" type="string"/>
+                <element name="findControl" type="ns1:FindControl"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findContactMethodWithParamResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="ns0:ContactMethodViewSDO" minOccurs="0" maxOccurs="unbounded"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findParticipantRoleWithParam">
+        <complexType>
+            <sequence>
+                <element name="findCriteria" type="ns1:FindCriteria"/>
+                <element name="varEventId" type="int"/>
+                <element name="findControl" type="ns1:FindControl"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findParticipantRoleWithParamResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="ns0:ParticipantRoleViewSDO" minOccurs="0" maxOccurs="unbounded"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="createAccountingEntry">
+        <complexType>
+            <sequence>
+                <element name="accountingEntryView1" type="ns0:AccountingEntryViewSDO"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="createAccountingEntryResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="ns0:AccountingEntryViewSDO"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="createAccountingEntryStatus">
+        <complexType>
+            <sequence>
+                <element name="accountingEntryStatusView1" type="ns0:AccountingEntryStatusViewSDO"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="createAccountingEntryStatusResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="ns0:AccountingEntryStatusViewSDO"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="createReceipt">
+        <complexType>
+            <sequence>
+                <element name="receiptView1" type="ns0:ReceiptViewSDO"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="createReceiptResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="ns0:ReceiptViewSDO"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="updateReceipt">
+        <complexType>
+            <sequence>
+                <element name="receiptView1" type="ns0:ReceiptViewSDO"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="updateReceiptResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="ns0:ReceiptViewSDO"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="createPartyRoleFSCustStatus">
+        <complexType>
+            <sequence>
+                <element name="partyRoleFSCustStatusView1" type="ns0:PartyRoleFSCustStatusViewSDO"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="createPartyRoleFSCustStatusResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="ns0:PartyRoleFSCustStatusViewSDO"/>
+            </sequence>
+        </complexType>
+    </element>
+</schema>

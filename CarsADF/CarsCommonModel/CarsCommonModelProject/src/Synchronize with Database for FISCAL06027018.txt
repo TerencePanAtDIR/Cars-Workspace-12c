@@ -1,0 +1,977 @@
+Entity :AccountingCode
+|__Remove Key Constraint: SysC0073630
+|__Remove Key Constraint: SysC0073629
+|__Remove Key Constraint: SysC0073628
+|__Remove Key Constraint: SysC0073627
+|__Remove Key Constraint: SysC0073626
+|__Remove Key Constraint: SysC0073625
+|__Remove Key Constraint: SysC0073624
+|__Remove Key Constraint: SysC0073623
+|__Remove Key Constraint: SysC0073622
+|__Create Key for Constraint: SYS_C00160025
+|__Create Key for Constraint: SYS_C00160024
+|__Create Key for Constraint: SYS_C00160023
+|__Create Key for Constraint: SYS_C00160022
+|__Create Key for Constraint: SYS_C00160021
+|__Create Key for Constraint: SYS_C00160020
+|__Create Key for Constraint: SYS_C00160019
+|__Create Key for Constraint: SYS_C00160018
+|__Create Key for Constraint: SYS_C00160017
+
+Entity :NoteType
+|__Remove Key Constraint: SysC0073929
+|__Remove Key Constraint: SysC0073928
+|__Remove Key Constraint: SysC0073927
+|__Remove Key Constraint: SysC0073926
+|__Remove Key Constraint: SysC0073925
+|__Create Key for Constraint: SYS_C00160279
+|__Create Key for Constraint: SYS_C00160278
+|__Create Key for Constraint: SYS_C00160277
+|__Create Key for Constraint: SYS_C00160276
+|__Create Key for Constraint: SYS_C00160275
+
+Entity :AccountingEntryType
+|__Remove Key Constraint: SysC0073648
+|__Remove Key Constraint: SysC0073647
+|__Remove Key Constraint: SysC0073646
+|__Remove Key Constraint: SysC0073645
+|__Remove Key Constraint: SysC0073644
+|__Remove Key Constraint: SysC0073643
+|__Remove Key Constraint: SysC0073642
+|__Create Key for Constraint: SYS_C00160041
+|__Create Key for Constraint: SYS_C00160040
+|__Create Key for Constraint: SYS_C00160039
+|__Create Key for Constraint: SYS_C00160038
+|__Create Key for Constraint: SYS_C00160037
+|__Create Key for Constraint: SYS_C00160036
+|__Create Key for Constraint: SYS_C00160035
+
+Entity :Event
+|__Create Attribute for column: AR_ROOT_DOCUMENT_1
+|__Create Attribute for column: CURRENT_DOCUMENT_1
+|__Create Attribute for column: REFERENCE_DOCUMENT_1
+|__Remove Key Constraint: SysC0073839
+|__Remove Key Constraint: SysC0073838
+|__Remove Key Constraint: SysC0073837
+|__Remove Key Constraint: SysC0073836
+|__Remove Key Constraint: SysC0073835
+|__Remove Key Constraint: SysC0073834
+|__Remove Key Constraint: SysC0073833
+|__Create Key for Constraint: SYS_C00160211
+|__Create Key for Constraint: SYS_C00160210
+|__Create Key for Constraint: SYS_C00160209
+|__Create Key for Constraint: SYS_C00160208
+|__Create Key for Constraint: SYS_C00160207
+|__Create Key for Constraint: SYS_C00160206
+|__Create Key for Constraint: SYS_C00160205
+|__Create Key for Constraint: EVENT_CURRENT_DOCUMENT_UK
+
+Entity :BatchType
+|__Remove Key Constraint: SysC0073744
+|__Remove Key Constraint: SysC0073743
+|__Remove Key Constraint: SysC0073742
+|__Remove Key Constraint: SysC0073741
+|__Remove Key Constraint: SysC0073740
+|__Create Key for Constraint: SYS_C00160123
+|__Create Key for Constraint: SYS_C00160122
+|__Create Key for Constraint: SYS_C00160121
+|__Create Key for Constraint: SYS_C00160120
+|__Create Key for Constraint: SYS_C00160119
+
+Entity :FsEntryType
+|__Remove Key Constraint: SysC00147531
+|__Remove Key Constraint: SysC00147530
+|__Remove Key Constraint: SysC00147529
+|__Remove Key Constraint: SysC00147528
+|__Remove Key Constraint: SysC00147527
+|__Remove Key Constraint: SysC00147526
+|__Remove Key Constraint: SysC00147525
+|__Remove Key Constraint: SysC00147524
+|__Create Key for Constraint: SYS_C00160372
+|__Create Key for Constraint: SYS_C00160371
+|__Create Key for Constraint: SYS_C00160370
+|__Create Key for Constraint: SYS_C00160369
+|__Create Key for Constraint: SYS_C00160368
+|__Create Key for Constraint: SYS_C00160367
+|__Create Key for Constraint: SYS_C00160366
+|__Create Key for Constraint: SYS_C00160365
+
+Entity :EventAssociation
+|__Remove Key Constraint: SysC0073846
+|__Remove Key Constraint: SysC0073845
+|__Remove Key Constraint: SysC0073844
+|__Remove Key Constraint: SysC0073843
+|__Remove Key Constraint: SysC0073842
+|__Remove Key Constraint: SysC0073841
+|__Create Key for Constraint: SYS_C00160217
+|__Create Key for Constraint: SYS_C00160216
+|__Create Key for Constraint: SYS_C00160215
+|__Create Key for Constraint: SYS_C00160214
+|__Create Key for Constraint: SYS_C00160213
+|__Create Key for Constraint: SYS_C00160212
+
+Entity :CarsRequest
+|__Attribute :CreatedDate
+|____Change Mandatory to:true
+|__Attribute :CreatedBy
+|____Change Mandatory to:true
+|__Attribute :PayloadName
+|____Change Precision to 40
+|__Remove Key Constraint: SysC0075006
+|__Remove Key Constraint: SysC0075004
+|__Remove Key Constraint: SysC0075002
+|__Remove Key Constraint: SysC0075001
+|__Remove Key Constraint: SysC0074996
+|__Remove Key Constraint: SysC00157017
+|__Create Key for Constraint: SYS_C00160163
+|__Create Key for Constraint: SYS_C00160162
+|__Create Key for Constraint: SYS_C00160161
+|__Create Key for Constraint: SYS_C00160160
+|__Create Key for Constraint: SYS_C00160159
+|__Create Key for Constraint: SYS_C00160158
+|__Create Key for Constraint: SYS_C00160157
+|__Create Key for Constraint: SYS_C00160156
+
+Entity :AdjustmentType
+|__Remove Key Constraint: SysC0073700
+|__Remove Key Constraint: SysC0073699
+|__Remove Key Constraint: SysC0073698
+|__Remove Key Constraint: SysC0073697
+|__Remove Key Constraint: SysC0073696
+|__Create Key for Constraint: SYS_C00160085
+|__Create Key for Constraint: SYS_C00160084
+|__Create Key for Constraint: SYS_C00160083
+|__Create Key for Constraint: SYS_C00160082
+|__Create Key for Constraint: SYS_C00160081
+
+Entity :BatchTransaction
+|__Remove Key Constraint: SysC0073739
+|__Remove Key Constraint: SysC0073738
+|__Remove Key Constraint: SysC0073737
+|__Remove Key Constraint: SysC0073736
+|__Remove Key Constraint: SysC0073735
+|__Remove Key Constraint: SysC0073734
+|__Remove Key Constraint: SysC0073733
+|__Remove Key Constraint: SysC0073732
+|__Remove Key Constraint: SysC0073731
+|__Remove Key Constraint: SysC0073730
+|__Remove Key Constraint: SysC0073729
+|__Remove Key Constraint: SysC0073728
+|__Remove Key Constraint: SysC00157015
+|__Create Key for Constraint: SYS_C00160118
+|__Create Key for Constraint: SYS_C00160117
+|__Create Key for Constraint: SYS_C00160116
+|__Create Key for Constraint: SYS_C00160115
+|__Create Key for Constraint: SYS_C00160114
+|__Create Key for Constraint: SYS_C00160113
+|__Create Key for Constraint: SYS_C00160112
+|__Create Key for Constraint: SYS_C00160111
+|__Create Key for Constraint: SYS_C00160110
+|__Create Key for Constraint: SYS_C00160109
+|__Create Key for Constraint: SYS_C00160108
+|__Create Key for Constraint: SYS_C00160107
+|__Create Key for Constraint: SYS_C00160106
+
+Remove Entity, no corresponding database table found for:AuditTrail
+
+Entity :AcctgEntryEventAssocRule
+|__Remove Key Constraint: SysC0073676
+|__Remove Key Constraint: SysC0073675
+|__Remove Key Constraint: SysC0073674
+|__Remove Key Constraint: SysC0073673
+|__Remove Key Constraint: SysC0073672
+|__Remove Key Constraint: SysC0073671
+|__Remove Key Constraint: SysC0073670
+|__Remove Key Constraint: SysC00154556
+|__Create Key for Constraint: SYS_C00160673
+|__Create Key for Constraint: SYS_C00160065
+|__Create Key for Constraint: SYS_C00160064
+|__Create Key for Constraint: SYS_C00160063
+|__Create Key for Constraint: SYS_C00160062
+|__Create Key for Constraint: SYS_C00160061
+|__Create Key for Constraint: SYS_C00160060
+|__Create Key for Constraint: SYS_C00160059
+
+Entity :FsEntryReasonType
+|__Remove Key Constraint: SysC00147523
+|__Remove Key Constraint: SysC00147522
+|__Remove Key Constraint: SysC00147521
+|__Remove Key Constraint: SysC00147520
+|__Remove Key Constraint: SysC00147519
+|__Remove Key Constraint: SysC00147518
+|__Remove Key Constraint: SysC00147517
+|__Remove Key Constraint: SysC00147516
+|__Create Key for Constraint: SYS_C00160380
+|__Create Key for Constraint: SYS_C00160379
+|__Create Key for Constraint: SYS_C00160378
+|__Create Key for Constraint: SYS_C00160377
+|__Create Key for Constraint: SYS_C00160376
+|__Create Key for Constraint: SYS_C00160375
+|__Create Key for Constraint: SYS_C00160374
+|__Create Key for Constraint: SYS_C00160373
+
+Entity :DebitRule
+|__Remove Key Constraint: SysC00153845
+|__Remove Key Constraint: SysC00153844
+|__Remove Key Constraint: SysC00153843
+|__Remove Key Constraint: SysC00153842
+|__Remove Key Constraint: SysC00153841
+|__Remove Key Constraint: SysC00153840
+|__Remove Key Constraint: SysC00153839
+|__Remove Key Constraint: SysC00153838
+|__Create Key for Constraint: SYS_C00160694
+|__Create Key for Constraint: SYS_C00160693
+|__Create Key for Constraint: SYS_C00160692
+|__Create Key for Constraint: SYS_C00160691
+|__Create Key for Constraint: SYS_C00160690
+|__Create Key for Constraint: SYS_C00160689
+|__Create Key for Constraint: SYS_C00160688
+|__Create Key for Constraint: SYS_C00160687
+
+Entity :OtherTransactionType
+|__Remove Key Constraint: SysC0073946
+|__Remove Key Constraint: SysC0073945
+|__Remove Key Constraint: SysC0073944
+|__Remove Key Constraint: SysC0073943
+|__Remove Key Constraint: SysC0073942
+|__Create Key for Constraint: SYS_C00160293
+|__Create Key for Constraint: SYS_C00160292
+|__Create Key for Constraint: SYS_C00160291
+|__Create Key for Constraint: SYS_C00160290
+|__Create Key for Constraint: SYS_C00160289
+
+Entity :ReferenceCodeList
+|__Remove Key Constraint: SysC00146967
+|__Remove Key Constraint: SysC00146966
+|__Remove Key Constraint: SysC00146965
+|__Remove Key Constraint: SysC00146964
+|__Remove Key Constraint: SysC00146963
+|__Remove Key Constraint: SysC00146962
+|__Create Key for Constraint: SYS_C00160390
+|__Create Key for Constraint: SYS_C00160389
+|__Create Key for Constraint: SYS_C00160388
+|__Create Key for Constraint: SYS_C00160387
+|__Create Key for Constraint: SYS_C00160386
+|__Create Key for Constraint: SYS_C00160385
+
+Entity :DataSource
+|__Remove Key Constraint: SysC0073815
+|__Remove Key Constraint: SysC0073814
+|__Remove Key Constraint: SysC0073813
+|__Remove Key Constraint: SysC0073812
+|__Remove Key Constraint: SysC0073811
+|__Create Key for Constraint: SYS_C00160192
+|__Create Key for Constraint: SYS_C00160191
+|__Create Key for Constraint: SYS_C00160190
+|__Create Key for Constraint: SYS_C00160189
+|__Create Key for Constraint: SYS_C00160188
+
+Entity :Address
+|__Attribute :Province
+|____Change Column type to VARCHAR2
+|____Change Precision to 50
+|__Remove Key Constraint: SysC00117779
+|__Remove Key Constraint: SysC00117778
+|__Remove Key Constraint: SysC00117777
+|__Remove Key Constraint: SysC00117776
+|__Remove Key Constraint: SysC00117775
+|__Create Key for Constraint: SYS_C00160075
+|__Create Key for Constraint: SYS_C00160074
+|__Create Key for Constraint: SYS_C00160073
+|__Create Key for Constraint: SYS_C00160072
+|__Create Key for Constraint: SYS_C00160071
+
+Entity :BillType
+|__Remove Key Constraint: SysC0073750
+|__Remove Key Constraint: SysC0073749
+|__Remove Key Constraint: SysC0073748
+|__Remove Key Constraint: SysC0073747
+|__Remove Key Constraint: SysC0073746
+|__Create Key for Constraint: SYS_C00160128
+|__Create Key for Constraint: SYS_C00160127
+|__Create Key for Constraint: SYS_C00160126
+|__Create Key for Constraint: SYS_C00160125
+|__Create Key for Constraint: SYS_C00160124
+
+Entity :ContactMethod
+|__Remove Key Constraint: SysC0073787
+|__Remove Key Constraint: SysC0073786
+|__Remove Key Constraint: SysC0073785
+|__Remove Key Constraint: SysC0073784
+|__Remove Key Constraint: SysC0073783
+|__Remove Key Constraint: SysC0073782
+|__Remove Key Constraint: SysC0073781
+|__Create Key for Constraint: SYS_C00160170
+|__Create Key for Constraint: SYS_C00160169
+|__Create Key for Constraint: SYS_C00160168
+|__Create Key for Constraint: SYS_C00160167
+|__Create Key for Constraint: SYS_C00160166
+|__Create Key for Constraint: SYS_C00160165
+|__Create Key for Constraint: SYS_C00160164
+
+Entity :GlAccountAssociationRule
+|__Remove Key Constraint: SysC0073898
+|__Remove Key Constraint: SysC0073897
+|__Remove Key Constraint: SysC0073896
+|__Remove Key Constraint: SysC0073895
+|__Remove Key Constraint: SysC0073894
+|__Create Key for Constraint: SYS_C00160258
+|__Create Key for Constraint: SYS_C00160257
+|__Create Key for Constraint: SYS_C00160256
+|__Create Key for Constraint: SYS_C00160255
+|__Create Key for Constraint: SYS_C00160254
+
+Entity :EventTypeAssociationRule
+|__Remove Key Constraint: SysC0073865
+|__Remove Key Constraint: SysC0073864
+|__Remove Key Constraint: SysC0073863
+|__Remove Key Constraint: SysC0073862
+|__Remove Key Constraint: SysC0073861
+|__Remove Key Constraint: SysC0073860
+|__Remove Key Constraint: SysC0073859
+|__Create Key for Constraint: SYS_C00160232
+|__Create Key for Constraint: SYS_C00160231
+|__Create Key for Constraint: SYS_C00160230
+|__Create Key for Constraint: SYS_C00160229
+|__Create Key for Constraint: SYS_C00160228
+|__Create Key for Constraint: SYS_C00160227
+|__Create Key for Constraint: SYS_C00160226
+
+Entity :CarsErrorType
+|__Remove Key Constraint: SysC0073770
+|__Remove Key Constraint: SysC0073769
+|__Remove Key Constraint: SysC0073768
+|__Remove Key Constraint: SysC0073767
+|__Remove Key Constraint: SysC0073766
+|__Create Key for Constraint: SYS_C00160147
+|__Create Key for Constraint: SYS_C00160146
+|__Create Key for Constraint: SYS_C00160145
+|__Create Key for Constraint: SYS_C00160144
+|__Create Key for Constraint: SYS_C00160143
+
+Entity :AccountingEntry
+|__Remove Key Constraint: SysC0073640
+|__Remove Key Constraint: SysC0073639
+|__Remove Key Constraint: SysC0073638
+|__Remove Key Constraint: SysC0073637
+|__Remove Key Constraint: SysC0073636
+|__Remove Key Constraint: SysC0073635
+|__Remove Key Constraint: SysC0073634
+|__Remove Key Constraint: SysC0073633
+|__Remove Key Constraint: SysC0073632
+|__Remove Key Constraint: SysC00154555
+|__Create Key for Constraint: SYS_C00160674
+|__Create Key for Constraint: SYS_C00160034
+|__Create Key for Constraint: SYS_C00160033
+|__Create Key for Constraint: SYS_C00160032
+|__Create Key for Constraint: SYS_C00160031
+|__Create Key for Constraint: SYS_C00160030
+|__Create Key for Constraint: SYS_C00160029
+|__Create Key for Constraint: SYS_C00160028
+|__Create Key for Constraint: SYS_C00160027
+|__Create Key for Constraint: SYS_C00160026
+
+Entity :ParticipantRole
+|__Remove Key Constraint: SysC0073954
+|__Remove Key Constraint: SysC0073953
+|__Remove Key Constraint: SysC0073952
+|__Remove Key Constraint: SysC0073951
+|__Remove Key Constraint: SysC0073950
+|__Remove Key Constraint: SysC0073949
+|__Remove Key Constraint: SysC0073948
+|__Remove Key Constraint: SysC00157016
+|__Create Key for Constraint: SYS_C00160301
+|__Create Key for Constraint: SYS_C00160300
+|__Create Key for Constraint: SYS_C00160299
+|__Create Key for Constraint: SYS_C00160298
+|__Create Key for Constraint: SYS_C00160297
+|__Create Key for Constraint: SYS_C00160296
+|__Create Key for Constraint: SYS_C00160295
+|__Create Key for Constraint: SYS_C00160294
+
+Entity :ParticipantRoleType
+|__Remove Key Constraint: SysC0073960
+|__Remove Key Constraint: SysC0073959
+|__Remove Key Constraint: SysC0073958
+|__Remove Key Constraint: SysC0073957
+|__Remove Key Constraint: SysC0073956
+|__Create Key for Constraint: SYS_C00160306
+|__Create Key for Constraint: SYS_C00160305
+|__Create Key for Constraint: SYS_C00160304
+|__Create Key for Constraint: SYS_C00160303
+|__Create Key for Constraint: SYS_C00160302
+
+Entity :RevenueSourceCode
+|__Remove Key Constraint: SysC0074022
+|__Remove Key Constraint: SysC0074021
+|__Remove Key Constraint: SysC0074020
+|__Remove Key Constraint: SysC0074019
+|__Remove Key Constraint: SysC0074018
+|__Create Key for Constraint: SYS_C00160358
+|__Create Key for Constraint: SYS_C00160357
+|__Create Key for Constraint: SYS_C00160356
+|__Create Key for Constraint: SYS_C00160355
+|__Create Key for Constraint: SYS_C00160354
+
+Entity :EventType
+|__Remove Key Constraint: SysC0073856
+|__Remove Key Constraint: SysC0073855
+|__Remove Key Constraint: SysC0073854
+|__Remove Key Constraint: SysC0073853
+|__Remove Key Constraint: SysC0073852
+|__Remove Key Constraint: SysC0073851
+|__Remove Key Constraint: SysC0073850
+|__Remove Key Constraint: SysC0073849
+|__Remove Key Constraint: SysC0073848
+|__Create Key for Constraint: SYS_C00160550
+|__Create Key for Constraint: SYS_C00160225
+|__Create Key for Constraint: SYS_C00160224
+|__Create Key for Constraint: SYS_C00160223
+|__Create Key for Constraint: SYS_C00160222
+|__Create Key for Constraint: SYS_C00160221
+|__Create Key for Constraint: SYS_C00160220
+|__Create Key for Constraint: SYS_C00160219
+|__Create Key for Constraint: SYS_C00160218
+
+Entity :Debit
+|__Remove Key Constraint: SysC00153851
+|__Remove Key Constraint: SysC00153850
+|__Remove Key Constraint: SysC00153849
+|__Remove Key Constraint: SysC00153848
+|__Remove Key Constraint: SysC00153847
+|__Remove Key Constraint: SysC00153846
+|__Create Key for Constraint: SYS_C00160700
+|__Create Key for Constraint: SYS_C00160699
+|__Create Key for Constraint: SYS_C00160698
+|__Create Key for Constraint: SYS_C00160697
+|__Create Key for Constraint: SYS_C00160696
+|__Create Key for Constraint: SYS_C00160695
+
+Entity :Infar006Outbound
+|__Attribute :DataSourceCode
+|____Change Mandatory to:true
+|__Attribute :Account
+|____Change Mandatory to:true
+|__Attribute :AcctgEntryId
+|____Change Mandatory to:true
+|__Remove Key Constraint: SysC00157276
+|__Remove Key Constraint: SysC00154591
+|__Remove Key Constraint: SysC00154590
+|__Remove Key Constraint: SysC00154589
+|__Remove Key Constraint: SysC00154588
+|__Remove Key Constraint: SysC00154587
+|__Remove Key Constraint: SysC00154586
+|__Remove Key Constraint: SysC00154585
+|__Remove Key Constraint: SysC00154584
+|__Remove Key Constraint: SysC00154583
+|__Remove Key Constraint: SysC00154582
+|__Remove Key Constraint: SysC00154581
+|__Remove Key Constraint: SysC00154580
+|__Remove Key Constraint: SysC00154579
+|__Remove Key Constraint: SysC00154578
+|__Remove Key Constraint: SysC00154577
+|__Remove Key Constraint: SysC00154576
+|__Remove Key Constraint: SysC00154575
+|__Remove Key Constraint: SysC00147947
+|__Remove Key Constraint: SysC00147946
+|__Remove Key Constraint: SysC00147945
+|__Remove Key Constraint: SysC00147944
+|__Remove Key Constraint: SysC00147943
+|__Create Key for Constraint: SYS_C00160415
+|__Create Key for Constraint: SYS_C00160414
+|__Create Key for Constraint: SYS_C00160413
+|__Create Key for Constraint: SYS_C00160412
+|__Create Key for Constraint: SYS_C00160411
+|__Create Key for Constraint: SYS_C00160410
+|__Create Key for Constraint: SYS_C00160409
+|__Create Key for Constraint: SYS_C00160408
+|__Create Key for Constraint: SYS_C00160407
+|__Create Key for Constraint: SYS_C00160406
+|__Create Key for Constraint: SYS_C00160405
+|__Create Key for Constraint: SYS_C00160404
+|__Create Key for Constraint: SYS_C00160403
+|__Create Key for Constraint: SYS_C00160402
+|__Create Key for Constraint: SYS_C00160401
+|__Create Key for Constraint: SYS_C00160400
+|__Create Key for Constraint: SYS_C00160399
+|__Create Key for Constraint: SYS_C00160398
+|__Create Key for Constraint: SYS_C00160397
+|__Create Key for Constraint: SYS_C00160396
+|__Create Key for Constraint: SYS_C00160395
+|__Create Key for Constraint: SYS_C00160394
+|__Create Key for Constraint: SYS_C00160393
+|__Create Key for Constraint: SYS_C00160392
+|__Create Key for Constraint: SYS_C00160391
+
+Entity :Party
+|__Remove Key Constraint: SysC0073964
+|__Remove Key Constraint: SysC0073963
+|__Remove Key Constraint: SysC0073962
+|__Create Key for Constraint: SYS_C00160309
+|__Create Key for Constraint: SYS_C00160308
+|__Create Key for Constraint: SYS_C00160307
+
+Entity :ProgramUnit
+|__Remove Key Constraint: SysC0073995
+|__Remove Key Constraint: SysC0073994
+|__Remove Key Constraint: SysC0073993
+|__Remove Key Constraint: SysC0073992
+|__Remove Key Constraint: SysC0073991
+|__Create Key for Constraint: SYS_C00160335
+|__Create Key for Constraint: SYS_C00160334
+|__Create Key for Constraint: SYS_C00160333
+|__Create Key for Constraint: SYS_C00160332
+|__Create Key for Constraint: SYS_C00160331
+
+Entity :FundAllocation
+|__Remove Key Constraint: SysC0073884
+|__Remove Key Constraint: SysC0073883
+|__Remove Key Constraint: SysC0073882
+|__Remove Key Constraint: SysC0073881
+|__Create Key for Constraint: SYS_C00160247
+|__Create Key for Constraint: SYS_C00160246
+|__Create Key for Constraint: SYS_C00160245
+|__Create Key for Constraint: SYS_C00160244
+
+Entity :Note
+|__Remove Key Constraint: SysC0073923
+|__Remove Key Constraint: SysC0073922
+|__Remove Key Constraint: SysC0073921
+|__Remove Key Constraint: SysC0073920
+|__Remove Key Constraint: SysC0073919
+|__Remove Key Constraint: SysC0073918
+|__Create Key for Constraint: SYS_C00160274
+|__Create Key for Constraint: SYS_C00160273
+|__Create Key for Constraint: SYS_C00160272
+|__Create Key for Constraint: SYS_C00160271
+|__Create Key for Constraint: SYS_C00160270
+|__Create Key for Constraint: SYS_C00160269
+
+Entity :GlAccountType
+|__Remove Key Constraint: SysC0073910
+|__Remove Key Constraint: SysC0073909
+|__Remove Key Constraint: SysC0073908
+|__Remove Key Constraint: SysC0073907
+|__Remove Key Constraint: SysC0073906
+|__Create Key for Constraint: SYS_C00160263
+|__Create Key for Constraint: SYS_C00160262
+|__Create Key for Constraint: SYS_C00160261
+|__Create Key for Constraint: SYS_C00160260
+|__Create Key for Constraint: SYS_C00160259
+
+Entity :AccountingReceivableStatus
+|__Create Attribute for column: AR_ROOT_DOCUMENT_1
+|__Remove Key Constraint: SysC0073654
+|__Remove Key Constraint: SysC0073653
+|__Remove Key Constraint: SysC0073652
+|__Remove Key Constraint: SysC0073651
+|__Remove Key Constraint: SysC0073650
+|__Create Key for Constraint: SYS_C00160046
+|__Create Key for Constraint: SYS_C00160045
+|__Create Key for Constraint: SYS_C00160044
+|__Create Key for Constraint: SYS_C00160043
+|__Create Key for Constraint: SYS_C00160042
+
+Entity :CreditRule
+|__Remove Key Constraint: SysC00153859
+|__Remove Key Constraint: SysC00153858
+|__Remove Key Constraint: SysC00153857
+|__Remove Key Constraint: SysC00153856
+|__Remove Key Constraint: SysC00153855
+|__Remove Key Constraint: SysC00153854
+|__Remove Key Constraint: SysC00153853
+|__Remove Key Constraint: SysC00153852
+|__Create Key for Constraint: SYS_C00160708
+|__Create Key for Constraint: SYS_C00160707
+|__Create Key for Constraint: SYS_C00160706
+|__Create Key for Constraint: SYS_C00160705
+|__Create Key for Constraint: SYS_C00160704
+|__Create Key for Constraint: SYS_C00160703
+|__Create Key for Constraint: SYS_C00160702
+|__Create Key for Constraint: SYS_C00160701
+
+Entity :Fund
+|__Remove Key Constraint: SysC0073879
+|__Remove Key Constraint: SysC0073878
+|__Remove Key Constraint: SysC0073877
+|__Remove Key Constraint: SysC0073876
+|__Remove Key Constraint: SysC0073875
+|__Remove Key Constraint: SysC0073874
+|__Create Key for Constraint: SYS_C00160243
+|__Create Key for Constraint: SYS_C00160242
+|__Create Key for Constraint: SYS_C00160241
+|__Create Key for Constraint: SYS_C00160240
+|__Create Key for Constraint: SYS_C00160239
+|__Create Key for Constraint: SYS_C00160238
+
+Entity :Receivable
+|__Remove Key Constraint: SysC0074016
+|__Remove Key Constraint: SysC0074015
+|__Remove Key Constraint: SysC0074014
+|__Remove Key Constraint: SysC0074013
+|__Create Key for Constraint: SYS_C00160353
+|__Create Key for Constraint: SYS_C00160352
+|__Create Key for Constraint: SYS_C00160351
+|__Create Key for Constraint: SYS_C00160350
+
+Entity :PartyAssociationType
+|__Remove Key Constraint: SysC0073977
+|__Remove Key Constraint: SysC0073976
+|__Remove Key Constraint: SysC0073975
+|__Remove Key Constraint: SysC0073974
+|__Remove Key Constraint: SysC0073973
+|__Create Key for Constraint: SYS_C00160320
+|__Create Key for Constraint: SYS_C00160319
+|__Create Key for Constraint: SYS_C00160318
+|__Create Key for Constraint: SYS_C00160317
+|__Create Key for Constraint: SYS_C00160316
+
+Entity :AccountingEntryStatus
+|__Remove Key Constraint: SysC00154180
+|__Remove Key Constraint: SysC00154179
+|__Remove Key Constraint: SysC00154178
+|__Remove Key Constraint: SysC00154177
+|__Create Key for Constraint: SYS_C00160384
+|__Create Key for Constraint: SYS_C00160383
+|__Create Key for Constraint: SYS_C00160382
+|__Create Key for Constraint: SYS_C00160381
+
+Entity :Person
+|__Remove Key Constraint: SysC0073989
+|__Remove Key Constraint: SysC0073988
+|__Remove Key Constraint: SysC0073987
+|__Remove Key Constraint: SysC0073986
+|__Remove Key Constraint: SysC0073985
+|__Create Key for Constraint: SYS_C00160330
+|__Create Key for Constraint: SYS_C00160329
+|__Create Key for Constraint: SYS_C00160328
+|__Create Key for Constraint: SYS_C00160327
+|__Create Key for Constraint: SYS_C00160326
+
+Entity :FiscalPeriod
+|__Remove Key Constraint: SysC0073872
+|__Remove Key Constraint: SysC0073871
+|__Remove Key Constraint: SysC0073870
+|__Remove Key Constraint: SysC0073869
+|__Remove Key Constraint: SysC0073868
+|__Create Key for Constraint: SYS_C00160237
+|__Create Key for Constraint: SYS_C00160236
+|__Create Key for Constraint: SYS_C00160235
+|__Create Key for Constraint: SYS_C00160234
+|__Create Key for Constraint: SYS_C00160233
+
+Entity :CarsErrorLog
+|__Attribute :Ecid
+|____Change Mandatory to:true
+|__Remove Key Constraint: SysC0074094
+|__Remove Key Constraint: SysC0074093
+|__Remove Key Constraint: SysC0074092
+|__Remove Key Constraint: SysC0074091
+|__Remove Key Constraint: SysC0074090
+|__Remove Key Constraint: SysC0074089
+|__Create Key for Constraint: SYS_C00160135
+|__Create Key for Constraint: SYS_C00160134
+|__Create Key for Constraint: SYS_C00160133
+|__Create Key for Constraint: SYS_C00160132
+|__Create Key for Constraint: SYS_C00160131
+|__Create Key for Constraint: SYS_C00160130
+|__Create Key for Constraint: SYS_C00160129
+|__Create Key for Constraint: REVIEWEDYN
+
+Entity :Infar001Outbound
+|__Attribute :Program
+|____Change Mandatory to:true
+|__Remove Key Constraint: SysC00157273
+|__Remove Key Constraint: SysC00157271
+|__Remove Key Constraint: SysC00147952
+|__Remove Key Constraint: SysC00147951
+|__Remove Key Constraint: SysC00147950
+|__Remove Key Constraint: SysC00147949
+|__Remove Key Constraint: SysC00147948
+|__Create Key for Constraint: SYS_C00160510
+|__Create Key for Constraint: SYS_C00160509
+|__Create Key for Constraint: SYS_C00160508
+|__Create Key for Constraint: SYS_C00160507
+|__Create Key for Constraint: SYS_C00160506
+|__Create Key for Constraint: SYS_C00160505
+|__Create Key for Constraint: SYS_C00160504
+
+Entity :AccountingTransactionAssoc
+|__Remove Key Constraint: SysC0073668
+|__Remove Key Constraint: SysC0073667
+|__Remove Key Constraint: SysC0073666
+|__Remove Key Constraint: SysC0073665
+|__Remove Key Constraint: SysC0073664
+|__Create Key for Constraint: SYS_C00160058
+|__Create Key for Constraint: SYS_C00160057
+|__Create Key for Constraint: SYS_C00160056
+|__Create Key for Constraint: SYS_C00160055
+|__Create Key for Constraint: SYS_C00160054
+
+Entity :Batch
+|__Remove Key Constraint: SysC0073726
+|__Remove Key Constraint: SysC0073725
+|__Remove Key Constraint: SysC0073724
+|__Remove Key Constraint: SysC0073723
+|__Remove Key Constraint: SysC0073722
+|__Remove Key Constraint: SysC0073721
+|__Remove Key Constraint: SysC0073720
+|__Remove Key Constraint: SysC0073719
+|__Remove Key Constraint: SysC0073718
+|__Remove Key Constraint: SysC0073717
+|__Create Key for Constraint: SYS_C00160105
+|__Create Key for Constraint: SYS_C00160104
+|__Create Key for Constraint: SYS_C00160103
+|__Create Key for Constraint: SYS_C00160102
+|__Create Key for Constraint: SYS_C00160101
+|__Create Key for Constraint: SYS_C00160100
+|__Create Key for Constraint: SYS_C00160099
+|__Create Key for Constraint: SYS_C00160098
+|__Create Key for Constraint: SYS_C00160097
+|__Create Key for Constraint: SYS_C00160096
+
+Entity :ArStatusType
+|__Remove Key Constraint: SysC0073712
+|__Remove Key Constraint: SysC0073711
+|__Remove Key Constraint: SysC0073710
+|__Remove Key Constraint: SysC0073709
+|__Remove Key Constraint: SysC0073708
+|__Create Key for Constraint: SYS_C00160095
+|__Create Key for Constraint: SYS_C00160094
+|__Create Key for Constraint: SYS_C00160093
+|__Create Key for Constraint: SYS_C00160092
+|__Create Key for Constraint: SYS_C00160091
+
+Entity :ContactMethodType
+|__Remove Key Constraint: SysC0073793
+|__Remove Key Constraint: SysC0073792
+|__Remove Key Constraint: SysC0073791
+|__Remove Key Constraint: SysC0073790
+|__Remove Key Constraint: SysC0073789
+|__Create Key for Constraint: SYS_C00160175
+|__Create Key for Constraint: SYS_C00160174
+|__Create Key for Constraint: SYS_C00160173
+|__Create Key for Constraint: SYS_C00160172
+|__Create Key for Constraint: SYS_C00160171
+
+Entity :CarsErrorMessage
+|__Attribute :ErrorMessageDetail
+|____Change Precision to 500
+|__Attribute :ErrorMessageText
+|____Change Precision to 250
+|__Remove Key Constraint: SysC0075648
+|__Remove Key Constraint: SysC0073764
+|__Remove Key Constraint: SysC0073763
+|__Remove Key Constraint: SysC0073762
+|__Remove Key Constraint: SysC0073761
+|__Remove Key Constraint: SysC0073760
+|__Remove Key Constraint: SysC0073759
+|__Create Key for Constraint: SYS_C00160142
+|__Create Key for Constraint: SYS_C00160141
+|__Create Key for Constraint: SYS_C00160140
+|__Create Key for Constraint: SYS_C00160139
+|__Create Key for Constraint: SYS_C00160138
+|__Create Key for Constraint: SYS_C00160137
+|__Create Key for Constraint: SYS_C00160136
+
+Entity :GlAccountBalance
+|__Remove Key Constraint: SysC00153837
+|__Remove Key Constraint: SysC00153836
+|__Remove Key Constraint: SysC00153835
+|__Remove Key Constraint: SysC00153834
+|__Remove Key Constraint: SysC00153833
+|__Remove Key Constraint: SysC00153832
+|__Remove Key Constraint: SysC00153831
+|__Create Key for Constraint: SYS_C00160686
+|__Create Key for Constraint: SYS_C00160685
+|__Create Key for Constraint: SYS_C00160684
+|__Create Key for Constraint: SYS_C00160683
+|__Create Key for Constraint: SYS_C00160682
+|__Create Key for Constraint: SYS_C00160681
+|__Create Key for Constraint: SYS_C00160680
+
+Entity :Adjustment
+|__Key :AgtnAdntFk
+|____Change Deferred Constraint to:true
+|____Change Initially Deferrable Constraint to:true
+|__Remove Key Constraint: SysC0073694
+|__Remove Key Constraint: SysC0073693
+|__Remove Key Constraint: SysC0073692
+|__Remove Key Constraint: SysC0073691
+|__Remove Key Constraint: SysC0073690
+|__Create Key for Constraint: SYS_C00160080
+|__Create Key for Constraint: SYS_C00160079
+|__Create Key for Constraint: SYS_C00160078
+|__Create Key for Constraint: SYS_C00160077
+|__Create Key for Constraint: SYS_C00160076
+
+Entity :OtherAccountTrans
+|__Remove Key Constraint: SysC0073940
+|__Remove Key Constraint: SysC0073939
+|__Remove Key Constraint: SysC0073938
+|__Remove Key Constraint: SysC0073937
+|__Remove Key Constraint: SysC0073936
+|__Create Key for Constraint: SYS_C00160288
+|__Create Key for Constraint: SYS_C00160287
+|__Create Key for Constraint: SYS_C00160286
+|__Create Key for Constraint: SYS_C00160285
+|__Create Key for Constraint: SYS_C00160284
+
+Entity :PartyAssociation
+|__Remove Key Constraint: SysC0073971
+|__Remove Key Constraint: SysC0073970
+|__Remove Key Constraint: SysC0073969
+|__Remove Key Constraint: SysC0073968
+|__Remove Key Constraint: SysC0073967
+|__Remove Key Constraint: SysC0073966
+|__Create Key for Constraint: SYS_C00160315
+|__Create Key for Constraint: SYS_C00160314
+|__Create Key for Constraint: SYS_C00160313
+|__Create Key for Constraint: SYS_C00160312
+|__Create Key for Constraint: SYS_C00160311
+|__Create Key for Constraint: SYS_C00160310
+
+Entity :Credit
+|__Remove Key Constraint: SysC00153865
+|__Remove Key Constraint: SysC00153864
+|__Remove Key Constraint: SysC00153863
+|__Remove Key Constraint: SysC00153862
+|__Remove Key Constraint: SysC00153861
+|__Remove Key Constraint: SysC00153860
+|__Create Key for Constraint: SYS_C00160714
+|__Create Key for Constraint: SYS_C00160713
+|__Create Key for Constraint: SYS_C00160712
+|__Create Key for Constraint: SYS_C00160711
+|__Create Key for Constraint: SYS_C00160710
+|__Create Key for Constraint: SYS_C00160709
+
+Entity :AgencySource
+|__Remove Key Constraint: SysC0073706
+|__Remove Key Constraint: SysC0073705
+|__Remove Key Constraint: SysC0073704
+|__Remove Key Constraint: SysC0073703
+|__Remove Key Constraint: SysC0073702
+|__Create Key for Constraint: SYS_C00160090
+|__Create Key for Constraint: SYS_C00160089
+|__Create Key for Constraint: SYS_C00160088
+|__Create Key for Constraint: SYS_C00160087
+|__Create Key for Constraint: SYS_C00160086
+
+Entity :Receipt
+|__Remove Key Constraint: SysC0074005
+|__Remove Key Constraint: SysC0074004
+|__Remove Key Constraint: SysC0074003
+|__Remove Key Constraint: SysC0074002
+|__Remove Key Constraint: SysC0074001
+|__Remove Key Constraint: SysC0074000
+|__Remove Key Constraint: SysC0073999
+|__Remove Key Constraint: SysC0073998
+|__Remove Key Constraint: SysC0073997
+|__Create Key for Constraint: SYS_C00160344
+|__Create Key for Constraint: SYS_C00160343
+|__Create Key for Constraint: SYS_C00160342
+|__Create Key for Constraint: SYS_C00160341
+|__Create Key for Constraint: SYS_C00160340
+|__Create Key for Constraint: SYS_C00160339
+|__Create Key for Constraint: SYS_C00160338
+|__Create Key for Constraint: SYS_C00160337
+|__Create Key for Constraint: SYS_C00160336
+
+Entity :Organization
+|__Remove Key Constraint: SysC0073934
+|__Remove Key Constraint: SysC0073933
+|__Remove Key Constraint: SysC0073932
+|__Remove Key Constraint: SysC0073931
+|__Create Key for Constraint: SYS_C00160283
+|__Create Key for Constraint: SYS_C00160282
+|__Create Key for Constraint: SYS_C00160281
+|__Create Key for Constraint: SYS_C00160280
+
+Entity :ReceiptType
+|__Remove Key Constraint: SysC0074011
+|__Remove Key Constraint: SysC0074010
+|__Remove Key Constraint: SysC0074009
+|__Remove Key Constraint: SysC0074008
+|__Remove Key Constraint: SysC0074007
+|__Create Key for Constraint: SYS_C00160349
+|__Create Key for Constraint: SYS_C00160348
+|__Create Key for Constraint: SYS_C00160347
+|__Create Key for Constraint: SYS_C00160346
+|__Create Key for Constraint: SYS_C00160345
+
+Entity :GlAccount
+|__Remove Key Constraint: SysC00153873
+|__Remove Key Constraint: SysC00153872
+|__Remove Key Constraint: SysC00153871
+|__Remove Key Constraint: SysC00153870
+|__Remove Key Constraint: SysC00153869
+|__Remove Key Constraint: SysC00153868
+|__Remove Key Constraint: SysC00153867
+|__Remove Key Constraint: SysC00153866
+|__Create Key for Constraint: SYS_C00160722
+|__Create Key for Constraint: SYS_C00160721
+|__Create Key for Constraint: SYS_C00160720
+|__Create Key for Constraint: SYS_C00160719
+|__Create Key for Constraint: SYS_C00160718
+|__Create Key for Constraint: SYS_C00160717
+|__Create Key for Constraint: SYS_C00160716
+|__Create Key for Constraint: SYS_C00160715
+
+Entity :CarsPacketHeader
+|__Remove Key Constraint: SysC0073779
+|__Remove Key Constraint: SysC0073778
+|__Remove Key Constraint: SysC0073777
+|__Remove Key Constraint: SysC0073776
+|__Remove Key Constraint: SysC0073775
+|__Remove Key Constraint: SysC0073774
+|__Remove Key Constraint: SysC0073773
+|__Remove Key Constraint: SysC0073772
+|__Create Key for Constraint: SYS_C00160155
+|__Create Key for Constraint: SYS_C00160154
+|__Create Key for Constraint: SYS_C00160153
+|__Create Key for Constraint: SYS_C00160152
+|__Create Key for Constraint: SYS_C00160151
+|__Create Key for Constraint: SYS_C00160150
+|__Create Key for Constraint: SYS_C00160149
+|__Create Key for Constraint: SYS_C00160148
+
+Entity :AccountingTransaction
+|__Remove Key Constraint: SysC0073662
+|__Remove Key Constraint: SysC0073661
+|__Remove Key Constraint: SysC0073660
+|__Remove Key Constraint: SysC0073659
+|__Remove Key Constraint: SysC0073658
+|__Remove Key Constraint: SysC0073657
+|__Remove Key Constraint: SysC0073656
+|__Create Key for Constraint: SYS_C00160053
+|__Create Key for Constraint: SYS_C00160052
+|__Create Key for Constraint: SYS_C00160051
+|__Create Key for Constraint: SYS_C00160050
+|__Create Key for Constraint: SYS_C00160049
+|__Create Key for Constraint: SYS_C00160048
+|__Create Key for Constraint: SYS_C00160047
+
+Entity :IndexCode
+|__Remove Key Constraint: SysC0073916
+|__Remove Key Constraint: SysC0073915
+|__Remove Key Constraint: SysC0073914
+|__Remove Key Constraint: SysC0073913
+|__Remove Key Constraint: SysC0073912
+|__Create Key for Constraint: SYS_C00160268
+|__Create Key for Constraint: SYS_C00160267
+|__Create Key for Constraint: SYS_C00160266
+|__Create Key for Constraint: SYS_C00160265
+|__Create Key for Constraint: SYS_C00160264
+
+Entity :PcaCode
+|__Remove Key Constraint: SysC0073983
+|__Remove Key Constraint: SysC0073982
+|__Remove Key Constraint: SysC0073981
+|__Remove Key Constraint: SysC0073980
+|__Remove Key Constraint: SysC0073979
+|__Create Key for Constraint: SYS_C00160325
+|__Create Key for Constraint: SYS_C00160324
+|__Create Key for Constraint: SYS_C00160323
+|__Create Key for Constraint: SYS_C00160322
+|__Create Key for Constraint: SYS_C00160321
+

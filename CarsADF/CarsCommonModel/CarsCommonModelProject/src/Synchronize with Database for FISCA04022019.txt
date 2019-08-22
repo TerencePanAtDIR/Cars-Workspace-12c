@@ -1,0 +1,18 @@
+Entity :ParticipantRole
+|__Remove Key Constraint: SysC00160301
+|__Remove Key Constraint: SysC00160300
+|__Remove Key Constraint: SysC00160299
+|__Remove Key Constraint: SysC00160298
+|__Remove Key Constraint: SysC00160297
+|__Remove Key Constraint: SysC00160296
+|__Remove Key Constraint: SysC00160295
+|__Remove Key Constraint: SysC00160294
+|__Create Key for Constraint: SYS_C00163326
+|__Create Key for Constraint: SYS_C00163325
+|__Create Key for Constraint: SYS_C00163324
+|__Create Key for Constraint: SYS_C00163323
+|__Create Key for Constraint: SYS_C00163322
+|__Create Key for Constraint: SYS_C00163321
+|__Create Key for Constraint: SYS_C00163320
+|__Create Key for Constraint: SYS_C00163319
+

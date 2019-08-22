@@ -1,0 +1,149 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:pageTemplate viewId="/use-case-template.jspx" id="pt1">
+    <f:facet name="main">
+      <af:panelGroupLayout layout="scroll" id="pgl1"
+                           styleClass="AFStretchWidth">
+        <af:query id="qryId1" headerText="Search" disclosed="true"
+                  value="#{bindings.EventViewCriteriaQuery.queryDescriptor}"
+                  model="#{bindings.EventViewCriteriaQuery.queryModel}"
+                  queryListener="#{bindings.EventViewCriteriaQuery.processQuery}"
+                  queryOperationListener="#{bindings.EventViewCriteriaQuery.processQueryOperation}"
+                  resultComponentId="::pc1:resId1" styleClass="AFStretchWidth"
+                  saveResultsLayout="never" rows="3" maxColumns="3"/>
+        <af:panelCollection id="pc1" styleClass="AFStretchWidth">
+          <f:facet name="toolbar">
+            <af:toolbar id="t1">
+              <af:commandToolbarButton text="Reverse Events" id="ctb1"
+                                       actionListener="#{backingBeanScope.ReverseCarsEventsBean.prepReverseEvent}">
+                <af:showPopupBehavior popupId="::p1" triggerType="click"/>
+              </af:commandToolbarButton>
+              <af:commandToolbarButton text="Delete Event" id="ctb3"
+                                       actionListener="#{backingBeanScope.ReverseCarsEventsBean.prepDeleteEvent}">
+                <af:showPopupBehavior popupId="::p2" triggerType="click"/>
+              </af:commandToolbarButton>
+              <af:commandToolbarButton text="Undo Reversal" id="ctb2"
+                                       rendered="false"/>
+            </af:toolbar>
+          </f:facet>
+          <af:table value="#{bindings.EventView1.collectionModel}" var="row"
+                    rows="#{bindings.EventView1.rangeSize}"
+                    emptyText="#{bindings.EventView1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                    fetchSize="#{bindings.EventView1.rangeSize}"
+                    rowBandingInterval="0"
+                    filterModel="#{bindings.EventViewCriteriaQuery.queryDescriptor}"
+                    queryListener="#{bindings.EventViewCriteriaQuery.processQuery}"
+                    filterVisible="true" varStatus="vs"
+                    selectionListener="#{bindings.EventView1.collectionModel.makeCurrent}"
+                    rowSelection="single" id="resId1"
+                    styleClass="AFStretchWidth"
+                    binding="#{backingBeanScope.ReverseCarsEventsBean.reverseCarsEventsTable}">
+            <af:column sortProperty="#{bindings.EventView1.hints.ArRootDocument.name}"
+                       filterable="true" sortable="true"
+                       headerText="#{bindings.EventView1.hints.ArRootDocument.label}"
+                       id="resId1c1" width="85">
+              <af:outputText value="#{row.ArRootDocument}" id="ot5"/>
+            </af:column>
+            <af:column sortProperty="#{bindings.EventView1.hints.ProgramUnitCode.name}"
+                       filterable="true" sortable="true"
+                       headerText="#{bindings.EventView1.hints.ProgramUnitCode.label}"
+                       id="resId1c7" width="60">
+              <af:outputText value="#{row.ProgramUnitCode}" id="ot1"/>
+            </af:column>
+            <af:column sortProperty="#{bindings.EventView1.hints.EventTypeCode.name}"
+                       filterable="true" sortable="true"
+                       headerText="#{bindings.EventView1.hints.EventTypeCode.label}"
+                       id="resId1c6" width="35">
+              <af:outputText value="#{row.EventTypeCode}" id="ot4"/>
+            </af:column>
+            <af:column sortProperty="#{bindings.EventView1.hints.EventDate.name}"
+                       filterable="true" sortable="true"
+                       headerText="#{bindings.EventView1.hints.EventDate.label}"
+                       id="resId1c2" width="85">
+              <f:facet name="filter">
+                <af:inputDate value="#{vs.filterCriteria.EventDate}" id="id1"
+                                    contentStyle="width:60.0px;"/>
+              </f:facet>
+              <af:outputText value="#{row.EventDate}" id="ot9">
+                <af:convertDateTime pattern="#{bindings.EventView1.hints.EventDate.format}"/>
+              </af:outputText>
+            </af:column>
+            <af:column sortProperty="#{bindings.EventView1.hints.CurrentDocument.name}"
+                       filterable="true" sortable="true"
+                       headerText="#{bindings.EventView1.hints.CurrentDocument.label}"
+                       id="resId1c3" width="240">
+              <af:outputText value="#{row.CurrentDocument}" id="ot6"/>
+            </af:column>
+            <af:column sortProperty="#{bindings.EventView1.hints.ReferenceDocument.name}"
+                       filterable="true" sortable="true"
+                       headerText="#{bindings.EventView1.hints.ReferenceDocument.label}"
+                       id="resId1c4" width="200">
+              <af:outputText value="#{row.ReferenceDocument}" id="ot2"/>
+            </af:column>
+            <af:column sortProperty="#{bindings.EventView1.hints.DataSourceCode.name}"
+                       filterable="true" sortable="true"
+                       headerText="#{bindings.EventView1.hints.DataSourceCode.label}"
+                       id="resId1c5" width="75">
+              <af:outputText value="#{row.DataSourceCode}" id="ot3"/>
+            </af:column>
+            <af:column headerText="#{bindings.EventView1.hints.CreatedBy.label}"
+                       id="c1" sortable="true"
+                       sortProperty="#{bindings.EventView1.hints.CreatedBy.name}"
+                       filterable="true" width="80">
+              <af:outputText value="#{row.CreatedBy}" id="ot7"/>
+            </af:column>
+            <af:column headerText="#{bindings.EventView1.hints.CreatedDate.label}"
+                       id="c2" sortable="true" width="85"
+                       sortProperty="#{bindings.EventView1.hints.CreatedDate.name}"
+                       filterable="true">
+              <af:outputText value="#{row.CreatedDate}" id="ot8">
+                <af:convertDateTime pattern="#{bindings.EventView1.hints.CreatedDate.format}"/>
+              </af:outputText>
+              <f:facet name="filter">
+                <af:inputDate value="#{vs.filterCriteria.CreatedDate}" id="id2"
+                                    contentStyle="width:60.0px;"/>
+              </f:facet>
+            </af:column>
+            <af:column sortProperty="#{bindings.EventView1.hints.FsProcessStatus.name}"
+                       sortable="true"
+                       headerText="#{bindings.EventView1.hints.FsProcessStatus.label}"
+                       id="c3" filterable="true">
+              <af:outputText value="#{row.FsProcessStatus}" id="ot10"/>
+            </af:column>
+          </af:table>
+        </af:panelCollection>
+        <af:popup id="p1">
+          <af:dialog id="d1"
+                     dialogListener="#{backingBeanScope.ReverseCarsEventsBean.reverseEventDialogListener}"
+                     title="Reversing: #{bindings.CurrentDocument.inputValue}"
+                     type="#{backingBeanScope.ReverseCarsEventsBean.reverseEventButtons}"
+                     partialTriggers="pc1:ctb1">
+            <af:activeOutputText id="aot2"
+                                 binding="#{backingBeanScope.ReverseCarsEventsBean.reverseEventMessage}"
+                                 noWrap="true" inlineStyle="width:300.0px;"/>
+            <af:inputText label="Note" id="it1" rows="2"
+                          binding="#{backingBeanScope.ReverseCarsEventsBean.reversalNote}"
+                          partialTriggers="pc1:ctb1"/>
+            <af:selectBooleanCheckbox id="sbc1"
+                                      binding="#{backingBeanScope.ReverseCarsEventsBean.appendPostfixCheckbox}"
+                                      text="Append with -R" value="false"/>
+          </af:dialog>
+        </af:popup>
+        <af:popup id="p2">
+          <af:dialog id="d2"
+                     type="#{backingBeanScope.ReverseCarsEventsBean.deleteEventButtons}"
+                     title="Delete Event" partialTriggers="pc1:ctb3"
+                     dialogListener="#{backingBeanScope.ReverseCarsEventsBean.deleteEventDialogListener}">
+            <af:activeOutputText value="activeOutputText1" id="aot1"
+                                 binding="#{backingBeanScope.ReverseCarsEventsBean.reversalMessage}"
+                                 noWrap="true" inlineStyle="width:300.0px;"/>
+          </af:dialog>
+        </af:popup>
+      </af:panelGroupLayout>
+    </f:facet>
+    <f:attribute name="title" value="Reverse Cars Events"/>
+  </af:pageTemplate>
+  <!--oracle-jdev-comment:preferred-managed-bean-name:ReverseCarsEventsBean-->
+</jsp:root>

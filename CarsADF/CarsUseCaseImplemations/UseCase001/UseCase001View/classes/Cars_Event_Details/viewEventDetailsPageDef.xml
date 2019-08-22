@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.64.93" id="viewEventDetailsPageDef"
+                Package="Cars_Event_Details">
+  <parameters/>
+  <executables>
+    <iterator Binds="ViewEventDetails1" RangeSize="25"
+              DataControl="CarsSearchEventsDataControl"
+              id="ViewEventDetails1Iterator"/>
+    <iterator Binds="NoteView1" RangeSize="25"
+              DataControl="CarsSearchEventsDataControl" id="NoteView1Iterator"/>
+    <iterator Binds="NoteEventVO2" RangeSize="25"
+              DataControl="CarsSearchEventsDataControl"
+              id="NoteEventVO2Iterator"/>
+    <iterator Binds="ViewArBalance1" RangeSize="25"
+              DataControl="CarsSearchEventsDataControl"
+              id="ViewArBalance1Iterator"/>
+    <iterator id="ViewEvents2Iterator" Binds="ViewEvents2"
+              DataControl="CarsSearchEventsDataControl" RangeSize="25"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="ViewEventDetails1Iterator" id="ViewEventDetails1">
+      <nodeDefinition DefName="gov.ca.dir.acct.cars.adf.usecase001.model.CarsEventDetails.ViewEventDetails"
+                      Name="ViewEventDetails10">
+        <AttrNames>
+          <Item Value="ArRootDocument"/>
+          <Item Value="AcctgEntryId"/>
+          <Item Value="AcctgTransactionId"/>
+          <Item Value="AgencySourceCode"/>
+          <Item Value="Amount"/>
+          <Item Value="IndexCode"/>
+          <Item Value="PcaCode"/>
+          <Item Value="RevenueSourceCode"/>
+          <Item Value="TcCode"/>
+          <Item Value="CurrentDocumentNumber"/>
+          <Item Value="ReferenceDocumentNumber"/>
+          <Item Value="FiscalYearName"/>
+          <Item Value="BusinessUnit"/>
+        </AttrNames>
+        <Accessors>
+          <Item Value="ViewTcDetails"/>
+        </Accessors>
+      </nodeDefinition>
+      <nodeDefinition DefName="gov.ca.dir.acct.cars.adf.usecase001.model.CarsEventDetails.ViewTcDetails"
+                      Name="ViewEventDetails11">
+        <AttrNames>
+          <Item Value="AcctgTransactionId"/>
+          <Item Value="AcctgEntryId"/>
+          <Item Value="Amount"/>
+          <Item Value="EntryType"/>
+          <Item Value="GlAcct"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="NoteView1Iterator" id="NoteView1">
+      <nodeDefinition DefName="gov.ca.dir.acct.cars.adf.common.model.view.NoteView"
+                      Name="NoteView10">
+        <AttrNames>
+          <Item Value="NoteTypeCode"/>
+          <Item Value="NoteText"/>
+          <Item Value="CreatedBy"/>
+          <Item Value="CreatedDate"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="NoteEventVO2Iterator" id="NoteEventVO2">
+      <nodeDefinition DefName="gov.ca.dir.acct.cars.adf.usecase001.model.CarsEventDetails.NoteEventVO"
+                      Name="NoteEventVO20">
+        <AttrNames>
+          <Item Value="NoteTypeCode"/>
+          <Item Value="NoteText"/>
+          <Item Value="CreatedBy"/>
+          <Item Value="CreatedDate"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="ViewEvents2Iterator" id="ArRootDocument">
+      <AttrNames>
+        <Item Value="ArRootDocument"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ViewEvents2Iterator" id="LegalName">
+      <AttrNames>
+        <Item Value="LegalName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ViewEvents2Iterator" id="EventTypeCode">
+      <AttrNames>
+        <Item Value="EventTypeCode"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ViewArBalance1Iterator" id="SumArAmount">
+      <AttrNames>
+        <Item Value="SumArAmount"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ViewEvents2Iterator" id="EventDate">
+      <AttrNames>
+        <Item Value="EventDate"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

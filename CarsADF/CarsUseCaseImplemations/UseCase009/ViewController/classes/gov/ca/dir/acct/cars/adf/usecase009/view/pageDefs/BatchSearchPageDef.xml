@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.64.93" id="BatchSearchPageDef"
+                Package="gov.ca.dir.acct.cars.adf.usecase009.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="InfarBatch1" RangeSize="25"
+              DataControl="InfarAMDataControl" id="InfarBatch1Iterator"/>
+    <searchRegion Criteria="BatchSearchVC"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="InfarBatch1Iterator" id="BatchSearchVCQuery"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="InfarBatch1Iterator" id="InfarBatch1">
+      <nodeDefinition DefName="gov.ca.dir.acct.cars.adf.usecase009.model.view.InfarBatchVO"
+                      Name="InfarBatch10">
+        <AttrNames>
+          <Item Value="BatchId"/>
+          <Item Value="BatchDate"/>
+          <Item Value="BatchTypeCode"/>
+          <Item Value="Status"/>
+          <Item Value="NoteText"/>
+          <Item Value="CreatedDate"/>
+          <Item Value="BatchNumber"/>
+          <Item Value="BatchCount"/>
+          <Item Value="FiscalMonthName"/>
+          <Item Value="TotalBatchAmount"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

@@ -1,0 +1,112 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:pageTemplate viewId="/report-template.jspx" id="pt1">
+
+    <f:facet name="main">
+      <af:panelGroupLayout id="pgl1" layout="vertical">
+        <af:query headerText="Search" disclosed="true" id="q1" saveQueryMode="hidden"
+                  resultComponentId="::pc1"
+                  model="#{bindings.cars20reportVO1Query.queryModel}"
+                  value="#{bindings.cars20reportVO1Query.queryDescriptor}"
+                  queryListener="#{bindings.cars20reportVO1Query.processQuery}"
+                  queryOperationListener="#{bindings.cars20reportVO1Query.processQueryOperation}"/>
+        <af:panelCollection id="pc1" styleClass="AFStretchWidth">
+          <f:facet name="menus"/>
+          <f:facet name="toolbar">
+            <af:toolbar id="t2">
+              <af:commandToolbarButton id="ctb1" icon="/export_excel_sml.png">
+                <af:exportCollectionActionListener exportedId="t1"
+                                                   type="excelHTML"
+                                                   title="Revenue By Fund and Fund Source"
+                                                   filename="cars_export_revenue_fund_fundname.xls"/>
+              </af:commandToolbarButton>
+            </af:toolbar>
+          </f:facet>
+          <f:facet name="statusbar"/>
+          <af:table value="#{bindings.cars20reportVO1.collectionModel}"
+                    var="row" rows="#{adfFacesContext.outputMode ne 'printable'? 25: bindings.cars20reportVO1.estimatedRowCount}"
+                    emptyText="#{bindings.cars20reportVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                    fetchSize="-1"
+                    rowBandingInterval="0"
+                    filterModel="#{bindings.cars20reportVO1Query.queryDescriptor}"
+                    queryListener="#{bindings.cars20reportVO1Query.processQuery}"
+                    filterVisible="true" varStatus="vs"
+                    selectionListener="#{bindings.cars20reportVO1.collectionModel.makeCurrent}"
+                    rowSelection="multiple" id="t1">
+            <af:column sortProperty="#{bindings.cars20reportVO1.hints.ZbaDate.name}"
+                       filterable="true" sortable="true"
+                       headerText="#{bindings.cars20reportVO1.hints.ZbaDate.label}"
+                       id="c19">
+              <f:facet name="filter">
+                <af:inputDate value="#{vs.filterCriteria.ZbaDate}" id="id1"/>
+              </f:facet>
+              <af:outputText value="#{row.ZbaDate}" id="ot1">
+                <af:convertDateTime pattern="#{bindings.cars20reportVO1.hints.ZbaDate.format}"/>
+              </af:outputText>
+            </af:column>
+            <af:column sortProperty="#{bindings.cars20reportVO1.hints.IndexCode.name}"
+                       filterable="true" sortable="true"
+                       headerText="#{bindings.cars20reportVO1.hints.IndexCode.label}"
+                       id="c24">
+              <af:outputText value="#{row.IndexCode}" id="ot16"/>
+            </af:column>
+            <af:column id="c5" sortProperty="#{bindings.cars20reportVO1.hints.PcaCode.name}"
+                       filterable="true" sortable="true"
+                       headerText="#{bindings.cars20reportVO1.hints.PcaCode.label}">
+              <af:outputText value="#{row.PcaCode}" id="ot8"/>
+            </af:column>
+            <af:column id="c7"  sortProperty="#{bindings.cars20reportVO1.hints.RevenueSourceCode.name}"
+                       filterable="true" sortable="true"
+                       headerText="#{bindings.cars20reportVO1.hints.RevenueSourceCode.label}">
+              <af:outputText value="#{row.RevenueSourceCode}" id="ot14"/>
+            </af:column>
+            <af:column id="c8" sortProperty="#{bindings.cars20reportVO1.hints.AgencySourceCode.name}"
+                       filterable="true" sortable="true"
+                       headerText="#{bindings.cars20reportVO1.hints.AgencySourceCode.label}">
+              <af:outputText value="#{row.AgencySourceCode}" id="ot15"/>
+            </af:column>
+            <af:column id="c9" sortProperty="#{bindings.cars20reportVO1.hints.Fund.name}"
+                       filterable="true" sortable="true"
+                       headerText="#{bindings.cars20reportVO1.hints.Fund.label}">
+              <af:outputText value="#{row.Fund}" id="ot19"/>
+            </af:column>
+            <af:column sortProperty="#{bindings.cars20reportVO1.hints.PaymentAmount.name}"
+                       filterable="true" sortable="true"
+                       headerText="#{bindings.cars20reportVO1.hints.PaymentAmount.label}"
+                       id="c11">
+              <af:outputText value="#{row.PaymentAmount}" id="ot11">
+                <af:convertNumber groupingUsed="false"
+                                  pattern="#{bindings.cars20reportVO1.hints.PaymentAmount.format}"/>
+              </af:outputText>
+              <f:facet name="footer">
+                <af:outputFormatted value="#{bindings.PaymentAmountTotal.inputValue}"
+                                    id="of8" inlineStyle="font-weight:bold;">
+                  <af:convertNumber groupingUsed="false"
+                                    pattern="#{bindings.cars20reportVO1.hints.PaymentAmountTotal.format}"/>
+                </af:outputFormatted>
+              </f:facet>
+            </af:column>
+            <af:column id="c18" sortProperty="#{bindings.cars20reportVO1.hints.ProgramUnitCode.name}"
+                       filterable="true" sortable="true"
+                       headerText="#{bindings.cars20reportVO1.hints.ProgramUnitCode.label}">
+              <af:outputText value="#{row.ProgramUnitCode}" id="ot20"/>
+              <f:facet name="context"/>
+              <f:facet name="filter"/>
+            </af:column>
+            <af:column id="c20" sortProperty="#{bindings.cars20reportVO1.hints.DataSourceCode.name}"
+                       filterable="true" sortable="true"
+                       headerText="#{bindings.cars20reportVO1.hints.DataSourceCode.label}">
+              <af:outputText value="#{row.DataSourceCode}" id="ot21"/>
+            </af:column>
+          </af:table>
+        </af:panelCollection>
+      </af:panelGroupLayout>
+    </f:facet>
+    <f:attribute name="program_unit" value="PV"/>
+    <f:attribute name="title" value="Revenue by Fund and Fund Source"/>
+    <f:attribute name="report_date"
+                 value="#{bindings.CurrentDate.inputValue} "/>
+  </af:pageTemplate>
+</jsp:root>

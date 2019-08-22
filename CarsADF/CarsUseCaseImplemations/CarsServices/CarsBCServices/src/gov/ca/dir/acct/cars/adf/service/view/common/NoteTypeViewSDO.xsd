@@ -1,0 +1,27 @@
+<xsd:schema xmlns:sdoJava="commonj.sdo/java" xmlns:ns0="http://xmlns.oracle.com/adf/svc/types/" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+     targetNamespace="/gov/ca/dir/acct/cars/adf/service/view/common/" xmlns="/gov/ca/dir/acct/cars/adf/service/view/common/"
+     elementFormDefault="qualified" sdoJava:package="gov.ca.dir.acct.cars.adf.service.view.common">
+    <xsd:import schemaLocation="classpath:/META-INF/wsdl/BC4JService.xsd" namespace="http://xmlns.oracle.com/adf/svc/types/"/>
+    <xsd:import schemaLocation="classpath:/xml/sdoJava.xsd" namespace="commonj.sdo/java"/>
+    <xsd:complexType name="NoteTypeViewSDO">
+        <xsd:annotation>
+            <xsd:appinfo source="http://xmlns.oracle.com/adf/svc/metadata/">
+                <key xmlns="http://xmlns.oracle.com/adf/svc/metadata/">
+                    <attribute>NoteTypeCode</attribute>
+                </key>
+            </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="NoteTypeCode" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="Description" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="EffectiveStartDate" type="ns0:dateTime-Timestamp" minOccurs="0"/>
+            <xsd:element name="EffectiveEndDate" type="ns0:dateTime-Timestamp" minOccurs="0" nillable="true"/>
+            <xsd:element name="DataSourceCode" type="xsd:string" minOccurs="0" nillable="true"/>
+            <xsd:element name="CreatedBy" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="CreatedDate" type="ns0:dateTime-Timestamp" minOccurs="0"/>
+            <xsd:element name="ModifiedBy" type="xsd:string" minOccurs="0" nillable="true"/>
+            <xsd:element name="ModifiedDate" type="ns0:dateTime-Timestamp" minOccurs="0" nillable="true"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="noteTypeViewSDO" type="NoteTypeViewSDO"/>
+</xsd:schema>

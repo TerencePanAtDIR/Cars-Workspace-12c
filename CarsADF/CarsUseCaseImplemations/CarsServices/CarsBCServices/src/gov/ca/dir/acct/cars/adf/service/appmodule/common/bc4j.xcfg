@@ -1,0 +1,80 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<BC4JConfig version="11.1" xmlns="http://xmlns.oracle.com/bc4j/configuration">
+   <AppModuleConfigBag ApplicationName="gov.ca.dir.acct.cars.adf.service.appmodule.CarsBCDataServicesAM" default="CarsBCDataServicesAMShared">
+      <AppModuleConfig DeployPlatform="LOCAL" jbo.project="gov.ca.dir.acct.cars.adf.service.CarsBCServices" name="CarsBCDataServicesAMLocal" ApplicationName="gov.ca.dir.acct.cars.adf.service.appmodule.CarsBCDataServicesAM">
+         <Database jbo.locking.mode="optimistic"/>
+         <Security AppModuleJndiName="gov.ca.dir.acct.cars.adf.service.appmodule.CarsBCDataServicesAM"/>
+         <Custom JDBCDataSource="java:comp/env/jdbc/carsdevDS"/>
+      </AppModuleConfig>
+      <AppModuleConfig DeployPlatform="LOCAL" jbo.project="gov.ca.dir.acct.cars.adf.service.CarsBCServices" name="CarsBCDataServicesAMShared" ApplicationName="gov.ca.dir.acct.cars.adf.service.appmodule.CarsBCDataServicesAM">
+         <AM-Pooling jbo.ampool.dynamicjdbccredentials="false" jbo.ampool.isuseexclusive="false" jbo.ampool.maxpoolsize="1" jbo.ampool.resetnontransactionalstate="false"/>
+         <Database jbo.locking.mode="optimistic"/>
+         <Security AppModuleJndiName="gov.ca.dir.acct.cars.adf.service.appmodule.CarsBCDataServicesAM"/>
+         <Custom JDBCDataSource="java:comp/env/jdbc/carsdevDS"/>
+      </AppModuleConfig>
+      <AppModuleConfig name="CarsBCDataServicesAMService" jbo.project="gov.ca.dir.acct.cars.adf.service.CarsBCServices" ApplicationName="gov.ca.dir.acct.cars.adf.service.appmodule.CarsBCDataServicesAM" DeployPlatform="SI">
+         <AM-Pooling jbo.ampool.resetnontransactionalstate="true"/>
+         <Database jbo.locking.mode="optimistic" jbo.TypeMapEntries="Java"/>
+         <Security AppModuleJndiName="gov.ca.dir.acct.cars.adf.service.appmodule.CarsBCDataServicesAM"/>
+         <Custom JDBCDataSource="java:comp/env/jdbc/carsdevDS"/>
+      </AppModuleConfig>
+   </AppModuleConfigBag>
+   <AppModuleConfigBag ApplicationName="gov.ca.dir.acct.cars.adf.service.appmodule.CarsBCUtilityServicesAM">
+      <AppModuleConfig name="CarsBCUtilityServicesAMLocal" jbo.project="gov.ca.dir.acct.cars.adf.service.CarsBCServices" ApplicationName="gov.ca.dir.acct.cars.adf.service.appmodule.CarsBCUtilityServicesAM" DeployPlatform="LOCAL">
+         <Database jbo.TypeMapEntries="Java"/>
+         <Security AppModuleJndiName="gov.ca.dir.acct.cars.adf.service.appmodule.CarsBCUtilityServicesAM"/>
+         <Custom JDBCDataSource="java:comp/env/jdbc/carsdevDS"/>
+      </AppModuleConfig>
+      <AppModuleConfig name="CarsBCUtilityServicesAMShared" jbo.project="gov.ca.dir.acct.cars.adf.service.CarsBCServices" ApplicationName="gov.ca.dir.acct.cars.adf.service.appmodule.CarsBCUtilityServicesAM" DeployPlatform="LOCAL">
+         <AM-Pooling jbo.ampool.maxpoolsize="1" jbo.ampool.isuseexclusive="false"/>
+         <Database jbo.TypeMapEntries="Java"/>
+         <Security AppModuleJndiName="gov.ca.dir.acct.cars.adf.service.appmodule.CarsBCUtilityServicesAM"/>
+         <Custom JDBCDataSource="java:comp/env/jdbc/carsdevDS"/>
+      </AppModuleConfig>
+      <AppModuleConfig name="CarsBCUtilityServicesAMService" jbo.project="gov.ca.dir.acct.cars.adf.service.CarsBCServices" ApplicationName="gov.ca.dir.acct.cars.adf.service.appmodule.CarsBCUtilityServicesAM" DeployPlatform="SI">
+         <AM-Pooling jbo.ampool.resetnontransactionalstate="true"/>
+         <Database jbo.locking.mode="optimistic" jbo.TypeMapEntries="Java"/>
+         <Security AppModuleJndiName="gov.ca.dir.acct.cars.adf.service.appmodule.CarsBCUtilityServicesAM"/>
+         <Custom JDBCDataSource="java:comp/env/jdbc/carsdevDS"/>
+      </AppModuleConfig>
+   </AppModuleConfigBag>
+   <AppModuleConfigBag ApplicationName="gov.ca.dir.acct.cars.adf.service.appmodule.CarsBCErrorLoggingAM"/>
+   <AppModuleConfigBag ApplicationName="gov.ca.dir.acct.cars.adf.service.appmodule.CarsBCLookupServicesAM">
+      <AppModuleConfig name="CarsBCLookupServicesAMLocal" jbo.project="gov.ca.dir.acct.cars.adf.service.CarsBCServices" ApplicationName="gov.ca.dir.acct.cars.adf.service.appmodule.CarsBCLookupServicesAM" DeployPlatform="LOCAL">
+         <Database jbo.TypeMapEntries="Java"/>
+         <Security AppModuleJndiName="gov.ca.dir.acct.cars.adf.service.appmodule.CarsBCLookupServicesAM"/>
+         <Custom JDBCDataSource="java:comp/env/jdbc/carsdevDS"/>
+      </AppModuleConfig>
+      <AppModuleConfig name="CarsBCLookupServicesAMShared" jbo.project="gov.ca.dir.acct.cars.adf.service.CarsBCServices" ApplicationName="gov.ca.dir.acct.cars.adf.service.appmodule.CarsBCLookupServicesAM" DeployPlatform="LOCAL">
+         <AM-Pooling jbo.ampool.maxpoolsize="1" jbo.ampool.isuseexclusive="false"/>
+         <Database jbo.TypeMapEntries="Java"/>
+         <Security AppModuleJndiName="gov.ca.dir.acct.cars.adf.service.appmodule.CarsBCLookupServicesAM"/>
+         <Custom JDBCDataSource="java:comp/env/jdbc/carsdevDS"/>
+      </AppModuleConfig>
+      <AppModuleConfig name="CarsBCLookupServicesAMService" jbo.project="gov.ca.dir.acct.cars.adf.service.CarsBCServices" ApplicationName="gov.ca.dir.acct.cars.adf.service.appmodule.CarsBCLookupServicesAM" DeployPlatform="SI">
+         <AM-Pooling jbo.ampool.resetnontransactionalstate="true"/>
+         <Database jbo.locking.mode="optimistic" jbo.TypeMapEntries="Java"/>
+         <Security AppModuleJndiName="gov.ca.dir.acct.cars.adf.service.appmodule.CarsBCLookupServicesAM"/>
+         <Custom JDBCDataSource="java:comp/env/jdbc/carsdevDS"/>
+      </AppModuleConfig>
+   </AppModuleConfigBag>
+   <AppModuleConfigBag ApplicationName="gov.ca.dir.acct.cars.adf.service.appmodule.CarsBCLoggingServicesAM">
+      <AppModuleConfig name="CarsBCLoggingServicesAMLocal" jbo.project="gov.ca.dir.acct.cars.adf.service.CarsBCServices" ApplicationName="gov.ca.dir.acct.cars.adf.service.appmodule.CarsBCLoggingServicesAM" DeployPlatform="LOCAL">
+         <Database jbo.TypeMapEntries="Java"/>
+         <Security AppModuleJndiName="gov.ca.dir.acct.cars.adf.service.appmodule.CarsBCLoggingServicesAM"/>
+         <Custom JDBCDataSource="java:comp/env/jdbc/carsdevDS"/>
+      </AppModuleConfig>
+      <AppModuleConfig name="CarsBCLoggingServicesAMShared" jbo.project="gov.ca.dir.acct.cars.adf.service.CarsBCServices" ApplicationName="gov.ca.dir.acct.cars.adf.service.appmodule.CarsBCLoggingServicesAM" DeployPlatform="LOCAL">
+         <AM-Pooling jbo.ampool.maxpoolsize="1" jbo.ampool.isuseexclusive="false"/>
+         <Database jbo.TypeMapEntries="Java"/>
+         <Security AppModuleJndiName="gov.ca.dir.acct.cars.adf.service.appmodule.CarsBCLoggingServicesAM"/>
+         <Custom JDBCDataSource="java:comp/env/jdbc/carsdevDS"/>
+      </AppModuleConfig>
+      <AppModuleConfig name="CarsBCLoggingServicesAMService" jbo.project="gov.ca.dir.acct.cars.adf.service.CarsBCServices" ApplicationName="gov.ca.dir.acct.cars.adf.service.appmodule.CarsBCLoggingServicesAM" DeployPlatform="SI">
+         <AM-Pooling jbo.ampool.resetnontransactionalstate="true"/>
+         <Database jbo.locking.mode="optimistic" jbo.TypeMapEntries="Java"/>
+         <Security AppModuleJndiName="gov.ca.dir.acct.cars.adf.service.appmodule.CarsBCLoggingServicesAM"/>
+         <Custom JDBCDataSource="java:comp/env/jdbc/carsdevDS"/>
+      </AppModuleConfig>
+   </AppModuleConfigBag>
+</BC4JConfig>

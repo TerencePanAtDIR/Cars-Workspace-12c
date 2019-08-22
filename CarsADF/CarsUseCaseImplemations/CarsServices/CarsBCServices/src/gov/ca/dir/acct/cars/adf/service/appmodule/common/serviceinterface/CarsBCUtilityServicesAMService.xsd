@@ -1,0 +1,240 @@
+<schema xmlns="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="/gov/ca/dir/acct/cars/adf/service/appmodule/common/types/"
+     xmlns:tns="/gov/ca/dir/acct/cars/adf/service/appmodule/common/types/" xmlns:ns0="http://xmlns.oracle.com/adf/svc/errors/">
+    <import namespace="http://xmlns.oracle.com/adf/svc/errors/" schemaLocation="classpath:/META-INF/wsdl/ServiceException.xsd"/>
+    <element name="getEventIDSequence">
+        <complexType>
+            <sequence/>
+        </complexType>
+    </element>
+    <element name="getEventIDSequenceResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="decimal"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="getARStatusIDSequence">
+        <complexType>
+            <sequence/>
+        </complexType>
+    </element>
+    <element name="getARStatusIDSequenceResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="decimal"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="getPartyIDSequence">
+        <complexType>
+            <sequence/>
+        </complexType>
+    </element>
+    <element name="getPartyIDSequenceResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="decimal"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="getParticipantRoleIdSequence">
+        <complexType>
+            <sequence/>
+        </complexType>
+    </element>
+    <element name="getParticipantRoleIdSequenceResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="decimal"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="getContactMethodIdSequence">
+        <complexType>
+            <sequence/>
+        </complexType>
+    </element>
+    <element name="getContactMethodIdSequenceResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="decimal"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="getAddressIdSequence">
+        <complexType>
+            <sequence/>
+        </complexType>
+    </element>
+    <element name="getAddressIdSequenceResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="decimal"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="getAcctgTransactionIdSequence">
+        <complexType>
+            <sequence/>
+        </complexType>
+    </element>
+    <element name="getAcctgTransactionIdSequenceResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="decimal"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="getAcctgEntryIdSequence">
+        <complexType>
+            <sequence/>
+        </complexType>
+    </element>
+    <element name="getAcctgEntryIdSequenceResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="decimal"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="getNoteIdSequence">
+        <complexType>
+            <sequence/>
+        </complexType>
+    </element>
+    <element name="getNoteIdSequenceResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="decimal"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="isEventReversed">
+        <complexType>
+            <sequence>
+                <element name="currentDocumentNumber" type="string"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="isEventReversedResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="decimal"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="isChildrenExist">
+        <complexType>
+            <sequence>
+                <element name="currentDocumentNumber" type="string"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="isChildrenExistResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="decimal"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="is2YearsPrior">
+        <complexType>
+            <sequence>
+                <element name="ReferenceDocument" type="string"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="is2YearsPriorResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="decimal"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="getCurrentBalance">
+        <complexType>
+            <sequence>
+                <element name="ReferenceDocument" type="string"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="getCurrentBalanceResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="decimal"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="isReclassNeeded">
+        <complexType>
+            <sequence>
+                <element name="ReferenceDocument" type="string"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="isReclassNeededResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="decimal"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findAROtherReferenceDocumentWithParams">
+        <complexType>
+            <sequence>
+                <element name="rootDocument" type="string"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findAROtherReferenceDocumentWithParamsResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="string"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findAROthersContingentRefDoc">
+        <complexType>
+            <sequence>
+                <element name="referenceDocument" type="string"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findAROthersContingentRefDocResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="string"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="isAROthersRefDocExisted">
+        <complexType>
+            <sequence>
+                <element name="ReferenceDocument" type="string"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="isAROthersRefDocExistedResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="decimal"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="isDecisionAfterReclassExisted">
+        <complexType>
+            <sequence>
+                <element name="ReferenceDocument" type="string"/>
+                <element name="eventDateStr" type="string"/>
+                <element name="eventTypeCode" type="string"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="isDecisionAfterReclassExistedResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="decimal"/>
+            </sequence>
+        </complexType>
+    </element>
+</schema>

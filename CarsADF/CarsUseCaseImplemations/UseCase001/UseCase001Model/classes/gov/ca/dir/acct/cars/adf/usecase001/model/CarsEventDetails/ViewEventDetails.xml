@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="ViewEventDetails"
+  Version="11.1.1.64.93"
+  InheritPersonalization="true"
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  PageIterMode="Full"
+  UseGlueCode="false">
+  <DesignTime>
+    <Attr Name="_isExpertMode" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="gov.ca.dir.acct.cars.adf.usecase001.model.CarsEventDetails.ViewEventDetails_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <Variable
+    Name="varAcctgTransactionId"
+    Kind="where"
+    Type="oracle.jbo.domain.Number"/>
+  <ViewAccessor
+    Name="ViewTcDetails1"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.usecase001.model.CarsEventDetails.ViewTcDetails"
+    RowLevelBinds="true"/>
+  <SQLQuery>
+    <![CDATA[SELECT AR_ROOT_DOCUMENT, ACCOUNTING_ENTRY.ACCTG_TRANSACTION_ID, ACCOUNTING_ENTRY.ACCTG_ENTRY_ID, FUND_ALLOCATION.PCA_CODE, '7350' as BUSINESS_UNIT, ACCOUNTING_CODE.INDEX_CODE, ACCOUNTING_CODE.REVENUE_SOURCE_CODE, ACCOUNTING_CODE.AGENCY_SOURCE_CODE, NVL(BATCH_TRANSACTION.ACCTG_TRANSACT_CODE, ACCOUNTING_ENTRY_TYPE.ACCTG_TRANSACT_CODE) || DECODE(TRANSACTION_REVERSAL, 'N', '', TRANSACTION_REVERSAL) "TC Code", ACCOUNTING_TRANSACTION.AMOUNT, CURRENT_DOCUMENT_NUMBER, REFERENCE_DOCUMENT_NUMBER, 
+CASE ACCOUNTING_ENTRY_TYPE.ACCTG_TRANSACT_CODE
+WHEN '101' THEN FUNC_GET_PRIOR_FISCAL_YEAR(AR_ROOT_DOCUMENT)
+ ELSE FUNC_GET_FISCAL_YEAR(AR_ROOT_DOCUMENT) END FISCAL_YEAR_NAME
+FROM ACCOUNTING_ENTRY
+INNER JOIN ACCOUNTING_TRANSACTION ON ACCOUNTING_ENTRY.ACCTG_TRANSACTION_ID = ACCOUNTING_TRANSACTION.ACCTG_TRANSACTION_ID
+INNER JOIN ACCTG_TRANSACT_EVENT_ASSOC ON ACCOUNTING_TRANSACTION.ACCTG_TRANSACTION_ID = ACCTG_TRANSACT_EVENT_ASSOC.ACCTG_TRANSACTION_ID
+INNER JOIN EVENT ON ACCTG_TRANSACT_EVENT_ASSOC.EVENT_ID = EVENT.EVENT_ID
+INNER JOIN ACCOUNTING_ENTRY_TYPE ON ACCOUNTING_ENTRY.ACCTG_ENTRY_TYPE_ID = ACCOUNTING_ENTRY_TYPE.ACCTG_ENTRY_TYPE_ID
+INNER JOIN ACCOUNTING_CODE ON ACCOUNTING_ENTRY.ACCOUNTING_CODE_ID = ACCOUNTING_CODE.ACCOUNTING_CODE_ID
+INNER JOIN FUND_ALLOCATION ON ACCOUNTING_CODE.FUND_ALLOCATION_ID = FUND_ALLOCATION.FUND_ALLOCATION_ID
+INNER JOIN FISCAL_PERIOD ON ACCOUNTING_TRANSACTION.FISCAL_PERIOD_ID = FISCAL_PERIOD.FISCAL_PERIOD_ID
+LEFT OUTER JOIN BATCH_TRANSACTION ON BATCH_TRANSACTION.ACCTG_ENTRY_ID =
+ACCOUNTING_ENTRY.ACCTG_ENTRY_ID
+
+WHERE ACCOUNTING_ENTRY.ACCTG_TRANSACTION_ID = :varAcctgTransactionId]]>
+  </SQLQuery>
+  <ViewAttribute
+    Name="ArRootDocument"
+    IsUpdateable="false"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Precision="25"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="AR_ROOT_DOCUMENT"
+    Expression="AR_ROOT_DOCUMENT"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="25"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="AcctgTransactionId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="ACCTG_TRANSACTION_ID"
+    Expression="ACCTG_TRANSACTION_ID"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="22"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="AcctgEntryId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="ACCTG_ENTRY_ID"
+    Expression="ACCTG_ENTRY_ID"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="22"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="PcaCode"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="5"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="PCA_CODE"
+    Expression="PCA_CODE"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="5"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="BusinessUnit"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName='BUSINESS_UNIT'
+    Expression='BUSINESS_UNIT'
+    SQLType="NUMERIC"
+    Precision="4">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="IndexCode"
+    IsUpdateable="false"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Precision="4"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="INDEX_CODE"
+    Expression="INDEX_CODE"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="4"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="RevenueSourceCode"
+    IsUpdateable="false"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Precision="6"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="REVENUE_SOURCE_CODE"
+    Expression="REVENUE_SOURCE_CODE"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="6"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.usecase001.model.CarsEventDetails.ViewEventDetails.RevenueSourceCode_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="AgencySourceCode"
+    IsUpdateable="false"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Precision="2"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="AGENCY_SOURCE_CODE"
+    Expression="AGENCY_SOURCE_CODE"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="2"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.usecase001.model.CarsEventDetails.ViewEventDetails.AgencySourceCode_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="TcCode"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="4"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName='"TC Code"'
+    Expression='"TC Code"'
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="4"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Amount"
+    IsUpdateable="false"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Precision="13"
+    Scale="2"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="AMOUNT"
+    Expression="AMOUNT"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <FMT_FORMATTER
+          ResId="gov.ca.dir.acct.cars.adf.usecase001.model.CarsEventDetails.ViewEventDetails.Amount_FMT_FORMATTER"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CurrentDocumentNumber"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="10"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="CURRENT_DOCUMENT_NUMBER"
+    Expression="CURRENT_DOCUMENT_NUMBER"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="10"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ReferenceDocumentNumber"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="10"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="REFERENCE_DOCUMENT_NUMBER"
+    Expression="REFERENCE_DOCUMENT_NUMBER"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="10"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="FiscalYearName"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="4000"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="FISCAL_YEAR_NAME"
+    Expression="FISCAL_YEAR_NAME"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="4000"/>
+    </DesignTime>
+  </ViewAttribute>
+  <AttrArray Name="KeyAttributes">
+    <Item Value="AcctgEntryId"/>
+  </AttrArray>
+  <ViewLinkAccessor
+    Name="BatchTransactionView"
+    ViewLink="gov.ca.dir.acct.cars.adf.usecase001.model.CarsEventDetails.EventDetailsBatchTransactionViewLink"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="ViewTcDetails"
+    ViewLink="gov.ca.dir.acct.cars.adf.usecase001.model.CarsEventDetails.viewLinkEventDetailsToTcDetails"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="gov.ca.dir.acct.cars.adf.usecase001.model.UseCase001ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

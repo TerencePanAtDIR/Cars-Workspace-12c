@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.64.93"
+                id="CarsEventSearchFlow_CarsEventSearchFlow_ExecuteWithParams1PageDef"
+                Package="gov.ca.dir.acct.cars.adf.usecase001.view.pageDefs"
+                SkipValidation="true">
+  <parameters/>
+  <executables>
+    <iterator Binds="NoteEventVO2" RangeSize="25"
+              DataControl="CarsSearchEventsDataControl"
+              id="NoteEventVO2Iterator" Refresh="never"/>
+  </executables>
+  <bindings>
+    <action IterBinding="NoteEventVO2Iterator" id="ExecuteWithParams"
+            RequiresUpdateModel="true" Action="executeWithParams">
+      <NamedData NDName="varEventId" NDValue="#{pageFlowScope.varEventId2}"
+                 NDType="java.lang.String"/>
+    </action>
+  </bindings>
+</pageDefinition>

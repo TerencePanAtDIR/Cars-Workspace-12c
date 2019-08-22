@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="InboundTransactionMgntFlow">
+    <default-activity id="__1">InboundTransactionView</default-activity>
+    <transaction id="__14">
+      <new-transaction/>
+    </transaction>
+    <data-control-scope id="__15">
+      <isolated/>
+    </data-control-scope>
+    <managed-bean id="__2">
+      <managed-bean-name id="__3">RefreshBean</managed-bean-name>
+      <managed-bean-class id="__5">gov.ca.dir.acct.cars.adf.usecase004.view.RefreshBean</managed-bean-class>
+      <managed-bean-scope id="__4">request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__6">
+      <managed-bean-name id="__9">UpdateStatus</managed-bean-name>
+      <managed-bean-class id="__7">gov.ca.dir.acct.cars.adf.usecase004.view.UpdateStatus</managed-bean-class>
+      <managed-bean-scope id="__8">request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__10">
+      <managed-bean-name id="__12">ShowAllBean</managed-bean-name>
+      <managed-bean-class id="__11">gov.ca.dir.acct.cars.adf.usecase004.view.ShowAllBean</managed-bean-class>
+      <managed-bean-scope id="__13">request</managed-bean-scope>
+    </managed-bean>
+    <view id="InboundTransactionView">
+      <page>/InboundTransactionView.jsff</page>
+    </view>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

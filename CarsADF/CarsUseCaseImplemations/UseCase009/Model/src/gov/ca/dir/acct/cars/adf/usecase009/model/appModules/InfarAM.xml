@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE AppModule SYSTEM "jbo_03_01.dtd">
+<!---->
+<AppModule
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="InfarAM"
+  Version="11.1.1.64.93"
+  InheritPersonalization="true"
+  ClearCacheOnRollback="true">
+  <DesignTime>
+    <Attr Name="_deployType" Value="0"/>
+  </DesignTime>
+  <ViewUsage
+    Name="InfarBatch1"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.usecase009.model.view.InfarBatchVO"/>
+  <ViewUsage
+    Name="Infar001_1"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.usecase009.model.view.Infar001VO"/>
+  <ViewUsage
+    Name="Infar006_1"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.usecase009.model.view.Infar006VO"/>
+  <ViewUsage
+    Name="Infar001_2"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.usecase009.model.view.Infar001VO"/>
+  <ViewUsage
+    Name="CustomerInformation1"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.usecase009.model.view.CustomerInformationVO"/>
+  <ViewUsage
+    Name="Infar037_1"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.usecase009.model.view.Infar037VO"/>
+  <ViewUsage
+    Name="Infar037_2"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.usecase009.model.view.Infar037VO"/>
+  <ViewUsage
+    Name="CustomerStatusList1"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.usecase009.model.view.CustomerStatusListVO"/>
+  <ViewLinkUsage
+    Name="BatchInfar001Link1"
+    ViewLinkObjectName="gov.ca.dir.acct.cars.adf.usecase009.model.view.links.BatchInfar001Link"
+    SrcViewUsageName="gov.ca.dir.acct.cars.adf.usecase009.model.appModules.InfarAM.InfarBatch1"
+    DstViewUsageName="gov.ca.dir.acct.cars.adf.usecase009.model.appModules.InfarAM.Infar001_2"
+    Reversed="false"/>
+  <ViewLinkUsage
+    Name="BatchInfar037Link1"
+    ViewLinkObjectName="gov.ca.dir.acct.cars.adf.usecase009.model.view.BatchInfar037Link"
+    SrcViewUsageName="gov.ca.dir.acct.cars.adf.usecase009.model.appModules.InfarAM.InfarBatch1"
+    DstViewUsageName="gov.ca.dir.acct.cars.adf.usecase009.model.appModules.InfarAM.Infar037_2"
+    Reversed="false"/>
+</AppModule>

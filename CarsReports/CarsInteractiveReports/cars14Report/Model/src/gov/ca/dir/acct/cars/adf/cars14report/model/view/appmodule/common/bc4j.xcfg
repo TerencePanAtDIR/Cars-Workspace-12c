@@ -1,0 +1,14 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<BC4JConfig version="11.1" xmlns="http://xmlns.oracle.com/bc4j/configuration">
+   <AppModuleConfigBag ApplicationName="gov.ca.dir.acct.cars.adf.cars14report.model.view.appmodule.cars14ReportAM">
+      <AppModuleConfig name="cars14ReportAMLocal" DeployPlatform="LOCAL" jbo.project="gov.ca.dir.acct.cars.adf.cars14report.model.Model" java.naming.factory.initial="oracle.jbo.common.JboInitialContextFactory" ApplicationName="gov.ca.dir.acct.cars.adf.cars14report.model.view.appmodule.cars14ReportAM">
+         <Security AppModuleJndiName="gov.ca.dir.acct.cars.adf.cars14report.model.view.appmodule.cars14ReportAM"/>
+         <Custom JDBCDataSource="java:comp/env/jdbc/carsdevDS"/>
+      </AppModuleConfig>
+      <AppModuleConfig name="cars14ReportAMShared" DeployPlatform="LOCAL" jbo.project="gov.ca.dir.acct.cars.adf.cars14report.model.Model" java.naming.factory.initial="oracle.jbo.common.JboInitialContextFactory" ApplicationName="gov.ca.dir.acct.cars.adf.cars14report.model.view.appmodule.cars14ReportAM">
+         <AM-Pooling jbo.ampool.isuseexclusive="false" jbo.ampool.maxpoolsize="1"/>
+         <Security AppModuleJndiName="gov.ca.dir.acct.cars.adf.cars14report.model.view.appmodule.cars14ReportAM"/>
+         <Custom JDBCDataSource="java:comp/env/jdbc/carsdevDS"/>
+      </AppModuleConfig>
+   </AppModuleConfigBag>
+</BC4JConfig>

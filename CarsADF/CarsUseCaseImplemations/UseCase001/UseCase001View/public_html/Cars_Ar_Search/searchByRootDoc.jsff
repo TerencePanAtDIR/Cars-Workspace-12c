@@ -1,0 +1,314 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:pageTemplate viewId="/use-case-template.jspx" id="pt1">
+    <f:facet name="main">
+        <af:panelSplitter id="ps1" orientation="vertical" splitterPosition="179"
+                          styleClass="AFStretchWidth">
+          <f:facet name="first">
+            <af:showDetailHeader text="Preferred Unit" disclosed="true"
+                                 id="sdh1" styleClass="AFStretchWidth">
+              <f:facet name="context">
+                <af:group id="g1">
+                  <af:selectOneChoice id="soc1" autoSubmit="true"
+                                      valueChangeListener="#{pageFlowScope.QueryOperationBean.preferredUnitChanged}"
+                                      unselectedLabel="ANY">
+                    <af:selectItem label="ANY" value="ANY" id="si1"/>
+                    <af:selectItem label="CALOSHA" value="CALOSHA" id="si2"/>
+                    <af:selectItem label="DLSE" value="DLSE" id="si3"/>
+                    <af:selectItem label="PV" value="PV" id="si4"/>
+                    <af:selectItem label="EV" value="EV" id="si5"/>
+                    <af:selectItem label="ART" value="ART" id="si6"/>
+                  </af:selectOneChoice>
+                </af:group>
+              </f:facet>
+              <af:separator id="s2"/>
+              <af:panelGroupLayout layout="scroll"
+                                   xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                                   id="pgl2" styleClass="AFStretchWidth">
+                <af:panelHeader text="#{pageFlowScope.QueryOperationBean.preferredUnitValue} Search Criteria"
+                                id="ph3" partialTriggers="soc1">
+                  <af:query id="qryId4" headerText="Search" disclosed="true"
+                            value="#{bindings.SearchCarsInvoicesCriteriaANYQuery.queryDescriptor}"
+                            model="#{bindings.SearchCarsInvoicesCriteriaANYQuery.queryModel}"
+                            queryListener="#{bindings.SearchCarsInvoicesCriteriaANYQuery.processQuery}"
+                            queryOperationListener="#{bindings.SearchCarsInvoicesCriteriaANYQuery.processQueryOperation}"
+                            resultComponentId="::pc1" rows="3" maxColumns="4"
+                            displayMode="compact"
+                            binding="#{pageFlowScope.QueryOperationBean.queryPanel}"/>
+                </af:panelHeader>
+              </af:panelGroupLayout>
+            </af:showDetailHeader>
+          </f:facet>
+          <f:facet name="second">
+            <af:panelGroupLayout id="pgl1" layout="scroll"
+                                 styleClass="AFStretchWidth">
+              <af:panelCollection id="pc1" styleClass="AFStretchWidth">
+                <af:table value="#{bindings.ViewAllRootDocuments1.collectionModel}"
+                          var="row"
+                          rows="#{adfFacesContext.outputMode eq 'printable' ?  200: bindings.ViewAllRootDocuments1.rangeSize }"
+                          emptyText="#{bindings.ViewAllRootDocuments1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                          fetchSize="#{adfFacesContext.outputMode eq 'printable' ?  200 : bindings.ViewAllRootDocuments1.rangeSize}"
+                          rowBandingInterval="0"
+                          filterModel="#{bindings.SearchCarsInvoicesCriteriaANYQuery.queryDescriptor}"
+                          queryListener="#{bindings.SearchCarsInvoicesCriteriaANYQuery.processQuery}"
+                          filterVisible="true" varStatus="vs" id="t1"
+                          styleClass="AFStretchWidth" autoHeightRows="25"
+                          contentDelivery="immediate"
+                          selectionListener="#{bindings.ViewAllRootDocuments1.collectionModel.makeCurrent}"
+                          rowSelection="single">
+                  <af:column sortProperty="#{bindings.ViewAllRootDocuments1.hints.ArRootDocument.name}"
+                             filterable="true" sortable="true"
+                             headerText="#{bindings.ViewAllRootDocuments1.hints.ArRootDocument.label}"
+                             id="c11" width="78">
+                    <af:commandLink id="commandLink1"
+                                    text="#{row.ArRootDocument}"
+                                    action="#{pageFlowScope.QueryOperationBean.viewEvents}">
+                      <af:setActionListener to="#{pageFlowScope.varRootDocument}"
+                                            from="#{row.ArRootDocument}"/>
+                      <af:setActionListener to="#{pageFlowScope.varBalance}"
+                                            from="#{row.ArBalance}"/>
+                      <af:setActionListener from="#{row.FiscalYearName}"
+                                            to="#{pageFlowScope.varFiscalYear}"/>
+                      <af:setActionListener from="#{row.IssueDate}"
+                                            to="#{pageFlowScope.IssuanceDate}"/>
+                      <af:setActionListener from="#{row.RevenueSourceCode}"
+                                            to="#{pageFlowScope.varRevenueSourceCode}"/>
+                      <af:setActionListener from="#{row.PcaCode}"
+                                            to="#{pageFlowScope.PcaCode}"/>
+                      <af:setActionListener from="#{row.LegalName}"
+                                            to="#{pageFlowScope.varLegalName}"/>
+                      <af:setActionListener from="#{row.AgencySourceCode}"
+                                            to="#{pageFlowScope.varAgencySourceCode}"/>
+                    </af:commandLink>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.ViewAllRootDocuments1.hints.LegalName.name}"
+                             sortable="true"
+                             headerText="#{bindings.ViewAllRootDocuments1.hints.LegalName.label}"
+                             id="c1" width="189" filterable="true">
+                  <af:commandLink id="ot11" text="#{row.LegalName}">
+                    <af:showPopupBehavior triggerType="click" popupId=":::p1"/>
+                  </af:commandLink>
+                </af:column>
+                  <af:column sortProperty="#{bindings.ViewAllRootDocuments1.hints.IssueDate.name}"
+                             headerText="#{bindings.ViewAllRootDocuments1.hints.IssueDate.label}"
+                             id="c2" sortable="true" filterable="true"
+                             width="66">
+                    <af:outputText value="#{row.IssueDate}" id="ot9">
+                      <af:convertDateTime pattern="#{bindings.ViewAllRootDocuments1.hints.IssueDate.format}"/>
+                    </af:outputText>
+                    <f:facet name="filter">
+                      <af:inputDate id="id2"
+                                    value="#{vs.filterCriteria.IssueDate}"/>
+                    </f:facet>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.ViewAllRootDocuments1.hints.CreatedBy.name}"
+                             sortable="true"
+                             headerText="#{bindings.ViewAllRootDocuments1.hints.CreatedBy.label}"
+                             id="c5" width="66" filterable="true">
+                    <af:outputText value="#{row.CreatedBy}" id="ot4"/>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.ViewAllRootDocuments1.hints.Contingent.name}"
+                             filterable="true" sortable="true"
+                             headerText="#{bindings.ViewAllRootDocuments1.hints.Contingent.label}"
+                             id="c3" width="46">
+                    <af:outputText value="#{row.Contingent}" id="ot7"/>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.ViewAllRootDocuments1.hints.ArBalance.name}"
+                             filterable="true" sortable="true"
+                             headerText="#{bindings.ViewAllRootDocuments1.hints.ArBalance.label}"
+                             id="c12" width="81">
+                    <af:outputText value="#{row.ArBalance}" id="ot5">
+                      <af:convertNumber groupingUsed="false"
+                                        pattern="#{bindings.ViewAllRootDocuments1.hints.ArBalance.format}"/>
+                    </af:outputText>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.ViewAllRootDocuments1.hints.FiscalYearName.name}"
+                             filterable="true" sortable="true"
+                             headerText="#{bindings.ViewAllRootDocuments1.hints.FiscalYearName.label}"
+                             id="c15" width="41">
+                    <af:outputText value="#{row.FiscalYearName}" id="ot3"/>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.ViewAllRootDocuments1.hints.RevenueSourceCode.name}"
+                             filterable="true" sortable="true"
+                             headerText="#{bindings.ViewAllRootDocuments1.hints.RevenueSourceCode.label}"
+                             id="c14" width="65">
+                    <af:outputText value="#{row.RevenueSourceCode}" id="ot1"/>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.ViewAllRootDocuments1.hints.AgencySourceCode.name}"
+                             filterable="true" sortable="true"
+                             headerText="#{bindings.ViewAllRootDocuments1.hints.AgencySourceCode.label}"
+                             id="c9" width="50">
+                    <af:outputText value="#{row.AgencySourceCode}" id="ot8"/>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.ViewAllRootDocuments1.hints.ProgramUnitCode.name}"
+                             filterable="true" sortable="true"
+                             headerText="#{bindings.ViewAllRootDocuments1.hints.ProgramUnitCode.label}"
+                             id="c10" width="60">
+                    <af:outputText value="#{row.ProgramUnitCode}" id="ot15"/>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.ViewAllRootDocuments1.hints.DataSourceCode.name}"
+                             filterable="true" sortable="true"
+                             headerText="#{bindings.ViewAllRootDocuments1.hints.DataSourceCode.label}"
+                             id="c13" width="70">
+                    <af:outputText value="#{row.DataSourceCode}" id="ot13"/>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.ViewAllRootDocuments1.hints.IndexCode.name}"
+                             filterable="true" sortable="true"
+                             headerText="#{bindings.ViewAllRootDocuments1.hints.IndexCode.label}"
+                             id="c7" width="30">
+                    <af:outputText value="#{row.IndexCode}" id="ot14"/>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.ViewAllRootDocuments1.hints.Fund.name}"
+                             filterable="true" sortable="true"
+                             headerText="#{bindings.ViewAllRootDocuments1.hints.Fund.label}"
+                             id="c6" width="27">
+                    <af:outputText value="#{row.Fund}" id="ot10"/>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.ViewAllRootDocuments1.hints.FundDetail.name}"
+                             filterable="true" sortable="true"
+                             headerText="#{bindings.ViewAllRootDocuments1.hints.FundDetail.label}"
+                             id="c4" width="30">
+                    <af:outputText value="#{row.FundDetail}" id="ot2"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.ViewAllRootDocuments1.hints.FundSource.name}"
+                           filterable="true" sortable="true"
+                           headerText="#{bindings.ViewAllRootDocuments1.hints.FundSource.label}"
+                           id="column1" width="15">
+                  <af:outputText value="#{row.FundDetail}" id="outputText1"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.ViewAllRootDocuments1.hints.CustId.name}"
+                           filterable="true" sortable="true"
+                           headerText="#{bindings.ViewAllRootDocuments1.hints.CustId.label}"
+                           id="column2" width="80">
+                  <af:outputText value="#{row.CustId}" id="outputText2"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.ViewAllRootDocuments1.hints.CreatedDate.name}"
+                             headerText="#{bindings.ViewAllRootDocuments1.hints.CreatedDate.label}"
+                             id="c16" sortable="true" filterable="true">
+                    <af:outputText value="#{row.CreatedDate}" id="ot16">
+                      <af:convertDateTime pattern="#{bindings.ViewAllRootDocuments1.hints.CreatedDate.format}"/>
+                    </af:outputText>
+                    <f:facet name="filter">
+                      <af:inputDate id="id1"
+                                    value="#{vs.filterCriteria.CreatedDate}"/>
+                    </f:facet>
+                  </af:column>
+                </af:table>
+                <f:facet name="statusbar">
+                  <af:toolbar id="t2">
+                    <af:outputText value="#{bindings.ViewAllRootDocuments1.estimatedRowCount}"
+                                   id="ot12"/>
+                  </af:toolbar>
+                </f:facet>
+                <f:facet name="toolbar">
+                  <af:toolbar id="t3">
+                    <af:activeCommandToolbarButton id="actb1"
+                                                   icon="/Cars_Ar_Search/export_excel_sml.png">
+                      <af:exportCollectionActionListener type="excelHTML"
+                                                         exportedId="t1"
+                                                         filename="export.xls"
+                                                         title="Export"/>
+                    </af:activeCommandToolbarButton>
+                  </af:toolbar>
+                </f:facet>
+              </af:panelCollection>
+            <af:popup id="p1" contentDelivery="lazyUncached">
+              <af:dialog id="d1" type="none">
+                <af:panelGroupLayout id="pgl4" layout="horizontal"
+                                     inlineStyle="vertical-align:top;">
+                  <af:panelBox text="Employer Info" id="pb3"
+                               inlineStyle="height:100px">
+                    <af:panelGroupLayout id="pgl8">
+                      <af:panelLabelAndMessage label="Legal Name"
+                                               id="plam3">
+                        <af:outputText value="#{bindings.LegalName.inputValue}"
+                                       id="ot26"/>
+                      </af:panelLabelAndMessage>
+                      <af:panelLabelAndMessage label="DBA"
+                                               id="plam4">
+                        <af:outputText value="#{bindings.Dba.inputValue}"
+                                       id="ot27"/>
+                      </af:panelLabelAndMessage>
+                      <af:panelLabelAndMessage label="#{bindings.OrganizationName.hints.label}"
+                                               id="plam5">
+                        <af:outputText value="#{bindings.OrganizationName.inputValue}"
+                                       id="ot28"/>
+                      </af:panelLabelAndMessage>
+                      <af:panelLabelAndMessage label="FEIN"
+                                               id="plam7">
+                        <af:outputText value="#{bindings.Fein.inputValue}"
+                                       id="ot30"/>
+                      </af:panelLabelAndMessage>
+                      <af:panelLabelAndMessage label="Customer ID"
+                                               id="plam8">
+                        <af:outputText value="#{bindings.CustId.inputValue}"
+                                       id="ot31"/>
+                      </af:panelLabelAndMessage>
+                    </af:panelGroupLayout>
+                  </af:panelBox>
+                  <af:panelBox text="Address" id="pb1"
+                               inlineStyle="height:100px">
+                    <af:panelGroupLayout id="pgl5" layout="vertical">
+                      <af:panelLabelAndMessage label="#{bindings.FsSequenceNumber.hints.label}"
+                                               id="plam6">
+                        <af:outputText value="#{bindings.FsSequenceNumber.inputValue}"
+                                       id="ot29"/>
+                      </af:panelLabelAndMessage>
+                      <af:panelLabelAndMessage label="Address Type"
+                                               id="plam1">
+                        <af:outputText value="#{bindings.AddressType.inputValue}"
+                                       id="ot6"/>
+                      </af:panelLabelAndMessage>
+                      <af:panelLabelAndMessage label="Address 1"
+                                               id="panelLabelAndMessage1">
+                        <af:outputText value="#{bindings.StreetAddress.inputValue}"
+                                       id="outputText3"/>
+                      </af:panelLabelAndMessage>
+                      <af:panelLabelAndMessage label="Address 2"
+                                               id="panelLabelAndMessage5">
+                        <af:outputText value="#{bindings.AddressLine2.inputValue}"
+                                       id="outputText7"/>
+                      </af:panelLabelAndMessage>
+                      <af:panelLabelAndMessage label="City"
+                                               id="panelLabelAndMessage2">
+                        <af:outputText value="#{bindings.City.inputValue}"
+                                       id="outputText4"/>
+                      </af:panelLabelAndMessage>
+                      <af:panelLabelAndMessage label="State Code"
+                                               id="panelLabelAndMessage3">
+                        <af:outputText value="#{bindings.StateCode.inputValue} "
+                                       id="outputText5"/>
+                      </af:panelLabelAndMessage>
+                      <af:panelLabelAndMessage label="Zip Code"
+                                               id="panelLabelAndMessage4">
+                        <af:outputText value="#{bindings.ZipCode.inputValue}"
+                                       id="outputText6"/>
+                      </af:panelLabelAndMessage>
+                    </af:panelGroupLayout>
+                  </af:panelBox>
+                </af:panelGroupLayout>
+                <af:panelGroupLayout id="pgl3" layout="horizontal">
+                  <af:panelBox text="Contact Method" id="pb2"
+                               inlineStyle="vertical-align:top;">
+                    <af:panelGroupLayout id="pgl7" layout="horizontal">
+                      <af:panelLabelAndMessage label="Contact Type"
+                                               id="plam2">
+                        <af:outputText value="#{bindings.ContactMethodTypeCode.inputValue}"
+                                       id="ot24"/>
+                      </af:panelLabelAndMessage>
+                      <af:outputText value="#{bindings.ContactMethodValue.inputValue}"
+                                     id="ot25"/>
+                    </af:panelGroupLayout>
+                  </af:panelBox>
+                </af:panelGroupLayout>
+              </af:dialog>
+            </af:popup>
+          </af:panelGroupLayout>
+          </f:facet>
+        </af:panelSplitter>
+    </f:facet>
+    <f:attribute name="title" value="Search CARS Invoices"/>
+  </af:pageTemplate>
+</jsp:root>

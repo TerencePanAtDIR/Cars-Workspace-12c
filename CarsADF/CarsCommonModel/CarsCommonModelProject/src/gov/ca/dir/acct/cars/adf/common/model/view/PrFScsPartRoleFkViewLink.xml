@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewLink SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewLink
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="PrFScsPartRoleFkViewLink"
+  Version="11.1.1.64.93"
+  InheritPersonalization="true"
+  EntityAssociation="gov.ca.dir.acct.cars.adf.common.model.entity.PtrePfcsFkAssoc">
+  <DesignTime>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="gov.ca.dir.acct.cars.adf.common.model.view.PrFScsPartRoleFkViewLink_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <ViewLinkDefEnd
+    Name="ParticipantRoleView"
+    Cardinality="1"
+    Owner="gov.ca.dir.acct.cars.adf.common.model.view.ParticipantRoleView"
+    Source="true">
+    <DesignTime>
+      <Attr Name="_finderName" Value="ParticipantRoleView"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_minCardinality" Value="1"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="gov.ca.dir.acct.cars.adf.common.model.view.ParticipantRoleView.ParticipantRoleId"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ViewLinkDefEnd
+    Name="PartyRoleFSCustStatusView"
+    Cardinality="1"
+    Owner="gov.ca.dir.acct.cars.adf.common.model.view.PartyRoleFSCustStatusView">
+    <DesignTime>
+      <Attr Name="_finderName" Value="PartyRoleFSCustStatusView"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="gov.ca.dir.acct.cars.adf.common.model.view.PartyRoleFSCustStatusView.ParticipantRoleId"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="gov.ca.dir.acct.cars.adf.common.model.CarsCommonModelProjectBundle"/>
+  </ResourceBundle>
+</ViewLink>

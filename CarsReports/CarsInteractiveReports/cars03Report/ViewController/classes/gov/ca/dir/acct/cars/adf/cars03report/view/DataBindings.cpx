@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://xmlns.oracle.com/adfm/application"
+             version="11.1.1.64.93" id="DataBindings" SeparateXMLFiles="false"
+             Package="gov.ca.dir.acct.cars.adf.cars03report.view" ClientType="Generic">
+  <definitionFactories>
+    <factory nameSpace="http://xmlns.oracle.com/adf/controller/binding"
+             className="oracle.adf.controller.internal.binding.TaskFlowBindingDefFactoryImpl"/>
+    <dtfactory className="oracle.adf.controller.internal.dtrt.binding.BindingDTObjectFactory"/>
+  </definitionFactories>
+  <pageMap>
+    <page path="/cars03reportview.jsff"
+          usageId="gov_ca_dir_acct_cars_adf_cars03report_view_cars03reportviewPageDef"/>
+    <page path="/main.jspx"
+          usageId="gov_ca_dir_acct_cars_adf_cars03report_view_mainPageDef"/>
+    <page path="/cars03report4fiscalView.jsff"
+          usageId="gov_ca_dir_acct_cars_adf_cars03report_view_cars03report4fiscalViewPageDef"/>
+    <page path="/mainReport4Fiscal.jspx"
+          usageId="gov_ca_dir_acct_cars_adf_cars03report_view_mainReport4FiscalPageDef"/>
+  </pageMap>
+  <pageDefinitionUsages>
+    <page id="gov_ca_dir_acct_cars_adf_cars03report_view_cars03reportviewPageDef"
+          path="gov.ca.dir.acct.cars.adf.cars03report.view.pageDefs.cars03reportviewPageDef"/>
+    <page id="gov_ca_dir_acct_cars_adf_cars03report_view_mainPageDef"
+          path="gov.ca.dir.acct.cars.adf.cars03report.view.pageDefs.mainPageDef"/>
+    <page id="gov_ca_dir_acct_cars_adf_cars03report_view_cars03report4fiscalViewPageDef"
+          path="gov.ca.dir.acct.cars.adf.cars03report.view.pageDefs.cars03report4fiscalViewPageDef"/>
+    <page id="gov_ca_dir_acct_cars_adf_cars03report_view_mainReport4FiscalPageDef"
+          path="gov.ca.dir.acct.cars.adf.cars03report.view.pageDefs.mainReport4FiscalPageDef"/>
+  </pageDefinitionUsages>
+  <dataControlUsages>
+    <BC4JDataControl id="cars03reportAMDataControl"
+                     Package="gov.ca.dir.acct.cars.adf.cars03report.model.appmodule"
+                     FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl"
+                     SupportsTransactions="true" SupportsFindMode="true"
+                     SupportsRangesize="true" SupportsResetState="true"
+                     SupportsSortCollection="true"
+                     Configuration="cars03reportAMLocal" syncMode="Immediate"
+                     xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+  </dataControlUsages>
+</Application>

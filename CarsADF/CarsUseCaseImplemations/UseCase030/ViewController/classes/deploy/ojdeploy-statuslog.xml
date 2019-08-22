@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<ojdeploy-log>
+  <deploy-task>
+    <target>
+      <profile>adflibCarsUiUseCase030</profile>
+      <workspace>/C:/Eclipse/workspace/CarsADF/CarsUseCaseImplemations/UseCase030/UseCase030.jws</workspace>
+      <project>ViewController.jpr</project>
+      <output-file>/C:/Temp/carslibrary/UIDeploy/adflibCarsUiUseCase030.jar</output-file>
+    </target>
+    <status exitcode="0">SUCCESS</status>
+  </deploy-task>
+  <summary>
+    <start-time>2019-04-15 10:11:39 PDT</start-time>
+    <end-time>2019-04-15 10:11:51 PDT</end-time>
+    <total-tasks>1</total-tasks>
+    <failures>0</failures>
+    <status exitcode="0">SUCCESS</status>
+  </summary>
+</ojdeploy-log>

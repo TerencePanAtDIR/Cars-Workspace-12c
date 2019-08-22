@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.64.93" id="cars16ReportviewPageDef"
+                Package="gov.ca.dir.acct.cars.adf.cars16Report.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="cars16ReportVO1" RangeSize="25"
+              DataControl="cars16ReportAMDataControl"
+              id="cars16ReportVO1Iterator"/>
+    <searchRegion Criteria="cars16ReportVOCriteria"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="cars16ReportVO1Iterator"
+                  id="cars16ReportVOCriteriaQuery"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="cars16ReportVO1Iterator" id="cars16ReportVO1">
+      <nodeDefinition DefName="gov.ca.dir.acct.cars.adf.cars16Report.model.view.cars16ReportVO"
+                      Name="cars16ReportVO10">
+        <AttrNames>
+          <Item Value="InvoiceNumber"/>
+          <Item Value="EmployerName"/>
+          <Item Value="ProgramUnit"/>
+          <Item Value="DataSource"/>
+          <Item Value="IssueDate"/>
+          <Item Value="FiscalYear"/>
+          <Item Value="InvoiceAmount"/>
+          <Item Value="CancelledAmount"/>
+          <Item Value="PaidAmount"/>
+          <Item Value="Balance"/>
+          <Item Value="IndexCode"/>
+          <Item Value="PcaCode"/>
+          <Item Value="RevenueSource"/>
+          <Item Value="AgencySource"/>
+          <Item Value="Fund"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="cars16ReportVO1Iterator" id="currentDate">
+      <AttrNames>
+        <Item Value="currentDate"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

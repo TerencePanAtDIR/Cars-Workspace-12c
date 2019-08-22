@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="CarsArSearch">
+    <default-activity id="__1">searchByRootDoc</default-activity>
+    <transaction id="__36">
+      <requires-transaction/>
+    </transaction>
+    <data-control-scope id="__37">
+      <isolated/>
+    </data-control-scope>
+    <managed-bean id="__35">
+      <managed-bean-name id="__32">QueryOperationBean</managed-bean-name>
+      <managed-bean-class id="__33">gov.ca.dir.acct.cars.adf.usecase001.view.QueryOperationBean</managed-bean-class>
+      <managed-bean-scope id="__34">pageFlow</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__5">
+      <managed-bean-name id="__4">CarsSearchInvoiceBackingBean</managed-bean-name>
+      <managed-bean-class id="__3">gov.ca.dir.acct.cars.adf.usecase001.view.CarsSearchInvoiceBackingBean</managed-bean-class>
+      <managed-bean-scope id="__2">backingBean</managed-bean-scope>
+    </managed-bean>
+    <view id="searchByRootDoc">
+      <page>/Cars_Ar_Search/searchByRootDoc.jsff</page>
+    </view>
+    <view id="viewEventsForRootDoc">
+      <page>/Cars_Ar_Search/viewEventsForRootDoc.jsff</page>
+    </view>
+    <view id="viewEventsForRootDocDetails">
+      <page>/Cars_Ar_Search/viewEventsForRootDocDetails.jsff</page>
+    </view>
+    <method-call id="ExecuteWithParams1">
+      <method>#{bindings.ExecuteWithParams.execute}</method>
+      <outcome id="__22">
+        <fixed-outcome>ExecuteWithParams</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="ExecuteWithParams2">
+      <method>#{bindings.ExecuteWithParams.execute}</method>
+      <outcome id="__38">
+        <fixed-outcome>ExecuteWithParams</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="ExecuteWithParams3">
+      <method>#{bindings.ExecuteWithParams.execute}</method>
+      <outcome id="__44">
+        <fixed-outcome>ExecuteWithParams</fixed-outcome>
+      </outcome>
+    </method-call>
+    <control-flow-rule id="__8">
+      <from-activity-id id="__9">viewEventsForRootDoc</from-activity-id>
+      <control-flow-case id="__10">
+        <from-outcome id="__21">backToRootDocSearch</from-outcome>
+        <to-activity-id id="__11">searchByRootDoc</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__29">
+        <from-outcome id="__30">viewEventDetails</from-outcome>
+        <to-activity-id id="__28">ExecuteWithParams1</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__12">
+      <from-activity-id id="__13">viewEventsForRootDocDetails</from-activity-id>
+      <control-flow-case id="__15">
+        <from-outcome id="__31">backToEventsList</from-outcome>
+        <to-activity-id id="__14">viewEventsForRootDoc</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__16">
+      <from-activity-id id="__17">searchByRootDoc</from-activity-id>
+      <control-flow-case id="__18">
+        <from-outcome id="__20">viewEvents</from-outcome>
+        <to-activity-id id="__19">ExecuteWithParams3</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__23">
+      <from-activity-id id="__24">ExecuteWithParams1</from-activity-id>
+      <control-flow-case id="__26">
+        <from-outcome id="__25">ExecuteWithParams</from-outcome>
+        <to-activity-id id="__27">ExecuteWithParams2</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__39">
+      <from-activity-id id="__40">ExecuteWithParams2</from-activity-id>
+      <control-flow-case id="__41">
+        <from-outcome id="__43">ExecuteWithParams</from-outcome>
+        <to-activity-id id="__42">viewEventsForRootDocDetails</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__45">
+      <from-activity-id id="__46">ExecuteWithParams3</from-activity-id>
+      <control-flow-case id="__48">
+        <from-outcome id="__47">ExecuteWithParams</from-outcome>
+        <to-activity-id id="__49">viewEventsForRootDoc</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

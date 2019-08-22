@@ -1,0 +1,124 @@
+<schema xmlns="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="/gov/ca/dir/acct/cars/adf/service/appmodule/common/types/"
+     xmlns:tns="/gov/ca/dir/acct/cars/adf/service/appmodule/common/types/" xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/"
+     xmlns:ns1="http://xmlns.oracle.com/adf/svc/types/">
+    <import namespace="/gov/ca/dir/acct/cars/adf/service/view/common/" schemaLocation="../../../view/common/CarsRequestViewSDO.xsd"/>
+    <import namespace="http://xmlns.oracle.com/adf/svc/types/" schemaLocation="classpath:/META-INF/wsdl/BC4JService.xsd"/>
+    <import namespace="/gov/ca/dir/acct/cars/adf/service/view/common/" schemaLocation="../../../view/common/CarsErrorMessageViewSDO.xsd"/>
+    <import namespace="/gov/ca/dir/acct/cars/adf/service/view/common/" schemaLocation="../../../view/common/CarsErrorLogViewSDO.xsd"/>
+    <element name="createCarsErrorLog">
+        <complexType>
+            <sequence>
+                <element name="carsErrorLogView1" type="ns0:CarsErrorLogViewSDO"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="createCarsErrorLogResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="ns0:CarsErrorLogViewSDO"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findCarsErrorMessageWithParams">
+        <complexType>
+            <sequence>
+                <element name="findCriteria" type="ns1:FindCriteria"/>
+                <element name="varErrorMessageId" type="int"/>
+                <element name="varFaultCode" type="string"/>
+                <element name="findControl" type="ns1:FindControl"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findCarsErrorMessageWithParamsResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="ns0:CarsErrorMessageViewSDO" minOccurs="0" maxOccurs="unbounded"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="createCarsRequest">
+        <complexType>
+            <sequence>
+                <element name="carsRequestView1" type="ns0:CarsRequestViewSDO"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="createCarsRequestResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="ns0:CarsRequestViewSDO"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="updateCarsRequest">
+        <complexType>
+            <sequence>
+                <element name="carsRequestView1" type="ns0:CarsRequestViewSDO"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="updateCarsRequestResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="ns0:CarsRequestViewSDO"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findCarsRequestWithParams">
+        <complexType>
+            <sequence>
+                <element name="findCriteria" type="ns1:FindCriteria"/>
+                <element name="varEcid" type="string"/>
+                <element name="findControl" type="ns1:FindControl"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findCarsRequestWithParamsResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="ns0:CarsRequestViewSDO" minOccurs="0" maxOccurs="unbounded"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="getErrorLogIdSequence">
+        <complexType>
+            <sequence/>
+        </complexType>
+    </element>
+    <element name="getErrorLogIdSequenceResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="decimal"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="getRequestIdSequence">
+        <complexType>
+            <sequence/>
+        </complexType>
+    </element>
+    <element name="getRequestIdSequenceResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="decimal"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findCarsRequestWithInstanceIdParam">
+        <complexType>
+            <sequence>
+                <element name="findCriteria" type="ns1:FindCriteria"/>
+                <element name="varEcid" type="string"/>
+                <element name="varPayloadName" type="string"/>
+                <element name="findControl" type="ns1:FindControl"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findCarsRequestWithInstanceIdParamResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="ns0:CarsRequestViewSDO" minOccurs="0" maxOccurs="unbounded"/>
+            </sequence>
+        </complexType>
+    </element>
+</schema>

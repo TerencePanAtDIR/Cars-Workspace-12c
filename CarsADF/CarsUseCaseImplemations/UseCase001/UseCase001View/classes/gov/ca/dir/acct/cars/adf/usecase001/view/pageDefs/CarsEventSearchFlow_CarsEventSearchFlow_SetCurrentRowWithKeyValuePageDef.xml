@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.64.93"
+                id="CarsEventSearchFlow_CarsEventSearchFlow_SetCurrentRowWithKeyValuePageDef"
+                Package="gov.ca.dir.acct.cars.adf.usecase001.view.pageDefs"
+                SkipValidation="true">
+  <parameters/>
+  <executables>
+    <iterator Binds="ViewEvents2" RangeSize="25"
+              DataControl="CarsSearchEventsDataControl"
+              id="ViewEvents2Iterator"/>
+  </executables>
+  <bindings>
+    <action IterBinding="ViewEvents2Iterator" id="setCurrentRowWithKeyValue"
+            RequiresUpdateModel="false" Action="setCurrentRowWithKeyValue">
+      <NamedData NDName="rowKey"
+                 NDValue="#{pageFlowScope.varAcctgTransactionId2}"
+                 NDType="java.lang.String"/>
+    </action>
+  </bindings>
+</pageDefinition>

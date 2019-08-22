@@ -1,0 +1,14 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<BC4JConfig version="11.1" xmlns="http://xmlns.oracle.com/bc4j/configuration">
+   <AppModuleConfigBag ApplicationName="gov.ca.dir.acct.cars.adf.cars16Report.model.appmodule.cars16ReportAM">
+      <AppModuleConfig name="cars16ReportAMLocal" ApplicationName="gov.ca.dir.acct.cars.adf.cars16Report.model.appmodule.cars16ReportAM" DeployPlatform="LOCAL" jbo.project="gov.ca.dir.acct.cars.adf.cars16Report.model.Model">
+         <Security AppModuleJndiName="gov.ca.dir.acct.cars.adf.cars16Report.model.appmodule.cars16ReportAM"/>
+         <Custom JDBCDataSource="java:comp/env/jdbc/carsdevDS"/>
+      </AppModuleConfig>
+      <AppModuleConfig name="cars16ReportAMShared" ApplicationName="gov.ca.dir.acct.cars.adf.cars16Report.model.appmodule.cars16ReportAM" DeployPlatform="LOCAL" jbo.project="gov.ca.dir.acct.cars.adf.cars16Report.model.Model">
+         <AM-Pooling jbo.ampool.maxpoolsize="1" jbo.ampool.isuseexclusive="false"/>
+         <Security AppModuleJndiName="gov.ca.dir.acct.cars.adf.cars16Report.model.appmodule.cars16ReportAM"/>
+         <Custom JDBCDataSource="java:comp/env/jdbc/carsdevDS"/>
+      </AppModuleConfig>
+   </AppModuleConfigBag>
+</BC4JConfig>

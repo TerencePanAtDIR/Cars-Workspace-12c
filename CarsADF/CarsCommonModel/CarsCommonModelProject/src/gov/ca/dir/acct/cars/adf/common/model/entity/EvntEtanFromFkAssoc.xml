@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Association SYSTEM "jbo_03_01.dtd">
+<!---->
+<Association
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="EvntEtanFromFkAssoc"
+  Version="11.1.1.64.93"
+  InheritPersonalization="true">
+  <DesignTime>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <AssociationEnd
+    Name="Event"
+    Cardinality="1"
+    Source="true"
+    Owner="gov.ca.dir.acct.cars.adf.common.model.entity.Event">
+    <DesignTime>
+      <Attr Name="_aggregation" Value="0"/>
+      <Attr Name="_finderName" Value="Event"/>
+      <Attr Name="_foreignKey"
+        Value="gov.ca.dir.acct.cars.adf.common.model.entity.Event.EventPk"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_minCardinality" Value="1"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="gov.ca.dir.acct.cars.adf.common.model.entity.Event.EventId"/>
+    </AttrArray>
+  </AssociationEnd>
+  <AssociationEnd
+    Name="EventAssociation"
+    Cardinality="-1"
+    Owner="gov.ca.dir.acct.cars.adf.common.model.entity.EventAssociation">
+    <DesignTime>
+      <Attr Name="_aggregation" Value="0"/>
+      <Attr Name="_finderName" Value="EventAssociation"/>
+      <Attr Name="_foreignKey"
+        Value="gov.ca.dir.acct.cars.adf.common.model.entity.EventAssociation.EvntEtanFromFk"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="gov.ca.dir.acct.cars.adf.common.model.entity.EventAssociation.EventFromId"/>
+    </AttrArray>
+  </AssociationEnd>
+</Association>

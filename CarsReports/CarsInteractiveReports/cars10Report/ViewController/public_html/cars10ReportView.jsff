@@ -1,0 +1,192 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:pageTemplate viewId="/report-template.jspx" id="pt1">
+    <f:facet name="main">
+      <af:group id="g1">
+        <af:panelCollection id="pc1">
+          <f:facet name="menus"/>
+          <f:facet name="toolbar">
+            <af:toolbar id="t2">
+              <af:activeCommandToolbarButton
+                                             id="actb1"
+                                             icon="/export_excel_sml.png">
+                <af:exportCollectionActionListener exportedId="t1"
+                                                   type="excelHTML"
+                                                   filename="cars_export_abnormal_bals.xls"
+                                                   title="Abnormal Balance"/>
+              </af:activeCommandToolbarButton>
+            </af:toolbar>
+          </f:facet>
+          <f:facet name="statusbar"/>
+          <af:table value="#{bindings.cars10reportVO1.collectionModel}"
+                    var="row" rows="12"
+                    emptyText="#{bindings.cars10reportVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                    rowBandingInterval="0"
+                    filterModel="#{bindings.cars10reportVO1Query.queryDescriptor}"
+                    queryListener="#{bindings.cars10reportVO1Query.processQuery}"
+                    filterVisible="true" varStatus="vs"
+                    selectionListener="#{bindings.cars10reportVO1.collectionModel.makeCurrent}"
+                    rowSelection="multiple" id="t1"
+                    columnStretching="column:c4"
+                    fetchSize="30" autoHeightRows="10">
+            <af:column sortProperty="#{bindings.cars10reportVO1.hints.CurrentDocument.name}"
+                       filterable="true" sortable="true"
+                       headerText="#{bindings.cars10reportVO1.hints.CurrentDocument.label}"
+                       id="c1" width="123">
+              <af:outputText value="#{row.CurrentDocument}" id="ot8"/>
+              <f:facet name="footer">
+                <af:outputFormatted value="Total Records: #{bindings.TotalRecords.inputValue}"
+                                    id="outputFormatted1"
+                                    inlineStyle="font-weight:bold;"/>
+              </f:facet>
+            </af:column>
+            <af:column id="c17"
+                       headerText="#{bindings.cars10reportVO1.hints.ProgramUnitCode.label}"
+                       sortable="true" filterable="true"
+                       sortProperty="#{bindings.cars10reportVO1.hints.ProgramUnitCode.name}">
+              <af:outputText value="#{row.ProgramUnitCode}" id="ot13"/>
+            </af:column>
+            <af:column sortProperty="#{bindings.cars10reportVO1.hints.FiscalYear.name}"
+                       filterable="true" sortable="true"
+                       headerText="#{bindings.cars10reportVO1.hints.FiscalYear.label}"
+                       id="c11" width="67">
+              <af:outputText value="#{row.FiscalYear}" id="ot4"/>
+            </af:column>
+            <af:column sortProperty="#{bindings.cars10reportVO1.hints.IndexCode.name}"
+                       filterable="true" sortable="true"
+                       headerText="#{bindings.cars10reportVO1.hints.IndexCode.label}"
+                       id="c6" width="65">
+              <af:outputText value="#{row.IndexCode}" id="ot3"/>
+            </af:column>
+            <af:column id="c13"
+                       headerText="#{bindings.cars10reportVO1.hints.PcaCode.label}"
+                       sortable="true" filterable="true"
+                       sortProperty="#{bindings.cars10reportVO1.hints.PcaCode.name}">
+              <af:outputText value="#{row.PcaCode}" id="ot14"/>
+            </af:column>
+            <af:column id="c15"
+                       headerText="#{bindings.cars10reportVO1.hints.AgencySourceCode.label}"
+                       sortable="true" align="center" filterable="true"
+                       sortProperty="#{bindings.cars10reportVO1.hints.AgencySourceCode.name}">
+              <af:outputText value="#{row.AgencySourceCode}" id="ot16"/>
+            </af:column>
+            <af:column id="c16"
+                       headerText="#{bindings.cars10reportVO1.hints.RevenueSourceCode.label}"
+                       align="center" sortable="true" filterable="true"
+                       sortProperty="#{bindings.cars10reportVO1.hints.RevenueSourceCode.name}">
+              <af:outputText value="#{row.RevenueSourceCode}" id="ot15"/>
+            </af:column>
+            <af:column id="c14"
+                       headerText="#{bindings.cars10reportVO1.hints.Fund.label}"
+                       align="center" sortable="true" filterable="true"
+                       sortProperty="#{bindings.cars10reportVO1.hints.Fund.name}">
+              <af:outputText value="#{row.Fund}" id="ot17"/>
+            </af:column>
+            <af:column sortProperty="#{bindings.cars10reportVO1.hints.LegalName.name}"
+                       filterable="true" sortable="true"
+                       headerText="#{bindings.cars10reportVO1.hints.LegalName.label}"
+                       id="c4" width="106">
+              <af:outputText value="#{row.LegalName}" id="ot2"/>
+            </af:column>
+            <af:column sortProperty="#{bindings.cars10reportVO1.hints.StreetAddress.name}"
+                       filterable="true" sortable="true"
+                       headerText="#{bindings.cars10reportVO1.hints.StreetAddress.label}"
+                       id="c10" width="206">
+              <af:outputText value="#{row.StreetAddress}" id="ot5"/>
+            </af:column>
+            <af:column sortProperty="#{bindings.cars10reportVO1.hints.City.name}"
+                       filterable="true" sortable="true"
+                       headerText="#{bindings.cars10reportVO1.hints.City.label}"
+                       id="c7" width="106">
+              <af:outputText value="#{row.City}" id="ot11"/>
+            </af:column>
+            <af:column sortProperty="#{bindings.cars10reportVO1.hints.DocketNumber.name}"
+                       filterable="true" sortable="true"
+                       headerText="#{bindings.cars10reportVO1.hints.DocketNumber.label}"
+                       id="c3" width="156">
+              <af:outputText value="#{row.DocketNumber}" id="ot9"/>
+            </af:column>
+            <af:column sortProperty="#{bindings.cars10reportVO1.hints.DecisionDate.name}"
+                       sortable="true"
+                       headerText="#{bindings.cars10reportVO1.hints.DecisionDate.label}"
+                       id="c8" width="106" filterable="true">
+              <af:outputText value="#{row.DecisionDate}" id="ot6">
+                <af:convertDateTime pattern="#{bindings.cars10reportVO1.hints.DecisionDate.format}"/>
+              </af:outputText>
+            </af:column>
+            <af:column sortProperty="#{bindings.cars10reportVO1.hints.DecisionAmount.name}"
+                       filterable="true" sortable="true"
+                       headerText="#{bindings.cars10reportVO1.hints.DecisionAmount.label}"
+                       id="c2" width="106">
+              <af:outputText value="#{row.DecisionAmount}" id="ot1">
+                <af:convertNumber groupingUsed="false"
+                                  pattern="#{bindings.cars10reportVO1.hints.DecisionAmount.format}"/>
+              </af:outputText>
+            </af:column>
+            <af:column sortProperty="#{bindings.cars10reportVO1.hints.DueAmount.name}"
+                       filterable="true" sortable="true"
+                       headerText="#{bindings.cars10reportVO1.hints.DueAmount.label}"
+                       id="c5" width="100">
+              <af:outputText value="#{row.DueAmount}" id="ot10">
+                <af:convertNumber groupingUsed="false"
+                                  pattern="#{bindings.cars10reportVO1.hints.DueAmount.format}"/>
+              </af:outputText>
+              <f:facet name="footer">
+                <af:group id="g2">
+                  <af:outputFormatted value="#{bindings.TotalDueAmount.inputValue}"
+                                      id="of2" inlineStyle="font-weight:bold;">
+                    <af:convertNumber groupingUsed="false"
+                                      pattern="#{bindings.cars10reportVO1.hints.TotalDueAmount.format}"/>
+                  </af:outputFormatted>
+                </af:group>
+              </f:facet>
+            </af:column>
+            <af:column sortProperty="#{bindings.cars10reportVO1.hints.TotalPayment.name}"
+                       sortable="true"
+                       headerText="#{bindings.cars10reportVO1.hints.TotalPayment.label}"
+                       id="c12" width="106" filterable="true">
+              <af:inputText value="#{row.bindings.TotalPayment.inputValue}"
+                            label="#{bindings.cars10reportVO1.hints.TotalPayment.label}"
+                            required="#{bindings.cars10reportVO1.hints.TotalPayment.mandatory}"
+                            columns="#{bindings.cars10reportVO1.hints.TotalPayment.displayWidth}"
+                            maximumLength="#{bindings.cars10reportVO1.hints.TotalPayment.precision}"
+                            shortDesc="#{bindings.cars10reportVO1.hints.TotalPayment.tooltip}"
+                            id="it1">
+                <f:validator binding="#{row.bindings.TotalPayment.validator}"/>
+                <af:convertNumber groupingUsed="false"
+                                  pattern="#{bindings.cars10reportVO1.hints.TotalPayment.format}"/>
+              </af:inputText>
+              <f:facet name="footer">
+                <af:outputFormatted value="#{bindings.GrandTotalPayment.inputValue}"
+                                    id="of1" inlineStyle="font-weight:bold;">
+                  <af:convertNumber groupingUsed="false"
+                                    pattern="#{bindings.cars10reportVO1.hints.GrandTotalPayment.format}"/>
+                </af:outputFormatted>
+              </f:facet>
+            </af:column>
+            <af:column sortProperty="#{bindings.cars10reportVO1.hints.Balance.name}" sortable="true"
+                       headerText="#{bindings.cars10reportVO1.hints.Balance.label}"
+                       id="c9" filterable="true">
+              <af:outputText value="#{row.Balance}" id="ot7">
+                <af:convertNumber groupingUsed="false"
+                                  pattern="#{bindings.cars10reportVO1.hints.Balance.format}"/>
+              </af:outputText>
+              <f:facet name="footer">
+                <af:outputFormatted value="#{bindings.TotalBalance.inputValue}"
+                                    id="ot12" inlineStyle="font-weight:bold;">
+                  <af:convertNumber groupingUsed="false"
+                                    pattern="#{bindings.cars10reportVO1.hints.TotalBalance.format}"/>
+                </af:outputFormatted>
+              </f:facet>
+            </af:column>
+          </af:table>
+        </af:panelCollection>
+      </af:group>
+    </f:facet>
+    <f:attribute name="title" value="Abnormal Balance Report"/>
+    <f:attribute name="program_unit" value="CalOSHA"/>
+    <f:attribute name="report_date" value="#{bindings.ReportDate.inputValue}"/>
+  </af:pageTemplate>
+</jsp:root>

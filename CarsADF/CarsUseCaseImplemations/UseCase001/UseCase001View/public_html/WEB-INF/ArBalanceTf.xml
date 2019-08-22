@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="ArBalanceTf">
+    <default-activity id="__1">ExecuteWithParams</default-activity>
+    <input-parameter-definition id="__2">
+      <name id="__3">ArRootDocument</name>
+      <value>#{pageFlowScope.ArRootDocumentBalance}</value>
+      <class>java.lang.String</class>
+      <required/>
+    </input-parameter-definition>
+    <view id="ArBalancePopup">
+      <page>/ArBalancePopup.jspx</page>
+    </view>
+    <method-call id="ExecuteWithParams">
+      <method>#{bindings.ExecuteWithParams.execute}</method>
+      <outcome id="__4">
+        <fixed-outcome>ExecuteWithParams</fixed-outcome>
+      </outcome>
+    </method-call>
+    <task-flow-return id="taskFlowReturn1">
+      <outcome id="__10">
+        <name>taskFlowReturn1</name>
+      </outcome>
+    </task-flow-return>
+    <control-flow-rule id="__5">
+      <from-activity-id id="__6">ExecuteWithParams</from-activity-id>
+      <control-flow-case id="__7">
+        <from-outcome id="__8">ExecuteWithParams</from-outcome>
+        <to-activity-id id="__9">ArBalancePopup</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__11">
+      <from-activity-id id="__12">ArBalancePopup</from-activity-id>
+      <control-flow-case id="__14">
+        <from-outcome id="__15">tfReturn</from-outcome>
+        <to-activity-id id="__13">taskFlowReturn1</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <visibility id="__16">
+      <url-invoke-allowed/>
+    </visibility>
+  </task-flow-definition>
+</adfc-config>

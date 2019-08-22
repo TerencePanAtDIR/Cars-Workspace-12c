@@ -1,0 +1,709 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="PendingReclassItemsView"
+  Version="11.1.1.64.93"
+  InheritPersonalization="true"
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  RowClass="gov.ca.dir.acct.cars.adf.usecase030.model.view.PendingReclassItemsViewRowImpl"
+  ComponentClass="gov.ca.dir.acct.cars.adf.usecase030.model.view.PendingReclassItemsViewImpl"
+  PageIterMode="Full"
+  UseGlueCode="false">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess"/>
+    <Attr Name="_isExpertMode" Value="true"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="gov.ca.dir.acct.cars.adf.usecase030.model.view.PendingReclassItemsView_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <Variable
+    Name="varFiscalYear"
+    Kind="viewcriteria"
+    Type="java.lang.String"/>
+  <Variable
+    Name="varAcct1200000Balance"
+    Kind="viewcriteria"
+    Type="java.lang.String"/>
+  <Variable
+    Name="varProgramUnitCode"
+    Kind="viewcriteria"
+    Type="java.lang.String"/>
+  <Variable
+    Name="varBeginEventDate"
+    Kind="viewcriteria"
+    Type="java.lang.String"/>
+  <Variable
+    Name="varEndEventDate"
+    Kind="viewcriteria"
+    Type="java.lang.String"/>
+  <Variable
+    Name="varLegalName"
+    Kind="viewcriteria"
+    Type="java.lang.String"/>
+  <Variable
+    Name="varArRootDocument"
+    Kind="viewcriteria"
+    Type="java.lang.String"/>
+  <ViewAccessor
+    Name="ProgramUnitCodeView1"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.usecase030.model.view.ProgramUnitCodeView"
+    RowLevelBinds="true"/>
+  <ListBinding
+    Name="LOV_ProgramUnitCode"
+    ListVOName="ProgramUnitCodeView1"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="ProgramUnitCode"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="ProgramUnitCode"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <SQLQuery>
+    <![CDATA[SELECT EVENT.EVENT_ID,
+         EVENT.AR_ROOT_DOCUMENT,
+         FiscalPeriod.FISCAL_YEAR_NAME                      FISCAL_YEAR,
+         SUBEVENT_QRY.AMOUNT                                ACCT_1200000_AMOUNT,
+         NVL2 (ReclassExists.CURRENT_DOCUMENT, 'Y', 'N')     RECLASS_EXISTS,
+         EventType.PROGRAM_UNIT_CODE,
+         EVENT.EVENT_DATE,
+         ADDRESS.FS_SEQUENCE_NUMBER,
+         ADDRESS.STREET_ADDRESS,
+         ADDRESS.CITY,
+         ADDRESS.STATE_CODE,
+         ADDRESS.ZIP_CODE,
+         ORGANIZATION.ORGANIZATION_NAME,
+         ORGANIZATION.LEGAL_NAME,
+         ORGANIZATION.DBA,
+         ParticipantRole.CUST_ID,
+         AccountingCode.AGENCY_SOURCE_CODE,
+         AccountingCode.REVENUE_SOURCE_CODE,
+         AccountingCode.INDEX_CODE,
+         Event.DATA_SOURCE_CODE,
+         FUND.FUND
+    FROM EVENT
+         INNER JOIN EVENT_TYPE EventType
+             ON EVENT.EVENT_TYPE_ID = EventType.EVENT_TYPE_ID
+         LEFT OUTER JOIN (
+            SELECT DISTINCT ReclassEvent.AR_ROOT_DOCUMENT, ReclassEvent.CURRENT_DOCUMENT, REVERSE_CURRENT_DOCUMENT
+            FROM EVENT ReclassEvent
+                INNER JOIN EVENT_TYPE
+                    ON ReclassEvent.EVENT_TYPE_ID = EVENT_TYPE.EVENT_TYPE_ID
+                    AND EVENT_TYPE.EVENT_TYPE_CODE = '515'
+                LEFT OUTER JOIN (
+                    SELECT DISTINCT ReverseReclassEvent.CURRENT_DOCUMENT REVERSE_CURRENT_DOCUMENT, 
+                        ReverseReclassEvent.REFERENCE_DOCUMENT
+                    FROM EVENT ReverseReclassEvent
+                        INNER JOIN EVENT_TYPE
+                            ON ReverseReclassEvent.EVENT_TYPE_ID = EVENT_TYPE.EVENT_TYPE_ID
+                            AND EVENT_TYPE.EVENT_TYPE_CODE = '900') ReverseReclassEvent
+                    ON ReverseReclassEvent.REFERENCE_DOCUMENT = ReclassEvent.CURRENT_DOCUMENT
+            WHERE REVERSE_CURRENT_DOCUMENT IS NULL
+            ) ReclassExists
+            ON ReclassExists.AR_ROOT_DOCUMENT = EVENT.AR_ROOT_DOCUMENT
+         INNER JOIN PARTICIPANT_ROLE ParticipantRole
+             ON EVENT.EVENT_ID = ParticipantRole.EVENT_ID
+         INNER JOIN ADDRESS ON ADDRESS.PARTY_ID = ParticipantRole.PARTY_ID
+         INNER JOIN ORGANIZATION
+             ON ORGANIZATION.PARTY_ID = ParticipantRole.PARTY_ID
+         INNER JOIN ACCTG_TRANSACT_EVENT_ASSOC
+             ON EVENT.EVENT_ID = ACCTG_TRANSACT_EVENT_ASSOC.EVENT_ID
+         INNER JOIN ACCOUNTING_ENTRY AccountingEntry
+             ON AccountingEntry.ACCTG_TRANSACTION_ID =
+                ACCTG_TRANSACT_EVENT_ASSOC.ACCTG_TRANSACTION_ID
+         INNER JOIN ACCOUNTING_CODE AccountingCode
+             ON AccountingEntry.ACCOUNTING_CODE_ID =
+                AccountingCode.ACCOUNTING_CODE_ID
+         INNER JOIN
+            (SELECT AR_ROOT_DOCUMENT, SUM(AMOUNT) AMOUNT
+                FROM
+                (SELECT EVENT.AR_ROOT_DOCUMENT, DEBIT.AMOUNT, EVENT.CURRENT_DOCUMENT
+                    FROM EVENT
+                        INNER JOIN ACCTG_TRANSACT_EVENT_ASSOC
+                            ON EVENT.EVENT_ID = ACCTG_TRANSACT_EVENT_ASSOC.EVENT_ID
+                        INNER JOIN ACCOUNTING_TRANSACTION
+                            ON ACCOUNTING_TRANSACTION.ACCTG_TRANSACTION_ID =
+                                ACCTG_TRANSACT_EVENT_ASSOC.ACCTG_TRANSACTION_ID
+                        INNER JOIN ACCOUNTING_ENTRY
+                            ON ACCOUNTING_ENTRY.ACCTG_TRANSACTION_ID =
+                                ACCOUNTING_TRANSACTION.ACCTG_TRANSACTION_ID
+                        INNER JOIN DEBIT
+                            ON     DEBIT.ACCTG_ENTRY_ID =
+                                    ACCOUNTING_ENTRY.ACCTG_ENTRY_ID
+                                AND DEBIT.ACCOUNT_NUMBER = '1200000'
+                UNION ALL
+                SELECT EVENT.AR_ROOT_DOCUMENT, CREDIT.AMOUNT, EVENT.CURRENT_DOCUMENT
+                    FROM EVENT
+                        INNER JOIN ACCTG_TRANSACT_EVENT_ASSOC
+                            ON EVENT.EVENT_ID = ACCTG_TRANSACT_EVENT_ASSOC.EVENT_ID
+                        INNER JOIN ACCOUNTING_TRANSACTION
+                            ON ACCOUNTING_TRANSACTION.ACCTG_TRANSACTION_ID =
+                                ACCTG_TRANSACT_EVENT_ASSOC.ACCTG_TRANSACTION_ID
+                        INNER JOIN ACCOUNTING_ENTRY
+                            ON ACCOUNTING_ENTRY.ACCTG_TRANSACTION_ID =
+                                ACCOUNTING_TRANSACTION.ACCTG_TRANSACTION_ID
+                        INNER JOIN CREDIT
+                            ON     CREDIT.ACCTG_ENTRY_ID =
+                                    ACCOUNTING_ENTRY.ACCTG_ENTRY_ID
+                                AND CREDIT.ACCOUNT_NUMBER = '1200000')
+                GROUP BY AR_ROOT_DOCUMENT) SUBEVENT_QRY
+             ON EVENT.AR_ROOT_DOCUMENT = SUBEVENT_QRY.AR_ROOT_DOCUMENT
+          INNER JOIN FUND_ALLOCATION FundAllocation
+            ON FundAllocation.FUND_ALLOCATION_ID = AccountingCode.FUND_ALLOCATION_ID
+          INNER JOIN FUND
+            ON FUND.FUND_ID = FundAllocation.FUND_TO_ID
+          INNER JOIN FISCAL_PERIOD FiscalPeriod
+            ON FiscalPeriod.FISCAL_PERIOD_ID = FUND.FISCAL_PERIOD_ID
+
+   WHERE EventType.EVENT_TYPE_CODE = '010' AND SUBEVENT_QRY.AMOUNT > 0 AND ReclassExists.CURRENT_DOCUMENT IS NULL]]>
+  </SQLQuery>
+  <ViewAttribute
+    Name="EventId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="EVENT_ID"
+    Expression="EVENT_ID"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.usecase030.model.view.PendingReclassItemsView.EventId_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ArRootDocument"
+    IsUpdateable="false"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Precision="25"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="AR_ROOT_DOCUMENT"
+    Expression="AR_ROOT_DOCUMENT"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="25"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.usecase030.model.view.PendingReclassItemsView.ArRootDocument_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="FiscalYear"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="4000"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="FISCAL_YEAR"
+    Expression="FISCAL_YEAR"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="4000"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.usecase030.model.view.PendingReclassItemsView.FiscalYear_LABEL"/>
+        <DISPLAYWIDTH
+          Value="5"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Acct1200000Amount"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="ACCT_1200000_AMOUNT"
+    Expression="ACCT_1200000_AMOUNT"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <FMT_FORMATTER
+          ResId="gov.ca.dir.acct.cars.adf.usecase030.model.view.PendingReclassItemsView.Acct1200000Amount_FMT_FORMATTER"/>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.usecase030.model.view.PendingReclassItemsView.Acct1200000Amount_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ReclassExists"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="1"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="RECLASS_EXISTS"
+    Expression="RECLASS_EXISTS"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.usecase030.model.view.PendingReclassItemsView.ReclassExists_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ProgramUnitCode"
+    IsUpdateable="false"
+    LOVName="LOV_ProgramUnitCode"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Precision="25"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="PROGRAM_UNIT_CODE"
+    Expression="PROGRAM_UNIT_CODE"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="25"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.usecase030.model.view.PendingReclassItemsView.ProgramUnitCode_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="EventDate"
+    IsUpdateable="false"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    AliasName="EVENT_DATE"
+    Expression="EVENT_DATE"
+    SQLType="DATE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.usecase030.model.view.PendingReclassItemsView.EventDate_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="FsSequenceNumber"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="FS_SEQUENCE_NUMBER"
+    Expression="FS_SEQUENCE_NUMBER"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.usecase030.model.view.PendingReclassItemsView.FsSequenceNumber_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="StreetAddress"
+    IsUpdateable="false"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Precision="50"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="STREET_ADDRESS"
+    Expression="STREET_ADDRESS"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="50"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.usecase030.model.view.PendingReclassItemsView.StreetAddress_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="City"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="50"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="CITY"
+    Expression="CITY"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="50"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="StateCode"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="2"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="STATE_CODE"
+    Expression="STATE_CODE"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="2"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.usecase030.model.view.PendingReclassItemsView.StateCode_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ZipCode"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="5"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="ZIP_CODE"
+    Expression="ZIP_CODE"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="5"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.usecase030.model.view.PendingReclassItemsView.ZipCode_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="OrganizationName"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="250"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="ORGANIZATION_NAME"
+    Expression="ORGANIZATION_NAME"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="250"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.usecase030.model.view.PendingReclassItemsView.OrganizationName_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="LegalName"
+    IsUpdateable="false"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Precision="250"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="LEGAL_NAME"
+    Expression="LEGAL_NAME"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="250"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.usecase030.model.view.PendingReclassItemsView.LegalName_LABEL"/>
+        <DISPLAYWIDTH
+          Value="20"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Dba"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="250"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="DBA"
+    Expression="DBA"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="250"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CustId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="15"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="CUST_ID"
+    Expression="CUST_ID"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.usecase030.model.view.PendingReclassItemsView.CustId_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="AgencySourceCode"
+    IsUpdateable="false"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Precision="3"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="AGENCY_SOURCE_CODE"
+    Expression="AGENCY_SOURCE_CODE"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="3"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.usecase030.model.view.PendingReclassItemsView.AgencySourceCode_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="RevenueSourceCode"
+    IsUpdateable="false"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Precision="10"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="REVENUE_SOURCE_CODE"
+    Expression="REVENUE_SOURCE_CODE"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="10"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.usecase030.model.view.PendingReclassItemsView.RevenueSourceCode_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="IndexCode"
+    IsUpdateable="false"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Precision="4"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="INDEX_CODE"
+    Expression="INDEX_CODE"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="4"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.usecase030.model.view.PendingReclassItemsView.IndexCode_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="DataSourceCode"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="25"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="DATA_SOURCE_CODE"
+    Expression="DATA_SOURCE_CODE"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="25"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.usecase030.model.view.PendingReclassItemsView.DataSourceCode_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Fund"
+    IsUpdateable="false"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Precision="9"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="FUND"
+    Expression="FUND"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="9"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Viewable"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.Boolean"
+    ColumnType="NUMBER"
+    AliasName="VIEW_ATTR"
+    SQLType="BIT"
+    DefaultValue="true"/>
+  <ViewCriteria
+    Name="PendingReclassItemsViewCriteria"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.usecase030.model.view.PendingReclassItemsView"
+    Conjunction="AND">
+    <Properties>
+      <CustomProperties>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="vcrow6"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="ArRootDocument"
+        ViewAttribute="ArRootDocument"
+        Operator="CONTAINS"
+        Conjunction="AND"
+        Value=":varArRootDocument"
+        IsBindVarValue="true"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="FiscalYear"
+        ViewAttribute="FiscalYear"
+        Operator="="
+        Conjunction="AND"
+        Value=":varFiscalYear"
+        IsBindVarValue="true"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="PendingReclassItemsViewCriteria_vcrow6_Acct1200000Amount"
+        ViewAttribute="Acct1200000Amount"
+        Operator="="
+        Conjunction="AND"
+        Required="Optional"
+        Value=":varAcct1200000Balance"
+        IsBindVarValue="true"/>
+      <ViewCriteriaItem
+        Name="ProgramUnitCode"
+        ViewAttribute="ProgramUnitCode"
+        Operator="="
+        Conjunction="AND"
+        Required="Optional"
+        Value=":varProgramUnitCode"
+        IsBindVarValue="true"/>
+      <ViewCriteriaItem
+        Name="EventDate"
+        ViewAttribute="EventDate"
+        Operator="BETWEEN"
+        Conjunction="AND"
+        Required="Optional">
+        <ViewCriteriaItemValue
+          Name="PendingReclassItemsViewCriteria_vcrow6_EventDate_vcval0"
+          Value=":varBeginEventDate"
+          IsBindVarValue="true"/>
+        <ViewCriteriaItemValue
+          Name="PendingReclassItemsViewCriteria_vcrow6_EventDate_vcval1"
+          Value=":varEndEventDate"
+          IsBindVarValue="true"/>
+      </ViewCriteriaItem>
+      <ViewCriteriaItem
+        Name="LegalName"
+        ViewAttribute="LegalName"
+        Operator="CONTAINS"
+        Conjunction="AND"
+        Required="Optional"
+        Value=":varLegalName"
+        IsBindVarValue="true"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
+  <AttrArray Name="KeyAttributes">
+    <Item Value="EventId"/>
+  </AttrArray>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="gov.ca.dir.acct.cars.adf.usecase030.model.ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://xmlns.oracle.com/adfm/application"
+             version="11.1.1.64.93" id="DataBindings" SeparateXMLFiles="false"
+             Package="gov.ca.dir.acct.cars.adf.usecase001.view" ClientType="Generic">
+  <definitionFactories>
+    <factory nameSpace="http://xmlns.oracle.com/adf/controller/binding"
+             className="oracle.adf.controller.internal.binding.TaskFlowBindingDefFactoryImpl"/>
+    <dtfactory className="oracle.adf.controller.internal.dtrt.binding.BindingDTObjectFactory"/>
+  </definitionFactories>
+  <pageMap>
+    <page path="/Cars_Event_Details/searchCarsEvents.jsff"
+          usageId="gov_ca_dir_acct_cars_adf_usecase001_view_searchCarsEventsPageDef"/>
+    <page path="/Cars_Event_Details/viewEventDetails.jsff"
+          usageId="gov_ca_dir_acct_cars_adf_usecase001_view_viewEventDetailsPageDef"/>
+    <page path="/Cars_Ar_Search/searchByRootDoc.jsff"
+          usageId="gov_ca_dir_acct_cars_adf_usecase001_view_searchByRootDocPageDef"/>
+    <page path="/Cars_Ar_Search/viewEventsForRootDoc.jsff"
+          usageId="gov_ca_dir_acct_cars_adf_usecase001_view_viewEventsForRootDocPageDef"/>
+    <page path="/WEB-INF/CarsArSearch.xml#CarsArSearch@ExecuteWithParams1"
+          usageId="gov_ca_dir_acct_cars_adf_usecase001_view_CarsArSearch_CarsArSearch_ExecuteWithParams1PageDef"/>
+    <page path="/Cars_Ar_Search/viewEventsForRootDocDetails.jsff"
+          usageId="gov_ca_dir_acct_cars_adf_usecase001_view_viewEventsForRootDocDetailsPageDef"/>
+    <page path="/WEB-INF/CarsEventSearchFlow.xml#CarsEventSearchFlow@ExecuteWithParams"
+          usageId="gov_ca_dir_acct_cars_adf_usecase001_view_CarsEventSearchFlow_CarsEventSearchFlow_ExecuteWithParamsPageDef"/>
+    <page path="/main.jsp"
+          usageId="gov_ca_dir_acct_cars_adf_usecase001_view_mainPageDef"/>
+    <page path="/WEB-INF/CarsArSearch.xml#CarsArSearch@ExecuteWithParams2"
+          usageId="gov_ca_dir_acct_cars_adf_usecase001_view_CarsArSearch_CarsArSearch_ExecuteWithParams2PageDef"/>
+    <page path="/WEB-INF/CarsEventSearchFlow.xml#CarsEventSearchFlow@ExecuteWithParams1"
+          usageId="gov_ca_dir_acct_cars_adf_usecase001_view_CarsEventSearchFlow_CarsEventSearchFlow_ExecuteWithParams1PageDef"/>
+    <page path="/WEB-INF/CarsEventSearchFlow.xml#CarsEventSearchFlow@ExecuteWithParams2"
+          usageId="gov_ca_dir_acct_cars_adf_usecase001_view_CarsEventSearchFlow_CarsEventSearchFlow_ExecuteWithParams2PageDef"/>
+    <page path="/WEB-INF/CarsArSearch.xml#CarsArSearch@ExecuteWithParams3"
+          usageId="gov_ca_dir_acct_cars_adf_usecase001_view_CarsArSearch_CarsArSearch_ExecuteWithParams3PageDef"/>
+    <page path="/SearchEventsMain.jspx"
+          usageId="gov_ca_dir_acct_cars_adf_usecase001_view_SearchEventsMainPageDef"/>
+    <page path="/SearchARsMain.jspx"
+          usageId="gov_ca_dir_acct_cars_adf_usecase001_view_SearchARsMainPageDef"/>
+    <page path="/WEB-INF/CarsEventSearchFlow.xml#CarsEventSearchFlow@SetCurrentRowWithKeyValue"
+          usageId="gov_ca_dir_acct_cars_adf_usecase001_view_CarsEventSearchFlow_CarsEventSearchFlow_SetCurrentRowWithKeyValuePageDef"/>
+    <page path="/WEB-INF/ArBalanceTf.xml#ArBalanceTf@ExecuteWithParams"
+          usageId="gov_ca_dir_acct_cars_adf_usecase001_view_ArBalanceTf_ArBalanceTf_ExecuteWithParamsPageDef"/>
+    <page path="/ArBalancePopup.jspx"
+          usageId="gov_ca_dir_acct_cars_adf_usecase001_view_ArBalancePopupPageDef"/>
+  </pageMap>
+  <pageDefinitionUsages>
+    <page id="gov_ca_dir_acct_cars_adf_usecase001_view_searchCarsEventsPageDef"
+          path="Cars_Event_Details.searchCarsEventsPageDef"/>
+    <page id="gov_ca_dir_acct_cars_adf_usecase001_view_viewEventDetailsPageDef"
+          path="Cars_Event_Details.viewEventDetailsPageDef"/>
+    <page id="gov_ca_dir_acct_cars_adf_usecase001_view_searchByRootDocPageDef"
+          path="Cars_Ar_Search.searchByRootDocPageDef"/>
+    <page id="gov_ca_dir_acct_cars_adf_usecase001_view_viewEventsForRootDocPageDef"
+          path="Cars_Ar_Search.viewEventsForRootDocPageDef"/>
+    <page id="gov_ca_dir_acct_cars_adf_usecase001_view_CarsArSearch_CarsArSearch_ExecuteWithParams1PageDef"
+          path="gov.ca.dir.acct.cars.adf.usecase001.view.pageDefs.CarsArSearch_CarsArSearch_ExecuteWithParams1PageDef"/>
+    <page id="gov_ca_dir_acct_cars_adf_usecase001_view_viewEventsForRootDocDetailsPageDef"
+          path="Cars_Ar_Search.viewEventsForRootDocDetailsPageDef"/>
+    <page id="gov_ca_dir_acct_cars_adf_usecase001_view_CarsEventSearchFlow_CarsEventSearchFlow_ExecuteWithParamsPageDef"
+          path="gov.ca.dir.acct.cars.adf.usecase001.view.pageDefs.CarsEventSearchFlow_CarsEventSearchFlow_ExecuteWithParamsPageDef"/>
+    <page id="gov_ca_dir_acct_cars_adf_usecase001_view_mainPageDef"
+          path="gov.ca.dir.acct.cars.adf.usecase001.view.pageDefs.mainPageDef"/>
+    <page id="gov_ca_dir_acct_cars_adf_usecase001_view_CarsArSearch_CarsArSearch_ExecuteWithParams2PageDef"
+          path="gov.ca.dir.acct.cars.adf.usecase001.view.pageDefs.CarsArSearch_CarsArSearch_ExecuteWithParams2PageDef"/>
+    <page id="gov_ca_dir_acct_cars_adf_usecase001_view_CarsEventSearchFlow_CarsEventSearchFlow_ExecuteWithParams1PageDef"
+          path="gov.ca.dir.acct.cars.adf.usecase001.view.pageDefs.CarsEventSearchFlow_CarsEventSearchFlow_ExecuteWithParams1PageDef"/>
+    <page id="gov_ca_dir_acct_cars_adf_usecase001_view_CarsEventSearchFlow_CarsEventSearchFlow_ExecuteWithParams2PageDef"
+          path="gov.ca.dir.acct.cars.adf.usecase001.view.pageDefs.CarsEventSearchFlow_CarsEventSearchFlow_ExecuteWithParams2PageDef"/>
+    <page id="gov_ca_dir_acct_cars_adf_usecase001_view_CarsArSearch_CarsArSearch_ExecuteWithParams3PageDef"
+          path="gov.ca.dir.acct.cars.adf.usecase001.view.pageDefs.CarsArSearch_CarsArSearch_ExecuteWithParams3PageDef"/>
+    <page id="gov_ca_dir_acct_cars_adf_usecase001_view_SearchEventsMainPageDef"
+          path="gov.ca.dir.acct.cars.adf.usecase001.view.pageDefs.SearchEventsMainPageDef"/>
+    <page id="gov_ca_dir_acct_cars_adf_usecase001_view_SearchARsMainPageDef"
+          path="gov.ca.dir.acct.cars.adf.usecase001.view.pageDefs.SearchARsMainPageDef"/>
+    <page id="gov_ca_dir_acct_cars_adf_usecase001_view_CarsEventSearchFlow_CarsEventSearchFlow_SetCurrentRowWithKeyValuePageDef"
+          path="gov.ca.dir.acct.cars.adf.usecase001.view.pageDefs.CarsEventSearchFlow_CarsEventSearchFlow_SetCurrentRowWithKeyValuePageDef"/>
+    <page id="gov_ca_dir_acct_cars_adf_usecase001_view_ArBalanceTf_ArBalanceTf_ExecuteWithParamsPageDef"
+          path="gov.ca.dir.acct.cars.adf.usecase001.view.pageDefs.ArBalanceTf_ArBalanceTf_ExecuteWithParamsPageDef"/>
+    <page id="gov_ca_dir_acct_cars_adf_usecase001_view_ArBalancePopupPageDef"
+          path="gov.ca.dir.acct.cars.adf.usecase001.view.pageDefs.ArBalancePopupPageDef"/>
+  </pageDefinitionUsages>
+  <dataControlUsages>
+    <BC4JDataControl id="CarsSearchEventsDataControl"
+                     Package="gov.ca.dir.acct.cars.adf.usecase001.model.CarsEventDetails"
+                     FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl"
+                     SupportsTransactions="true" SupportsFindMode="true"
+                     SupportsRangesize="true" SupportsResetState="true"
+                     SupportsSortCollection="true"
+                     Configuration="CarsSearchLocal" syncMode="Immediate"
+                     xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+  </dataControlUsages>
+</Application>

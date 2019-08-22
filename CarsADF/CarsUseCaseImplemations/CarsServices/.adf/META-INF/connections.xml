@@ -1,0 +1,136 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<References xmlns="http://xmlns.oracle.com/adf/jndi">
+   <Reference name="{/gov/ca/dir/acct/cars/adf/service/appmodule/common/}CarsBCUtilityServicesAMService" className="oracle.jbo.client.svc.Service" xmlns="">
+      <Factory className="oracle.jbo.client.svc.ServiceFactory"/>
+      <RefAddresses>
+         <StringRefAddr addrType="serviceInterfaceName">
+            <Contents>gov.ca.dir.acct.cars.adf.service.appmodule.common.serviceinterface.CarsBCUtilityServicesAMService</Contents>
+         </StringRefAddr>
+         <StringRefAddr addrType="serviceEndpointProvider">
+            <Contents>ADFBC</Contents>
+         </StringRefAddr>
+         <StringRefAddr addrType="jndiName">
+            <Contents>CarsBCUtilityServicesAMServiceBean#gov.ca.dir.acct.cars.adf.service.appmodule.common.serviceinterface.CarsBCUtilityServicesAMService</Contents>
+         </StringRefAddr>
+         <StringRefAddr addrType="serviceSchemaName">
+            <Contents>CarsBCUtilityServicesAMService.xsd</Contents>
+         </StringRefAddr>
+         <StringRefAddr addrType="serviceSchemaLocation">
+            <Contents>gov/ca/dir/acct/cars/adf/service/appmodule/common/serviceinterface/</Contents>
+         </StringRefAddr>
+      </RefAddresses>
+   </Reference>
+   <Reference name="carsdev" className="oracle.jdeveloper.db.adapter.DatabaseProvider" credentialStoreKey="carsdev" xmlns="">
+      <Factory className="oracle.jdeveloper.db.adapter.DatabaseProviderFactory"/>
+      <RefAddresses>
+         <StringRefAddr addrType="sid">
+            <Contents>carsdev</Contents>
+         </StringRefAddr>
+         <StringRefAddr addrType="subtype">
+            <Contents>oraJDBC</Contents>
+         </StringRefAddr>
+         <StringRefAddr addrType="user">
+            <Contents>carsusr</Contents>
+         </StringRefAddr>
+         <StringRefAddr addrType="hostname">
+            <Contents>CSDBODZ1.ad.dir.ca.gov</Contents>
+         </StringRefAddr>
+         <StringRefAddr addrType="port">
+            <Contents>1523</Contents>
+         </StringRefAddr>
+         <SecureRefAddr addrType="password"/>
+         <StringRefAddr addrType="DeployPassword">
+            <Contents>true</Contents>
+         </StringRefAddr>
+         <StringRefAddr addrType="oraDriverType">
+            <Contents>thin</Contents>
+         </StringRefAddr>
+      </RefAddresses>
+   </Reference>
+   <Reference name="mjovero_carsdev" className="oracle.jdeveloper.db.adapter.DatabaseProvider" partial="true" manageInOracleEnterpriseManager="true" deployable="true" xmlns="">
+      <Factory className="oracle.jdeveloper.db.adapter.DatabaseProviderFactory"/>
+      <RefAddresses>
+         <StringRefAddr addrType="sid">
+            <Contents>CARSDEV</Contents>
+         </StringRefAddr>
+         <StringRefAddr addrType="subtype">
+            <Contents>oraJDBC</Contents>
+         </StringRefAddr>
+         <StringRefAddr addrType="user">
+            <Contents>mjovero</Contents>
+         </StringRefAddr>
+         <StringRefAddr addrType="hostname">
+            <Contents>CSDBODZ1.ad.dir.ca.gov</Contents>
+         </StringRefAddr>
+         <StringRefAddr addrType="port">
+            <Contents>1523</Contents>
+         </StringRefAddr>
+         <StringRefAddr addrType="DeployPassword">
+            <Contents>true</Contents>
+         </StringRefAddr>
+         <StringRefAddr addrType="oraDriverType">
+            <Contents>thin</Contents>
+         </StringRefAddr>
+      </RefAddresses>
+   </Reference>
+   <Reference name="{/gov/ca/dir/acct/cars/adf/service/appmodule/common/}CarsBCDataServicesAMService" className="oracle.jbo.client.svc.Service" xmlns="">
+      <Factory className="oracle.jbo.client.svc.ServiceFactory"/>
+      <RefAddresses>
+         <StringRefAddr addrType="serviceInterfaceName">
+            <Contents>gov.ca.dir.acct.cars.adf.service.appmodule.common.serviceinterface.CarsBCDataServicesAMService</Contents>
+         </StringRefAddr>
+         <StringRefAddr addrType="serviceEndpointProvider">
+            <Contents>ADFBC</Contents>
+         </StringRefAddr>
+         <StringRefAddr addrType="jndiName">
+            <Contents>CarsBCDataServicesAMServiceBean#gov.ca.dir.acct.cars.adf.service.appmodule.common.serviceinterface.CarsBCDataServicesAMService</Contents>
+         </StringRefAddr>
+         <StringRefAddr addrType="serviceSchemaName">
+            <Contents>CarsBCDataServicesAMService.xsd</Contents>
+         </StringRefAddr>
+         <StringRefAddr addrType="serviceSchemaLocation">
+            <Contents>gov/ca/dir/acct/cars/adf/service/appmodule/common/serviceinterface/</Contents>
+         </StringRefAddr>
+      </RefAddresses>
+   </Reference>
+   <Reference name="{/gov/ca/dir/acct/cars/adf/service/appmodule/common/}CarsBCLoggingServicesAMService" className="oracle.jbo.client.svc.Service" xmlns="">
+      <Factory className="oracle.jbo.client.svc.ServiceFactory"/>
+      <RefAddresses>
+         <StringRefAddr addrType="serviceInterfaceName">
+            <Contents>gov.ca.dir.acct.cars.adf.service.appmodule.common.serviceinterface.CarsBCLoggingServicesAMService</Contents>
+         </StringRefAddr>
+         <StringRefAddr addrType="serviceEndpointProvider">
+            <Contents>ADFBC</Contents>
+         </StringRefAddr>
+         <StringRefAddr addrType="jndiName">
+            <Contents>CarsBCLoggingServicesAMServiceBean#gov.ca.dir.acct.cars.adf.service.appmodule.common.serviceinterface.CarsBCLoggingServicesAMService</Contents>
+         </StringRefAddr>
+         <StringRefAddr addrType="serviceSchemaName">
+            <Contents>CarsBCLoggingServicesAMService.xsd</Contents>
+         </StringRefAddr>
+         <StringRefAddr addrType="serviceSchemaLocation">
+            <Contents>gov/ca/dir/acct/cars/adf/service/appmodule/common/serviceinterface/</Contents>
+         </StringRefAddr>
+      </RefAddresses>
+   </Reference>
+   <Reference name="{/gov/ca/dir/acct/cars/adf/service/appmodule/common/}CarsBCLookupServicesAMService" className="oracle.jbo.client.svc.Service" xmlns="">
+      <Factory className="oracle.jbo.client.svc.ServiceFactory"/>
+      <RefAddresses>
+         <StringRefAddr addrType="serviceInterfaceName">
+            <Contents>gov.ca.dir.acct.cars.adf.service.appmodule.common.serviceinterface.CarsBCLookupServicesAMService</Contents>
+         </StringRefAddr>
+         <StringRefAddr addrType="serviceEndpointProvider">
+            <Contents>ADFBC</Contents>
+         </StringRefAddr>
+         <StringRefAddr addrType="jndiName">
+            <Contents>CarsBCLookupServicesAMServiceBean#gov.ca.dir.acct.cars.adf.service.appmodule.common.serviceinterface.CarsBCLookupServicesAMService</Contents>
+         </StringRefAddr>
+         <StringRefAddr addrType="serviceSchemaName">
+            <Contents>CarsBCLookupServicesAMService.xsd</Contents>
+         </StringRefAddr>
+         <StringRefAddr addrType="serviceSchemaLocation">
+            <Contents>gov/ca/dir/acct/cars/adf/service/appmodule/common/serviceinterface/</Contents>
+         </StringRefAddr>
+      </RefAddresses>
+   </Reference>
+</References>

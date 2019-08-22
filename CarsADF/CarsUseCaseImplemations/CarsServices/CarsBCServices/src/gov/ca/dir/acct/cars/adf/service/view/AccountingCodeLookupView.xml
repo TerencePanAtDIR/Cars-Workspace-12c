@@ -1,0 +1,474 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="AccountingCodeLookupView"
+  Version="11.1.1.64.93"
+  InheritPersonalization="true"
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  RowClass="gov.ca.dir.acct.cars.adf.common.code.ViewRowImpl"
+  ComponentClass="gov.ca.dir.acct.cars.adf.common.code.ViewObjectImpl"
+  PageIterMode="Full"
+  UseGlueCode="false"
+  SdoGen="true"
+  SdoName="gov.ca.dir.acct.cars.adf.service.view.common.AccountingCodeLookupViewSDO"
+  SdoNameSpace="/gov/ca/dir/acct/cars/adf/service/view/common/">
+  <DesignTime>
+    <Attr Name="_isExpertMode" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="gov.ca.dir.acct.cars.adf.service.view.AccountingCodeLookupView_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <Variable
+    Name="varIndexCode"
+    Kind="viewcriteria"
+    Type="java.lang.String"/>
+  <Variable
+    Name="varEventTypeCode"
+    Kind="viewcriteria"
+    Type="java.lang.String"/>
+  <Variable
+    Name="varRevenueSourceCode"
+    Kind="viewcriteria"
+    Type="java.lang.String"/>
+  <Variable
+    Name="varTrasactionCodeOrder"
+    Kind="viewcriteria"
+    Type="java.lang.String"/>
+  <Variable
+    Name="varProgramUnitCode"
+    Kind="viewcriteria"
+    Type="java.lang.String"/>
+  <Variable
+    Name="varEventTypeId"
+    Kind="viewcriteria"
+    Type="java.lang.String"/>
+  <Variable
+    Name="varAgencySourceCode"
+    Kind="viewcriteria"
+    Type="java.lang.String"/>
+  <Variable
+    Name="varTransactionCode"
+    Kind="viewcriteria"
+    Type="java.lang.String"/>
+  <Variable
+    Name="varFund"
+    Kind="viewcriteria"
+    Type="java.lang.String"/>
+  <Variable
+    Name="varFiscalPeriodId"
+    Kind="viewcriteria"
+    Type="java.lang.String"/>
+  <SQLQuery>
+    <![CDATA[SELECT DISTINCT AccountingCode.ACCOUNTING_CODE_ID, 
+       AccountingCode.AGENCY_SOURCE_CODE, 
+       AccountingCode.REVENUE_SOURCE_CODE, 
+       AccountingCode.INDEX_CODE, 
+       AcctgEntryEventAssocRule.ACCOUNTING_CODE_ID AS ACCOUNTING_CODE_ID1, 
+       AcctgEntryEventAssocRule.ACCTG_ENTRY_TYPE_ID, 
+       EventType.EVENT_TYPE_CODE, 
+       EventType.EVENT_TYPE_ID, 
+       AcctgEntryEventAssocRule.EVENT_TYPE_ID AS EVENT_TYPE_ID1, 
+       EventType.PROGRAM_UNIT_CODE, 
+       AccountingEntryType.ACCTG_TRANSACT_CODE, 
+       AccountingEntryType.ACCTG_ENTRY_TYPE_ID AS ACCTG_ENTRY_TYPE_ID1, 
+       AcctgEntryEventAssocRule.TRANSACTION_CODE_ORDER, 
+       FundAllocation.PCA_CODE AS PCA_CODE1, 
+       FundAllocation.FUND_ALLOCATION_ID, 
+       Fund.FUND AS FUND1, 
+       Fund.FUND_ID,
+       Fund.FISCAL_PERIOD_ID AS FISCALPERIODID1,
+       AcctgEntryEventAssocRule.ENTRY_REASON_ID
+FROM ACCOUNTING_CODE AccountingCode, 
+     ACCTG_ENTRY_EVENT_ASSOC_RULE AcctgEntryEventAssocRule, 
+     AGENCY_SOURCE ASR, 
+     REVENUE_SOURCE_CODE RSC, 
+     EVENT_TYPE EventType, 
+     ACCOUNTING_ENTRY_TYPE AccountingEntryType, 
+     FUND_ALLOCATION FundAllocation, 
+     FUND Fund
+WHERE ((((AccountingCode.ACCOUNTING_CODE_ID = AcctgEntryEventAssocRule.ACCOUNTING_CODE_ID) AND 
+         (AcctgEntryEventAssocRule.EVENT_TYPE_ID = EventType.EVENT_TYPE_ID)) AND 
+         (AcctgEntryEventAssocRule.ACCTG_ENTRY_TYPE_ID = AccountingEntryType.ACCTG_ENTRY_TYPE_ID)) AND 
+         (AccountingCode.FUND_ALLOCATION_ID = FundAllocation.FUND_ALLOCATION_ID)) AND 
+      (FundAllocation.FUND_TO_ID = Fund.FUND_ID)
+    AND ((ACCOUNTINGCODE.AGENCY_SOURCE_CODE  =   ASR.AGENCY_SOURCE_CODE ) AND (ASR.EFFECTIVE_END_DATE IS NULL ))
+    AND ((ACCOUNTINGCODE.REVENUE_SOURCE_CODE =  RSC.REVENUE_SOURCE_CODE ) AND (RSC.EFFECTIVE_END_DATE IS NULL ))]]>
+  </SQLQuery>
+  <EntityUsage
+    Name="AccountingCode"
+    Entity="gov.ca.dir.acct.cars.adf.common.model.entity.AccountingCode"/>
+  <EntityUsage
+    Name="AcctgEntryEventAssocRule"
+    Entity="gov.ca.dir.acct.cars.adf.common.model.entity.AcctgEntryEventAssocRule"
+    Association="gov.ca.dir.acct.cars.adf.common.model.entity.AgceAearFkAssoc"
+    AssociationEnd="gov.ca.dir.acct.cars.adf.common.model.entity.AgceAearFkAssoc.AcctgEntryEventAssocRule"
+    SourceUsage="gov.ca.dir.acct.cars.adf.service.view.AccountingCodeLookupView.AccountingCode"
+    ReadOnly="true"
+    Reference="true"
+    DeleteParticipant="false"
+    JoinType="INNER JOIN">
+    <DesignTime>
+      <AttrArray Name="_srcAttributes">
+        <Item
+          Value="gov.ca.dir.acct.cars.adf.common.model.entity.AccountingCode.AccountingCodeId"/>
+      </AttrArray>
+      <AttrArray Name="_dstAttributes">
+        <Item
+          Value="gov.ca.dir.acct.cars.adf.common.model.entity.AcctgEntryEventAssocRule.AccountingCodeId"/>
+      </AttrArray>
+    </DesignTime>
+  </EntityUsage>
+  <EntityUsage
+    Name="EventType"
+    Entity="gov.ca.dir.acct.cars.adf.common.model.entity.EventType"
+    Association="gov.ca.dir.acct.cars.adf.common.model.entity.EtteAearFkAssoc"
+    AssociationEnd="gov.ca.dir.acct.cars.adf.common.model.entity.EtteAearFkAssoc.EventType"
+    SourceUsage="gov.ca.dir.acct.cars.adf.service.view.AccountingCodeLookupView.AcctgEntryEventAssocRule"
+    ReadOnly="true"
+    Reference="true"
+    DeleteParticipant="false"
+    JoinType="INNER JOIN">
+    <DesignTime>
+      <AttrArray Name="_srcAttributes">
+        <Item
+          Value="gov.ca.dir.acct.cars.adf.common.model.entity.AcctgEntryEventAssocRule.EventTypeId"/>
+      </AttrArray>
+      <AttrArray Name="_dstAttributes">
+        <Item
+          Value="gov.ca.dir.acct.cars.adf.common.model.entity.EventType.EventTypeId"/>
+      </AttrArray>
+    </DesignTime>
+  </EntityUsage>
+  <EntityUsage
+    Name="AccountingEntryType"
+    Entity="gov.ca.dir.acct.cars.adf.common.model.entity.AccountingEntryType"
+    Association="gov.ca.dir.acct.cars.adf.common.model.entity.AeteAearFkAssoc"
+    AssociationEnd="gov.ca.dir.acct.cars.adf.common.model.entity.AeteAearFkAssoc.AccountingEntryType"
+    SourceUsage="gov.ca.dir.acct.cars.adf.service.view.AccountingCodeLookupView.AcctgEntryEventAssocRule"
+    ReadOnly="true"
+    Reference="true"
+    DeleteParticipant="false"
+    JoinType="INNER JOIN">
+    <DesignTime>
+      <AttrArray Name="_srcAttributes">
+        <Item
+          Value="gov.ca.dir.acct.cars.adf.common.model.entity.AcctgEntryEventAssocRule.AcctgEntryTypeId"/>
+      </AttrArray>
+      <AttrArray Name="_dstAttributes">
+        <Item
+          Value="gov.ca.dir.acct.cars.adf.common.model.entity.AccountingEntryType.AcctgEntryTypeId"/>
+      </AttrArray>
+    </DesignTime>
+  </EntityUsage>
+  <EntityUsage
+    Name="FundAllocation"
+    Entity="gov.ca.dir.acct.cars.adf.common.model.entity.FundAllocation"
+    Association="gov.ca.dir.acct.cars.adf.common.model.entity.FdanAgceFkAssoc"
+    AssociationEnd="gov.ca.dir.acct.cars.adf.common.model.entity.FdanAgceFkAssoc.FundAllocation"
+    SourceUsage="gov.ca.dir.acct.cars.adf.service.view.AccountingCodeLookupView.AccountingCode"
+    ReadOnly="true"
+    Reference="true"
+    DeleteParticipant="false"
+    JoinType="INNER JOIN">
+    <DesignTime>
+      <AttrArray Name="_srcAttributes">
+        <Item
+          Value="gov.ca.dir.acct.cars.adf.common.model.entity.AccountingCode.FundAllocationId"/>
+      </AttrArray>
+      <AttrArray Name="_dstAttributes">
+        <Item
+          Value="gov.ca.dir.acct.cars.adf.common.model.entity.FundAllocation.FundAllocationId"/>
+      </AttrArray>
+    </DesignTime>
+  </EntityUsage>
+  <EntityUsage
+    Name="Fund"
+    Entity="gov.ca.dir.acct.cars.adf.common.model.entity.Fund"
+    Association="gov.ca.dir.acct.cars.adf.common.model.entity.FundFdanToFkAssoc"
+    AssociationEnd="gov.ca.dir.acct.cars.adf.common.model.entity.FundFdanToFkAssoc.Fund1"
+    SourceUsage="gov.ca.dir.acct.cars.adf.service.view.AccountingCodeLookupView.FundAllocation"
+    ReadOnly="true"
+    Reference="true"
+    DeleteParticipant="false"
+    JoinType="INNER JOIN">
+    <DesignTime>
+      <AttrArray Name="_srcAttributes">
+        <Item
+          Value="gov.ca.dir.acct.cars.adf.common.model.entity.FundAllocation.FundToId"/>
+      </AttrArray>
+      <AttrArray Name="_dstAttributes">
+        <Item Value="gov.ca.dir.acct.cars.adf.common.model.entity.Fund.FundId"/>
+      </AttrArray>
+    </DesignTime>
+  </EntityUsage>
+  <EntityUsage
+    Name="AgencySource"
+    Entity="gov.ca.dir.acct.cars.adf.common.model.entity.AgencySource"
+    SourceUsage="gov.ca.dir.acct.cars.adf.service.view.AccountingCodeLookupView.Fund"
+    ReadOnly="true"
+    Reference="true"
+    DeleteParticipant="false"/>
+  <EntityUsage
+    Name="RevenueSourceCode1"
+    Entity="gov.ca.dir.acct.cars.adf.common.model.entity.RevenueSourceCode"
+    SourceUsage="gov.ca.dir.acct.cars.adf.service.view.AccountingCodeLookupView.AgencySource"
+    ReadOnly="true"
+    Reference="true"
+    DeleteParticipant="false"/>
+  <ViewAttribute
+    Name="AccountingCodeId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="AccountingCodeId"
+    EntityUsage="AccountingCode"
+    AliasName="ACCOUNTING_CODE_ID"/>
+  <ViewAttribute
+    Name="AgencySourceCode"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="AgencySourceCode"
+    EntityUsage="AccountingCode"
+    AliasName="AGENCY_SOURCE_CODE"/>
+  <ViewAttribute
+    Name="RevenueSourceCode"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="RevenueSourceCode"
+    EntityUsage="AccountingCode"
+    AliasName="REVENUE_SOURCE_CODE"/>
+  <ViewAttribute
+    Name="IndexCode"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="IndexCode"
+    EntityUsage="AccountingCode"
+    AliasName="INDEX_CODE"/>
+  <ViewAttribute
+    Name="AccountingCodeId1"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="AccountingCodeId"
+    EntityUsage="AcctgEntryEventAssocRule"
+    AliasName="ACCOUNTING_CODE_ID1"/>
+  <ViewAttribute
+    Name="AcctgEntryTypeId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="AcctgEntryTypeId"
+    EntityUsage="AcctgEntryEventAssocRule"
+    AliasName="ACCTG_ENTRY_TYPE_ID"/>
+  <ViewAttribute
+    Name="EventTypeCode"
+    IsUnique="true"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="EventTypeCode"
+    EntityUsage="EventType"
+    AliasName="EVENT_TYPE_CODE"/>
+  <ViewAttribute
+    Name="EventTypeId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="EventTypeId"
+    EntityUsage="EventType"
+    AliasName="EVENT_TYPE_ID"/>
+  <ViewAttribute
+    Name="EventTypeId1"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="EventTypeId"
+    EntityUsage="AcctgEntryEventAssocRule"
+    AliasName="EVENT_TYPE_ID1"/>
+  <ViewAttribute
+    Name="ProgramUnitCode"
+    IsUnique="true"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="ProgramUnitCode"
+    EntityUsage="EventType"
+    AliasName="PROGRAM_UNIT_CODE"/>
+  <ViewAttribute
+    Name="AcctgTransactCode"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="AcctgTransactCode"
+    EntityUsage="AccountingEntryType"
+    AliasName="ACCTG_TRANSACT_CODE"/>
+  <ViewAttribute
+    Name="AcctgEntryTypeId1"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="AcctgEntryTypeId"
+    EntityUsage="AccountingEntryType"
+    AliasName="ACCTG_ENTRY_TYPE_ID1"/>
+  <ViewAttribute
+    Name="TransactionCodeOrder"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="TransactionCodeOrder"
+    EntityUsage="AcctgEntryEventAssocRule"
+    AliasName="TRANSACTION_CODE_ORDER"/>
+  <ViewAttribute
+    Name="PcaCode1"
+    PrecisionRule="true"
+    EntityAttrName="PcaCode"
+    EntityUsage="FundAllocation"
+    AliasName="PCA_CODE1"/>
+  <ViewAttribute
+    Name="FundAllocationId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="FundAllocationId"
+    EntityUsage="FundAllocation"
+    AliasName="FUND_ALLOCATION_ID"/>
+  <ViewAttribute
+    Name="Fund1"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Fund"
+    EntityUsage="Fund"
+    AliasName="FUND1"/>
+  <ViewAttribute
+    Name="FundId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="FundId"
+    EntityUsage="Fund"
+    AliasName="FUND_ID"/>
+  <ViewAttribute
+    Name="FiscalPeriodId1"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="FiscalPeriodId"
+    EntityUsage="Fund"
+    AliasName="FISCALPERIODID1"
+    IsUpdateable="false"/>
+  <ViewAttribute
+    Name="EntryReasonId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="ENTRY_REASON_ID"
+    Expression="ENTRY_REASON_ID"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewCriteria
+    Name="AccountingCodeLookupViewCriteria"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.service.view.AccountingCodeLookupView"
+    Conjunction="AND">
+    <Properties>
+      <CustomProperties>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="vcrow3"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="AgencySourceCode"
+        ViewAttribute="AgencySourceCode"
+        Operator="="
+        Conjunction="AND"
+        Value=":varAgencySourceCode"
+        IsBindVarValue="true"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="RevenueSourceCode"
+        ViewAttribute="RevenueSourceCode"
+        Operator="="
+        Conjunction="AND"
+        Value=":varRevenueSourceCode"
+        IsBindVarValue="true"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="IndexCode"
+        ViewAttribute="IndexCode"
+        Operator="="
+        Conjunction="AND"
+        Value=":varIndexCode"
+        IsBindVarValue="true"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="EventTypeCode"
+        ViewAttribute="EventTypeCode"
+        Operator="="
+        Conjunction="AND"
+        Value=":varEventTypeCode"
+        IsBindVarValue="true"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="EventTypeId"
+        ViewAttribute="EventTypeId"
+        Operator="="
+        Conjunction="AND"
+        Value=":varEventTypeId"
+        IsBindVarValue="true"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="ProgramUnitCode"
+        ViewAttribute="ProgramUnitCode"
+        Operator="="
+        Conjunction="AND"
+        Value=":varProgramUnitCode"
+        IsBindVarValue="true"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="AcctgTransactCode"
+        ViewAttribute="AcctgTransactCode"
+        Operator="="
+        Conjunction="AND"
+        Value=":varTransactionCode"
+        IsBindVarValue="true"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="Fund1"
+        ViewAttribute="Fund1"
+        Operator="="
+        Conjunction="AND"
+        Value=":varFund"
+        IsBindVarValue="true"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="FiscalPeriodId1"
+        ViewAttribute="FiscalPeriodId1"
+        Operator="="
+        Conjunction="AND"
+        Value=":varFiscalPeriodId"
+        IsBindVarValue="true"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
+  <AttrArray Name="KeyAttributes">
+    <Item Value="AccountingCodeId"/>
+    <Item Value="AcctgEntryTypeId1"/>
+  </AttrArray>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="gov.ca.dir.acct.cars.adf.service.CarsBCServicesBundle"/>
+  </ResourceBundle>
+</ViewObject>

@@ -1,0 +1,9 @@
+The following Synchronization Actions were performed successfully:
+
+Entity :Event
+  Set transient, as column missing for attribute ReferenceDocument1
+  Set transient, as column missing for attribute CurrentDocument1
+  Set transient, as column missing for attribute ArRootDocument1
+  Create Key for Constraint: EVENT_CURRENT_DOCUMENT_UK
+Entity :AccountingReceivableStatus
+  Set transient, as column missing for attribute ArRootDocument1

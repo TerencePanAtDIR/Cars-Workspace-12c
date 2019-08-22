@@ -1,0 +1,42 @@
+<xsd:schema xmlns:sdoJava="commonj.sdo/java" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="/gov/ca/dir/acct/cars/adf/service/view/common/"
+     xmlns="/gov/ca/dir/acct/cars/adf/service/view/common/" elementFormDefault="qualified"
+     sdoJava:package="gov.ca.dir.acct.cars.adf.service.view.common">
+    <xsd:annotation>
+        <xsd:documentation>
+            <name>Accounting Code Lookup View</name>
+        </xsd:documentation>
+    </xsd:annotation>
+    <xsd:import schemaLocation="classpath:/xml/sdoJava.xsd" namespace="commonj.sdo/java"/>
+    <xsd:complexType name="AccountingCodeLookupViewSDO">
+        <xsd:annotation>
+            <xsd:appinfo source="http://xmlns.oracle.com/adf/svc/metadata/">
+                <key xmlns="http://xmlns.oracle.com/adf/svc/metadata/">
+                    <attribute>AccountingCodeId</attribute>
+                    <attribute>AcctgEntryTypeId1</attribute>
+                </key>
+            </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="AccountingCodeId" type="xsd:decimal" minOccurs="0"/>
+            <xsd:element name="AgencySourceCode" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="RevenueSourceCode" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="IndexCode" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="AccountingCodeId1" type="xsd:decimal" minOccurs="0"/>
+            <xsd:element name="AcctgEntryTypeId" type="xsd:decimal" minOccurs="0"/>
+            <xsd:element name="EventTypeCode" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="EventTypeId" type="xsd:decimal" minOccurs="0"/>
+            <xsd:element name="EventTypeId1" type="xsd:decimal" minOccurs="0"/>
+            <xsd:element name="ProgramUnitCode" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="AcctgTransactCode" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="AcctgEntryTypeId1" type="xsd:decimal" minOccurs="0"/>
+            <xsd:element name="TransactionCodeOrder" type="xsd:decimal" minOccurs="0"/>
+            <xsd:element name="PcaCode1" type="xsd:string" minOccurs="0" nillable="true"/>
+            <xsd:element name="FundAllocationId" type="xsd:decimal" minOccurs="0"/>
+            <xsd:element name="Fund1" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="FundId" type="xsd:decimal" minOccurs="0"/>
+            <xsd:element name="FiscalPeriodId1" type="xsd:decimal" minOccurs="0"/>
+            <xsd:element name="EntryReasonId" type="xsd:decimal" minOccurs="0" nillable="true"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="accountingCodeLookupViewSDO" type="AccountingCodeLookupViewSDO"/>
+</xsd:schema>

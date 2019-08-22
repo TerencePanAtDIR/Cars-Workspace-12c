@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.64.93" id="ReverseCarsEventsPageDef"
+                Package="gov.ca.dir.acct.cars.adf.usecase030.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="EventView1" RangeSize="25"
+              DataControl="ReverseAMDataControl" id="EventView1Iterator"/>
+    <searchRegion Criteria="EventViewCriteria"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="EventView1Iterator" id="EventViewCriteriaQuery"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="EventView1Iterator" id="EventView1">
+      <nodeDefinition DefName="gov.ca.dir.acct.cars.adf.usecase030.model.view.EventView"
+                      Name="EventView10">
+        <AttrNames>
+          <Item Value="ArRootDocument"/>
+          <Item Value="EventDate"/>
+          <Item Value="CurrentDocument"/>
+          <Item Value="ReferenceDocument"/>
+          <Item Value="DataSourceCode"/>
+          <Item Value="EventTypeCode"/>
+          <Item Value="ProgramUnitCode"/>
+          <Item Value="EventId"/>
+          <Item Value="EventTypeId"/>
+          <Item Value="EventId1"/>
+          <Item Value="CreatedBy"/>
+          <Item Value="CreatedDate"/>
+          <Item Value="FsProcessStatus"/>
+          <Item Value="IsSentToCalstars"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="EventView1Iterator" id="DeleteEvent"
+            InstanceName="ReverseAMDataControl.EventView1"
+            DataControl="ReverseAMDataControl" RequiresUpdateModel="false"
+            Action="removeCurrentRow"/>
+    <attributeValues IterBinding="EventView1Iterator" id="CurrentDocument">
+      <AttrNames>
+        <Item Value="CurrentDocument"/>
+      </AttrNames>
+    </attributeValues>
+    <action id="Commit" DataControl="ReverseAMDataControl"
+            RequiresUpdateModel="true" Action="commitTransaction"/>
+  </bindings>
+</pageDefinition>

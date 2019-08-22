@@ -1,0 +1,201 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:pageTemplate viewId="/use-case-template.jspx" id="pt1">
+    <f:facet name="main">
+      <af:panelSplitter id="ps1" splitterPosition="42" orientation="vertical">
+        <f:facet name="first">
+          <af:panelGroupLayout layout="scroll"
+                               xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                               id="pgl1">
+            <af:panelHeader text="Invoice Information" id="ph1">
+                  <af:panelGroupLayout id="pgl2" layout="horizontal">
+                    <af:panelLabelAndMessage id="plam1" label="Invoice #: "
+                                             labelStyle="color:Black; font-weight:bold; text-align:top;">
+                      <af:outputText value="#{bindings.ArRootDocument.inputValue}"
+                                     id="ot14"
+                                     inlineStyle="color:Maroon; font-weight:bold;"/>
+                    </af:panelLabelAndMessage>
+                    <af:spacer width="10" height="10" id="s1"/>
+                    <af:panelLabelAndMessage label="Responsible Party: "
+                                             id="plam2"
+                                             labelStyle="color:Black; font-weight:bold; text-align:top;">
+                      <af:outputText value="#{bindings.LegalName.inputValue}"
+                                     id="outputText13"/>
+                    </af:panelLabelAndMessage>
+                    <af:spacer width="10" height="10" id="s2"/>
+                    <af:panelLabelAndMessage label="Balance: " id="plam3"
+                                             labelStyle="color:Black; font-weight:bold; text-align:top;">
+                  <af:commandLink id="commandLink1" inlineStyle="color:Black;"
+                                  text="#{bindings.ArBalance.inputValue}"
+                                  action="ArGLBalance" useWindow="true"
+                                  windowEmbedStyle="inlineDocument">
+                    <af:setPropertyListener to="#{pageFlowScope.ArRootDocumentBalance}"
+                                            from="#{bindings.ArRootDocument.inputValue}"
+                                            type="action"/>
+                  </af:commandLink>
+                </af:panelLabelAndMessage>
+                    <af:spacer width="10" height="10" id="s4"/>
+                    <af:panelLabelAndMessage label="Issuance Date: " id="plam4"
+                                             labelStyle="color:Black; font-weight:bold; text-align:top;">
+                      <af:outputText value="#{bindings.IssueDate.inputValue}"
+                                     id="ot21" inlineStyle="color:Black;"/>
+                    </af:panelLabelAndMessage>
+                  </af:panelGroupLayout>
+              <f:facet name="context">
+                <af:commandButton text="Back" id="cb1"
+                                  action="backToEventsList"/>
+              </f:facet>
+            </af:panelHeader>
+          </af:panelGroupLayout>
+        </f:facet>
+        <f:facet name="second">
+          <af:panelSplitter id="ps2" orientation="vertical"
+                            splitterPosition="176">
+            <f:facet name="first">
+              <af:panelHeader text="Transaction Details" id="ph2"
+                              inlineStyle="color:Black;">
+                <af:panelFormLayout id="pfl2" maxColumns="3" rows="3">
+                  <f:facet name="footer">
+                    <af:panelGroupLayout id="pgl3" inlineStyle="width:600px;"
+                                         layout="scroll">
+                      <af:table value="#{bindings.NoteEventVO1.collectionModel}"
+                                var="row"
+                                rows="#{bindings.NoteEventVO1.rangeSize}"
+                                emptyText="#{bindings.NoteEventVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                fetchSize="#{bindings.NoteEventVO1.rangeSize}"
+                                rowBandingInterval="0" id="t1" width="596"
+                                inlineStyle="height:100.0px;">
+                        <af:column sortProperty="#{bindings.NoteEventVO1.hints.NoteTypeCode.name}"
+                                   sortable="false"
+                                   headerText="#{bindings.NoteEventVO1.hints.NoteTypeCode.label}"
+                                   id="c8">
+                          <af:outputText value="#{row.NoteTypeCode}" id="ot26"/>
+                        </af:column>
+                        <af:column sortProperty="#{bindings.NoteEventVO1.hints.NoteText.name}"
+                                   sortable="false"
+                                   headerText="#{bindings.NoteEventVO1.hints.NoteText.label}"
+                                   id="c9" width="300">
+                          <af:outputText value="#{row.NoteText}" id="ot25"/>
+                        </af:column>
+                        <af:column sortProperty="#{bindings.NoteEventVO1.hints.CreatedBy.name}"
+                                   sortable="false"
+                                   headerText="#{bindings.NoteEventVO1.hints.CreatedBy.label}"
+                                   id="c7" width="80">
+                          <af:outputText value="#{row.CreatedBy}" id="ot28"/>
+                        </af:column>
+                        <af:column sortProperty="#{bindings.NoteEventVO1.hints.CreatedDate.name}"
+                                   sortable="false"
+                                   headerText="#{bindings.NoteEventVO1.hints.CreatedDate.label}"
+                                   id="c10" width="80">
+                          <af:outputText value="#{row.CreatedDate}" id="ot27">
+                            <af:convertDateTime pattern="#{bindings.NoteEventVO1.hints.CreatedDate.format}"/>
+                          </af:outputText>
+                        </af:column>
+                      </af:table>
+                    </af:panelGroupLayout>
+                  </f:facet>
+                  <af:outputText id="outputText2"
+                                 value="Bill Type Code: #{pageFlowScope.varBillTypeCode}"
+                                 rendered="#{not empty pageFlowScope.varBillTypeCode}"/>
+                  <af:outputText id="ot3"
+                                 value="Receipt Type Code: #{pageFlowScope.varReceiptTypeCode}"
+                                 rendered="#{not empty pageFlowScope.varReceiptTypeCode}"/>
+                  <af:outputText id="outputText3"
+                                 value="Deposit Slip #: #{pageFlowScope.varDepositSlip}"
+                                 rendered="#{not empty pageFlowScope.varDepositSlip}"/>
+                  <af:outputText id="outputText4"
+                                 value="Deposit Date: #{pageFlowScope.varDepositDate}"
+                                 rendered="#{not empty pageFlowScope.varDepositDate}"/>
+                  <af:outputText id="outputText5"
+                                 value="Receipt Control #: #{pageFlowScope.varReceiptControl}"
+                                 rendered="#{not empty pageFlowScope.varReceiptControl}"/>
+                  <af:outputText id="outputText6"
+                                 value="Receipt Date: #{pageFlowScope.varReceiptDate}"
+                                 rendered="#{not empty pageFlowScope.varReceiptDate}"/>
+                  <af:outputText id="outputText7"
+                                 value="Receivable Establish Date: #{pageFlowScope.varReceivableEstablishDate}"
+                                 rendered="#{not empty pageFlowScope.varReceivableEstablishDate}"/>
+                  <af:outputText id="outputText8"
+                                 value="Receivable Due Date: #{pageFlowScope.varReceivableDueDate}"
+                                 rendered="#{not empty pageFlowScope.varReceivableDueDate}"/>
+                  <af:outputText id="outputText9"
+                                 value="Adjustment Type Code: #{pageFlowScope.varAdjustmentTypeCode}"
+                                 rendered="#{not empty pageFlowScope.varAdjustmentTypeCode}"/>
+                  <af:outputText id="outputText11"
+                                 value="Adjustment Date: #{pageFlowScope.varAdjustmentDate}"
+                                 rendered="#{not empty pageFlowScope.varAdjustmentTypeCode}"/>
+                  <af:outputText value="Other Transaction Date: #{pageFlowScope.varOtherTransactionDate}"
+                                 id="outputText1"
+                                 rendered="#{not empty pageFlowScope.varOtherTransactionDate}"/>
+                  <af:outputText value="Other Transaction Type Code: #{pageFlowScope.varOtherTransactTypeCode}"
+                                 id="outputText10"
+                                 rendered="#{not empty pageFlowScope.varOtherTransactTypeCode}"/>
+                   <af:outputText value="Offset Payment Code: #{pageFlowScope.varOffsetPaymentCode}"
+                                 id="outputText101"
+                                 rendered="#{not empty pageFlowScope.varOffsetPaymentCode}"/>
+                </af:panelFormLayout>
+              </af:panelHeader>
+            </f:facet>
+            <f:facet name="second">
+              <af:panelCollection id="pc1">
+                <af:treeTable value="#{bindings.ViewEventDetails2.treeModel}"
+                              var="node"
+                              selectionListener="#{bindings.ViewEventDetails2.treeModel.makeCurrent}"
+                              rowSelection="single" id="tt1"
+                              inlineStyle="color:Black;"
+                              initiallyExpanded="true">
+                  <f:facet name="nodeStamp">
+                    <af:column id="c1" headerText="TC Code" width="50">
+                      <af:outputText value="#{node.TcCode}" id="ot5"/>
+                    </af:column>
+                  </f:facet>
+                  <f:facet name="pathStamp">
+                    <af:outputText value="#{node}" id="ot4"/>
+                  </f:facet>
+                  <af:column id="c2" headerText="GL Acct" width="70">
+                    <af:outputText value="#{node.GlAcct}" id="ot23"/>
+                  </af:column>
+                  <af:column id="c3" headerText="Debit/Credit" width="80">
+                    <af:outputText value="#{node.EntryType}" id="ot7"/>
+                  </af:column>
+                  <af:column id="column1" headerText="Amount">
+                    <af:outputText value="#{node.Amount}" id="ot22"/>
+                  </af:column>
+                  <af:column id="c6" sortable="true" filterable="true"
+                             headerText="Cur Doc">
+                    <af:outputText value="#{node.CurrentDocumentNumber}"
+                                   id="ot17"/>
+                  </af:column>
+                  <af:column id="c5" sortable="true" filterable="true"
+                             headerText="Ref Doc">
+                    <af:outputText value="#{node.ReferenceDocumentNumber}"
+                                   id="ot24"/>
+                  </af:column>
+                  <af:column id="c11" headerText="Business Unit" width="50">
+                    <af:outputText value="#{node.BusinessUnit}" id="ot6"/>
+                  </af:column>
+                  <af:column id="column3" width="50" headerText="Index">
+                    <af:outputText value="#{node.IndexCode}" id="ot2"/>
+                  </af:column>
+                  <af:column id="column4" width="50" headerText="Revenue">
+                    <af:outputText value="#{node.RevenueSourceCode}" id="ot13"/>
+                  </af:column>
+                  <af:column id="column5" width="40" headerText="Agency">
+                    <af:outputText value="#{node.AgencySourceCode}"
+                                   id="outputText12"/>
+                  </af:column>
+                  <af:column id="c4" width="50" headerText="Fiscal Year">
+                    <af:outputText value="#{node.FiscalYearName}" id="ot1"/>
+                  </af:column>
+                </af:treeTable>
+              </af:panelCollection>
+            </f:facet>
+          </af:panelSplitter>
+        </f:facet>
+      </af:panelSplitter>
+    </f:facet>
+    <f:attribute name="title" value="Event Details"/>
+  </af:pageTemplate>
+</jsp:root>

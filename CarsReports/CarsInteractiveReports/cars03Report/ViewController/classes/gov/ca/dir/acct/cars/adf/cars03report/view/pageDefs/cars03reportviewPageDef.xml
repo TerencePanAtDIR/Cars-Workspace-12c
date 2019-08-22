@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.64.93" id="cars03reportviewPageDef"
+                Package="gov.ca.dir.acct.cars.adf.cars03report.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="cars03reportVO1" RangeSize="25"
+              DataControl="cars03reportAMDataControl"
+              id="cars03reportVO1Iterator"/>
+    <searchRegion Criteria="cars03reportVOCriteria"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="cars03reportVO1Iterator"
+                  id="cars03reportVOCriteriaQuery"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="cars03reportVO1Iterator" id="CurrentDate">
+      <AttrNames>
+        <Item Value="CurrentDate"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="cars03reportVO1Iterator" id="cars03reportVO1">
+      <nodeDefinition DefName="gov.ca.dir.acct.cars.adf.cars03report.model.view.cars03reportVO"
+                      Name="cars03reportVO10">
+        <AttrNames>
+          <Item Value="ArRootDocument"/>
+          <Item Value="EmployerName"/>
+          <Item Value="IssueDate"/>
+          <Item Value="IndexCode"/>
+          <Item Value="SetupDate"/>
+          <Item Value="AdjustmentDate"/>
+          <Item Value="CurrentBalance"/>
+          <Item Value="AdjustmentAmount"/>
+          <Item Value="EndingBalance"/>
+          <Item Value="PostingDate"/>
+          <Item Value="AmendType"/>
+          <Item Value="ProgramUnitCode"/>
+          <Item Value="CurrentDate"/>
+          <Item Value="AdjustmentCount"/>
+          <Item Value="AdjustmentAmountTotal"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="cars03reportVO1Iterator" id="AdjustmentCount">
+      <AttrNames>
+        <Item Value="AdjustmentCount"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="cars03reportVO1Iterator"
+                     id="AdjustmentAmountTotal">
+      <AttrNames>
+        <Item Value="AdjustmentAmountTotal"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

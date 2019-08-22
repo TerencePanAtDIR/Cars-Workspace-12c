@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewLink SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewLink
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="BhteBatcFkLink"
+  Version="11.1.1.64.93"
+  InheritPersonalization="true"
+  EntityAssociation="gov.ca.dir.acct.cars.adf.common.model.entity.BhteBatcFkAssoc">
+  <DesignTime>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <ViewLinkDefEnd
+    Name="BatchTypeView"
+    Cardinality="1"
+    Owner="gov.ca.dir.acct.cars.adf.common.model.view.BatchTypeView"
+    Source="true">
+    <DesignTime>
+      <Attr Name="_finderName" Value="BatchTypeView"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_minCardinality" Value="1"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="gov.ca.dir.acct.cars.adf.common.model.view.BatchTypeView.BatchTypeCode"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ViewLinkDefEnd
+    Name="BatchView"
+    Cardinality="-1"
+    Owner="gov.ca.dir.acct.cars.adf.common.model.view.BatchView">
+    <DesignTime>
+      <Attr Name="_finderName" Value="BatchView"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="gov.ca.dir.acct.cars.adf.common.model.view.BatchView.BatchTypeCode"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+</ViewLink>

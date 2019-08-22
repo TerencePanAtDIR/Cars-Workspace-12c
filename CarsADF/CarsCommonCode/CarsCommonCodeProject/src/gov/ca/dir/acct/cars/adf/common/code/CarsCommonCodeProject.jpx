@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE JboProject SYSTEM "jbo_03_01.dtd">
+<!---->
+<JboProject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="CarsCommonCodeProject"
+  Version="11.1.1.64.93"
+  SeparateXMLFiles="true"
+  PackageName="gov.ca.dir.acct.cars.adf.common.code">
+  <DesignTime>
+    <Attr Name="_jprName"
+      Value="../../../../../../../../../CarsCommonCodeProject.jpr"/>
+    <Attr Name="_NamedConnection" Value="mjovero_carsdev"/>
+    <Attr Name="_appModuleNames0"
+      Value="gov.ca.dir.acct.cars.adf.common.code.CarsCommonCodeAM"/>
+  </DesignTime>
+  <Containee
+    Name="code"
+    PackageName="gov.ca.dir.acct.cars.adf.common.code"
+    ObjectType="JboPackage">
+    <DesignTime>
+      <Attr Name="_AM" Value="true"/>
+    </DesignTime>
+  </Containee>
+</JboProject>

@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=windows-1252"/>
+  <af:pageTemplateDef var="attrs">
+    <af:panelStretchLayout id="pt_psl1" dimensionsFrom="parent"
+                           inlineStyle="background-color:Window;"
+                           topHeight="25px">
+      <f:facet name="bottom"/>
+      <f:facet name="center">
+        <af:facetRef facetName="main"/>
+      </f:facet>
+      <f:facet name="start"/>
+      <f:facet name="end"/>
+      <f:facet name="top">
+        <af:panelHeader text="#{attrs.title}" id="pt_ph1">
+          <f:facet name="context"/>
+          <f:facet name="menuBar"/>
+          <f:facet name="toolbar">
+            <af:toolbar id="pt_t1">
+              <af:commandToolbarButton id="pt_ctb3"
+                                       icon="/arrow_refresh_sml.png"
+                                       actionListener="#{ToolsBean.refreshCurrentPage}"
+                                       immediate="true"/>
+              <af:commandToolbarButton id="pt_ctb2" icon="/printer_sml.png">
+                <af:showPrintablePageBehavior/>
+              </af:commandToolbarButton>
+              <af:commandToolbarButton
+                                       id="pt_ctb1"
+                                       actionListener="#{ToolsBean.formatEmailPage}"
+                                       icon="/email_sml.png"/>
+            </af:toolbar>
+          </f:facet>
+          <f:facet name="legend"/>
+          <f:facet name="info"/>
+        </af:panelHeader>
+      </f:facet>
+    </af:panelStretchLayout>
+    <af:xmlContent>
+      <component xmlns="http://xmlns.oracle.com/adf/faces/rich/component">
+        <display-name>
+          use-case-template
+        </display-name>
+        <facet>
+          <facet-name>
+            main
+          </facet-name>
+        </facet>
+        <attribute>
+          <attribute-name>
+            title
+          </attribute-name>
+          <attribute-class>
+            java.lang.String
+          </attribute-class>
+          <default-value>
+            task
+          </default-value>
+        </attribute>
+        <attribute>
+          <attribute-name>
+            copyright
+          </attribute-name>
+          <attribute-class>
+            java.lang.String
+          </attribute-class>
+        </attribute>
+      </component>
+    </af:xmlContent>
+  </af:pageTemplateDef>
+</jsp:root>

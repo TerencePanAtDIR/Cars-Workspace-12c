@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="FsEntryType"
+  Version="11.1.1.64.93"
+  InheritPersonalization="true"
+  DBObjectType="table"
+  DBObjectName="FS_ENTRY_TYPE"
+  AliasName="FsEntryType"
+  BindingStyle="OracleName"
+  UseGlueCode="false"
+  RowClass="gov.ca.dir.acct.cars.adf.common.code.EntityImpl">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access"/>
+    <AttrArray Name="_publishEvents"/>
+  </DesignTime>
+  <Attribute
+    Name="EntryTypeId"
+    IsNotNull="true"
+    ColumnName="ENTRY_TYPE_ID"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="FS_ENTRY_TYPE"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ProgramUnitCode"
+    IsNotNull="true"
+    Precision="25"
+    ColumnName="PROGRAM_UNIT_CODE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="FS_ENTRY_TYPE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="25"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="EntryTypeCode"
+    IsNotNull="true"
+    Precision="15"
+    ColumnName="ENTRY_TYPE_CODE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="FS_ENTRY_TYPE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="EntryTypeName"
+    IsNotNull="true"
+    Precision="50"
+    ColumnName="ENTRY_TYPE_NAME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="FS_ENTRY_TYPE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="50"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Description"
+    IsNotNull="true"
+    Precision="500"
+    ColumnName="DESCRIPTION"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="FS_ENTRY_TYPE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="500"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="EffectiveStartDate"
+    IsNotNull="true"
+    ColumnName="EFFECTIVE_START_DATE"
+    SQLType="TIMESTAMP"
+    Type="java.sql.Date"
+    ColumnType="DATE"
+    TableName="FS_ENTRY_TYPE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="EffectiveEndDate"
+    ColumnName="EFFECTIVE_END_DATE"
+    SQLType="TIMESTAMP"
+    Type="java.sql.Date"
+    ColumnType="DATE"
+    TableName="FS_ENTRY_TYPE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="DataSourceCode"
+    Precision="25"
+    ColumnName="DATA_SOURCE_CODE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="FS_ENTRY_TYPE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="25"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="CreatedBy"
+    IsNotNull="true"
+    Precision="25"
+    ColumnName="CREATED_BY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="FS_ENTRY_TYPE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="25"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="CreatedDate"
+    IsNotNull="true"
+    ColumnName="CREATED_DATE"
+    SQLType="TIMESTAMP"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="FS_ENTRY_TYPE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ModifiedBy"
+    Precision="25"
+    ColumnName="MODIFIED_BY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="FS_ENTRY_TYPE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="25"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ModifiedDate"
+    ColumnName="MODIFIED_DATE"
+    SQLType="TIMESTAMP"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="FS_ENTRY_TYPE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+  </Attribute>
+  <AccessorAttribute
+    Name="FsEntryReasonType"
+    Association="gov.ca.dir.acct.cars.adf.common.model.entity.FsetFertFkAssoc"
+    AssociationEnd="gov.ca.dir.acct.cars.adf.common.model.entity.FsetFertFkAssoc.FsEntryReasonType"
+    AssociationOtherEnd="gov.ca.dir.acct.cars.adf.common.model.entity.FsetFertFkAssoc.FsEntryType"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <Key
+    Name="FsEntryTypePk"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="FS_ENTRY_TYPE_PK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="gov.ca.dir.acct.cars.adf.common.model.entity.FsEntryType.EntryTypeId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC00160365">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C00160365"/>
+      <Attr Name="_checkCondition" Value='"ENTRY_TYPE_ID" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="gov.ca.dir.acct.cars.adf.common.model.entity.FsEntryType.EntryTypeId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC00160366">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C00160366"/>
+      <Attr Name="_checkCondition" Value='"PROGRAM_UNIT_CODE" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="gov.ca.dir.acct.cars.adf.common.model.entity.FsEntryType.ProgramUnitCode"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC00160367">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C00160367"/>
+      <Attr Name="_checkCondition" Value='"ENTRY_TYPE_CODE" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="gov.ca.dir.acct.cars.adf.common.model.entity.FsEntryType.EntryTypeCode"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC00160368">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C00160368"/>
+      <Attr Name="_checkCondition" Value='"ENTRY_TYPE_NAME" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="gov.ca.dir.acct.cars.adf.common.model.entity.FsEntryType.EntryTypeName"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC00160369">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C00160369"/>
+      <Attr Name="_checkCondition" Value='"DESCRIPTION" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="gov.ca.dir.acct.cars.adf.common.model.entity.FsEntryType.Description"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC00160370">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C00160370"/>
+      <Attr Name="_checkCondition" Value='"EFFECTIVE_START_DATE" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="gov.ca.dir.acct.cars.adf.common.model.entity.FsEntryType.EffectiveStartDate"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC00160371">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C00160371"/>
+      <Attr Name="_checkCondition" Value='"CREATED_BY" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="gov.ca.dir.acct.cars.adf.common.model.entity.FsEntryType.CreatedBy"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC00160372">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C00160372"/>
+      <Attr Name="_checkCondition" Value='"CREATED_DATE" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="gov.ca.dir.acct.cars.adf.common.model.entity.FsEntryType.CreatedDate"/>
+    </AttrArray>
+  </Key>
+</Entity>

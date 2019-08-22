@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE AppModule SYSTEM "jbo_03_01.dtd">
+<!---->
+<AppModule
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="CarsBCLoggingServicesAM"
+  Version="11.1.1.64.93"
+  InheritPersonalization="true"
+  ComponentClass="gov.ca.dir.acct.cars.adf.service.appmodule.CarsBCLoggingServicesAMImpl"
+  ClearCacheOnRollback="true"
+  ComponentInterface="gov.ca.dir.acct.cars.adf.service.appmodule.common.CarsBCLoggingServicesAM"
+  ClientProxyName="gov.ca.dir.acct.cars.adf.service.appmodule.client.CarsBCLoggingServicesAMClient">
+  <DesignTime>
+    <Attr Name="_deployType" Value="4096"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="gov.ca.dir.acct.cars.adf.service.appmodule.CarsBCLoggingServicesAM_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <ViewUsage
+    Name="CarsErrorLogView1"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.service.view.CarsErrorLogView"/>
+  <ViewUsage
+    Name="CarsErrorMessageView1"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.service.view.CarsErrorMessageView"/>
+  <ViewUsage
+    Name="CarsRequestView1"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.service.view.CarsRequestView"/>
+  <Remote
+    Name="ServiceInterface"
+    ServerClassName="gov.ca.dir.acct.cars.adf.service.appmodule.server.serviceinterface.CarsBCLoggingServicesAMServiceImpl"
+    ServerInterfaceName="gov.ca.dir.acct.cars.adf.service.appmodule.common.serviceinterface.CarsBCLoggingServicesAMService">
+    <DesignTime>
+      <Attr Name="_webServiceName" Value="CarsBCLoggingServicesAMService"/>
+      <Attr Name="_targetNameSpace"
+        Value="/gov/ca/dir/acct/cars/adf/service/appmodule/common/"/>
+    </DesignTime>
+  </Remote>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="gov.ca.dir.acct.cars.adf.service.CarsBCServicesBundle"/>
+  </ResourceBundle>
+  <ServiceViewUsage
+    ViewUsageName="CarsErrorLogView1"
+    CanCreate="true">
+    <DesignTime>
+      <Attr Name="_CreateOpName" Value="createCarsErrorLog"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="CarsErrorMessageView1">
+    <DesignTime>
+      <AttrArray Name="_VCFindOps">
+        <Item Value="CarsErrorMessageViewCriteria"/>
+      </AttrArray>
+      <AttrArray Name="__CarsErrorMessageViewCriteria">
+        <Item Value="findCarsErrorMessageWithParams"/>
+        <Item Value="varErrorMessageId"/>
+        <Item Value="varFaultCode"/>
+      </AttrArray>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="CarsErrorLogView1"
+    CanCreate="true">
+    <DesignTime>
+      <Attr Name="_CreateOpName" Value="createCarsErrorLog"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="CarsErrorMessageView1">
+    <DesignTime>
+      <AttrArray Name="_VCFindOps">
+        <Item Value="CarsErrorMessageViewCriteria"/>
+      </AttrArray>
+      <AttrArray Name="__CarsErrorMessageViewCriteria">
+        <Item Value="findCarsErrorMessageWithParams"/>
+        <Item Value="varErrorMessageId"/>
+        <Item Value="varFaultCode"/>
+      </AttrArray>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="CarsRequestView1"
+    CanCreate="true"
+    CanUpdate="true">
+    <DesignTime>
+      <AttrArray Name="_VCFindOps">
+        <Item Value="CarsRequestViewCriteria"/>
+        <Item Value="CarsRequestViewCriteriaInstance"/>
+      </AttrArray>
+      <AttrArray Name="__CarsRequestViewCriteria">
+        <Item Value="findCarsRequestWithParams"/>
+        <Item Value="varEcid"/>
+      </AttrArray>
+      <Attr Name="_UpdateOpName" Value="updateCarsRequest"/>
+      <Attr Name="_CreateOpName" Value="createCarsRequest"/>
+      <AttrArray Name="__CarsRequestViewCriteriaInstance">
+        <Item Value="findCarsRequestWithInstanceIdParam"/>
+        <Item Value="varEcid"/>
+        <Item Value="varPayloadName"/>
+      </AttrArray>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ClientInterface>
+    <Method
+      Name="getRequestIdSequence">
+      <Return
+        Type="oracle.jbo.domain.Number"/>
+    </Method>
+    <Method
+      Name="getRequestIdWithParam">
+      <Return
+        Type="oracle.jbo.domain.Number"/>
+      <Parameter
+        Name="compositeInstanceId"
+        Type="java.lang.String"/>
+    </Method>
+  </ClientInterface>
+  <ServiceInterface>
+    <Method
+      Name="getErrorLogIdSequence">
+      <Return
+        Type="oracle.jbo.domain.Number"/>
+    </Method>
+    <Method
+      Name="getRequestIdSequence">
+      <Return
+        Type="oracle.jbo.domain.Number"/>
+    </Method>
+  </ServiceInterface>
+</AppModule>

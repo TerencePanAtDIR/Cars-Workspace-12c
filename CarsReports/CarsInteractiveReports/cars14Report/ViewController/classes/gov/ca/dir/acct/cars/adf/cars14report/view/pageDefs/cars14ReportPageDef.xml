@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.64.93" id="cars14ReportPageDef"
+                Package="gov.ca.dir.acct.cars.adf.cars14report.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="cars14Report1" RangeSize="25"
+              DataControl="cars14ReportAMDataControl"
+              id="cars14Report1Iterator"/>
+    <searchRegion Criteria="cars14ReportCriteria"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="cars14Report1Iterator" id="cars14ReportCriteriaQuery"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="cars14Report1Iterator" id="cars14Report1">
+      <nodeDefinition DefName="gov.ca.dir.acct.cars.adf.cars14report.model.view.cars14Report"
+                      Name="cars14Report10">
+        <AttrNames>
+          <Item Value="Employer"/>
+          <Item Value="ProgramUnitCode"/>
+          <Item Value="InvoiceNumber"/>
+          <Item Value="IssueDate"/>
+          <Item Value="FiscalYear"/>
+          <Item Value="InvoiceAmount"/>
+          <Item Value="CourtFee"/>
+          <Item Value="JudgmentInterest"/>
+          <Item Value="PostJudInterest"/>
+          <Item Value="CollectionFee"/>
+          <Item Value="NsfFee"/>
+          <Item Value="BilledAmount"/>
+          <Item Value="PaidInFullDate"/>
+          <Item Value="PaidAmount"/>
+          <Item Value="Balance"/>
+          <Item Value="currentDate"/>         
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="cars14Report1Iterator"
+                     id="InvoiceAmountTotal">
+      <AttrNames>
+        <Item Value="InvoiceAmountTotal"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="cars14Report1Iterator" id="CourtFeeTotal">
+      <AttrNames>
+        <Item Value="CourtFeeTotal"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="cars14Report1Iterator"
+                     id="JudgmentInterestTotal">
+      <AttrNames>
+        <Item Value="JudgmentInterestTotal"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="cars14Report1Iterator"
+                     id="CollectionFeeTotal">
+      <AttrNames>
+        <Item Value="CollectionFeeTotal"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="cars14Report1Iterator" id="PaidAmountTotal">
+      <AttrNames>
+        <Item Value="PaidAmountTotal"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="cars14Report1Iterator" id="BalanceTotal">
+      <AttrNames>
+        <Item Value="BalanceTotal"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="cars14Report1Iterator" id="currentDate">
+      <AttrNames>
+        <Item Value="currentDate"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="cars14Report1Iterator" id="cars14Report11">
+      <nodeDefinition DefName="gov.ca.dir.acct.cars.adf.cars14report.model.view.cars14Report"
+                      Name="cars14Report110">
+        <AttrNames>
+          <Item Value="Employer"/>
+          <Item Value="ProgramUnitCode"/>
+          <Item Value="InvoiceNumber"/>
+          <Item Value="IssueDate"/>
+          <Item Value="FiscalYear"/>
+          <Item Value="InvoiceAmount"/>
+          <Item Value="CourtFee"/>
+          <Item Value="JudgmentInterest"/>
+          <Item Value="PostJudInterest"/>
+          <Item Value="CollectionFee"/>
+          <Item Value="NsfFee"/>
+          <Item Value="BilledAmount"/>
+          <Item Value="PaidInFullDate"/>
+          <Item Value="PaidAmount"/>
+          <Item Value="Balance"/>
+          <Item Value="BilledAmountTotal"/>
+          <Item Value="NsfFeeTotal"/>
+          <Item Value="PostJudIntTotal"/>
+          <Item Value="ItemCount"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="cars14Report1Iterator" id="NsfFeeTotal">
+      <AttrNames>
+        <Item Value="NsfFeeTotal"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="cars14Report1Iterator" id="PostJudIntTotal">
+      <AttrNames>
+        <Item Value="PostJudIntTotal"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="cars14Report1Iterator" id="BilledAmountTotal">
+      <AttrNames>
+        <Item Value="BilledAmountTotal"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="cars14Report1Iterator" id="ItemCount">
+      <AttrNames>
+        <Item Value="ItemCount"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

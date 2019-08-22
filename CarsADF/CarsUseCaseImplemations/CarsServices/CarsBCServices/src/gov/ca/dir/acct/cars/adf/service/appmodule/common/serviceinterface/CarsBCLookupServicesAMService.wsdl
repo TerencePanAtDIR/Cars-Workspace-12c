@@ -1,0 +1,1790 @@
+<wsdl:definitions
+     name="CarsBCLookupServicesAMService"
+     targetNamespace="/gov/ca/dir/acct/cars/adf/service/appmodule/common/"
+     xmlns:errors="http://xmlns.oracle.com/adf/svc/errors/"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+     xmlns:tns="/gov/ca/dir/acct/cars/adf/service/appmodule/common/"
+     xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+     xmlns:types="/gov/ca/dir/acct/cars/adf/service/appmodule/common/types/"
+    >
+    <wsdl:documentation>
+        <name>CarsBCLookupServicesAM</name>
+    </wsdl:documentation>
+    <wsdl:import namespace="http://xmlns.oracle.com/adf/svc/errors/" location="classpath:/META-INF/wsdl/ServiceException.wsdl"/>
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="/gov/ca/dir/acct/cars/adf/service/appmodule/common/types/" schemaLocation="CarsBCLookupServicesAMService.xsd"/>
+        </schema>
+    </wsdl:types>
+    <wsdl:message name="CarsBCLookupServicesAMService_findAccountingCode">
+        <wsdl:part name="parameters" element="types:findAccountingCode"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCLookupServicesAMService_findAccountingCodeResponse">
+        <wsdl:part name="parameters" element="types:findAccountingCodeResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCLookupServicesAMService_findAccountingReceivableStatus">
+        <wsdl:part name="parameters" element="types:findAccountingReceivableStatus"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCLookupServicesAMService_findAccountingReceivableStatusResponse">
+        <wsdl:part name="parameters" element="types:findAccountingReceivableStatusResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCLookupServicesAMService_findAcctgEntryEventAssocRule">
+        <wsdl:part name="parameters" element="types:findAcctgEntryEventAssocRule"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCLookupServicesAMService_findAcctgEntryEventAssocRuleResponse">
+        <wsdl:part name="parameters" element="types:findAcctgEntryEventAssocRuleResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCLookupServicesAMService_findAdjustmentType">
+        <wsdl:part name="parameters" element="types:findAdjustmentType"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCLookupServicesAMService_findAdjustmentTypeResponse">
+        <wsdl:part name="parameters" element="types:findAdjustmentTypeResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCLookupServicesAMService_findAgencySource">
+        <wsdl:part name="parameters" element="types:findAgencySource"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCLookupServicesAMService_findAgencySourceResponse">
+        <wsdl:part name="parameters" element="types:findAgencySourceResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCLookupServicesAMService_findArStatusType">
+        <wsdl:part name="parameters" element="types:findArStatusType"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCLookupServicesAMService_findArStatusTypeResponse">
+        <wsdl:part name="parameters" element="types:findArStatusTypeResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCLookupServicesAMService_findBillType">
+        <wsdl:part name="parameters" element="types:findBillType"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCLookupServicesAMService_findBillTypeResponse">
+        <wsdl:part name="parameters" element="types:findBillTypeResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCLookupServicesAMService_findContactMethodType">
+        <wsdl:part name="parameters" element="types:findContactMethodType"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCLookupServicesAMService_findContactMethodTypeResponse">
+        <wsdl:part name="parameters" element="types:findContactMethodTypeResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCLookupServicesAMService_findEventTypeAssociationRule">
+        <wsdl:part name="parameters" element="types:findEventTypeAssociationRule"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCLookupServicesAMService_findEventTypeAssociationRuleResponse">
+        <wsdl:part name="parameters" element="types:findEventTypeAssociationRuleResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCLookupServicesAMService_findEventType">
+        <wsdl:part name="parameters" element="types:findEventType"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCLookupServicesAMService_findEventTypeResponse">
+        <wsdl:part name="parameters" element="types:findEventTypeResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCLookupServicesAMService_findFiscalPeriod">
+        <wsdl:part name="parameters" element="types:findFiscalPeriod"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCLookupServicesAMService_findFiscalPeriodResponse">
+        <wsdl:part name="parameters" element="types:findFiscalPeriodResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCLookupServicesAMService_findFundAllocation">
+        <wsdl:part name="parameters" element="types:findFundAllocation"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCLookupServicesAMService_findFundAllocationResponse">
+        <wsdl:part name="parameters" element="types:findFundAllocationResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCLookupServicesAMService_findFund">
+        <wsdl:part name="parameters" element="types:findFund"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCLookupServicesAMService_findFundResponse">
+        <wsdl:part name="parameters" element="types:findFundResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCLookupServicesAMService_findGlAccountAssociationRule">
+        <wsdl:part name="parameters" element="types:findGlAccountAssociationRule"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCLookupServicesAMService_findGlAccountAssociationRuleResponse">
+        <wsdl:part name="parameters" element="types:findGlAccountAssociationRuleResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCLookupServicesAMService_findGlAccountType">
+        <wsdl:part name="parameters" element="types:findGlAccountType"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCLookupServicesAMService_findGlAccountTypeResponse">
+        <wsdl:part name="parameters" element="types:findGlAccountTypeResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCLookupServicesAMService_findGlAccount">
+        <wsdl:part name="parameters" element="types:findGlAccount"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCLookupServicesAMService_findGlAccountResponse">
+        <wsdl:part name="parameters" element="types:findGlAccountResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCLookupServicesAMService_findIndexCode">
+        <wsdl:part name="parameters" element="types:findIndexCode"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCLookupServicesAMService_findIndexCodeResponse">
+        <wsdl:part name="parameters" element="types:findIndexCodeResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCLookupServicesAMService_findOtherTransactionType">
+        <wsdl:part name="parameters" element="types:findOtherTransactionType"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCLookupServicesAMService_findOtherTransactionTypeResponse">
+        <wsdl:part name="parameters" element="types:findOtherTransactionTypeResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCLookupServicesAMService_findParticipantRoleType">
+        <wsdl:part name="parameters" element="types:findParticipantRoleType"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCLookupServicesAMService_findParticipantRoleTypeResponse">
+        <wsdl:part name="parameters" element="types:findParticipantRoleTypeResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCLookupServicesAMService_findPartyAssociationType">
+        <wsdl:part name="parameters" element="types:findPartyAssociationType"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCLookupServicesAMService_findPartyAssociationTypeResponse">
+        <wsdl:part name="parameters" element="types:findPartyAssociationTypeResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCLookupServicesAMService_findPcaCode">
+        <wsdl:part name="parameters" element="types:findPcaCode"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCLookupServicesAMService_findPcaCodeResponse">
+        <wsdl:part name="parameters" element="types:findPcaCodeResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCLookupServicesAMService_findProgramUnit">
+        <wsdl:part name="parameters" element="types:findProgramUnit"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCLookupServicesAMService_findProgramUnitResponse">
+        <wsdl:part name="parameters" element="types:findProgramUnitResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCLookupServicesAMService_findReceiptType">
+        <wsdl:part name="parameters" element="types:findReceiptType"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCLookupServicesAMService_findReceiptTypeResponse">
+        <wsdl:part name="parameters" element="types:findReceiptTypeResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCLookupServicesAMService_findRevenueSourceCode">
+        <wsdl:part name="parameters" element="types:findRevenueSourceCode"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCLookupServicesAMService_findRevenueSourceCodeResponse">
+        <wsdl:part name="parameters" element="types:findRevenueSourceCodeResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCLookupServicesAMService_findTestView1TestViewCriteria">
+        <wsdl:part name="parameters" element="types:findTestView1TestViewCriteria"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCLookupServicesAMService_findTestView1TestViewCriteriaResponse">
+        <wsdl:part name="parameters" element="types:findTestView1TestViewCriteriaResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCLookupServicesAMService_findEventTypeWithParams">
+        <wsdl:part name="parameters" element="types:findEventTypeWithParams"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCLookupServicesAMService_findEventTypeWithParamsResponse">
+        <wsdl:part name="parameters" element="types:findEventTypeWithParamsResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCLookupServicesAMService_findEventTypeAssocRuleWithParams">
+        <wsdl:part name="parameters" element="types:findEventTypeAssocRuleWithParams"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCLookupServicesAMService_findEventTypeAssocRuleWithParamsResponse">
+        <wsdl:part name="parameters" element="types:findEventTypeAssocRuleWithParamsResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCLookupServicesAMService_findFiscalPeriodWithParams">
+        <wsdl:part name="parameters" element="types:findFiscalPeriodWithParams"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCLookupServicesAMService_findFiscalPeriodWithParamsResponse">
+        <wsdl:part name="parameters" element="types:findFiscalPeriodWithParamsResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCLookupServicesAMService_findCreditRuleWithParams">
+        <wsdl:part name="parameters" element="types:findCreditRuleWithParams"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCLookupServicesAMService_findCreditRuleWithParamsResponse">
+        <wsdl:part name="parameters" element="types:findCreditRuleWithParamsResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCLookupServicesAMService_findGlAccountAssocRuleWithParams">
+        <wsdl:part name="parameters" element="types:findGlAccountAssocRuleWithParams"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCLookupServicesAMService_findGlAccountAssocRuleWithParamsResponse">
+        <wsdl:part name="parameters" element="types:findGlAccountAssocRuleWithParamsResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCLookupServicesAMService_findDebitRuleWithParams">
+        <wsdl:part name="parameters" element="types:findDebitRuleWithParams"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCLookupServicesAMService_findDebitRuleWithParamsResponse">
+        <wsdl:part name="parameters" element="types:findDebitRuleWithParamsResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCLookupServicesAMService_findAcctgTransactEventAssocWithParams">
+        <wsdl:part name="parameters" element="types:findAcctgTransactEventAssocWithParams"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCLookupServicesAMService_findAcctgTransactEventAssocWithParamsResponse">
+        <wsdl:part name="parameters" element="types:findAcctgTransactEventAssocWithParamsResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCLookupServicesAMService_findNoteTypeWithParams">
+        <wsdl:part name="parameters" element="types:findNoteTypeWithParams"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCLookupServicesAMService_findNoteTypeWithParamsResponse">
+        <wsdl:part name="parameters" element="types:findNoteTypeWithParamsResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCLookupServicesAMService_findContactMethodWithParam">
+        <wsdl:part name="parameters" element="types:findContactMethodWithParam"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCLookupServicesAMService_findContactMethodWithParamResponse">
+        <wsdl:part name="parameters" element="types:findContactMethodWithParamResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCLookupServicesAMService_findAccountingTransactionWithParams">
+        <wsdl:part name="parameters" element="types:findAccountingTransactionWithParams"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCLookupServicesAMService_findAccountingTransactionWithParamsResponse">
+        <wsdl:part name="parameters" element="types:findAccountingTransactionWithParamsResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCLookupServicesAMService_findParticipantRoleWithParams">
+        <wsdl:part name="parameters" element="types:findParticipantRoleWithParams"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCLookupServicesAMService_findParticipantRoleWithParamsResponse">
+        <wsdl:part name="parameters" element="types:findParticipantRoleWithParamsResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCLookupServicesAMService_findAddressWithParams">
+        <wsdl:part name="parameters" element="types:findAddressWithParams"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCLookupServicesAMService_findAddressWithParamsResponse">
+        <wsdl:part name="parameters" element="types:findAddressWithParamsResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCLookupServicesAMService_findReferenceCodeListWithParams">
+        <wsdl:part name="parameters" element="types:findReferenceCodeListWithParams"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCLookupServicesAMService_findReferenceCodeListWithParamsResponse">
+        <wsdl:part name="parameters" element="types:findReferenceCodeListWithParamsResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCLookupServicesAMService_findEventWithParams">
+        <wsdl:part name="parameters" element="types:findEventWithParams"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCLookupServicesAMService_findEventWithParamsResponse">
+        <wsdl:part name="parameters" element="types:findEventWithParamsResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCLookupServicesAMService_findAccountingEntryType">
+        <wsdl:part name="parameters" element="types:findAccountingEntryType"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCLookupServicesAMService_findAccountingEntryTypeResponse">
+        <wsdl:part name="parameters" element="types:findAccountingEntryTypeResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCLookupServicesAMService_findAccountingEntryTypeWithParams">
+        <wsdl:part name="parameters" element="types:findAccountingEntryTypeWithParams"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCLookupServicesAMService_findAccountingEntryTypeWithParamsResponse">
+        <wsdl:part name="parameters" element="types:findAccountingEntryTypeWithParamsResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCLookupServicesAMService_findAccountingEntryTypeReversal">
+        <wsdl:part name="parameters" element="types:findAccountingEntryTypeReversal"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCLookupServicesAMService_findAccountingEntryTypeReversalResponse">
+        <wsdl:part name="parameters" element="types:findAccountingEntryTypeReversalResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCLookupServicesAMService_findAccountingEntryWithParams">
+        <wsdl:part name="parameters" element="types:findAccountingEntryWithParams"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCLookupServicesAMService_findAccountingEntryWithParamsResponse">
+        <wsdl:part name="parameters" element="types:findAccountingEntryWithParamsResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCLookupServicesAMService_findAccountingCodeWithParams">
+        <wsdl:part name="parameters" element="types:findAccountingCodeWithParams"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCLookupServicesAMService_findAccountingCodeWithParamsResponse">
+        <wsdl:part name="parameters" element="types:findAccountingCodeWithParamsResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCLookupServicesAMService_findFiscalPeriodIdWithParams">
+        <wsdl:part name="parameters" element="types:findFiscalPeriodIdWithParams"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCLookupServicesAMService_findFiscalPeriodIdWithParamsResponse">
+        <wsdl:part name="parameters" element="types:findFiscalPeriodIdWithParamsResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCLookupServicesAMService_recheckReferenceDocument">
+        <wsdl:part name="parameters" element="types:recheckReferenceDocument"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCLookupServicesAMService_recheckReferenceDocumentResponse">
+        <wsdl:part name="parameters" element="types:recheckReferenceDocumentResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCLookupServicesAMService_findReferenceCodeListLookupView">
+        <wsdl:part name="parameters" element="types:findReferenceCodeListLookupView"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCLookupServicesAMService_findReferenceCodeListLookupViewResponse">
+        <wsdl:part name="parameters" element="types:findReferenceCodeListLookupViewResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCLookupServicesAMService_validateAddress">
+        <wsdl:part name="parameters" element="types:validateAddress"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCLookupServicesAMService_validateAddressResponse">
+        <wsdl:part name="parameters" element="types:validateAddressResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCLookupServicesAMService_findSOARecipient">
+        <wsdl:part name="parameters" element="types:findSOARecipient"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCLookupServicesAMService_findSOARecipientResponse">
+        <wsdl:part name="parameters" element="types:findSOARecipientResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="CarsBCLookupServicesAMService">
+        <wsdl:documentation>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="AccountingCodeView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:AccountingCodeViewSDO"
+                 FindOpName="findAccountingCode"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="AccountingReceivableStatusView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:AccountingReceivableStatusViewSDO"
+                 FindOpName="findAccountingReceivableStatus"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="AcctgEntryEventAssocRuleView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:AcctgEntryEventAssocRuleViewSDO"
+                 FindOpName="findAcctgEntryEventAssocRule"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="AdjustmentTypeView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:AdjustmentTypeViewSDO"
+                 FindOpName="findAdjustmentType"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="AgencySourceView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:AgencySourceViewSDO"
+                 FindOpName="findAgencySource"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="ArStatusTypeView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:ArStatusTypeViewSDO"
+                 FindOpName="findArStatusType"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="BillTypeView1" xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/"
+                 SDOName="ns0:BillTypeViewSDO" FindOpName="findBillType"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="ContactMethodTypeView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:ContactMethodTypeViewSDO"
+                 FindOpName="findContactMethodType"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="EventTypeAssociationRuleView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:EventTypeAssociationRuleViewSDO"
+                 FindOpName="findEventTypeAssociationRule"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="EventTypeView1" xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/"
+                 SDOName="ns0:EventTypeViewSDO" FindOpName="findEventType"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="FiscalPeriodView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:FiscalPeriodViewSDO"
+                 FindOpName="findFiscalPeriod"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="FundAllocationView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:FundAllocationViewSDO"
+                 FindOpName="findFundAllocation"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="FundView1" xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/"
+                 SDOName="ns0:FundViewSDO" FindOpName="findFund"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="GlAccountAssociationRuleView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:GlAccountAssociationRuleViewSDO"
+                 FindOpName="findGlAccountAssociationRule"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="GlAccountTypeView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:GlAccountTypeViewSDO"
+                 FindOpName="findGlAccountType"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="GlAccountView1" xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/"
+                 SDOName="ns0:GlAccountViewSDO" FindOpName="findGlAccount"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="IndexCodeView1" xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/"
+                 SDOName="ns0:IndexCodeViewSDO" FindOpName="findIndexCode"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="OtherTransactionTypeView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:OtherTransactionTypeViewSDO"
+                 FindOpName="findOtherTransactionType"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="ParticipantRoleTypeView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:ParticipantRoleTypeViewSDO"
+                 FindOpName="findParticipantRoleType"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="PartyAssociationTypeView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:PartyAssociationTypeViewSDO"
+                 FindOpName="findPartyAssociationType"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="PcaCodeView1" xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/"
+                 SDOName="ns0:PcaCodeViewSDO" FindOpName="findPcaCode"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="ProgramUnitView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:ProgramUnitViewSDO"
+                 FindOpName="findProgramUnit"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="ReceiptTypeView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:ReceiptTypeViewSDO"
+                 FindOpName="findReceiptType"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="RevenueSourceCodeView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:RevenueSourceCodeViewSDO"
+                 FindOpName="findRevenueSourceCode"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="TestView1" xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/"
+                 SDOName="ns0:TestViewSDO"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="EventTypeLookupView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:EventTypeLookupViewSDO"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="EventTypeAssocRulesLookup1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:EventTypeAssocRulesLookupSDO"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="AccountingCodeView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:AccountingCodeViewSDO"
+                 FindOpName="findAccountingCode"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="AccountingReceivableStatusView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:AccountingReceivableStatusViewSDO"
+                 FindOpName="findAccountingReceivableStatus"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="AcctgEntryEventAssocRuleView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:AcctgEntryEventAssocRuleViewSDO"
+                 FindOpName="findAcctgEntryEventAssocRule"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="AdjustmentTypeView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:AdjustmentTypeViewSDO"
+                 FindOpName="findAdjustmentType"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="AgencySourceView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:AgencySourceViewSDO"
+                 FindOpName="findAgencySource"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="ArStatusTypeView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:ArStatusTypeViewSDO"
+                 FindOpName="findArStatusType"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="BillTypeView1" xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/"
+                 SDOName="ns0:BillTypeViewSDO" FindOpName="findBillType"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="ContactMethodTypeView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:ContactMethodTypeViewSDO"
+                 FindOpName="findContactMethodType"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="EventTypeAssocRulesLookup1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:EventTypeAssocRulesLookupSDO"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="EventTypeAssociationRuleView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:EventTypeAssociationRuleViewSDO"
+                 FindOpName="findEventTypeAssociationRule"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="EventTypeLookupView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:EventTypeLookupViewSDO"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="EventTypeView1" xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/"
+                 SDOName="ns0:EventTypeViewSDO" FindOpName="findEventType"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="FiscalPeriodView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:FiscalPeriodViewSDO"
+                 FindOpName="findFiscalPeriod"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="FundAllocationView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:FundAllocationViewSDO"
+                 FindOpName="findFundAllocation"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="FundView1" xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/"
+                 SDOName="ns0:FundViewSDO" FindOpName="findFund"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="GlAccountAssociationRuleView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:GlAccountAssociationRuleViewSDO"
+                 FindOpName="findGlAccountAssociationRule"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="GlAccountTypeView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:GlAccountTypeViewSDO"
+                 FindOpName="findGlAccountType"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="GlAccountView1" xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/"
+                 SDOName="ns0:GlAccountViewSDO" FindOpName="findGlAccount"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="IndexCodeView1" xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/"
+                 SDOName="ns0:IndexCodeViewSDO" FindOpName="findIndexCode"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="OtherTransactionTypeView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:OtherTransactionTypeViewSDO"
+                 FindOpName="findOtherTransactionType"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="ParticipantRoleTypeView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:ParticipantRoleTypeViewSDO"
+                 FindOpName="findParticipantRoleType"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="PartyAssociationTypeView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:PartyAssociationTypeViewSDO"
+                 FindOpName="findPartyAssociationType"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="PcaCodeView1" xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/"
+                 SDOName="ns0:PcaCodeViewSDO" FindOpName="findPcaCode"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="ProgramUnitView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:ProgramUnitViewSDO"
+                 FindOpName="findProgramUnit"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="ReceiptTypeView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:ReceiptTypeViewSDO"
+                 FindOpName="findReceiptType"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="RevenueSourceCodeView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:RevenueSourceCodeViewSDO"
+                 FindOpName="findRevenueSourceCode"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="TestView1" xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/"
+                 SDOName="ns0:TestViewSDO"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="FiscalPeriodLookupView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:FiscalPeriodLookupViewSDO"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="CreditRuleLookupView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:CreditRuleLookupViewSDO"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="GlAccountAssocRuleLookupView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:GlAccountAssocRuleLookupViewSDO"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="DebitRuleLookupView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:DebitRuleLookupViewSDO"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="AcctgTransactEventAssocView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:AcctgTransactEventAssocViewSDO"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="NoteTypeView1" xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/"
+                 SDOName="ns0:NoteTypeViewSDO"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="AccountingCodeView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:AccountingCodeViewSDO"
+                 FindOpName="findAccountingCode"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="AccountingReceivableStatusView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:AccountingReceivableStatusViewSDO"
+                 FindOpName="findAccountingReceivableStatus"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="AcctgEntryEventAssocRuleView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:AcctgEntryEventAssocRuleViewSDO"
+                 FindOpName="findAcctgEntryEventAssocRule"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="AcctgTransactEventAssocView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:AcctgTransactEventAssocViewSDO"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="AdjustmentTypeView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:AdjustmentTypeViewSDO"
+                 FindOpName="findAdjustmentType"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="AgencySourceView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:AgencySourceViewSDO"
+                 FindOpName="findAgencySource"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="ArStatusTypeView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:ArStatusTypeViewSDO"
+                 FindOpName="findArStatusType"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="BillTypeView1" xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/"
+                 SDOName="ns0:BillTypeViewSDO" FindOpName="findBillType"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="ContactMethodTypeView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:ContactMethodTypeViewSDO"
+                 FindOpName="findContactMethodType"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="ContactMethodView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:ContactMethodViewSDO"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="CreditRuleLookupView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:CreditRuleLookupViewSDO"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="DebitRuleLookupView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:DebitRuleLookupViewSDO"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="EventTypeAssocRulesLookup1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:EventTypeAssocRulesLookupSDO"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="EventTypeAssociationRuleView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:EventTypeAssociationRuleViewSDO"
+                 FindOpName="findEventTypeAssociationRule"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="EventTypeLookupView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:EventTypeLookupViewSDO"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="EventTypeView1" xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/"
+                 SDOName="ns0:EventTypeViewSDO" FindOpName="findEventType"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="FiscalPeriodLookupView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:FiscalPeriodLookupViewSDO"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="FiscalPeriodView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:FiscalPeriodViewSDO"
+                 FindOpName="findFiscalPeriod"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="FundAllocationView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:FundAllocationViewSDO"
+                 FindOpName="findFundAllocation"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="FundView1" xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/"
+                 SDOName="ns0:FundViewSDO" FindOpName="findFund"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="GlAccountAssocRuleLookupView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:GlAccountAssocRuleLookupViewSDO"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="GlAccountAssociationRuleView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:GlAccountAssociationRuleViewSDO"
+                 FindOpName="findGlAccountAssociationRule"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="GlAccountTypeView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:GlAccountTypeViewSDO"
+                 FindOpName="findGlAccountType"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="GlAccountView1" xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/"
+                 SDOName="ns0:GlAccountViewSDO" FindOpName="findGlAccount"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="IndexCodeView1" xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/"
+                 SDOName="ns0:IndexCodeViewSDO" FindOpName="findIndexCode"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="NoteTypeView1" xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/"
+                 SDOName="ns0:NoteTypeViewSDO"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="OtherTransactionTypeView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:OtherTransactionTypeViewSDO"
+                 FindOpName="findOtherTransactionType"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="ParticipantRoleTypeView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:ParticipantRoleTypeViewSDO"
+                 FindOpName="findParticipantRoleType"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="PartyAssociationTypeView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:PartyAssociationTypeViewSDO"
+                 FindOpName="findPartyAssociationType"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="PcaCodeView1" xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/"
+                 SDOName="ns0:PcaCodeViewSDO" FindOpName="findPcaCode"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="ProgramUnitView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:ProgramUnitViewSDO"
+                 FindOpName="findProgramUnit"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="ReceiptTypeView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:ReceiptTypeViewSDO"
+                 FindOpName="findReceiptType"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="RevenueSourceCodeView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:RevenueSourceCodeViewSDO"
+                 FindOpName="findRevenueSourceCode"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="TestView1" xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/"
+                 SDOName="ns0:TestViewSDO"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="AccountingTransactionView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:AccountingTransactionViewSDO"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="AccountingCodeView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:AccountingCodeViewSDO"
+                 FindOpName="findAccountingCode"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="AccountingReceivableStatusView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:AccountingReceivableStatusViewSDO"
+                 FindOpName="findAccountingReceivableStatus"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="AccountingTransactionView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:AccountingTransactionViewSDO"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="AcctgEntryEventAssocRuleView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:AcctgEntryEventAssocRuleViewSDO"
+                 FindOpName="findAcctgEntryEventAssocRule"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="AcctgTransactEventAssocView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:AcctgTransactEventAssocViewSDO"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="AdjustmentTypeView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:AdjustmentTypeViewSDO"
+                 FindOpName="findAdjustmentType"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="AgencySourceView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:AgencySourceViewSDO"
+                 FindOpName="findAgencySource"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="ArStatusTypeView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:ArStatusTypeViewSDO"
+                 FindOpName="findArStatusType"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="BillTypeView1" xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/"
+                 SDOName="ns0:BillTypeViewSDO" FindOpName="findBillType"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="ContactMethodTypeView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:ContactMethodTypeViewSDO"
+                 FindOpName="findContactMethodType"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="ContactMethodView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:ContactMethodViewSDO"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="CreditRuleLookupView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:CreditRuleLookupViewSDO"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="DebitRuleLookupView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:DebitRuleLookupViewSDO"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="EventTypeAssocRulesLookup1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:EventTypeAssocRulesLookupSDO"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="EventTypeAssociationRuleView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:EventTypeAssociationRuleViewSDO"
+                 FindOpName="findEventTypeAssociationRule"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="EventTypeLookupView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:EventTypeLookupViewSDO"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="EventTypeView1" xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/"
+                 SDOName="ns0:EventTypeViewSDO" FindOpName="findEventType"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="FiscalPeriodLookupView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:FiscalPeriodLookupViewSDO"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="FiscalPeriodView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:FiscalPeriodViewSDO"
+                 FindOpName="findFiscalPeriod"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="FundAllocationView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:FundAllocationViewSDO"
+                 FindOpName="findFundAllocation"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="FundView1" xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/"
+                 SDOName="ns0:FundViewSDO" FindOpName="findFund"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="GlAccountAssocRuleLookupView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:GlAccountAssocRuleLookupViewSDO"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="GlAccountAssociationRuleView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:GlAccountAssociationRuleViewSDO"
+                 FindOpName="findGlAccountAssociationRule"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="GlAccountTypeView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:GlAccountTypeViewSDO"
+                 FindOpName="findGlAccountType"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="GlAccountView1" xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/"
+                 SDOName="ns0:GlAccountViewSDO" FindOpName="findGlAccount"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="IndexCodeView1" xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/"
+                 SDOName="ns0:IndexCodeViewSDO" FindOpName="findIndexCode"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="NoteTypeView1" xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/"
+                 SDOName="ns0:NoteTypeViewSDO"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="OtherTransactionTypeView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:OtherTransactionTypeViewSDO"
+                 FindOpName="findOtherTransactionType"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="ParticipantRoleTypeView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:ParticipantRoleTypeViewSDO"
+                 FindOpName="findParticipantRoleType"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="ParticipantRoleView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:ParticipantRoleViewSDO"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="PartyAssociationTypeView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:PartyAssociationTypeViewSDO"
+                 FindOpName="findPartyAssociationType"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="PcaCodeView1" xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/"
+                 SDOName="ns0:PcaCodeViewSDO" FindOpName="findPcaCode"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="ProgramUnitView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:ProgramUnitViewSDO"
+                 FindOpName="findProgramUnit"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="ReceiptTypeView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:ReceiptTypeViewSDO"
+                 FindOpName="findReceiptType"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="RevenueSourceCodeView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:RevenueSourceCodeViewSDO"
+                 FindOpName="findRevenueSourceCode"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="TestView1" xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/"
+                 SDOName="ns0:TestViewSDO"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="AddressView1" xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/"
+                 SDOName="ns0:AddressViewSDO"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="ReferenceCodeListLookupView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:ReferenceCodeListLookupViewSDO"
+                 FindOpName="findReferenceCodeListLookupView"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="EventLookupView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:EventLookupViewSDO"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="AccountingCodeView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:AccountingCodeViewSDO"
+                 FindOpName="findAccountingCode"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="AccountingEntryTypeView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:AccountingEntryTypeViewSDO"
+                 FindOpName="findAccountingEntryType"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="AccountingReceivableStatusView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:AccountingReceivableStatusViewSDO"
+                 FindOpName="findAccountingReceivableStatus"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="AccountingTransactionView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:AccountingTransactionViewSDO"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="AcctgEntryEventAssocRuleView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:AcctgEntryEventAssocRuleViewSDO"
+                 FindOpName="findAcctgEntryEventAssocRule"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="AcctgTransactEventAssocView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:AcctgTransactEventAssocViewSDO"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="AddressView1" xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/"
+                 SDOName="ns0:AddressViewSDO"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="AdjustmentTypeView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:AdjustmentTypeViewSDO"
+                 FindOpName="findAdjustmentType"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="AgencySourceView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:AgencySourceViewSDO"
+                 FindOpName="findAgencySource"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="ArStatusTypeView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:ArStatusTypeViewSDO"
+                 FindOpName="findArStatusType"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="BillTypeView1" xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/"
+                 SDOName="ns0:BillTypeViewSDO" FindOpName="findBillType"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="ContactMethodTypeView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:ContactMethodTypeViewSDO"
+                 FindOpName="findContactMethodType"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="ContactMethodView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:ContactMethodViewSDO"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="CreditRuleLookupView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:CreditRuleLookupViewSDO"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="DebitRuleLookupView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:DebitRuleLookupViewSDO"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="EventLookupView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:EventLookupViewSDO"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="EventTypeAssocRulesLookup1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:EventTypeAssocRulesLookupSDO"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="EventTypeAssociationRuleView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:EventTypeAssociationRuleViewSDO"
+                 FindOpName="findEventTypeAssociationRule"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="EventTypeLookupView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:EventTypeLookupViewSDO"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="EventTypeView1" xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/"
+                 SDOName="ns0:EventTypeViewSDO" FindOpName="findEventType"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="FiscalPeriodLookupView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:FiscalPeriodLookupViewSDO"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="FiscalPeriodView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:FiscalPeriodViewSDO"
+                 FindOpName="findFiscalPeriod"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="FundAllocationView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:FundAllocationViewSDO"
+                 FindOpName="findFundAllocation"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="FundView1" xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/"
+                 SDOName="ns0:FundViewSDO" FindOpName="findFund"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="GlAccountAssocRuleLookupView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:GlAccountAssocRuleLookupViewSDO"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="GlAccountAssociationRuleView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:GlAccountAssociationRuleViewSDO"
+                 FindOpName="findGlAccountAssociationRule"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="GlAccountTypeView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:GlAccountTypeViewSDO"
+                 FindOpName="findGlAccountType"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="GlAccountView1" xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/"
+                 SDOName="ns0:GlAccountViewSDO" FindOpName="findGlAccount"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="IndexCodeView1" xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/"
+                 SDOName="ns0:IndexCodeViewSDO" FindOpName="findIndexCode"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="NoteTypeView1" xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/"
+                 SDOName="ns0:NoteTypeViewSDO"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="OtherTransactionTypeView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:OtherTransactionTypeViewSDO"
+                 FindOpName="findOtherTransactionType"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="ParticipantRoleTypeView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:ParticipantRoleTypeViewSDO"
+                 FindOpName="findParticipantRoleType"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="ParticipantRoleView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:ParticipantRoleViewSDO"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="PartyAssociationTypeView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:PartyAssociationTypeViewSDO"
+                 FindOpName="findPartyAssociationType"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="PcaCodeView1" xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/"
+                 SDOName="ns0:PcaCodeViewSDO" FindOpName="findPcaCode"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="ProgramUnitView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:ProgramUnitViewSDO"
+                 FindOpName="findProgramUnit"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="ReceiptTypeView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:ReceiptTypeViewSDO"
+                 FindOpName="findReceiptType"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="RevenueSourceCodeView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:RevenueSourceCodeViewSDO"
+                 FindOpName="findRevenueSourceCode"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="TestView1" xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/"
+                 SDOName="ns0:TestViewSDO"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="AccountingCodeView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:AccountingCodeViewSDO"
+                 FindOpName="findAccountingCode"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="AccountingEntryView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:AccountingEntryViewSDO"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="AccountingReceivableStatusView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:AccountingReceivableStatusViewSDO"
+                 FindOpName="findAccountingReceivableStatus"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="AccountingTransactionView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:AccountingTransactionViewSDO"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="AcctgEntryEventAssocRuleView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:AcctgEntryEventAssocRuleViewSDO"
+                 FindOpName="findAcctgEntryEventAssocRule"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="AcctgTransactEventAssocView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:AcctgTransactEventAssocViewSDO"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="AddressView1" xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/"
+                 SDOName="ns0:AddressViewSDO"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="AdjustmentTypeView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:AdjustmentTypeViewSDO"
+                 FindOpName="findAdjustmentType"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="AgencySourceView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:AgencySourceViewSDO"
+                 FindOpName="findAgencySource"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="ArStatusTypeView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:ArStatusTypeViewSDO"
+                 FindOpName="findArStatusType"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="BillTypeView1" xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/"
+                 SDOName="ns0:BillTypeViewSDO" FindOpName="findBillType"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="ContactMethodTypeView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:ContactMethodTypeViewSDO"
+                 FindOpName="findContactMethodType"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="ContactMethodView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:ContactMethodViewSDO"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="CreditRuleLookupView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:CreditRuleLookupViewSDO"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="DebitRuleLookupView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:DebitRuleLookupViewSDO"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="EventLookupView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:EventLookupViewSDO"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="EventTypeAssocRulesLookup1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:EventTypeAssocRulesLookupSDO"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="EventTypeAssociationRuleView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:EventTypeAssociationRuleViewSDO"
+                 FindOpName="findEventTypeAssociationRule"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="EventTypeLookupView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:EventTypeLookupViewSDO"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="EventTypeView1" xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/"
+                 SDOName="ns0:EventTypeViewSDO" FindOpName="findEventType"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="FiscalPeriodLookupView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:FiscalPeriodLookupViewSDO"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="FiscalPeriodView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:FiscalPeriodViewSDO"
+                 FindOpName="findFiscalPeriod"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="FundAllocationView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:FundAllocationViewSDO"
+                 FindOpName="findFundAllocation"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="FundView1" xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/"
+                 SDOName="ns0:FundViewSDO" FindOpName="findFund"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="GlAccountAssocRuleLookupView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:GlAccountAssocRuleLookupViewSDO"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="GlAccountAssociationRuleView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:GlAccountAssociationRuleViewSDO"
+                 FindOpName="findGlAccountAssociationRule"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="GlAccountTypeView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:GlAccountTypeViewSDO"
+                 FindOpName="findGlAccountType"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="GlAccountView1" xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/"
+                 SDOName="ns0:GlAccountViewSDO" FindOpName="findGlAccount"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="IndexCodeView1" xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/"
+                 SDOName="ns0:IndexCodeViewSDO" FindOpName="findIndexCode"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="NoteTypeView1" xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/"
+                 SDOName="ns0:NoteTypeViewSDO"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="OtherTransactionTypeView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:OtherTransactionTypeViewSDO"
+                 FindOpName="findOtherTransactionType"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="ParticipantRoleTypeView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:ParticipantRoleTypeViewSDO"
+                 FindOpName="findParticipantRoleType"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="ParticipantRoleView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:ParticipantRoleViewSDO"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="PartyAssociationTypeView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:PartyAssociationTypeViewSDO"
+                 FindOpName="findPartyAssociationType"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="PcaCodeView1" xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/"
+                 SDOName="ns0:PcaCodeViewSDO" FindOpName="findPcaCode"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="ProgramUnitView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:ProgramUnitViewSDO"
+                 FindOpName="findProgramUnit"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="ReceiptTypeView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:ReceiptTypeViewSDO"
+                 FindOpName="findReceiptType"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="RevenueSourceCodeView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:RevenueSourceCodeViewSDO"
+                 FindOpName="findRevenueSourceCode"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="TestView1" xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/"
+                 SDOName="ns0:TestViewSDO"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="AccountingCodeView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:AccountingCodeViewSDO"
+                 FindOpName="findAccountingCode"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="AccountingEntryView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:AccountingEntryViewSDO"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="AccountingReceivableStatusView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:AccountingReceivableStatusViewSDO"
+                 FindOpName="findAccountingReceivableStatus"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="AccountingTransactionView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:AccountingTransactionViewSDO"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="AcctgEntryEventAssocRuleView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:AcctgEntryEventAssocRuleViewSDO"
+                 FindOpName="findAcctgEntryEventAssocRule"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="AcctgTransactEventAssocView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:AcctgTransactEventAssocViewSDO"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="AddressView1" xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/"
+                 SDOName="ns0:AddressViewSDO"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="AdjustmentTypeView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:AdjustmentTypeViewSDO"
+                 FindOpName="findAdjustmentType"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="AgencySourceView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:AgencySourceViewSDO"
+                 FindOpName="findAgencySource"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="ArStatusTypeView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:ArStatusTypeViewSDO"
+                 FindOpName="findArStatusType"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="BillTypeView1" xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/"
+                 SDOName="ns0:BillTypeViewSDO" FindOpName="findBillType"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="ContactMethodTypeView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:ContactMethodTypeViewSDO"
+                 FindOpName="findContactMethodType"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="ContactMethodView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:ContactMethodViewSDO"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="CreditRuleLookupView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:CreditRuleLookupViewSDO"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="DebitRuleLookupView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:DebitRuleLookupViewSDO"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="EventLookupView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:EventLookupViewSDO"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="EventTypeAssocRulesLookup1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:EventTypeAssocRulesLookupSDO"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="EventTypeAssociationRuleView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:EventTypeAssociationRuleViewSDO"
+                 FindOpName="findEventTypeAssociationRule"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="EventTypeLookupView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:EventTypeLookupViewSDO"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="EventTypeView1" xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/"
+                 SDOName="ns0:EventTypeViewSDO" FindOpName="findEventType"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="FiscalPeriodLookupView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:FiscalPeriodLookupViewSDO"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="FiscalPeriodView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:FiscalPeriodViewSDO"
+                 FindOpName="findFiscalPeriod"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="FundAllocationView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:FundAllocationViewSDO"
+                 FindOpName="findFundAllocation"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="FundView1" xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/"
+                 SDOName="ns0:FundViewSDO" FindOpName="findFund"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="GlAccountAssocRuleLookupView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:GlAccountAssocRuleLookupViewSDO"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="GlAccountAssociationRuleView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:GlAccountAssociationRuleViewSDO"
+                 FindOpName="findGlAccountAssociationRule"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="GlAccountTypeView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:GlAccountTypeViewSDO"
+                 FindOpName="findGlAccountType"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="GlAccountView1" xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/"
+                 SDOName="ns0:GlAccountViewSDO" FindOpName="findGlAccount"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="IndexCodeView1" xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/"
+                 SDOName="ns0:IndexCodeViewSDO" FindOpName="findIndexCode"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="NoteTypeView1" xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/"
+                 SDOName="ns0:NoteTypeViewSDO"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="OtherTransactionTypeView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:OtherTransactionTypeViewSDO"
+                 FindOpName="findOtherTransactionType"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="ParticipantRoleTypeView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:ParticipantRoleTypeViewSDO"
+                 FindOpName="findParticipantRoleType"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="ParticipantRoleView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:ParticipantRoleViewSDO"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="PartyAssociationTypeView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:PartyAssociationTypeViewSDO"
+                 FindOpName="findPartyAssociationType"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="PcaCodeView1" xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/"
+                 SDOName="ns0:PcaCodeViewSDO" FindOpName="findPcaCode"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="ProgramUnitView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:ProgramUnitViewSDO"
+                 FindOpName="findProgramUnit"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="ReceiptTypeView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:ReceiptTypeViewSDO"
+                 FindOpName="findReceiptType"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="RevenueSourceCodeView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:RevenueSourceCodeViewSDO"
+                 FindOpName="findRevenueSourceCode"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="TestView1" xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/"
+                 SDOName="ns0:TestViewSDO"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="AccountingCodeLookupView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:AccountingCodeLookupViewSDO"/>
+        </wsdl:documentation>
+        <wsdl:operation name="findAccountingCode">
+            <wsdl:input message="tns:CarsBCLookupServicesAMService_findAccountingCode"/>
+            <wsdl:output message="tns:CarsBCLookupServicesAMService_findAccountingCodeResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="findAccountingReceivableStatus">
+            <wsdl:input message="tns:CarsBCLookupServicesAMService_findAccountingReceivableStatus"/>
+            <wsdl:output message="tns:CarsBCLookupServicesAMService_findAccountingReceivableStatusResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="findAcctgEntryEventAssocRule">
+            <wsdl:input message="tns:CarsBCLookupServicesAMService_findAcctgEntryEventAssocRule"/>
+            <wsdl:output message="tns:CarsBCLookupServicesAMService_findAcctgEntryEventAssocRuleResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="findAdjustmentType">
+            <wsdl:input message="tns:CarsBCLookupServicesAMService_findAdjustmentType"/>
+            <wsdl:output message="tns:CarsBCLookupServicesAMService_findAdjustmentTypeResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="findAgencySource">
+            <wsdl:input message="tns:CarsBCLookupServicesAMService_findAgencySource"/>
+            <wsdl:output message="tns:CarsBCLookupServicesAMService_findAgencySourceResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="findArStatusType">
+            <wsdl:input message="tns:CarsBCLookupServicesAMService_findArStatusType"/>
+            <wsdl:output message="tns:CarsBCLookupServicesAMService_findArStatusTypeResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="findBillType">
+            <wsdl:input message="tns:CarsBCLookupServicesAMService_findBillType"/>
+            <wsdl:output message="tns:CarsBCLookupServicesAMService_findBillTypeResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="findContactMethodType">
+            <wsdl:input message="tns:CarsBCLookupServicesAMService_findContactMethodType"/>
+            <wsdl:output message="tns:CarsBCLookupServicesAMService_findContactMethodTypeResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="findEventTypeAssociationRule">
+            <wsdl:input message="tns:CarsBCLookupServicesAMService_findEventTypeAssociationRule"/>
+            <wsdl:output message="tns:CarsBCLookupServicesAMService_findEventTypeAssociationRuleResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="findEventType">
+            <wsdl:input message="tns:CarsBCLookupServicesAMService_findEventType"/>
+            <wsdl:output message="tns:CarsBCLookupServicesAMService_findEventTypeResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="findFiscalPeriod">
+            <wsdl:input message="tns:CarsBCLookupServicesAMService_findFiscalPeriod"/>
+            <wsdl:output message="tns:CarsBCLookupServicesAMService_findFiscalPeriodResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="findFundAllocation">
+            <wsdl:input message="tns:CarsBCLookupServicesAMService_findFundAllocation"/>
+            <wsdl:output message="tns:CarsBCLookupServicesAMService_findFundAllocationResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="findFund">
+            <wsdl:input message="tns:CarsBCLookupServicesAMService_findFund"/>
+            <wsdl:output message="tns:CarsBCLookupServicesAMService_findFundResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="findGlAccountAssociationRule">
+            <wsdl:input message="tns:CarsBCLookupServicesAMService_findGlAccountAssociationRule"/>
+            <wsdl:output message="tns:CarsBCLookupServicesAMService_findGlAccountAssociationRuleResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="findGlAccountType">
+            <wsdl:input message="tns:CarsBCLookupServicesAMService_findGlAccountType"/>
+            <wsdl:output message="tns:CarsBCLookupServicesAMService_findGlAccountTypeResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="findGlAccount">
+            <wsdl:input message="tns:CarsBCLookupServicesAMService_findGlAccount"/>
+            <wsdl:output message="tns:CarsBCLookupServicesAMService_findGlAccountResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="findIndexCode">
+            <wsdl:input message="tns:CarsBCLookupServicesAMService_findIndexCode"/>
+            <wsdl:output message="tns:CarsBCLookupServicesAMService_findIndexCodeResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="findOtherTransactionType">
+            <wsdl:input message="tns:CarsBCLookupServicesAMService_findOtherTransactionType"/>
+            <wsdl:output message="tns:CarsBCLookupServicesAMService_findOtherTransactionTypeResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="findParticipantRoleType">
+            <wsdl:input message="tns:CarsBCLookupServicesAMService_findParticipantRoleType"/>
+            <wsdl:output message="tns:CarsBCLookupServicesAMService_findParticipantRoleTypeResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="findPartyAssociationType">
+            <wsdl:input message="tns:CarsBCLookupServicesAMService_findPartyAssociationType"/>
+            <wsdl:output message="tns:CarsBCLookupServicesAMService_findPartyAssociationTypeResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="findPcaCode">
+            <wsdl:input message="tns:CarsBCLookupServicesAMService_findPcaCode"/>
+            <wsdl:output message="tns:CarsBCLookupServicesAMService_findPcaCodeResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="findProgramUnit">
+            <wsdl:input message="tns:CarsBCLookupServicesAMService_findProgramUnit"/>
+            <wsdl:output message="tns:CarsBCLookupServicesAMService_findProgramUnitResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="findReceiptType">
+            <wsdl:input message="tns:CarsBCLookupServicesAMService_findReceiptType"/>
+            <wsdl:output message="tns:CarsBCLookupServicesAMService_findReceiptTypeResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="findRevenueSourceCode">
+            <wsdl:input message="tns:CarsBCLookupServicesAMService_findRevenueSourceCode"/>
+            <wsdl:output message="tns:CarsBCLookupServicesAMService_findRevenueSourceCodeResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="findTestView1TestViewCriteria">
+            <wsdl:input message="tns:CarsBCLookupServicesAMService_findTestView1TestViewCriteria"/>
+            <wsdl:output message="tns:CarsBCLookupServicesAMService_findTestView1TestViewCriteriaResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="findEventTypeWithParams">
+            <wsdl:input message="tns:CarsBCLookupServicesAMService_findEventTypeWithParams"/>
+            <wsdl:output message="tns:CarsBCLookupServicesAMService_findEventTypeWithParamsResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="findEventTypeAssocRuleWithParams">
+            <wsdl:input message="tns:CarsBCLookupServicesAMService_findEventTypeAssocRuleWithParams"/>
+            <wsdl:output message="tns:CarsBCLookupServicesAMService_findEventTypeAssocRuleWithParamsResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="findFiscalPeriodWithParams">
+            <wsdl:input message="tns:CarsBCLookupServicesAMService_findFiscalPeriodWithParams"/>
+            <wsdl:output message="tns:CarsBCLookupServicesAMService_findFiscalPeriodWithParamsResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="findCreditRuleWithParams">
+            <wsdl:input message="tns:CarsBCLookupServicesAMService_findCreditRuleWithParams"/>
+            <wsdl:output message="tns:CarsBCLookupServicesAMService_findCreditRuleWithParamsResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="findGlAccountAssocRuleWithParams">
+            <wsdl:input message="tns:CarsBCLookupServicesAMService_findGlAccountAssocRuleWithParams"/>
+            <wsdl:output message="tns:CarsBCLookupServicesAMService_findGlAccountAssocRuleWithParamsResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="findDebitRuleWithParams">
+            <wsdl:input message="tns:CarsBCLookupServicesAMService_findDebitRuleWithParams"/>
+            <wsdl:output message="tns:CarsBCLookupServicesAMService_findDebitRuleWithParamsResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="findAcctgTransactEventAssocWithParams">
+            <wsdl:input message="tns:CarsBCLookupServicesAMService_findAcctgTransactEventAssocWithParams"/>
+            <wsdl:output message="tns:CarsBCLookupServicesAMService_findAcctgTransactEventAssocWithParamsResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="findNoteTypeWithParams">
+            <wsdl:input message="tns:CarsBCLookupServicesAMService_findNoteTypeWithParams"/>
+            <wsdl:output message="tns:CarsBCLookupServicesAMService_findNoteTypeWithParamsResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="findContactMethodWithParam">
+            <wsdl:input message="tns:CarsBCLookupServicesAMService_findContactMethodWithParam"/>
+            <wsdl:output message="tns:CarsBCLookupServicesAMService_findContactMethodWithParamResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="findAccountingTransactionWithParams">
+            <wsdl:input message="tns:CarsBCLookupServicesAMService_findAccountingTransactionWithParams"/>
+            <wsdl:output message="tns:CarsBCLookupServicesAMService_findAccountingTransactionWithParamsResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="findParticipantRoleWithParams">
+            <wsdl:input message="tns:CarsBCLookupServicesAMService_findParticipantRoleWithParams"/>
+            <wsdl:output message="tns:CarsBCLookupServicesAMService_findParticipantRoleWithParamsResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="findAddressWithParams">
+            <wsdl:input message="tns:CarsBCLookupServicesAMService_findAddressWithParams"/>
+            <wsdl:output message="tns:CarsBCLookupServicesAMService_findAddressWithParamsResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="findReferenceCodeListWithParams">
+            <wsdl:input message="tns:CarsBCLookupServicesAMService_findReferenceCodeListWithParams"/>
+            <wsdl:output message="tns:CarsBCLookupServicesAMService_findReferenceCodeListWithParamsResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="findEventWithParams">
+            <wsdl:input message="tns:CarsBCLookupServicesAMService_findEventWithParams"/>
+            <wsdl:output message="tns:CarsBCLookupServicesAMService_findEventWithParamsResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="findAccountingEntryType">
+            <wsdl:input message="tns:CarsBCLookupServicesAMService_findAccountingEntryType"/>
+            <wsdl:output message="tns:CarsBCLookupServicesAMService_findAccountingEntryTypeResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="findAccountingEntryTypeWithParams">
+            <wsdl:input message="tns:CarsBCLookupServicesAMService_findAccountingEntryTypeWithParams"/>
+            <wsdl:output message="tns:CarsBCLookupServicesAMService_findAccountingEntryTypeWithParamsResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="findAccountingEntryTypeReversal">
+            <wsdl:input message="tns:CarsBCLookupServicesAMService_findAccountingEntryTypeReversal"/>
+            <wsdl:output message="tns:CarsBCLookupServicesAMService_findAccountingEntryTypeReversalResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="findAccountingEntryWithParams">
+            <wsdl:input message="tns:CarsBCLookupServicesAMService_findAccountingEntryWithParams"/>
+            <wsdl:output message="tns:CarsBCLookupServicesAMService_findAccountingEntryWithParamsResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="findAccountingCodeWithParams">
+            <wsdl:input message="tns:CarsBCLookupServicesAMService_findAccountingCodeWithParams"/>
+            <wsdl:output message="tns:CarsBCLookupServicesAMService_findAccountingCodeWithParamsResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="findFiscalPeriodIdWithParams">
+            <wsdl:input message="tns:CarsBCLookupServicesAMService_findFiscalPeriodIdWithParams"/>
+            <wsdl:output message="tns:CarsBCLookupServicesAMService_findFiscalPeriodIdWithParamsResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="recheckReferenceDocument">
+            <wsdl:input message="tns:CarsBCLookupServicesAMService_recheckReferenceDocument"/>
+            <wsdl:output message="tns:CarsBCLookupServicesAMService_recheckReferenceDocumentResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="findReferenceCodeListLookupView">
+            <wsdl:input message="tns:CarsBCLookupServicesAMService_findReferenceCodeListLookupView"/>
+            <wsdl:output message="tns:CarsBCLookupServicesAMService_findReferenceCodeListLookupViewResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="validateAddress">
+            <wsdl:input message="tns:CarsBCLookupServicesAMService_validateAddress"/>
+            <wsdl:output message="tns:CarsBCLookupServicesAMService_validateAddressResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="findSOARecipient">
+            <wsdl:input message="tns:CarsBCLookupServicesAMService_findSOARecipient"/>
+            <wsdl:output message="tns:CarsBCLookupServicesAMService_findSOARecipientResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="CarsBCLookupServicesAMServiceSoapHttp" type="tns:CarsBCLookupServicesAMService">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="findAccountingCode">
+            <soap:operation soapAction="/gov/ca/dir/acct/cars/adf/service/appmodule/common/findAccountingCode"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="findAccountingReceivableStatus">
+            <soap:operation soapAction="/gov/ca/dir/acct/cars/adf/service/appmodule/common/findAccountingReceivableStatus"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="findAcctgEntryEventAssocRule">
+            <soap:operation soapAction="/gov/ca/dir/acct/cars/adf/service/appmodule/common/findAcctgEntryEventAssocRule"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="findAdjustmentType">
+            <soap:operation soapAction="/gov/ca/dir/acct/cars/adf/service/appmodule/common/findAdjustmentType"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="findAgencySource">
+            <soap:operation soapAction="/gov/ca/dir/acct/cars/adf/service/appmodule/common/findAgencySource"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="findArStatusType">
+            <soap:operation soapAction="/gov/ca/dir/acct/cars/adf/service/appmodule/common/findArStatusType"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="findBillType">
+            <soap:operation soapAction="/gov/ca/dir/acct/cars/adf/service/appmodule/common/findBillType"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="findContactMethodType">
+            <soap:operation soapAction="/gov/ca/dir/acct/cars/adf/service/appmodule/common/findContactMethodType"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="findEventTypeAssociationRule">
+            <soap:operation soapAction="/gov/ca/dir/acct/cars/adf/service/appmodule/common/findEventTypeAssociationRule"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="findEventType">
+            <soap:operation soapAction="/gov/ca/dir/acct/cars/adf/service/appmodule/common/findEventType"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="findFiscalPeriod">
+            <soap:operation soapAction="/gov/ca/dir/acct/cars/adf/service/appmodule/common/findFiscalPeriod"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="findFundAllocation">
+            <soap:operation soapAction="/gov/ca/dir/acct/cars/adf/service/appmodule/common/findFundAllocation"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="findFund">
+            <soap:operation soapAction="/gov/ca/dir/acct/cars/adf/service/appmodule/common/findFund"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="findGlAccountAssociationRule">
+            <soap:operation soapAction="/gov/ca/dir/acct/cars/adf/service/appmodule/common/findGlAccountAssociationRule"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="findGlAccountType">
+            <soap:operation soapAction="/gov/ca/dir/acct/cars/adf/service/appmodule/common/findGlAccountType"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="findGlAccount">
+            <soap:operation soapAction="/gov/ca/dir/acct/cars/adf/service/appmodule/common/findGlAccount"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="findIndexCode">
+            <soap:operation soapAction="/gov/ca/dir/acct/cars/adf/service/appmodule/common/findIndexCode"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="findOtherTransactionType">
+            <soap:operation soapAction="/gov/ca/dir/acct/cars/adf/service/appmodule/common/findOtherTransactionType"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="findParticipantRoleType">
+            <soap:operation soapAction="/gov/ca/dir/acct/cars/adf/service/appmodule/common/findParticipantRoleType"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="findPartyAssociationType">
+            <soap:operation soapAction="/gov/ca/dir/acct/cars/adf/service/appmodule/common/findPartyAssociationType"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="findPcaCode">
+            <soap:operation soapAction="/gov/ca/dir/acct/cars/adf/service/appmodule/common/findPcaCode"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="findProgramUnit">
+            <soap:operation soapAction="/gov/ca/dir/acct/cars/adf/service/appmodule/common/findProgramUnit"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="findReceiptType">
+            <soap:operation soapAction="/gov/ca/dir/acct/cars/adf/service/appmodule/common/findReceiptType"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="findRevenueSourceCode">
+            <soap:operation soapAction="/gov/ca/dir/acct/cars/adf/service/appmodule/common/findRevenueSourceCode"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="findTestView1TestViewCriteria">
+            <soap:operation soapAction="/gov/ca/dir/acct/cars/adf/service/appmodule/common/findTestView1TestViewCriteria"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="findEventTypeWithParams">
+            <soap:operation soapAction="/gov/ca/dir/acct/cars/adf/service/appmodule/common/findEventTypeWithParams"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="findEventTypeAssocRuleWithParams">
+            <soap:operation soapAction="/gov/ca/dir/acct/cars/adf/service/appmodule/common/findEventTypeAssocRuleWithParams"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="findFiscalPeriodWithParams">
+            <soap:operation soapAction="/gov/ca/dir/acct/cars/adf/service/appmodule/common/findFiscalPeriodWithParams"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="findCreditRuleWithParams">
+            <soap:operation soapAction="/gov/ca/dir/acct/cars/adf/service/appmodule/common/findCreditRuleWithParams"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="findGlAccountAssocRuleWithParams">
+            <soap:operation soapAction="/gov/ca/dir/acct/cars/adf/service/appmodule/common/findGlAccountAssocRuleWithParams"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="findDebitRuleWithParams">
+            <soap:operation soapAction="/gov/ca/dir/acct/cars/adf/service/appmodule/common/findDebitRuleWithParams"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="findAcctgTransactEventAssocWithParams">
+            <soap:operation soapAction="/gov/ca/dir/acct/cars/adf/service/appmodule/common/findAcctgTransactEventAssocWithParams"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="findNoteTypeWithParams">
+            <soap:operation soapAction="/gov/ca/dir/acct/cars/adf/service/appmodule/common/findNoteTypeWithParams"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="findContactMethodWithParam">
+            <soap:operation soapAction="/gov/ca/dir/acct/cars/adf/service/appmodule/common/findContactMethodWithParam"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="findAccountingTransactionWithParams">
+            <soap:operation soapAction="/gov/ca/dir/acct/cars/adf/service/appmodule/common/findAccountingTransactionWithParams"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="findParticipantRoleWithParams">
+            <soap:operation soapAction="/gov/ca/dir/acct/cars/adf/service/appmodule/common/findParticipantRoleWithParams"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="findAddressWithParams">
+            <soap:operation soapAction="/gov/ca/dir/acct/cars/adf/service/appmodule/common/findAddressWithParams"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="findReferenceCodeListWithParams">
+            <soap:operation soapAction="/gov/ca/dir/acct/cars/adf/service/appmodule/common/findReferenceCodeListWithParams"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="findEventWithParams">
+            <soap:operation soapAction="/gov/ca/dir/acct/cars/adf/service/appmodule/common/findEventWithParams"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="findAccountingEntryType">
+            <soap:operation soapAction="/gov/ca/dir/acct/cars/adf/service/appmodule/common/findAccountingEntryType"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="findAccountingEntryTypeWithParams">
+            <soap:operation soapAction="/gov/ca/dir/acct/cars/adf/service/appmodule/common/findAccountingEntryTypeWithParams"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="findAccountingEntryTypeReversal">
+            <soap:operation soapAction="/gov/ca/dir/acct/cars/adf/service/appmodule/common/findAccountingEntryTypeReversal"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="findAccountingEntryWithParams">
+            <soap:operation soapAction="/gov/ca/dir/acct/cars/adf/service/appmodule/common/findAccountingEntryWithParams"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="findAccountingCodeWithParams">
+            <soap:operation soapAction="/gov/ca/dir/acct/cars/adf/service/appmodule/common/findAccountingCodeWithParams"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="findFiscalPeriodIdWithParams">
+            <soap:operation soapAction="/gov/ca/dir/acct/cars/adf/service/appmodule/common/findFiscalPeriodIdWithParams"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="recheckReferenceDocument">
+            <soap:operation soapAction="/gov/ca/dir/acct/cars/adf/service/appmodule/common/recheckReferenceDocument"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="findReferenceCodeListLookupView">
+            <soap:operation soapAction="/gov/ca/dir/acct/cars/adf/service/appmodule/common/findReferenceCodeListLookupView"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="validateAddress">
+            <soap:operation soapAction="/gov/ca/dir/acct/cars/adf/service/appmodule/common/validateAddress"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="findSOARecipient">
+            <soap:operation soapAction="/gov/ca/dir/acct/cars/adf/service/appmodule/common/findSOARecipient"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="CarsBCLookupServicesAMService">
+        <wsdl:port name="CarsBCLookupServicesAMServiceSoapHttpPort" binding="tns:CarsBCLookupServicesAMServiceSoapHttp">
+            <soap:address location="http://localhost:7101/CarsServicesApplication-CarsBCServices-context-root/CarsBCLookupServicesAMService"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

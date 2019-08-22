@@ -1,0 +1,286 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:pageTemplate viewId="/use-case-template.jspx" id="pt1">
+    <f:facet name="main">
+      <af:group id="g1">
+        <af:panelSplitter id="ps1" orientation="vertical"
+                          splitterPosition="123">
+          <f:facet name="first">
+            <af:panelGroupLayout layout="vertical" id="pgl3">
+              <af:panelHeader text="Batch Search" id="ph3">
+                <af:query id="qryId1" headerText="Search Criteria"
+                          disclosed="true"
+                          value="#{bindings.BatchCriteriaQuery.queryDescriptor}"
+                          model="#{bindings.BatchCriteriaQuery.queryModel}"
+                          queryListener="#{bindings.BatchCriteriaQuery.processQuery}"
+                          queryOperationListener="#{bindings.BatchCriteriaQuery.processQueryOperation}"
+                          resultComponentId="::pc1" displayMode="compact"
+                          saveQueryMode="hidden" rows="1" maxColumns="2"/>
+              </af:panelHeader>
+            </af:panelGroupLayout>
+          </f:facet>
+          <f:facet name="second">
+            <af:panelSplitter id="ps2" orientation="vertical"
+                              splitterPosition="70">
+              <f:facet name="first">
+                <af:panelGroupLayout layout="scroll"
+                                     xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                                     id="pgl2">
+                  <af:panelHeader text="Batch Details" id="ph2" size="-1"
+                                  inlineStyle="width:auto; color:Black; font-size:small;">
+                    <f:facet name="toolbar"/>
+                    <f:facet name="context">
+                      <af:toolbar id="t3">
+                        <af:spacer width="30" height="10" id="s1"/>
+                        <af:outputText value="#{bindings.Status.hints.label}"
+                                       id="ot28"
+                                       inlineStyle="font-weight:bold; font-size:small; color:Background;"/>
+                        <af:selectOneChoice value="#{bindings.Status1.inputValue}"
+                                            required="false"
+                                            shortDesc="#{bindings.Status1.hints.tooltip}"
+                                            id="soc1" autoSubmit="true"
+                                            inlineStyle="color:Red; font-size:small;">
+                          <f:selectItems value="#{bindings.Status1.items}"
+                                         id="si2"/>
+                        </af:selectOneChoice>
+                        <af:commandToolbarButton text="Undo" id="ctb2"
+                                                 actionListener="#{bindings.Rollback.execute}"
+                                                 immediate="true">
+                          <af:resetActionListener/>
+                        </af:commandToolbarButton>
+                        <af:commandToolbarButton text="Save" id="ctb1"
+                                                 actionListener="#{bindings.Commit.execute}"/>
+                      </af:toolbar>
+                    </f:facet>
+                    <f:facet name="menuBar"/>
+                    <f:facet name="legend"/>
+                    <f:facet name="info"/>
+                    <af:panelGridLayout id="pgl1">
+                      <af:gridRow marginTop="5px" height="auto" id="gr2">
+                        <af:gridCell marginStart="5px" width="90px" id="gc3">
+                          <af:outputText value="#{bindings.BatchCount.hints.label}"
+                                         id="ot24"
+                                         inlineStyle="font-weight:bold;"/>
+                        </af:gridCell>
+                        <af:gridCell marginStart="5px" marginEnd="5px"
+                                     width="100px" id="gc2">
+                          <af:outputText value="#{bindings.TotalBatchAmount.hints.label}"
+                                         id="ot25"
+                                         inlineStyle="font-weight:bold;"/>
+                        </af:gridCell>
+                        <af:gridCell id="gc5" width="85px">
+                          <af:outputText value="#{bindings.DataSourceCode.hints.label}"
+                                         id="ot26"
+                                         inlineStyle="font-weight:bold;"/>
+                        </af:gridCell>
+                        <af:gridCell id="gc6" width="90px">
+                          <af:outputText value="#{bindings.FiscalMonthName.hints.label}"
+                                         id="ot27"
+                                         inlineStyle="font-weight:bold;"/>
+                        </af:gridCell>
+                        <af:gridCell id="gc9" width="150px">
+                          <af:outputText value="Status Modified By" id="ot29"
+                                         inlineStyle="font-weight:bold;"/>
+                        </af:gridCell>
+                        <af:gridCell id="gc10" width="auto">
+                          <af:outputText value="Status Modify Date" id="ot30"
+                                         inlineStyle="font-weight:bold;"/>
+                        </af:gridCell>
+                      </af:gridRow>
+                      <af:gridRow marginTop="5px" marginBottom="5px"
+                                  height="14px" id="gr1">
+                        <af:gridCell id="gc7" width="90px">
+                          <af:outputText value="#{bindings.BatchCount.inputValue}"
+                                         id="ot19" partialTriggers=""/>
+                        </af:gridCell>
+                        <af:gridCell marginStart="5px" width="100px" id="gc1">
+                          <af:outputText value="#{bindings.TotalBatchAmount.inputValue}"
+                                         id="ot20" partialTriggers=""/>
+                        </af:gridCell>
+                        <af:gridCell marginStart="5px" marginEnd="5px"
+                                     width="85px" id="gc4">
+                          <af:outputText value="#{bindings.DataSourceCode.inputValue}"
+                                         id="ot21" partialTriggers=""/>
+                        </af:gridCell>
+                        <af:gridCell id="gridCell1" width="90px">
+                          <af:outputText value="#{bindings.FiscalMonthName.inputValue}"
+                                         id="ot22" partialTriggers=""/>
+                        </af:gridCell>
+                        <af:gridCell id="gridCell3" width="150px"
+                                     marginStart="0px" marginEnd="0px">
+                          <af:outputText value="#{bindings.ModifiedBy.inputValue}"
+                                         id="ot23" partialTriggers=""/>
+                        </af:gridCell>
+                        <af:gridCell id="gridCell4" width="80px">
+                          <af:outputText value="#{bindings.ModifiedDate.inputValue}"
+                                         id="ot31" partialTriggers="">
+                            <af:convertDateTime pattern="#{bindings.ModifiedDate.format}"/>
+                          </af:outputText>
+                        </af:gridCell>
+                      </af:gridRow>
+                    </af:panelGridLayout>
+                  </af:panelHeader>
+                </af:panelGroupLayout>
+              </f:facet>
+              <f:facet name="second">
+                <af:panelHeader text="Batch Items" id="ph1">
+                  <f:facet name="context"/>
+                  <f:facet name="menuBar"/>
+                  <f:facet name="toolbar"/>
+                  <f:facet name="legend"/>
+                  <f:facet name="info"/>
+                  <af:panelCollection id="pc1" inlineStyle="width:auto;">
+                    <f:facet name="toolbar">
+                      <af:toolbar id="t2">
+                        <af:commandToolbarButton
+                                                 id="ctb3"
+                                                 icon="/export_excel_sml.png">
+                          <af:exportCollectionActionListener type="excelHTML"
+                                                             exportedId="t1"
+                                                             filename="cars_batch_export.xls"
+                                                             title="cars_batch"/>
+                        </af:commandToolbarButton>
+                      </af:toolbar>
+                    </f:facet>
+                    <af:table value="#{bindings.BatchTransaction2.collectionModel}"
+                              var="row"
+                              rows="#{adfFacesContext.outputMode eq 'printable' ? bindings.BatchTransaction2.estimatedRowCount : bindings.BatchTransaction2.rangeSize }"
+                              emptyText="#{bindings.BatchTransaction2.viewable ? 'No data to display.' : 'Access Denied.'}"
+                              fetchSize="#{adfFacesContext.outputMode eq 'printable' ? bindings.BatchTransaction2.estimatedRowCount : bindings.BatchTransaction2.rangeSize }"
+                              rowBandingInterval="0"
+                              filterModel="#{bindings.BatchTransaction2Query.queryDescriptor}"
+                              queryListener="#{bindings.BatchTransaction2Query.processQuery}"
+                              filterVisible="true" varStatus="vs" id="t1"
+                              inlineStyle="color:Black;"
+                              columnStretching="column:c18"
+                              columnSelection="single" rowSelection="multiple">
+                      <af:column sortProperty="#{bindings.BatchTransaction2.hints.AcctgTransactCode.name}"
+                                 filterable="true" sortable="true"
+                                 headerText="#{bindings.BatchTransaction2.hints.AcctgTransactCode.label}"
+                                 id="c3" width="45">
+                        <af:outputText value="#{row.AcctgTransactCode}"
+                                       id="ot5"/>
+                      </af:column>
+                      <af:column sortProperty="#{bindings.BatchTransaction2.hints.ReverseTransaction.name}"
+                                 filterable="true" sortable="true"
+                                 headerText="#{bindings.BatchTransaction2.hints.ReverseTransaction.label}"
+                                 id="c13" width="7">
+                        <af:outputText value="#{row.ReverseTransaction}"
+                                       id="ot6"/>
+                      </af:column>
+                      <af:column sortProperty="#{bindings.BatchTransaction2.hints.CurrentDocumentNumber.name}"
+                                 filterable="true" sortable="true"
+                                 headerText="#{bindings.BatchTransaction2.hints.CurrentDocumentNumber.label}"
+                                 id="c14" width="95">
+                        <af:outputText value="#{row.CurrentDocumentNumber}"
+                                       id="ot2"/>
+                      </af:column>
+                      <af:column sortProperty="#{bindings.BatchTransaction2.hints.ReferenceDocumentNumber.name}"
+                                 filterable="true" sortable="true"
+                                 headerText="#{bindings.BatchTransaction2.hints.ReferenceDocumentNumber.label}"
+                                 id="c16" width="95">
+                        <af:outputText value="#{row.ReferenceDocumentNumber}"
+                                       id="ot10"/>
+                      </af:column>
+                      <af:column sortProperty="#{bindings.BatchTransaction2.hints.BatchSequenceNumber.name}"
+                                 filterable="true" sortable="true"
+                                 headerText="#{bindings.BatchTransaction2.hints.BatchSequenceNumber.label}"
+                                 id="c17" width="61">
+                        <af:outputText value="#{row.BatchSequenceNumber}"
+                                       id="ot11"/>
+                      </af:column>
+                      <af:column sortProperty="#{bindings.BatchTransaction2.hints.RevenueSourceCode.name}"
+                                 filterable="true" sortable="true"
+                                 headerText="#{bindings.BatchTransaction2.hints.RevenueSourceCode.label}"
+                                 id="c1" width="59">
+                        <af:outputText value="#{row.RevenueSourceCode}"
+                                       id="ot18"/>
+                      </af:column>
+                      <af:column sortProperty="#{bindings.BatchTransaction2.hints.AgencySourceCode.name}"
+                                 filterable="true" sortable="true"
+                                 headerText="#{bindings.BatchTransaction2.hints.AgencySourceCode.label}"
+                                 id="c12" width="35">
+                        <af:outputText value="#{row.AgencySourceCode}"
+                                       id="ot15"/>
+                      </af:column>
+                      <af:column sortProperty="#{bindings.BatchTransaction2.hints.TransactionAmount.name}"
+                                 filterable="true" sortable="true"
+                                 headerText="#{bindings.BatchTransaction2.hints.TransactionAmount.label}"
+                                 id="c10" width="108">
+                        <af:outputText value="#{row.TransactionAmount}"
+                                       id="ot17"/>
+                      </af:column>
+                      <af:column sortProperty="#{bindings.BatchTransaction2.hints.DocumentDate.name}"
+                                 filterable="true" sortable="true"
+                                 headerText="#{bindings.BatchTransaction2.hints.DocumentDate.label}"
+                                 id="c15" width="77">
+                        <af:outputText value="#{row.DocumentDate}" id="ot12"/>
+                      </af:column>
+                      <af:column sortProperty="#{bindings.BatchTransaction2.hints.VendorName.name}"
+                                 filterable="true" sortable="true"
+                                 headerText="#{bindings.BatchTransaction2.hints.VendorName.label}"
+                                 id="c18" width="165">
+                        <af:outputText value="#{row.VendorName}" id="ot7"/>
+                      </af:column>
+                      <af:column sortProperty="#{bindings.BatchTransaction2.hints.IndexCode.name}"
+                                 filterable="true" sortable="true"
+                                 headerText="#{bindings.BatchTransaction2.hints.IndexCode.label}"
+                                 id="c8" width="45">
+                        <af:outputText value="#{row.IndexCode}" id="ot13"/>
+                      </af:column>
+                      <af:column sortProperty="#{bindings.BatchTransaction2.hints.PcaCode.name}"
+                                 filterable="true" sortable="true"
+                                 headerText="#{bindings.BatchTransaction2.hints.PcaCode.label}"
+                                 id="c6" width="50">
+                        <af:outputText value="#{row.PcaCode}" id="ot9"/>
+                      </af:column>
+                      <af:column sortProperty="#{bindings.BatchTransaction2.hints.Fund.name}"
+                                 filterable="true" sortable="true"
+                                 headerText="#{bindings.BatchTransaction2.hints.Fund.label}"
+                                 id="c2" width="25">
+                        <af:outputText value="#{row.Fund}" id="ot14"/>
+                      </af:column>
+                      <af:column sortProperty="#{bindings.BatchTransaction2.hints.FundSource.name}"
+                                 filterable="true" sortable="true"
+                                 headerText="#{bindings.BatchTransaction2.hints.FundSource.label}"
+                                 id="c11" width="40">
+                        <af:outputText value="#{row.FundSource}" id="ot8"/>
+                      </af:column>
+                      <af:column sortProperty="#{bindings.BatchTransaction2.hints.FundDetail.name}"
+                                 filterable="true" sortable="true"
+                                 headerText="#{bindings.BatchTransaction2.hints.FundDetail.label}"
+                                 id="c9" width="15">
+                        <af:outputText value="#{row.FundDetail}" id="ot1"/>
+                      </af:column>
+                      <af:column sortProperty="#{bindings.BatchTransaction2.hints.LocationCode.name}"
+                                 filterable="true" sortable="true"
+                                 headerText="#{bindings.BatchTransaction2.hints.LocationCode.label}"
+                                 id="c7" width="31">
+                        <af:outputText value="#{row.LocationCode}" id="ot3"/>
+                      </af:column>
+                      <af:column sortProperty="#{bindings.BatchTransaction2.hints.DepositNumber.name}"
+                                 filterable="true" sortable="true"
+                                 headerText="#{bindings.BatchTransaction2.hints.DepositNumber.label}"
+                                 id="c4" width="75">
+                        <af:outputText value="#{row.DepositNumber}" id="ot4"/>
+                      </af:column>
+                      <af:column sortProperty="#{bindings.BatchTransaction2.hints.FiscalYearName.name}"
+                                 filterable="true" sortable="true"
+                                 headerText="#{bindings.BatchTransaction2.hints.FiscalYearName.label}"
+                                 id="c5" width="30">
+                        <af:outputText value="#{row.FiscalYearName}" id="ot16"/>
+                      </af:column>
+                    </af:table>
+                  </af:panelCollection>
+                </af:panelHeader>
+              </f:facet>
+            </af:panelSplitter>
+          </f:facet>
+        </af:panelSplitter>
+      </af:group>
+    </f:facet>
+    <f:attribute name="title" value="Legacy CALSTARS Batches"/>
+  </af:pageTemplate>
+</jsp:root>

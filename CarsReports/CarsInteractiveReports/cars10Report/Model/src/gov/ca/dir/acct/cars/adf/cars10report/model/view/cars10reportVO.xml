@@ -1,0 +1,706 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="cars10reportVO"
+  Version="11.1.1.64.93"
+  InheritPersonalization="true"
+  OrderBy='"EVENT_DATE" ASC'
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  PageIterMode="Full"
+  UseGlueCode="false">
+  <DesignTime>
+    <Attr Name="_isExpertMode" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="gov.ca.dir.acct.cars.adf.cars10report.model.view.cars10reportVO_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <SQLQuery>
+    <![CDATA[select 
+  event2.CURRENT_DOCUMENT,
+  event2.event_date,
+  ET.PROGRAM_UNIT_CODE,
+  fp.fiscal_year_name AS fiscal_year,
+  ac.index_code,
+  AC.AGENCY_SOURCE_CODE,
+  AC.REVENUE_SOURCE_CODE,
+  FA.PCA_CODE,
+  F.FUND,
+  o.legal_name,
+  ad.street_address,
+  ad.city,
+ 
+ e520.current_document AS docket_number,
+ e530e130.event_date AS decision_date,
+ e530e130.amount AS decision_amount,
+ nb_ar.abalance balance,   
+  
+  -- get due_amount,
+ (SELECT SUM(AMOUNT) DUE_AMT
+  FROM
+    (
+    -- AR Setup
+    SELECT E.AR_ROOT_DOCUMENT,
+      AT.AMOUNT AMOUNT
+    FROM EVENT E,
+      EVENT_TYPE ET,
+      ACCTG_TRANSACT_EVENT_ASSOC ATE,
+      ACCOUNTING_TRANSACTION AT,
+      RECEIVABLE R
+    WHERE E.EVENT_ID             = ATE.EVENT_ID
+    AND E.EVENT_TYPE_ID          = ET.EVENT_TYPE_ID
+    AND ATE.ACCTG_TRANSACTION_ID = AT.ACCTG_TRANSACTION_ID
+    AND AT.ACCTG_TRANSACTION_ID  = R.ACCTG_TRANSACTION_ID
+      -- AND E.AR_ROOT_DOCUMENT = '317466522'
+    AND ET.EVENT_TYPE_code IN ('010','015','020')  AND NOT EXISTS
+    (SELECT *
+    FROM event, event_type
+    WHERE event.event_type_id = event_type.event_type_id and 
+          event_type.event_type_code = '900' and
+          event.reference_document = e.current_document
+    )
+     
+    UNION ALL
+    -- AR Increase
+    SELECT E.AR_ROOT_DOCUMENT,
+      AT.AMOUNT AMOUNT
+    FROM EVENT E,
+      EVENT_TYPE ET,
+      ACCTG_TRANSACT_EVENT_ASSOC ATE,
+      ACCOUNTING_TRANSACTION AT,
+      ADJUSTMENT A
+    WHERE E.EVENT_ID             = ATE.EVENT_ID
+    AND E.EVENT_TYPE_ID          = ET.EVENT_TYPE_ID
+    AND ATE.ACCTG_TRANSACTION_ID = AT.ACCTG_TRANSACTION_ID
+    AND AT.ACCTG_TRANSACTION_ID  = A.ACCTG_TRANSACTION_ID
+      -- AND E.AR_ROOT_DOCUMENT  = '317466522'
+    AND ET.EVENT_TYPE_code IN ('110','145')  AND NOT EXISTS
+    (SELECT *
+    FROM event, event_type
+    WHERE event.event_type_id = event_type.event_type_id and 
+          event_type.event_type_code = '900' and
+          event.reference_document = e.current_document
+    )
+    
+    UNION ALL
+    -- AR Decrease
+    SELECT E.AR_ROOT_DOCUMENT,
+      AT.AMOUNT * (-1) AMOUNT
+    FROM EVENT E,
+      EVENT_TYPE ET,
+      ACCTG_TRANSACT_EVENT_ASSOC ATE,
+      ACCOUNTING_TRANSACTION AT,
+      ADJUSTMENT A
+    WHERE E.EVENT_ID             = ATE.EVENT_ID
+    AND E.EVENT_TYPE_ID          = ET.EVENT_TYPE_ID
+    AND ATE.ACCTG_TRANSACTION_ID = AT.ACCTG_TRANSACTION_ID
+    AND AT.ACCTG_TRANSACTION_ID  = A.ACCTG_TRANSACTION_ID
+      -- AND E.AR_ROOT_DOCUMENT = '317466522'
+    AND ET.EVENT_TYPE_code IN ('115','150','125', '140','160')  AND NOT EXISTS
+    -- 125 ar dismissed, which reduces the ar
+    -- 140 waive partial, which reduces the ar  
+    -- 160 write off, which reduces the ar
+    (SELECT *
+    FROM event, event_type
+    WHERE event.event_type_id = event_type.event_type_id and 
+          event_type.event_type_code = '900' and
+          event.reference_document = e.current_document
+    )
+   
+    ) AR_DUE where AR_DUE.AR_ROOT_DOCUMENT = nb_ar.AR_ROOT_DOCUMENT ) due_amount,
+  
+ -- get total_payment
+ (select sum(amount) PAID_AMT from (
+   
+    -- receipts
+    SELECT e.ar_root_document, at.amount 
+     FROM EVENT E,
+       EVENT_TYPE ET,
+       ACCTG_TRANSACT_EVENT_ASSOC ATE,
+       ACCOUNTING_TRANSACTION AT,
+       RECEIPT R
+    WHERE     
+       E.EVENT_TYPE_ID = ET.EVENT_TYPE_ID
+       and  E.EVENT_ID = ATE.EVENT_ID
+       AND ATE.ACCTG_TRANSACTION_ID = AT.ACCTG_TRANSACTION_ID
+       AND AT.ACCTG_TRANSACTION_ID = R.ACCTG_TRANSACTION_ID
+       -- AND E.AR_ROOT_DOCUMENT = 'M355026001'
+       and et.event_type_code in  ('215','220','225','265','270','275')  AND NOT EXISTS
+        (SELECT *
+        FROM event, event_type
+        WHERE event.event_type_id = event_type.event_type_id and 
+          event_type.event_type_code = '900' and
+          event.reference_document = e.current_document
+        )
+       
+       union all 
+                 
+    -- adjustmments (reduced)      
+    SELECT e.ar_root_document, AT.AMOUNT *(-1) 
+     FROM EVENT E,
+       EVENT_TYPE ET,
+       ACCTG_TRANSACT_EVENT_ASSOC ATE,
+       ACCOUNTING_TRANSACTION AT,
+       adjustment adj
+    WHERE     
+       E.EVENT_TYPE_ID = ET.EVENT_TYPE_ID
+       and E.EVENT_ID = ATE.EVENT_ID
+       AND ATE.ACCTG_TRANSACTION_ID = at.ACCTG_TRANSACTION_ID
+       AND AT.ACCTG_TRANSACTION_ID = adj.ACCTG_TRANSACTION_ID
+       -- AND E.AR_ROOT_DOCUMENT = 'M355026001'
+       and et.event_type_code in ('315','320','322','325','330','340','342','343','344')  AND NOT EXISTS
+    (SELECT *
+    FROM event, event_type
+    WHERE event.event_type_id = event_type.event_type_id and 
+          event_type.event_type_code = '900' and
+          event.reference_document = e.current_document
+    )
+    ) AR_PMT where AR_PMT.AR_ROOT_DOCUMENT = nb_ar.AR_ROOT_DOCUMENT) total_payment
+
+ from 
+ -- main query negative balance ARs--
+ (   
+     SELECT AR_ROOT_DOCUMENT,
+     SUM(amount) abalance
+     FROM (
+        -- debit accounts
+        SELECT AR_ROOT_DOCUMENT, abs(debit.amount) amount
+        FROM debit
+        INNER JOIN accounting_entry
+        ON (accounting_entry.acctg_entry_id = debit.acctg_entry_id)
+        INNER JOIN ACCTG_TRANSACT_EVENT_ASSOC
+        ON (ACCOUNTING_ENTRY.ACCTG_TRANSACTION_ID = ACCTG_TRANSACT_EVENT_ASSOC.ACCTG_TRANSACTION_ID)
+        INNER JOIN EVENT
+        ON (EVENT.EVENT_ID = ACCTG_TRANSACT_EVENT_ASSOC.EVENT_ID)
+        WHERE -- AR_ROOT_DOCUMENT = '317466522' and
+          account_number IN ('1200000', '1209900', '1209400', '1200150') 
+        
+        UNION ALL
+        -- credit accounts 00
+        SELECT AR_ROOT_DOCUMENT, abs(credit.amount) * (-1)  amount
+        FROM credit
+        INNER JOIN accounting_entry
+        ON (accounting_entry.acctg_entry_id = credit.acctg_entry_id)
+        INNER JOIN ACCTG_TRANSACT_EVENT_ASSOC
+        ON (ACCOUNTING_ENTRY.ACCTG_TRANSACTION_ID = ACCTG_TRANSACT_EVENT_ASSOC.ACCTG_TRANSACTION_ID)
+        INNER JOIN EVENT
+        ON (EVENT.EVENT_ID = ACCTG_TRANSACT_EVENT_ASSOC.EVENT_ID)
+        WHERE -- AR_ROOT_DOCUMENT = '317466522' and
+          account_number IN ('1200000', '1209900', '1209400', '1200150') 
+        )  GROUP BY AR_ROOT_DOCUMENT HAVING SUM(amount) < 0
+) nb_ar
+
+-- decision date and amount query
+LEFT JOIN
+(SELECT e2.ar_root_document,
+    e2.event_date,
+    at2.amount
+  FROM event e2
+  INNER JOIN event_type et2
+  ON e2.event_type_id = et2.event_type_id
+  INNER JOIN acctg_transact_event_assoc ate2
+  ON e2.event_id = ate2.event_id
+  INNER JOIN accounting_transaction at2
+  ON ate2.acctg_transaction_id = at2.acctg_transaction_id
+  WHERE et2.event_type_code   IN ('530','130')
+  -- either 130 AR Reduced To or 530 AR Upheld 
+  AND NOT EXISTS
+    (SELECT *
+    FROM event, event_type
+    WHERE event.event_type_id = event_type.event_type_id and 
+          event_type.event_type_code = '900' and
+          event.reference_document = e2.current_document
+    )
+  ) e530e130 ON e530e130.ar_root_document = nb_ar.AR_ROOT_DOCUMENT
+  
+-- get docket number query
+left join
+  (SELECT e1.ar_root_document,
+    e1.current_document 
+  FROM event e1
+  RIGHT JOIN event_type et1
+  ON e1.event_type_id       = et1.event_type_id
+  WHERE et1.event_type_code = '520'
+  AND NOT EXISTS
+    (SELECT *
+    FROM event, event_type
+    WHERE event.event_type_id = event_type.event_type_id and 
+          event_type.event_type_code = '900' and
+          event.reference_document = e1.current_document
+    )
+   
+  ) e520 on e520.ar_root_document = nb_ar.AR_ROOT_DOCUMENT  
+
+inner join event event2 on event2.current_document =  nb_ar.AR_ROOT_DOCUMENT  
+INNER JOIN event_type et ON et.event_type_id = event2.event_type_id 
+INNER JOIN ACCTG_TRANSACT_EVENT_ASSOC ATE ON ate.event_id = event2.event_id  
+INNER JOIN accounting_transaction ACT ON act.acctg_transaction_id = ate.acctg_transaction_id
+INNER JOIN accounting_entry AE ON  ae.acctg_transaction_id = act.acctg_transaction_id 
+INNER JOIN fiscal_period FP ON fp.fiscal_period_id  = act.fiscal_period_id 
+INNER JOIN accounting_code AC ON ac.accounting_code_id = ae.accounting_code_id  
+INNER JOIN FUND_ALLOCATION FA ON  FA.FUND_ALLOCATION_ID = AC.FUND_ALLOCATION_ID 
+INNER JOIN FUND F ON F.FUND_ID = FA.FUND_TO_ID
+LEFT JOIN participant_role pr ON event2.event_id = pr.event_id
+LEFT JOIN organization o ON pr.party_id = o.party_id
+LEFT JOIN address ad ON pr.party_id = ad.party_id
+where PR.PARTICIPANT_ROLE_TYPE_CODE = 'RES_PARTY']]>
+  </SQLQuery>
+  <ViewAttribute
+    Name="CurrentDocument"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="255"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="CURRENT_DOCUMENT"
+    Expression="CURRENT_DOCUMENT"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="100"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.cars10report.model.view.cars10reportVO.CurrentDocument_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="EventDate"
+    IsUpdateable="false"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    AliasName="EVENT_DATE"
+    Expression="EVENT_DATE"
+    SQLType="DATE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.cars10report.model.view.cars10reportVO.EventDate_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ProgramUnitCode"
+    IsUpdateable="false"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Precision="25"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="PROGRAM_UNIT_CODE"
+    Expression="PROGRAM_UNIT_CODE"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="25"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="FiscalYear"
+    IsUpdateable="false"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Precision="4"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="FISCAL_YEAR"
+    Expression="FISCAL_YEAR"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="4"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.cars10report.model.view.cars10reportVO.FiscalYear_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="IndexCode"
+    IsUpdateable="false"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Precision="4"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="INDEX_CODE"
+    Expression="INDEX_CODE"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="4"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.cars10report.model.view.cars10reportVO.IndexCode_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="AgencySourceCode"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="2"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="AGENCY_SOURCE_CODE"
+    Expression="AGENCY_SOURCE_CODE"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="2"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="RevenueSourceCode"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="6"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="REVENUE_SOURCE_CODE"
+    Expression="REVENUE_SOURCE_CODE"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="6"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="PcaCode"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="5"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="PCA_CODE"
+    Expression="PCA_CODE"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="5"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Fund"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="4"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="FUND"
+    Expression="FUND"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="4"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="LegalName"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="100"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="LEGAL_NAME"
+    Expression="LEGAL_NAME"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="100"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.cars10report.model.view.cars10reportVO.LegalName_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="StreetAddress"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="50"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="STREET_ADDRESS"
+    Expression="STREET_ADDRESS"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="50"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.cars10report.model.view.cars10reportVO.StreetAddress_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="City"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="50"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="CITY"
+    Expression="CITY"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="50"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.cars10report.model.view.cars10reportVO.City_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="DocketNumber"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="100"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="DOCKET_NUMBER"
+    Expression="DOCKET_NUMBER"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="100"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.cars10report.model.view.cars10reportVO.DocketNumber_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="DecisionDate"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    AliasName="DECISION_DATE"
+    Expression="DECISION_DATE"
+    SQLType="DATE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.cars10report.model.view.cars10reportVO.DecisionDate_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="DecisionAmount"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="13"
+    Scale="2"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="DECISION_AMOUNT"
+    Expression="DECISION_AMOUNT"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <FMT_FORMATTER
+          ResId="gov.ca.dir.acct.cars.adf.cars10report.model.view.cars10reportVO.DecisionAmount_FMT_FORMATTER"/>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.cars10report.model.view.cars10reportVO.DecisionAmount_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Balance"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="BALANCE"
+    Expression="BALANCE"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <FMT_FORMATTER
+          ResId="gov.ca.dir.acct.cars.adf.cars10report.model.view.cars10reportVO.Balance_FMT_FORMATTER"/>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.cars10report.model.view.cars10reportVO.Balance_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="DueAmount"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="DUE_AMOUNT"
+    Expression="DUE_AMOUNT"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <FMT_FORMATTER
+          ResId="gov.ca.dir.acct.cars.adf.cars10report.model.view.cars10reportVO.DueAmount_FMT_FORMATTER"/>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.cars10report.model.view.cars10reportVO.DueAmount_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="TotalPayment"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="TOTAL_PAYMENT"
+    Expression="TOTAL_PAYMENT"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <FMT_FORMATTER
+          ResId="gov.ca.dir.acct.cars.adf.cars10report.model.view.cars10reportVO.TotalPayment_FMT_FORMATTER"/>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.cars10report.model.view.cars10reportVO.TotalPayment_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="TotalBalance"
+    IsUpdateable="false"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="VIEW_ATTR"
+    SQLType="NUMERIC">
+    <TransientExpression><![CDATA[adf.object.findRowSetForRow("").sum("Balance")]]></TransientExpression>
+    <Properties>
+      <SchemaBasedProperties>
+        <FMT_FORMATTER
+          ResId="gov.ca.dir.acct.cars.adf.cars10report.model.view.cars10reportVO.TotalBalance_FMT_FORMATTER"/>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.cars10report.model.view.cars10reportVO.TotalBalance_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="TotalDueAmount"
+    IsUpdateable="false"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="VIEW_ATTR"
+    SQLType="NUMERIC">
+    <TransientExpression><![CDATA[adf.object.findRowSetForRow("").sum("DueAmount")]]></TransientExpression>
+    <Properties>
+      <SchemaBasedProperties>
+        <FMT_FORMATTER
+          ResId="gov.ca.dir.acct.cars.adf.cars10report.model.view.cars10reportVO.TotalDueAmount_FMT_FORMATTER"/>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.cars10report.model.view.cars10reportVO.TotalDueAmount_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="GrandTotalPayment"
+    IsUpdateable="false"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="VIEW_ATTR"
+    SQLType="NUMERIC">
+    <TransientExpression><![CDATA[adf.object.findRowSetForRow("").sum("TotalPayment")]]></TransientExpression>
+    <Properties>
+      <SchemaBasedProperties>
+        <FMT_FORMATTER
+          ResId="gov.ca.dir.acct.cars.adf.cars10report.model.view.cars10reportVO.GrandTotalPayment_FMT_FORMATTER"/>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.cars10report.model.view.cars10reportVO.GrandTotalPayment_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ReportDate"
+    IsUpdateable="false"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    AliasName="VIEW_ATTR"
+    SQLType="DATE">
+    <TransientExpression><![CDATA[adf.currentDate]]></TransientExpression>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.cars10report.model.view.cars10reportVO.ReportDate_LABEL"/>
+        <CONTROLTYPE
+          Value="date"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="TotalRecords"
+    IsUpdateable="false"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="VIEW_ATTR"
+    SQLType="NUMERIC">
+    <RecalcCondition><![CDATA[true]]></RecalcCondition>
+    <TransientExpression><![CDATA[adf.object.findRowSetForRow("").count("CurrentDocument")]]></TransientExpression>
+  </ViewAttribute>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="gov.ca.dir.acct.cars.adf.cars10report.model.ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

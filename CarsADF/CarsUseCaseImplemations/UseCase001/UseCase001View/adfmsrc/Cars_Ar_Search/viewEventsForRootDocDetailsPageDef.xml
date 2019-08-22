@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.64.93" id="viewEventsForRootDocDetailsPageDef"
+                Package="Cars_Ar_Search">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="ViewEventDetails2" RangeSize="50"
+              DataControl="CarsSearchEventsDataControl"
+              id="ViewEventDetails2Iterator"/>
+    <iterator Binds="NoteEventVO1" RangeSize="25"
+              DataControl="CarsSearchEventsDataControl"
+              id="NoteEventVO1Iterator"/>
+    <iterator id="ViewArRootDocuments1Iterator" Binds="ViewArRootDocuments1"
+              DataControl="CarsSearchEventsDataControl" RangeSize="25"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="ViewEventDetails2Iterator" id="ViewEventDetails2">
+      <nodeDefinition DefName="gov.ca.dir.acct.cars.adf.usecase001.model.CarsEventDetails.ViewEventDetails"
+                      Name="ViewEventDetails20">
+        <AttrNames>
+          <Item Value="ArRootDocument"/>
+          <Item Value="TcCode"/>
+          <Item Value="PcaCode"/>
+          <Item Value="IndexCode"/>
+          <Item Value="RevenueSourceCode"/>
+          <Item Value="AgencySourceCode"/>
+          <Item Value="AcctgTransactionId"/>
+          <Item Value="AcctgEntryId"/>
+          <Item Value="Amount"/>
+          <Item Value="CurrentDocumentNumber"/>
+          <Item Value="ReferenceDocumentNumber"/>
+          <Item Value="FiscalYearName"/>
+          <Item Value="BusinessUnit"/>
+        </AttrNames>
+        <Accessors>
+          <Item Value="ViewTcDetails"/>
+        </Accessors>
+      </nodeDefinition>
+      <nodeDefinition DefName="gov.ca.dir.acct.cars.adf.usecase001.model.CarsEventDetails.ViewTcDetails"
+                      Name="ViewEventDetails21">
+        <AttrNames>
+          <Item Value="AcctgTransactionId"/>
+          <Item Value="GlAcct"/>
+          <Item Value="EntryType"/>
+          <Item Value="Amount"/>
+          <Item Value="AcctgEntryId"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="NoteEventVO1Iterator" id="NoteEventVO1">
+      <nodeDefinition DefName="gov.ca.dir.acct.cars.adf.usecase001.model.CarsEventDetails.NoteEventVO"
+                      Name="NoteEventVO10">
+        <AttrNames>
+          <Item Value="NoteTypeCode"/>
+          <Item Value="NoteText"/>
+          <Item Value="CreatedBy"/>
+          <Item Value="CreatedDate"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="ViewArRootDocuments1Iterator"
+                     id="ArRootDocument">
+      <AttrNames>
+        <Item Value="ArRootDocument"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ViewArRootDocuments1Iterator" id="IssueDate">
+      <AttrNames>
+        <Item Value="IssueDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ViewArRootDocuments1Iterator" id="ArBalance">
+      <AttrNames>
+        <Item Value="ArBalance"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ViewArRootDocuments1Iterator" id="LegalName">
+      <AttrNames>
+        <Item Value="LegalName"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

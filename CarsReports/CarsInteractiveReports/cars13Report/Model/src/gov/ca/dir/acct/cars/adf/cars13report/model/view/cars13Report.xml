@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="cars13Report"
+  Version="11.1.1.64.93"
+  InheritPersonalization="true"
+  OrderBy='"FISCAL_YEAR","INDEX_CODE"'
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  PageIterMode="Full"
+  UseGlueCode="false">
+  <DesignTime>
+    <Attr Name="_isExpertMode" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="gov.ca.dir.acct.cars.adf.cars13report.model.view.cars13Report_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <SQLQuery>
+    <![CDATA[SELECT DISTINCT 
+    SCO.AR_ROOT_DOCUMENT INVOICE_NUMBER, 
+    NVL(O.LEGAL_NAME, P.FIRST_NAME || ' ' || P.MIDDLE_NAME || ' ' || P.LAST_NAME) EMPLOYER, 
+    FUNC_GET_ISSUE_DATE (SCO.AR_ROOT_DOCUMENT) ISSUE_DATE, 
+    FUNC_GET_FISCAL_YEAR(SCO.AR_ROOT_DOCUMENT) FISCAL_YEAR, 
+    AC.INDEX_CODE,
+    TRUNC(SCO.EVENT_DATE) WRITEOFF_APPLY_DATE,
+    substr(SCO.CURRENT_DOCUMENT,instr(SCO.CURRENT_DOCUMENT,'-'||SCO.EVENT_TYPE_CODE||'-')+5) SCO_APPLICATION_NUMBER,
+    FUNC_GET_BALANCE (SCO.AR_ROOT_DOCUMENT) CURRENT_BALANCE,
+    TRUNC(SCO_RESPOND.EVENT_DATE) SCO_RESPONSE_DATE,
+    substr(SCO_RESPOND.CURRENT_DOCUMENT,instr(SCO_RESPOND.CURRENT_DOCUMENT,'-'||SCO_RESPOND.EVENT_TYPE_CODE||'-')+5) SCO_RESPONSE_NUMBER
+FROM
+(
+SELECT ET.AR_ROOT_DOCUMENT,ETT.EVENT_TYPE_CODE,ET.CURRENT_DOCUMENT,ET.EVENT_DATE
+FROM
+EVENT_TYPE ETT, EVENT ET
+WHERE ETT.EVENT_TYPE_ID         = ET.EVENT_TYPE_ID 
+AND   ETT.EVENT_TYPE_CODE       IN ('441') 
+AND   TRUNC(ET.EVENT_DATE)      <= TRUNC(SYSDATE)
+) SCO,
+(
+SELECT ET.AR_ROOT_DOCUMENT,ETT.EVENT_TYPE_CODE,ET.CURRENT_DOCUMENT,ET.EVENT_DATE
+FROM
+EVENT_TYPE ETT, EVENT ET
+WHERE ETT.EVENT_TYPE_ID         = ET.EVENT_TYPE_ID 
+AND   ETT.EVENT_TYPE_CODE       IN ('135','442','160') 
+AND   TRUNC(ET.EVENT_DATE)      <= TRUNC(SYSDATE)
+) SCO_RESPOND,
+EVENT_TYPE ETT, EVENT ET, ACCTG_TRANSACT_EVENT_ASSOC ATES, ACCOUNTING_ENTRY AE, ACCOUNTING_CODE AC, PARTICIPANT_ROLE PR, ORGANIZATION O, PERSON P
+WHERE ETT.EVENT_TYPE_ID         = ET.EVENT_TYPE_ID 
+AND   ET.EVENT_ID               = ATES.EVENT_ID
+AND   ATES.ACCTG_TRANSACTION_ID = AE.ACCTG_TRANSACTION_ID 
+AND   AE.ACCOUNTING_CODE_ID     = AC.ACCOUNTING_CODE_ID 
+AND   PR.EVENT_ID               = ET.EVENT_ID
+AND   O.PARTY_ID (+)            = PR.PARTY_ID -- Organization
+AND   P.PARTY_ID (+)            = PR.PARTY_ID -- Person
+AND   ETT.EVENT_TYPE_CODE       IN ('010') 
+AND   TRUNC(ET.EVENT_DATE)      <= TRUNC(SYSDATE)
+AND   SCO.AR_ROOT_DOCUMENT      = ET.AR_ROOT_DOCUMENT
+AND   SCO.AR_ROOT_DOCUMENT      = SCO_RESPOND.AR_ROOT_DOCUMENT (+)]]>
+  </SQLQuery>
+  <ViewAttribute
+    Name="InvoiceNumber"
+    IsUpdateable="false"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Precision="25"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="INVOICE_NUMBER"
+    Expression="INVOICE_NUMBER"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="25"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.cars13report.model.view.cars13Report.InvoiceNumber_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Employer"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="50"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="EMPLOYER"
+    Expression="EMPLOYER"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="152"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.cars13report.model.view.cars13Report.Employer_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="IssueDate"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    AliasName="ISSUE_DATE"
+    Expression="ISSUE_DATE"
+    SQLType="DATE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.cars13report.model.view.cars13Report.IssueDate_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="FiscalYear"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="4"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="FISCAL_YEAR"
+    Expression="FISCAL_YEAR"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="4000"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.cars13report.model.view.cars13Report.FiscalYear_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="IndexCode"
+    IsUpdateable="false"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Precision="4"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="INDEX_CODE"
+    Expression="INDEX_CODE"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="4"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.cars13report.model.view.cars13Report.IndexCode_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="WriteoffApplyDate"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    AliasName="WRITEOFF_APPLY_DATE"
+    Expression="WRITEOFF_APPLY_DATE"
+    SQLType="DATE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.cars13report.model.view.cars13Report.WriteoffApplyDate_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ScoApplicationNumber"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="6"
+    Type="java.lang.String"
+    ColumnType="CHAR"
+    AliasName="SCO_APPLICATION_NUMBER"
+    Expression="SCO_APPLICATION_NUMBER"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="6"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.cars13report.model.view.cars13Report.ScoApplicationNumber_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CurrentBalance"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="CURRENT_BALANCE"
+    Expression="CURRENT_BALANCE"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <FMT_FORMATTER
+          ResId="gov.ca.dir.acct.cars.adf.cars13report.model.view.cars13Report.CurrentBalance_FMT_FORMATTER"/>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.cars13report.model.view.cars13Report.CurrentBalance_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ScoResponseDate"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    AliasName="SCO_RESPONSE_DATE"
+    Expression="SCO_RESPONSE_DATE"
+    SQLType="DATE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.cars13report.model.view.cars13Report.ScoResponseDate_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ScoResponseNumber"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="6"
+    Type="java.lang.String"
+    ColumnType="CHAR"
+    AliasName="SCO_RESPONSE_NUMBER"
+    Expression="SCO_RESPONSE_NUMBER"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="6"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.cars13report.model.view.cars13Report.ScoResponseNumber_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="currentDate"
+    IsUpdateable="false"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    AliasName="VIEW_ATTR"
+    SQLType="DATE">
+    <TransientExpression><![CDATA[adf.currentDate]]></TransientExpression>
+    <Properties>
+      <SchemaBasedProperties>
+        <FMT_FORMATTER
+          ResId="gov.ca.dir.acct.cars.adf.cars13report.model.view.cars13Report.currentDate_FMT_FORMATTER"/>
+        <FMT_FORMAT
+          ResId="gov.ca.dir.acct.cars.adf.cars13report.model.view.cars13Report.currentDate_FMT_FORMAT"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="TotalCurrentBalance"
+    IsUpdateable="false"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="VIEW_ATTR"
+    SQLType="NUMERIC">
+    <TransientExpression><![CDATA[adf.object.findRowSetForRow("").sum("CurrentBalance")]]></TransientExpression>
+    <Properties>
+      <SchemaBasedProperties>
+        <FMT_FORMATTER
+          ResId="gov.ca.dir.acct.cars.adf.cars13report.model.view.cars13Report.TotalCurrentBalance_FMT_FORMATTER"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="TotalApplication"
+    IsUpdateable="false"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="VIEW_ATTR"
+    SQLType="NUMERIC">
+    <TransientExpression><![CDATA[adf.object.findRowSetForRow("").count("ScoApplicationNumber")]]></TransientExpression>
+    <Properties>
+      <SchemaBasedProperties>
+        <FMT_FORMATTER
+          ResId="gov.ca.dir.acct.cars.adf.cars13report.model.view.cars13Report.TotalApplication_FMT_FORMATTER"/>
+        <FMT_FORMAT
+          ResId="gov.ca.dir.acct.cars.adf.cars13report.model.view.cars13Report.TotalApplication_FMT_FORMAT"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="gov.ca.dir.acct.cars.adf.cars13report.model.ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

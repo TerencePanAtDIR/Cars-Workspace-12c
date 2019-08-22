@@ -1,0 +1,1171 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="ViewArRootDocuments"
+  Version="11.1.1.64.93"
+  InheritPersonalization="true"
+  OrderBy='"CREATED_DATE" DESC'
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  ComponentClass="gov.ca.dir.acct.cars.adf.usecase001.model.CarsEventDetails.ViewArRootDocumentsImpl"
+  FetchMode="FETCH_AS_NEEDED"
+  PageIterMode="Full"
+  UseGlueCode="false">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Coll|VarAccess"/>
+    <Attr Name="_isExpertMode" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="gov.ca.dir.acct.cars.adf.usecase001.model.CarsEventDetails.ViewArRootDocuments_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <ViewAccessor
+    Name="ProgramUnitView1"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.common.model.view.ProgramUnitView"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="ViewBalanceByGlAndArRootDoc1"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.usecase001.model.CarsEventDetails.ViewBalanceByGlAndArRootDoc">
+    <ViewCriteriaUsage
+      Name="ViewBalanceByGlAndArRootDocCriteria"
+      FullName="gov.ca.dir.acct.cars.adf.usecase001.model.CarsEventDetails.ViewBalanceByGlAndArRootDoc.ViewBalanceByGlAndArRootDocCriteria"/>
+    <ParameterMap>
+      <PIMap Variable="varGlAccount">
+        <TransientExpression><![CDATA[1380]]></TransientExpression>
+      </PIMap>
+      <PIMap Variable="varImisNumber">
+        <TransientExpression><![CDATA[ArRootDocument]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ListBinding
+    Name="LOV_ProgramUnitCode"
+    ListVOName="ProgramUnitView1"
+    ListRangeSize="-1"
+    NullValueFlag="none"
+    NullValueId="LOV_ProgramUnitCode_LOVUIHints_NullValueId"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="ProgramUnitCode"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="ProgramUnitCode"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <SQLQuery>
+    <![CDATA[SELECT  
+        EVENT_TYPE.PROGRAM_UNIT_CODE,
+        EVENT.AR_ROOT_DOCUMENT, 
+        NVL(ORGANIZATION.LEGAL_NAME, PERSON.FIRST_NAME || ' ' || PERSON.MIDDLE_NAME || ' ' || PERSON.LAST_NAME) AS "Legal Name",
+        trunc(EVENT.EVENT_DATE) "Issue Date",
+        ACCOUNTING_CODE.INDEX_CODE,
+        FUND_ALLOCATION.PCA_CODE, 
+        ACCOUNTING_CODE.REVENUE_SOURCE_CODE,
+        ACCOUNTING_CODE.AGENCY_SOURCE_CODE,
+        FUND.FUND, 
+        FUND.FUND_DETAIL,
+        FUND.FUND_SOURCE,
+        FISCAL_YEAR_QUERY.FISCAL_YEAR_NAME,
+        Balance.Amount as "AR BALANCE", 
+        --NVL(FUNC_GET_BALANCE(EVENT.AR_ROOT_DOCUMENT), 0) as "AR BALANCE",
+        ' ' AS "DOCKET NUMBER",
+        EVENT.CREATED_BY,
+        EVENT.DATA_SOURCE_CODE,
+PARTICIPANT_ROLE.PARTICIPANT_ROLE_TYPE_CODE,
+EVENT_TYPE.EVENT_TYPE_CODE,
+TRUNC(EVENT.CREATED_DATE) CREATED_DATE,
+PARTICIPANT_ROLE.CUST_ID,
+PARTICIPANT_ROLE.PARTY_ID
+
+FROM 
+
+ACCOUNTING_TRANSACTION
+           
+    INNER JOIN
+        ACCOUNTING_ENTRY
+            ON (ACCOUNTING_TRANSACTION.ACCTG_TRANSACTION_ID =
+                ACCOUNTING_ENTRY.ACCTG_TRANSACTION_ID)
+    INNER JOIN
+        ACCTG_TRANSACT_EVENT_ASSOC
+            ON (ACCOUNTING_TRANSACTION.ACCTG_TRANSACTION_ID =
+                ACCTG_TRANSACT_EVENT_ASSOC.ACCTG_TRANSACTION_ID)
+    LEFT OUTER JOIN
+        RECEIPT
+            ON (ACCOUNTING_TRANSACTION.ACCTG_TRANSACTION_ID =
+                RECEIPT.ACCTG_TRANSACTION_ID)
+    INNER JOIN
+        ACCOUNTING_CODE
+            ON (ACCOUNTING_CODE.ACCOUNTING_CODE_ID =
+                ACCOUNTING_ENTRY.ACCOUNTING_CODE_ID)
+    INNER JOIN
+        FUND_ALLOCATION
+            ON (FUND_ALLOCATION.FUND_ALLOCATION_ID =
+          ACCOUNTING_CODE.FUND_ALLOCATION_ID)
+    INNER JOIN
+        ACCOUNTING_ENTRY_TYPE
+            ON (ACCOUNTING_ENTRY.ACCTG_ENTRY_TYPE_ID =
+                ACCOUNTING_ENTRY_TYPE.ACCTG_ENTRY_TYPE_ID)
+    INNER JOIN FUND
+            ON (FUND.FUND_ID = 
+            FUND_ALLOCATION.FUND_TO_ID)         
+    INNER JOIN FISCAL_PERIOD
+            ON (FISCAL_PERIOD.FISCAL_PERIOD_ID =
+                FUND.FISCAL_PERIOD_ID)          
+    INNER JOIN EVENT
+            ON (EVENT.EVENT_ID = 
+            ACCTG_TRANSACT_EVENT_ASSOC.EVENT_ID)
+    INNER JOIN EVENT_TYPE
+            ON (EVENT.EVENT_TYPE_ID = 
+            EVENT_TYPE.EVENT_TYPE_ID)
+    INNER JOIN PARTICIPANT_ROLE
+            ON (EVENT.EVENT_ID = 
+            PARTICIPANT_ROLE.EVENT_ID)
+    LEFT JOIN ORGANIZATION
+            ON (ORGANIZATION.PARTY_ID = 
+            PARTICIPANT_ROLE.PARTY_ID)
+    LEFT JOIN PERSON
+            ON (PERSON.PARTY_ID =
+            PARTICIPANT_ROLE.PARTY_ID)
+    INNER JOIN PROGRAM_UNIT
+            ON (EVENT_TYPE.PROGRAM_UNIT_CODE =
+            PROGRAM_UNIT.PROGRAM_UNIT_CODE)
+    INNER JOIN 
+            (SELECT AR_ROOT_DOCUMENT, MAX(FISCAL_YEAR_NAME) FISCAL_YEAR_NAME FROM
+                (SELECT AR_ROOT_DOCUMENT, FISCAL_YEAR_NAME, ROW_NUMBER() OVER(PARTITION BY EVENT.AR_ROOT_DOCUMENT ORDER BY EVENT.EVENT_ID DESC) AS rk
+
+                FROM EVENT
+                    INNER JOIN EVENT_TYPE
+                        ON EVENT.EVENT_TYPE_ID = EVENT_TYPE.EVENT_TYPE_ID
+                    INNER JOIN ACCTG_TRANSACT_EVENT_ASSOC 
+                        ON ACCTG_TRANSACT_EVENT_ASSOC.EVENT_ID = EVENT.EVENT_ID
+                    INNER JOIN ACCOUNTING_TRANSACTION
+                        ON ACCTG_TRANSACT_EVENT_ASSOC.ACCTG_TRANSACTION_ID = ACCOUNTING_TRANSACTION.ACCTG_TRANSACTION_ID
+                    INNER JOIN FISCAL_PERIOD 
+                        ON FISCAL_PERIOD.FISCAL_PERIOD_ID = ACCOUNTING_TRANSACTION.FISCAL_PERIOD_ID
+                    LEFT OUTER JOIN EVENT_ASSOCIATION 
+                        ON EVENT.EVENT_ID = EVENT_ASSOCIATION.EVENT_FROM_ID
+                    LEFT OUTER JOIN EVENT_TYPE_ASSOCIATION_RULE
+                        ON EVENT_ASSOCIATION.EVENT_TYPE_ASSOC_RULE_ID = EVENT_TYPE_ASSOCIATION_RULE.EVENT_TYPE_ASSOC_RULE_ID
+                    LEFT OUTER JOIN EVENT_TYPE EVENT_TYPE_ASSOCATION
+                        ON EVENT_TYPE_ASSOCATION.EVENT_TYPE_ID = EVENT_TYPE_ASSOCIATION_RULE.EVENT_TYPE_TO_ID
+                        
+                WHERE EVENT_TYPE.EVENT_TYPE_CODE IN ('010', '015', '020', '120', '121', '122')
+                AND (EVENT_TYPE_ASSOCATION.EVENT_TYPE_CODE IS NULL 
+                    OR EVENT_TYPE_ASSOCATION.EVENT_TYPE_CODE IN('010', '015', '020') 
+                    AND EVENT_TYPE_ASSOCATION.EVENT_TYPE_CODE <> '900')
+                
+                ORDER BY EVENT.EVENT_ID DESC)
+                WHERE RK = 1
+                GROUP BY AR_ROOT_DOCUMENT) FISCAL_YEAR_QUERY
+          ON FISCAL_YEAR_QUERY.AR_ROOT_DOCUMENT = EVENT.AR_ROOT_DOCUMENT
+    INNER JOIN
+          (select AR_ROOT_DOCUMENT, sum(amount) amount from
+
+            (
+                SELECT AR_ROOT_DOCUMENT, nvl(sum(ABS(debit.amount)),0) AMOUNT from debit
+
+                    inner join
+                        accounting_entry on
+                            (accounting_entry.acctg_entry_id = debit.acctg_entry_id)
+                    inner join
+                        ACCTG_TRANSACT_EVENT_ASSOC on
+                            (ACCOUNTING_ENTRY.ACCTG_TRANSACTION_ID = ACCTG_TRANSACT_EVENT_ASSOC.ACCTG_TRANSACTION_ID)
+                    inner join
+                        EVENT on
+                            (EVENT.EVENT_ID = ACCTG_TRANSACT_EVENT_ASSOC.EVENT_ID)
+                    inner join
+                        GL_ACCOUNT on
+                            (DEBIT.GL_ACCOUNT_NUMBER = GL_ACCOUNT.GL_ACCOUNT_NUMBER)
+                            
+                    where DEBIT.account_number in ('1313', '1315', '1380', '1319', 
+        '1200000', '1209900', '1209400', '1200150')
+                    group by AR_ROOT_DOCUMENT
+
+
+                UNION
+                SELECT AR_ROOT_DOCUMENT, nvl(sum(ABS(credit.amount)),0) * -1 AMOUNT from credit
+
+                    inner join
+                        accounting_entry on
+                            (accounting_entry.acctg_entry_id = credit.acctg_entry_id)
+                    inner join
+                        ACCTG_TRANSACT_EVENT_ASSOC on
+                            (ACCOUNTING_ENTRY.ACCTG_TRANSACTION_ID = ACCTG_TRANSACT_EVENT_ASSOC.ACCTG_TRANSACTION_ID)
+                    inner join
+                        EVENT on
+                            (EVENT.EVENT_ID = ACCTG_TRANSACT_EVENT_ASSOC.EVENT_ID)
+                    inner join
+                        GL_ACCOUNT on
+                            (CREDIT.GL_ACCOUNT_NUMBER = GL_ACCOUNT.GL_ACCOUNT_NUMBER)
+                    where CREDIT.account_number in ('1313', '1315', '1380', '1319', 
+        '1200000', '1209900', '1209400', '1200150')
+                    group by AR_ROOT_DOCUMENT
+                )
+                    group by AR_ROOT_DOCUMENT
+            )Balance
+            ON Balance.AR_ROOT_DOCUMENT = EVENT.AR_ROOT_DOCUMENT
+          
+          
+WHERE PARTICIPANT_ROLE.PARTICIPANT_ROLE_TYPE_CODE = 'RES_PARTY' AND
+EVENT_TYPE.EVENT_TYPE_CODE IN ('010','015','020')]]>
+  </SQLQuery>
+  <ViewAttribute
+    Name="ProgramUnitCode"
+    IsUpdateable="false"
+    LOVName="LOV_ProgramUnitCode"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Precision="25"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="PROGRAM_UNIT_CODE"
+    Expression="PROGRAM_UNIT_CODE"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="25"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.usecase001.model.CarsEventDetails.ViewArRootDocuments.ProgramUnitCode_LABEL"/>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ArRootDocument"
+    IsUpdateable="false"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Precision="25"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="AR_ROOT_DOCUMENT"
+    Expression="AR_ROOT_DOCUMENT"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="25"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.usecase001.model.CarsEventDetails.ViewEvents.ArRootDocument_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="LegalName"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="250"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName='"Legal Name"'
+    Expression='"Legal Name"'
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="250"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="IssueDate"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    AliasName='"Issue Date"'
+    Expression='"Issue Date"'
+    SQLType="DATE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="IndexCode"
+    IsUpdateable="false"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Precision="4"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="INDEX_CODE"
+    Expression="INDEX_CODE"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="4"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.usecase001.model.CarsEventDetails.ViewArRootDocuments.IndexCode_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="PcaCode"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="5"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="PCA_CODE"
+    Expression="PCA_CODE"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="5"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.usecase001.model.CarsEventDetails.ViewArRootDocuments.PcaCode_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="RevenueSourceCode"
+    IsUpdateable="false"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Precision="6"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="REVENUE_SOURCE_CODE"
+    Expression="REVENUE_SOURCE_CODE"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="6"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.usecase001.model.CarsEventDetails.ViewEventDetails.AgencySourceCode_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="AgencySourceCode"
+    IsUpdateable="false"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Precision="2"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="AGENCY_SOURCE_CODE"
+    Expression="AGENCY_SOURCE_CODE"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="2"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.usecase001.model.CarsEventDetails.ViewArRootDocuments.AgencySourceCode_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Fund"
+    IsUpdateable="false"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Precision="4"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="FUND"
+    Expression="FUND"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="4"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.usecase001.model.CarsEventDetails.ViewArRootDocuments.Fund_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="FundDetail"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="2"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="FUND_DETAIL"
+    Expression="FUND_DETAIL"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="2"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.usecase001.model.CarsEventDetails.ViewArRootDocuments.FundDetail_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="FundSource"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="1"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="FUND_SOURCE"
+    Expression="FUND_SOURCE"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="FiscalYearName"
+    IsUpdateable="false"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Precision="4"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="FISCAL_YEAR_NAME"
+    Expression="FISCAL_YEAR_NAME"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="4"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.usecase001.model.CarsEventDetails.ViewArRootDocuments.FiscalYearName_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ArBalance"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName='"AR BALANCE"'
+    Expression='"AR BALANCE"'
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="22"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <FMT_FORMATTER
+          ResId="gov.ca.dir.acct.cars.adf.usecase001.model.CarsEventDetails.ViewArRootDocuments.ArBalance_FMT_FORMATTER"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="DocketNumber"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="1"
+    Type="java.lang.String"
+    ColumnType="CHAR"
+    AliasName='"DOCKET NUMBER"'
+    Expression='"DOCKET NUMBER"'
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CreatedBy"
+    IsUpdateable="false"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Precision="25"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="CREATED_BY"
+    Expression="CREATED_BY"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="25"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.usecase001.model.CarsEventDetails.ViewArRootDocuments.CreatedBy_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="DataSourceCode"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="25"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="DATA_SOURCE_CODE"
+    Expression="DATA_SOURCE_CODE"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="25"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.usecase001.model.CarsEventDetails.ViewArRootDocuments.DataSourceCode_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ParticipantRoleTypeCode"
+    IsUpdateable="false"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Precision="25"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="PARTICIPANT_ROLE_TYPE_CODE"
+    Expression="PARTICIPANT_ROLE_TYPE_CODE"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="25"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="EventTypeCode"
+    IsUpdateable="false"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Precision="5"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="EVENT_TYPE_CODE"
+    Expression="EVENT_TYPE_CODE"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="5"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CreatedDate"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    AliasName="CREATED_DATE"
+    Expression="CREATED_DATE"
+    SQLType="DATE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.usecase001.model.CarsEventDetails.ViewArRootDocuments.CreatedDate_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CustId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="15"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="CUST_ID"
+    Expression="CUST_ID"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="PartyId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="PARTY_ID"
+    Expression="PARTY_ID"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Contingent"
+    IsUpdateable="false"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="255"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR">
+    <RecalcCondition><![CDATA[true]]></RecalcCondition>
+    <TransientExpression><![CDATA[if (ViewBalanceByGlAndArRootDoc1.sum("Amount") > 0)
+{return "Y"}
+else return "N"]]></TransientExpression>
+    <Dependencies>
+      <Item
+        Value="ArRootDocument"/>
+    </Dependencies>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.usecase001.model.CarsEventDetails.ViewArRootDocuments.Contingent_LABEL"/>
+        <CONTROLTYPE
+          Value="check_box"/>
+        <AUTOSUBMIT
+          Value="true"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewCriteria
+    Name="SearchCarsInvoicesCriteriaCALOSHA"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.usecase001.model.CarsEventDetails.ViewArRootDocuments"
+    Conjunction="AND">
+    <Properties>
+      <CustomProperties>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="false"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="vcrow4"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="ProgramUnitCode"
+        ViewAttribute="ProgramUnitCode"
+        Operator="="
+        Conjunction="AND"
+        Value="CALOSHA"
+        GenerateIsNullClauseForBindVars="false"
+        Required="Optional">
+        <Properties>
+          <CustomProperties>
+            <Property
+              Name="renderedMode"
+              Value="Never"/>
+          </CustomProperties>
+        </Properties>
+      </ViewCriteriaItem>
+      <ViewCriteriaItem
+        Name="ArRootDocument"
+        ViewAttribute="ArRootDocument"
+        Operator="CONTAINS"
+        Conjunction="AND"
+        GenerateIsNullClauseForBindVars="false"
+        Required="Optional">
+        <Properties>
+          <SchemaBasedProperties>
+            <LABEL
+              ResId="gov.ca.dir.acct.cars.adf.usecase001.model.CarsEventDetails.ViewArRootDocuments.ArRootDocument_CALOSHA_LABEL"/>
+          </SchemaBasedProperties>
+        </Properties>
+      </ViewCriteriaItem>
+      <ViewCriteriaItem
+        Name="IndexCode"
+        ViewAttribute="IndexCode"
+        Operator="CONTAINS"
+        Conjunction="AND"
+        UpperColumns="0"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="RevenueSourceCode"
+        ViewAttribute="RevenueSourceCode"
+        Operator="CONTAINS"
+        Conjunction="AND"
+        UpperColumns="0"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="ViewArRootDocumentsCriteria_vcrow4_AgencySourceCode"
+        ViewAttribute="AgencySourceCode"
+        Operator="CONTAINS"
+        Conjunction="AND"
+        UpperColumns="0"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="SearchCarsInvoicesCriteria_vcrow4_Fund"
+        ViewAttribute="Fund"
+        Operator="CONTAINS"
+        Conjunction="AND"
+        UpperColumns="0"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="FiscalYearName"
+        ViewAttribute="FiscalYearName"
+        Operator="CONTAINS"
+        Conjunction="AND"
+        UpperColumns="0"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
+  <ViewCriteria
+    Name="SearchCarsInvoicesCriteriaDLSE"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.usecase001.model.CarsEventDetails.ViewArRootDocuments"
+    Conjunction="AND">
+    <Properties>
+      <CustomProperties>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="false"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="vcrow4"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="ProgramUnitCode"
+        ViewAttribute="ProgramUnitCode"
+        Operator="="
+        Conjunction="AND"
+        Value="DLSE"
+        GenerateIsNullClauseForBindVars="false"
+        Required="Optional">
+        <Properties>
+          <CustomProperties>
+            <Property
+              Name="renderedMode"
+              Value="Never"/>
+          </CustomProperties>
+        </Properties>
+      </ViewCriteriaItem>
+      <ViewCriteriaItem
+        Name="ArRootDocument"
+        ViewAttribute="ArRootDocument"
+        Operator="CONTAINS"
+        Conjunction="AND"
+        GenerateIsNullClauseForBindVars="false"
+        Required="Optional">
+        <Properties>
+          <SchemaBasedProperties>
+            <LABEL
+              ResId="gov.ca.dir.acct.cars.adf.usecase001.model.CarsEventDetails.ViewArRootDocuments.ArRootDocument_DLSE_LABEL"/>
+          </SchemaBasedProperties>
+        </Properties>
+      </ViewCriteriaItem>
+      <ViewCriteriaItem
+        Name="IndexCode"
+        ViewAttribute="IndexCode"
+        Operator="CONTAINS"
+        Conjunction="AND"
+        UpperColumns="0"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="RevenueSourceCode"
+        ViewAttribute="RevenueSourceCode"
+        Operator="CONTAINS"
+        Conjunction="AND"
+        UpperColumns="0"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="ViewArRootDocumentsCriteria_vcrow4_AgencySourceCode"
+        ViewAttribute="AgencySourceCode"
+        Operator="CONTAINS"
+        Conjunction="AND"
+        UpperColumns="0"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="SearchCarsInvoicesCriteria_vcrow4_Fund"
+        ViewAttribute="Fund"
+        Operator="CONTAINS"
+        Conjunction="AND"
+        UpperColumns="0"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="FiscalYearName"
+        ViewAttribute="FiscalYearName"
+        Operator="CONTAINS"
+        Conjunction="AND"
+        UpperColumns="0"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
+  <ViewCriteria
+    Name="SearchCarsInvoicesCriteriaANY"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.usecase001.model.CarsEventDetails.ViewArRootDocuments"
+    Conjunction="AND">
+    <Properties>
+      <CustomProperties>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="false"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="vcrow4"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="ProgramUnitCode"
+        ViewAttribute="ProgramUnitCode"
+        Operator="CONTAINS"
+        Conjunction="AND"
+        UpperColumns="1"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="ArRootDocument"
+        ViewAttribute="ArRootDocument"
+        Operator="CONTAINS"
+        Conjunction="AND"
+        GenerateIsNullClauseForBindVars="false"
+        Required="Optional">
+        <Properties>
+          <SchemaBasedProperties>
+            <LABEL
+              ResId="gov.ca.dir.acct.cars.adf.usecase001.model.CarsEventDetails.ViewArRootDocuments.ArRootDocument_LABEL"/>
+          </SchemaBasedProperties>
+        </Properties>
+      </ViewCriteriaItem>
+      <ViewCriteriaItem
+        Name="IndexCode"
+        ViewAttribute="IndexCode"
+        Operator="CONTAINS"
+        Conjunction="AND"
+        UpperColumns="0"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="RevenueSourceCode"
+        ViewAttribute="RevenueSourceCode"
+        Operator="CONTAINS"
+        Conjunction="AND"
+        UpperColumns="0"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="ViewArRootDocumentsCriteria_vcrow4_AgencySourceCode"
+        ViewAttribute="AgencySourceCode"
+        Operator="CONTAINS"
+        Conjunction="AND"
+        UpperColumns="0"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="SearchCarsInvoicesCriteria_vcrow4_Fund"
+        ViewAttribute="Fund"
+        Operator="CONTAINS"
+        Conjunction="AND"
+        UpperColumns="0"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="FiscalYearName"
+        ViewAttribute="FiscalYearName"
+        Operator="CONTAINS"
+        Conjunction="AND"
+        UpperColumns="0"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
+  <ViewCriteria
+    Name="SearchCarsInvoicesCriteriaPV"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.usecase001.model.CarsEventDetails.ViewArRootDocuments"
+    Conjunction="AND">
+    <Properties>
+      <CustomProperties>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="false"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="vcrow4"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="ProgramUnitCode"
+        ViewAttribute="ProgramUnitCode"
+        Operator="="
+        Conjunction="AND"
+        Value="PV"
+        GenerateIsNullClauseForBindVars="false"
+        Required="Optional">
+        <Properties>
+          <CustomProperties>
+            <Property
+              Name="renderedMode"
+              Value="Never"/>
+          </CustomProperties>
+        </Properties>
+      </ViewCriteriaItem>
+      <ViewCriteriaItem
+        Name="ArRootDocument"
+        ViewAttribute="ArRootDocument"
+        Operator="CONTAINS"
+        Conjunction="AND"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="RevenueSourceCode"
+        ViewAttribute="RevenueSourceCode"
+        Operator="CONTAINS"
+        Conjunction="AND"
+        UpperColumns="0"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="AgencySourceCode"
+        ViewAttribute="AgencySourceCode"
+        Operator="CONTAINS"
+        Conjunction="AND"
+        UpperColumns="0"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="Fund"
+        ViewAttribute="Fund"
+        Operator="CONTAINS"
+        Conjunction="AND"
+        UpperColumns="0"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="FiscalYearName"
+        ViewAttribute="FiscalYearName"
+        Operator="CONTAINS"
+        Conjunction="AND"
+        UpperColumns="0"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
+  <ViewCriteria
+    Name="SearchCarsInvoicesCriteriaART"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.usecase001.model.CarsEventDetails.ViewArRootDocuments"
+    Conjunction="AND">
+    <Properties>
+      <CustomProperties>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="false"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="vcrow4"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="ProgramUnitCode"
+        ViewAttribute="ProgramUnitCode"
+        Operator="="
+        Conjunction="AND"
+        Value="ART"
+        GenerateIsNullClauseForBindVars="false"
+        Required="Optional">
+        <Properties>
+          <CustomProperties>
+            <Property
+              Name="renderedMode"
+              Value="Never"/>
+          </CustomProperties>
+        </Properties>
+      </ViewCriteriaItem>
+      <ViewCriteriaItem
+        Name="ArRootDocument"
+        ViewAttribute="ArRootDocument"
+        Operator="CONTAINS"
+        Conjunction="AND"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="RevenueSourceCode"
+        ViewAttribute="RevenueSourceCode"
+        Operator="CONTAINS"
+        Conjunction="AND"
+        UpperColumns="0"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="AgencySourceCode"
+        ViewAttribute="AgencySourceCode"
+        Operator="CONTAINS"
+        Conjunction="AND"
+        UpperColumns="0"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="Fund"
+        ViewAttribute="Fund"
+        Operator="CONTAINS"
+        Conjunction="AND"
+        UpperColumns="0"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="FiscalYearName"
+        ViewAttribute="FiscalYearName"
+        Operator="CONTAINS"
+        Conjunction="AND"
+        UpperColumns="0"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
+  <ViewCriteria
+    Name="SearchCarsInvoicesCriteriaEV"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.usecase001.model.CarsEventDetails.ViewArRootDocuments"
+    Conjunction="AND">
+    <Properties>
+      <CustomProperties>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="false"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="vcrow4"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="ProgramUnitCode"
+        ViewAttribute="ProgramUnitCode"
+        Operator="="
+        Conjunction="AND"
+        Value="EV"
+        GenerateIsNullClauseForBindVars="false"
+        Required="Optional">
+        <Properties>
+          <CustomProperties>
+            <Property
+              Name="renderedMode"
+              Value="Never"/>
+          </CustomProperties>
+        </Properties>
+      </ViewCriteriaItem>
+      <ViewCriteriaItem
+        Name="ArRootDocument"
+        ViewAttribute="ArRootDocument"
+        Operator="CONTAINS"
+        Conjunction="AND"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="RevenueSourceCode"
+        ViewAttribute="RevenueSourceCode"
+        Operator="CONTAINS"
+        Conjunction="AND"
+        UpperColumns="0"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="AgencySourceCode"
+        ViewAttribute="AgencySourceCode"
+        Operator="CONTAINS"
+        Conjunction="AND"
+        UpperColumns="0"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="Fund"
+        ViewAttribute="Fund"
+        Operator="CONTAINS"
+        Conjunction="AND"
+        UpperColumns="0"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="FiscalYearName"
+        ViewAttribute="FiscalYearName"
+        Operator="CONTAINS"
+        Conjunction="AND"
+        UpperColumns="0"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
+  <AttrArray Name="KeyAttributes">
+    <Item Value="ArRootDocument"/>
+  </AttrArray>
+  <ViewLinkAccessor
+    Name="ViewBalanceByGlAndArRootDoc"
+    ViewLink="gov.ca.dir.acct.cars.adf.usecase001.model.CarsEventDetails.ViewArRootBalanceByGlViewLink"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="OrgParticipantRoleAddressView"
+    ViewLink="gov.ca.dir.acct.cars.adf.usecase001.model.CarsEventDetails.ViewArRootDocsOrgPartiRoleAddressViewLink"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="gov.ca.dir.acct.cars.adf.usecase001.model.UseCase001ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

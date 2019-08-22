@@ -1,0 +1,216 @@
+<Done>Entity :AccountingEntry
+|__<Done>Create Attribute for column: ENTRY_REASON_ID
+|__<Done>Create Key for Constraint: FERT_AGEY_FK
+
+<Done>Entity :AccountingEntryStatus
+|__Attribute :AcctgEntryId
+|____<Done>Change Primary Key to:true
+|__<Done>Remove RowID since there is now a primary key attribute
+|__<Done>Create Key for Constraint: ACCOUNTING_ENTRY_STATUS_PK
+
+<Done>Entity :AccountingCode
+|__Attribute :CreatedDate
+|____<Done>Change Column type to DATE
+|__Attribute :Program
+|____<Done>Change Precision to 10
+|__Attribute :RevenueSourceCode
+|____<Done>Change Precision to 10
+|__Attribute :AgencySourceCode
+|____<Done>Change Precision to 3
+
+<Done>Entity :AccountingReceivableStatus
+|__<Done>Create Attribute for column: CS_AR_ROOT_DOCUMENT
+
+<Done>Entity :AcctgEntryEventAssocRule
+|__<Done>Create Attribute for column: ENTRY_REASON_ID
+|__<Done>Create Key for Constraint: FERT_AEAR_FK
+
+<Done>Entity :Address
+|__<Done>Create Attribute for column: FS_SEQUENCE_NUMBER
+
+<Done>Entity :AgencySource
+|__Attribute :AgencySourceCode
+|____<Done>Change Precision to 3
+
+<Done>Entity :Batch
+|__Attribute :BatchTypeCode
+|____<Done>Change Precision to 25
+
+<Done>Entity :BatchType
+|__Attribute :BatchTypeCode
+|____<Done>Change Precision to 25
+
+<Done>Entity :CarsErrorMessage
+|__<Done>Create Attribute for column: ERROR_NUMBER
+|__<Done>Create Attribute for column: SEVERITY
+
+<Done>Entity :Credit
+|__Attribute :GlAccountNumber
+|____<Done>Change Column type to NUMBER
+|____<Done>Change Precision to 0
+|__<Done>Create Attribute for column: ACCOUNT_NUMBER
+|__Key :AgeyCredFk
+|____<Done>Change Deferred Constraint to:true
+|____<Done>Change Initially Deferrable Constraint to:true
+|__<Done>Remove Key Constraint: SysC0073799
+|__<Done>Remove Key Constraint: SysC0073798
+|__<Done>Remove Key Constraint: SysC0073797
+|__<Done>Remove Key Constraint: SysC0073796
+|__<Done>Remove Key Constraint: SysC0073795
+|__<Done>Create Key for Constraint: SYS_C00153865
+|__<Done>Create Key for Constraint: SYS_C00153864
+|__<Done>Create Key for Constraint: SYS_C00153863
+|__<Done>Create Key for Constraint: SYS_C00153862
+|__<Done>Create Key for Constraint: SYS_C00153861
+|__<Done>Create Key for Constraint: SYS_C00153860
+
+<Done>Entity :CreditRule
+|__Attribute :GlAccountNumber
+|____<Done>Change Column type to NUMBER
+|____<Done>Change Precision to 0
+|__<Done>Create Attribute for column: ACCOUNT_NUMBER
+|__<Done>Remove Key Constraint: SysC0073808
+|__<Done>Remove Key Constraint: SysC0073807
+|__<Done>Remove Key Constraint: SysC0073806
+|__<Done>Remove Key Constraint: SysC0073805
+|__<Done>Remove Key Constraint: SysC0073804
+|__<Done>Remove Key Constraint: SysC0073803
+|__<Done>Remove Key Constraint: SysC0073802
+|__<Done>Create Key for Constraint: SYS_C00153859
+|__<Done>Create Key for Constraint: SYS_C00153858
+|__<Done>Create Key for Constraint: SYS_C00153857
+|__<Done>Create Key for Constraint: SYS_C00153856
+|__<Done>Create Key for Constraint: SYS_C00153855
+|__<Done>Create Key for Constraint: SYS_C00153854
+|__<Done>Create Key for Constraint: SYS_C00153853
+|__<Done>Create Key for Constraint: SYS_C00153852
+
+<Done>Entity :Debit
+|__Attribute :GlAccountNumber
+|____<Done>Change Column type to NUMBER
+|____<Done>Change Precision to 0
+|__<Done>Create Attribute for column: ACCOUNT_NUMBER
+|__Key :AgeyDebiFk
+|____<Done>Change Deferred Constraint to:true
+|____<Done>Change Initially Deferrable Constraint to:true
+|__<Done>Remove Key Constraint: SysC0073821
+|__<Done>Remove Key Constraint: SysC0073820
+|__<Done>Remove Key Constraint: SysC0073819
+|__<Done>Remove Key Constraint: SysC0073818
+|__<Done>Remove Key Constraint: SysC0073817
+|__<Done>Create Key for Constraint: SYS_C00153851
+|__<Done>Create Key for Constraint: SYS_C00153850
+|__<Done>Create Key for Constraint: SYS_C00153849
+|__<Done>Create Key for Constraint: SYS_C00153848
+|__<Done>Create Key for Constraint: SYS_C00153847
+|__<Done>Create Key for Constraint: SYS_C00153846
+
+<Done>Entity :DebitRule
+|__Attribute :GlAccountNumber
+|____<Done>Change Column type to NUMBER
+|____<Done>Change Precision to 0
+|__<Done>Create Attribute for column: ACCOUNT_NUMBER
+|__<Done>Remove Key Constraint: SysC0073830
+|__<Done>Remove Key Constraint: SysC0073829
+|__<Done>Remove Key Constraint: SysC0073828
+|__<Done>Remove Key Constraint: SysC0073827
+|__<Done>Remove Key Constraint: SysC0073826
+|__<Done>Remove Key Constraint: SysC0073825
+|__<Done>Remove Key Constraint: SysC0073824
+|__<Done>Create Key for Constraint: SYS_C00153845
+|__<Done>Create Key for Constraint: SYS_C00153844
+|__<Done>Create Key for Constraint: SYS_C00153843
+|__<Done>Create Key for Constraint: SYS_C00153842
+|__<Done>Create Key for Constraint: SYS_C00153841
+|__<Done>Create Key for Constraint: SYS_C00153840
+|__<Done>Create Key for Constraint: SYS_C00153839
+|__<Done>Create Key for Constraint: SYS_C00153838
+
+<Done>Entity :Event
+|__<Done>Create Attribute for column: CS_AR_ROOT_DOCUMENT
+|__<Done>Create Key for Constraint: EVENT_CURRENT_DOCUMENT_UK
+
+<Done>Entity :Event
+|__<Done>Create Key for Constraint: EVENT_CURRENT_DOCUMENT_UK
+
+<Done>Entity :Fund
+|__Attribute :FundDetail
+|____<Done>Change Precision to 10
+|__Attribute :Fund
+|____<Done>Change Precision to 9
+
+<Done>Entity :GlAccount
+|__Attribute :GlAccountNumber
+|____<Done>Change Column type to NUMBER
+|____<Done>Change Precision to 0
+|__<Done>Create Attribute for column: ACCOUNT_NUMBER
+|__<Done>Create Attribute for column: EFFECTIVE_START_DATE
+|__<Done>Create Attribute for column: EFFECTIVE_END_DATE
+|__<Done>Remove Key Constraint: SysC0073892
+|__<Done>Remove Key Constraint: SysC0073891
+|__<Done>Remove Key Constraint: SysC0073890
+|__<Done>Remove Key Constraint: SysC0073889
+|__<Done>Remove Key Constraint: SysC0073888
+|__<Done>Remove Key Constraint: SysC0073887
+|__<Done>Create Key for Constraint: SYS_C00153873
+|__<Done>Create Key for Constraint: SYS_C00153872
+|__<Done>Create Key for Constraint: SYS_C00153871
+|__<Done>Create Key for Constraint: SYS_C00153870
+|__<Done>Create Key for Constraint: SYS_C00153869
+|__<Done>Create Key for Constraint: SYS_C00153868
+|__<Done>Create Key for Constraint: SYS_C00153867
+|__<Done>Create Key for Constraint: SYS_C00153866
+
+<Done>Entity :GlAccountBalance
+|__Attribute :GlAccountNumber
+|____<Done>Change Column type to NUMBER
+|____<Done>Change Precision to 0
+|__<Done>Create Attribute for column: BALANCE_NUMBER
+|__<Done>Create Attribute for column: ACCOUNT_NUMBER
+|__<Done>Remove Key Constraint: SysC0073904
+|__<Done>Remove Key Constraint: SysC0073903
+|__<Done>Remove Key Constraint: SysC0073902
+|__<Done>Remove Key Constraint: SysC0073901
+|__<Done>Remove Key Constraint: SysC0073900
+|__<Done>Remove Key Constraint: GlAccountBalancePk
+|__<Done>Create Key for Constraint: SYS_C00153837
+|__<Done>Create Key for Constraint: SYS_C00153836
+|__<Done>Create Key for Constraint: SYS_C00153835
+|__<Done>Create Key for Constraint: SYS_C00153834
+|__<Done>Create Key for Constraint: SYS_C00153833
+|__<Done>Create Key for Constraint: SYS_C00153832
+|__<Done>Create Key for Constraint: SYS_C00153831
+|__<Done>Create Key for Constraint: GLAB_PK
+
+<Done>Entity :Infar001Outbound
+|__<Done>Remove Key Constraint: I1odBacthFk
+|__<Done>Create Key for Constraint: I1OD_BATCH_FK
+|__<Done>Create Attribute for column: PROGRAM_UNIT_CODE
+
+<Done>Entity :Infar006Outbound
+|__<Done>Remove Key Constraint: I6odBacthFk
+|__<Done>Create Key for Constraint: I6OD_BATCH_FK
+|__<Done>Create Attribute for column: PROGRAM_UNIT_CODE
+
+<Done>Entity :OtherAccountTrans
+|__Key :AgtnOatnFk
+|____<Done>Change Deferred Constraint to:true
+|____<Done>Change Initially Deferrable Constraint to:true
+
+<Done>Entity :ParticipantRole
+|__<Done>Create Attribute for column: CUST_ID
+
+<Done>Entity :Receipt
+|__Key :AgtnReptFk
+|____<Done>Change Deferred Constraint to:true
+|____<Done>Change Initially Deferrable Constraint to:true
+
+<Done>Entity :Receipt
+|__<Done>Create Attribute for column: CHEKC_ISSUE_DATE
+
+<Done>Entity :RevenueSourceCode
+|__Attribute :RevenueSourceCode
+|____<Done>Change Precision to 10
+
+
+

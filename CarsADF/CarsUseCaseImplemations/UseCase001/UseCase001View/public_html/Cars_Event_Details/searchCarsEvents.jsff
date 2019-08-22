@@ -1,0 +1,298 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:pageTemplate viewId="/use-case-template.jspx" id="pt1">
+    <f:facet name="main">
+      <af:panelSplitter id="ps1" orientation="vertical" splitterPosition="155"
+                        styleClass="AFStretchWidth">
+        <f:facet name="first">
+          <af:panelGroupLayout layout="vertical" id="pgl1">
+            <af:query id="qryId1" headerText="Search" disclosed="true"
+                      value="#{bindings.ViewEventDetailsQuery1.queryDescriptor}"
+                      model="#{bindings.ViewEventDetailsQuery1.queryModel}"
+                      queryListener="#{backingBeanScope.carsEventSearchBackingBean.viewEventsQueryListener}"
+                      queryOperationListener="#{bindings.ViewEventDetailsQuery1.processQueryOperation}"
+                      resultComponentId="::pc1" rows="3" maxColumns="3"/>
+          </af:panelGroupLayout>
+        </f:facet>
+        <f:facet name="second">
+          <af:panelGroupLayout layout="scroll"
+                               xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                               id="pgl3" styleClass="AFStretchWidth">
+            <af:panelCollection id="pc1" styleClass="AFStretchWidth">
+              <af:table summary="This table is used to for Events Search in CARS"
+                        value="#{bindings.ViewEvents2.collectionModel}"
+                        var="row" rows="#{bindings.ViewEvents2.rangeSize}"
+                        emptyText="#{bindings.ViewEvents2.viewable ? 'No data to display.' : 'Access Denied.'}"
+                        fetchSize="#{bindings.ViewEvents2.rangeSize}"
+                        rowBandingInterval="0"
+                        filterModel="#{bindings.ViewEventDetailsQuery1.queryDescriptor}"
+                        queryListener="#{backingBeanScope.carsEventSearchBackingBean.viewEventsQueryListener}"
+                        filterVisible="true" varStatus="vs" id="t1" rowSelection="single"
+                        styleClass="AFStretchWidth"
+                        selectionListener="#{bindings.ViewEvents2.collectionModel.makeCurrent}"
+                        partialTriggers=":::qryId1"
+                        binding="#{backingBeanScope.carsEventSearchBackingBean.viewEvents2Table}">
+                <af:column sortProperty="#{bindings.ViewEvents2.hints.ArRootDocument.name}"
+                           filterable="true" sortable="false"
+                           headerText="#{bindings.ViewEvents2.hints.ArRootDocument.label}"
+                           id="c10" width="110">
+                  <af:commandLink id="ot17" text="#{row.ArRootDocument}"
+                                  action="viewEventDetails">
+                    <af:setActionListener to="#{pageFlowScope.varAcctgTransactionId2}"
+                                          from="#{row.AcctgTransactionId}"/>
+                    <af:setActionListener to="#{pageFlowScope.varArRootDocument2}"
+                                          from="#{row.ArRootDocument}"/>
+                    <af:setActionListener from="#{row.EventTypeCode}"
+                                          to="#{pageFlowScope.varEventTypeCode2}"/>
+                    <af:setActionListener to="#{pageFlowScope.varEventTypeName2}"
+                                          from="#{row.EventTypeName}"/>
+                    <af:setActionListener to="#{pageFlowScope.varBillTypeCode2}"
+                                          from="#{row.BillTypeCode}"/>
+                    <af:setActionListener to="#{pageFlowScope.ReceiptTypeCode2}"
+                                          from="#{row.ReceiptTypeCode}"/>
+                    <af:setActionListener to="#{pageFlowScope.varDepositSlip2}"
+                                          from="#{row.DepositSlipNumber}"/>
+                    <af:setActionListener to="#{pageFlowScope.varDepositDate2}"
+                                          from="#{row.DepositDate}"/>
+                    <af:setActionListener to="#{pageFlowScope.varReceiptControl2}"
+                                          from="#{row.ReceiptControlNumber}"/>
+                    <af:setActionListener to="#{pageFlowScope.varReceiptDate2}"
+                                          from="#{row.ReceiptDate}"/>
+                    <af:setActionListener to="#{pageFlowScope.varReceivableEstablishDate2}"
+                                          from="#{row.ReceivableEstablishDate}"/>
+                    <af:setActionListener to="#{pageFlowScope.varReceivableDueDate2}"
+                                          from="#{row.DueDate}"/>
+                    <af:setActionListener to="#{pageFlowScope.varAdjustmentTypeCode2}"
+                                          from="#{row.AdjustmentTypeCode}"/>
+                    <af:setActionListener to="#{pageFlowScope.varAdjustmentDate2}"
+                                          from="#{row.AdjustmentDate}"/>
+                    <af:setActionListener to="#{pageFlowScope.varEventDate2}"
+                                          from="#{row.EventDate}"/>
+                    <af:setActionListener from="#{row.OtherTransactionDate}"
+                                          to="#{pageFlowScope.varOtherTransactionDate2}"/>
+                    <af:setActionListener to="#{pageFlowScope.varOtherTransactTypeCode2}"
+                                          from="#{row.OtherTransactTypeCode}"/>
+                    <af:setActionListener from="#{row.EventId}"
+                                          to="#{pageFlowScope.varEventId2}"/>
+                    <af:setActionListener from="#{row.LegalName}"
+                                          to="#{pageFlowScope.varLegalName2}"/>
+                  </af:commandLink>
+                </af:column>
+                <af:column headerText="#{bindings.ViewEvents2.hints.OffsetPaymentCode.label}"
+                           id="c6" sortable="true"
+                           sortProperty="#{bindings.ViewEvents2.hints.OffsetPaymentCode.name}"
+                           filterable="true" width="50">
+                  <af:outputText value="#{row.OffsetPaymentCode}" id="ot3"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.ViewEvents2.hints.LegalName.name}"
+                           sortable="true"
+                           headerText="#{bindings.ViewEvents2.hints.LegalName.label}"
+                           id="c7" width="204" filterable="true">
+                  <af:commandLink id="ot21" text="#{row.LegalName}">
+                    <af:showPopupBehavior triggerType="click" popupId=":::p2"/>
+                  </af:commandLink>
+                </af:column>
+                <af:column sortProperty="#{bindings.ViewEvents2.hints.EventTypeCode.name}"
+                           filterable="true" sortable="true"
+                           headerText="#{bindings.ViewEvents2.hints.EventTypeCode.label}"
+                           id="c11" width="44">
+                  <af:outputText value="#{row.EventTypeCode}" id="ot12"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.ViewEvents2.hints.EventTypeName.name}"
+                           filterable="true" sortable="true"
+                           headerText="#{bindings.ViewEvents2.hints.EventTypeName.label}"
+                           id="c2" width="165">
+                  <af:outputText value="#{row.EventTypeName}" id="ot20"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.ViewEvents2.hints.EventDate.name}"
+                           filterable="true" sortable="true"
+                           headerText="#{bindings.ViewEvents2.hints.EventDate.label}"
+                           id="c8" width="75">
+                  <af:outputText value="#{row.EventDate}" id="ot13">
+                    <af:convertDateTime pattern="#{bindings.ViewEvents2.hints.EventDate.format}"/>
+                  </af:outputText>
+                  <f:facet name="filter">
+                    <af:inputDate value="#{vs.filterCriteria.EventDate}"
+                                  id="id1"/>
+                  </f:facet>
+                </af:column>
+                <af:column sortProperty="#{bindings.ViewEvents2.hints.Amount.name}"
+                           filterable="true" sortable="true"
+                           headerText="#{bindings.ViewEvents2.hints.Amount.label}"
+                           id="c9" width="90">
+                  <af:outputText value="#{row.Amount}" id="ot18">
+                    <af:convertNumber groupingUsed="false"
+                                      pattern="#{bindings.ViewEvents2.hints.Amount.format}"/>
+                  </af:outputText>
+                </af:column>
+                <af:column sortProperty="#{bindings.ViewEvents2.hints.CurrentDocument.name}"
+                           filterable="true" sortable="true"
+                           headerText="#{bindings.ViewEvents2.hints.CurrentDocument.label}"
+                           id="c14" width="98">
+                  <af:outputText value="#{row.CurrentDocument}" id="ot14"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.ViewEvents2.hints.ReferenceDocument.name}"
+                           filterable="true" sortable="true"
+                           headerText="#{bindings.ViewEvents2.hints.ReferenceDocument.label}"
+                           id="c16" width="77">
+                  <af:outputText value="#{row.ReferenceDocument}" id="ot8"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.ViewEvents2.hints.AdditionalReference.name}"
+                           filterable="true" sortable="true"
+                           headerText="#{bindings.ViewEvents2.hints.AdditionalReference.label}"
+                           id="c3">
+                  <af:outputText value="#{row.AdditionalReference}" id="ot7"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.ViewEvents2.hints.FsProcessStatus.name}"
+                           sortable="true"
+                           headerText="#{bindings.ViewEvents2.hints.FsProcessStatus.label}"
+                           id="c5" filterable="true">
+                  <af:outputText value="#{row.FsProcessStatus}" id="ot2"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.ViewEvents2.hints.FiscalBatchDt.name}"
+                           sortable="true"
+                           headerText="#{bindings.ViewEvents2.hints.FiscalBatchDt.label}"
+                           id="c4" filterable="true">
+                  <af:inputDate value="#{row.bindings.FiscalBatchDt.inputValue}"
+                                label="#{bindings.ViewEvents2.hints.FiscalBatchDt.label}"
+                                required="#{bindings.ViewEvents2.hints.FiscalBatchDt.mandatory}"
+                                shortDesc="#{bindings.ViewEvents2.hints.FiscalBatchDt.tooltip}"
+                                id="id3">
+                    <f:validator binding="#{row.bindings.FiscalBatchDt.validator}"/>
+                    <af:convertDateTime pattern="#{bindings.ViewEvents2.hints.FiscalBatchDt.format}"/>
+                  </af:inputDate>
+                  <f:facet name="filter">
+                    <af:inputDate value="#{vs.filterCriteria.FiscalBatchDt}"
+                                  id="id2"/>
+                  </f:facet>
+                </af:column>
+                <af:column sortProperty="#{bindings.ViewEvents2.hints.CreatedDate.name}"
+                           headerText="#{bindings.ViewEvents2.hints.CreatedDate.label}"
+                           id="c1" sortable="true" filterable="true">
+                  <af:outputText value="#{row.CreatedDate}" id="ot1">
+                    <af:convertDateTime pattern="#{bindings.ViewEvents2.hints.CreatedDate.format}"/>
+                  </af:outputText>
+                  <f:facet name="filter">
+                    <af:inputDate value="#{vs.filterCriteria.CreatedDate}"
+                                  id="id4"/>
+                  </f:facet>
+                </af:column>
+              </af:table>
+              <f:facet name="toolbar">
+                <af:toolbar id="t3">
+                  <af:activeCommandToolbarButton id="actb1"
+                                                 icon="/Cars_Ar_Search/export_excel_sml.png">
+                    <af:exportCollectionActionListener type="excelHTML"
+                                                       exportedId="t1"
+                                                       filename="export.xls"
+                                                       title="Export"/>
+                  </af:activeCommandToolbarButton>
+                </af:toolbar>
+              </f:facet>
+              <f:facet name="menus">
+                <af:menu text="Functions" partialTriggers="t1" id="m1">
+                  <af:commandMenuItem text="Update Offset Code" id="cmi1"
+                                      actionListener="#{backingBeanScope.carsEventSearchBackingBean.prepChangeOffsetPaymentCode}"
+                                      partialTriggers="t1">
+                    <af:showPopupBehavior popupId="::p1" triggerType="click"/>
+                  </af:commandMenuItem>
+                </af:menu>
+              </f:facet>
+            </af:panelCollection>
+            <af:popup id="p1"
+                      binding="#{backingBeanScope.carsEventSearchBackingBean.offsetPaymentCodeUpdatePopup}">
+              <af:dialog id="d1"
+                         dialogListener="#{backingBeanScope.carsEventSearchBackingBean.updateOffsetPaymentCode}" 
+                         type="#{backingBeanScope.carsEventSearchBackingBean.offsetCodeUpdateButtons}"
+                         binding="#{backingBeanScope.carsEventSearchBackingBean.offsetPaymentCodeUpdateDialog}">
+                <af:panelGroupLayout id="pgl2" layout="vertical">
+                  <af:activeOutputText value="#{bindings.CurrentDocument.inputValue}"
+                                       id="aot2"
+                                       binding="#{backingBeanScope.carsEventSearchBackingBean.updateOffsetPaymentDialogCurrentDoc}"
+                                       inlineStyle="font-weight:bold;"/>
+                  <af:activeOutputText id="aot1"
+                                       binding="#{backingBeanScope.carsEventSearchBackingBean.updateOffsetPaymentDialogText}"/>
+                  <af:selectOneChoice label="#{bindings.OffsetPaymentCode1.label}"
+                                      required="true"
+                                      shortDesc="#{bindings.OffsetPaymentCode1.hints.tooltip}"
+                                      id="soc1"
+                                      binding="#{backingBeanScope.carsEventSearchBackingBean.offsetPaymentCodeSoc}"
+                                      value="#{backingBeanScope.carsEventSearchBackingBean.offsetPaymentCodePopupValue}">
+                    <f:selectItems value="#{bindings.OffsetPaymentCode1.items}"
+                                   id="si1"/>
+                  </af:selectOneChoice>
+                </af:panelGroupLayout>
+              </af:dialog>
+            </af:popup>
+            <af:popup id="p2">
+              <af:dialog id="d2" type="none">
+                <af:panelGroupLayout id="pgl4" layout="horizontal"
+                                     inlineStyle="vertical-align:top;">
+                  <af:panelBox text="Employer Info" id="pb1"
+                               inlineStyle="height:100px">
+                    <af:panelGroupLayout id="pgl5">
+                      <af:panelLabelAndMessage label="Legal Name" id="plam1">
+                        <af:outputText value="#{bindings.LegalName.inputValue}" id="ot4"/>
+                      </af:panelLabelAndMessage>
+                      <af:panelLabelAndMessage label="DBA" id="plam2">
+                        <af:outputText value="#{bindings.Dba.inputValue}" id="ot5"/>
+                      </af:panelLabelAndMessage>
+                      <af:panelLabelAndMessage label="#{bindings.OrganizationName.hints.label}" id="plam3">
+                        <af:outputText value="#{bindings.OrganizationName.inputValue}" id="ot6"/>
+                      </af:panelLabelAndMessage>
+                      <af:panelLabelAndMessage label="FEIN" id="plam4">
+                        <af:outputText value="#{bindings.Fein.inputValue}" id="ot9"/>
+                      </af:panelLabelAndMessage>
+                      <af:panelLabelAndMessage label="Customer ID" id="plam5">
+                        <af:outputText value="#{bindings.CustId.inputValue}" id="ot10"/>
+                      </af:panelLabelAndMessage>
+                    </af:panelGroupLayout>
+                  </af:panelBox>
+                  <af:panelBox text="Address" id="pb2"
+                               inlineStyle="height:100px">
+                    <af:panelGroupLayout id="pgl6" layout="vertical"/>
+                    <af:panelLabelAndMessage label="#{bindings.FsSequenceNumber.hints.label}" id="plam6">
+                      <af:outputText value="#{bindings.FsSequenceNumber.inputValue}" id="ot11"/>
+                    </af:panelLabelAndMessage>
+                    <af:panelLabelAndMessage label="Address Type" id="plam7">
+                      <af:outputText value="#{bindings.AddressType.inputValue}" id="ot15"/>
+                    </af:panelLabelAndMessage>
+                    <af:panelLabelAndMessage label="Address 1" id="plam8">
+                      <af:outputText value="#{bindings.StreetAddress.inputValue}" id="ot16"/>
+                    </af:panelLabelAndMessage>
+                    <af:panelLabelAndMessage label="Address 2" id="plam9">
+                      <af:outputText value="#{bindings.AddressLine2.inputValue}" id="ot19"/>
+                    </af:panelLabelAndMessage>
+                    <af:panelLabelAndMessage label="City" id="plam10">
+                      <af:outputText value="#{bindings.City.inputValue}" id="ot22"/>
+                    </af:panelLabelAndMessage>
+                    <af:panelLabelAndMessage label="State Code" id="plam11">
+                      <af:outputText value="#{bindings.StateCode.inputValue} " id="ot23"/>
+                    </af:panelLabelAndMessage>
+                    <af:panelLabelAndMessage label="Zip Code" id="plam12">
+                      <af:outputText value="#{bindings.ZipCode.inputValue}" id="ot24"/>
+                    </af:panelLabelAndMessage>
+                  </af:panelBox>
+                </af:panelGroupLayout>
+                <af:panelGroupLayout id="pgl7" layout="horizontal">
+                  <af:panelBox text="Contact Method" id="pb3"
+                               inlineStyle="vertical-align:top;">
+                    <af:panelGroupLayout id="pgl8" layout="horizontal">
+                      <af:panelLabelAndMessage label="Contact Type" id="plam13">
+                        <af:outputText value="#{bindings.ContactMethodTypeCode.inputValue} " id="ot26"/>
+                      </af:panelLabelAndMessage>
+                      <af:outputText value="#{bindings.ContactMethodValue.inputValue}" id="ot25"/>
+                    </af:panelGroupLayout>
+                  </af:panelBox>
+                </af:panelGroupLayout>
+              </af:dialog>
+            </af:popup>
+          </af:panelGroupLayout>
+        </f:facet>
+      </af:panelSplitter>
+    </f:facet>
+    <f:attribute name="title" value="CARS Events Search"/>
+  </af:pageTemplate>
+</jsp:root>

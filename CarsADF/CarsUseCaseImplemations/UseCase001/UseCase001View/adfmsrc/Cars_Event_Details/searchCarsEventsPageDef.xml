@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.64.93" id="searchCarsEventsPageDef"
+                Package="Cars_Event_Details">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="ViewEvents2" RangeSize="25"
+              DataControl="CarsSearchEventsDataControl"
+              id="ViewEvents2Iterator"/>
+    <searchRegion Criteria="ViewEventDetails"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="ViewEvents2Iterator" id="ViewEventDetailsQuery1"/>
+    <iterator id="ReceiptView1Iterator" Binds="ReceiptView1"
+              DataControl="CarsSearchEventsDataControl" RangeSize="25"/>
+    <iterator id="AccountingEntryStatusView1Iterator"
+              Binds="AccountingEntryStatusView1"
+              DataControl="CarsSearchEventsDataControl" RangeSize="25"/>
+    <iterator id="OrgParticipantRoleAddressView2Iterator"
+              Binds="OrgParticipantRoleAddressView2"
+              DataControl="CarsSearchEventsDataControl" RangeSize="1"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="ViewEvents2Iterator" id="ViewEvents2">
+      <nodeDefinition DefName="gov.ca.dir.acct.cars.adf.usecase001.model.CarsEventDetails.ViewEvents"
+                      Name="ViewEvents20">
+        <AttrNames>
+          <Item Value="ArRootDocument"/>
+          <Item Value="LegalName"/>
+          <Item Value="EventTypeCode"/>
+          <Item Value="EventTypeName"/>
+          <Item Value="EventDate"/>
+          <Item Value="Amount"/>
+          <Item Value="CurrentDocument"/>
+          <Item Value="ReferenceDocument"/>
+          <Item Value="AdditionalReference"/>
+          <Item Value="FsProcessStatus"/>
+          <Item Value="FiscalBatchDt"/>
+          <Item Value="CreatedDate"/>
+          <Item Value="OffsetPaymentCode"/>
+          <Item Value="AcctgTransactionId"/>
+          <Item Value="AdjustmentDate"/>
+          <Item Value="AdjustmentTypeCode"/>
+          <Item Value="BillTypeCode"/>
+          <Item Value="DataSourceCode"/>
+          <Item Value="DepositDate"/>
+          <Item Value="DepositSlipNumber"/>
+          <Item Value="DueDate"/>
+          <Item Value="EventId"/>
+          <Item Value="OtherTransactionDate"/>
+          <Item Value="OtherTransactTypeCode"/>
+          <Item Value="ProgramUnitCode"/>
+          <Item Value="ReceiptControlNumber"/>
+          <Item Value="ReceiptDate"/>
+          <Item Value="ReceiptTypeCode"/>
+          <Item Value="ReceivableEstablishDate"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <list IterBinding="ReceiptView1Iterator" StaticList="false"
+          Uses="LOV_OffsetPaymentCode" id="OffsetPaymentCode1"
+          DTSupportsMRU="true"/>
+    <action id="Commit" DataControl="CarsSearchEventsDataControl"
+            RequiresUpdateModel="true" Action="commitTransaction"/>
+    <attributeValues IterBinding="ViewEvents2Iterator" id="CurrentDocument">
+      <AttrNames>
+        <Item Value="CurrentDocument"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="OrgParticipantRoleAddressView2Iterator"
+                     id="AddressType">
+      <AttrNames>
+        <Item Value="AddressType"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="OrgParticipantRoleAddressView2Iterator"
+                     id="StreetAddress">
+      <AttrNames>
+        <Item Value="StreetAddress"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="OrgParticipantRoleAddressView2Iterator"
+                     id="AddressLine2">
+      <AttrNames>
+        <Item Value="AddressLine2"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="OrgParticipantRoleAddressView2Iterator"
+                     id="City">
+      <AttrNames>
+        <Item Value="City"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="OrgParticipantRoleAddressView2Iterator"
+                     id="StateCode">
+      <AttrNames>
+        <Item Value="StateCode"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="OrgParticipantRoleAddressView2Iterator"
+                     id="ZipCode">
+      <AttrNames>
+        <Item Value="ZipCode"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="OrgParticipantRoleAddressView2Iterator"
+                     id="ContactMethodTypeCode">
+      <AttrNames>
+        <Item Value="ContactMethodTypeCode"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="OrgParticipantRoleAddressView2Iterator"
+                     id="ContactMethodValue">
+      <AttrNames>
+        <Item Value="ContactMethodValue"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="OrgParticipantRoleAddressView2Iterator"
+                     id="LegalName">
+      <AttrNames>
+        <Item Value="LegalName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="OrgParticipantRoleAddressView2Iterator"
+                     id="Dba">
+      <AttrNames>
+        <Item Value="Dba"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="OrgParticipantRoleAddressView2Iterator"
+                     id="OrganizationName">
+      <AttrNames>
+        <Item Value="OrganizationName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="OrgParticipantRoleAddressView2Iterator"
+                     id="FsSequenceNumber">
+      <AttrNames>
+        <Item Value="FsSequenceNumber"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="OrgParticipantRoleAddressView2Iterator"
+                     id="Fein">
+      <AttrNames>
+        <Item Value="Fein"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="OrgParticipantRoleAddressView2Iterator"
+                     id="CustId">
+      <AttrNames>
+        <Item Value="CustId"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

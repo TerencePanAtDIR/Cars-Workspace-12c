@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.64.93" id="PendingCarsReclassPageDef"
+                Package="gov.ca.dir.acct.cars.adf.usecase030.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="PendingReclassItemsView1" RangeSize="25"
+              DataControl="ReclassAMDataControl"
+              id="PendingReclassItemsView1Iterator"/>
+    <searchRegion Criteria="PendingReclassItemsViewCriteria"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="PendingReclassItemsView1Iterator"
+                  id="PendingReclassItemsViewCriteriaQuery"/>
+    <iterator id="CarsRequestView1Iterator" Binds="CarsRequestView1"
+              DataControl="ReclassAMDataControl" RangeSize="25"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="PendingReclassItemsView1Iterator"
+          id="PendingReclassItemsView1">
+      <nodeDefinition DefName="gov.ca.dir.acct.cars.adf.usecase030.model.view.PendingReclassItemsView"
+                      Name="PendingReclassItemsView10">
+        <AttrNames>
+          <Item Value="EventId"/>
+          <Item Value="ArRootDocument"/>
+          <Item Value="FiscalYear"/>
+          <Item Value="Acct1200000Amount"/>
+          <Item Value="ReclassExists"/>
+          <Item Value="ProgramUnitCode"/>
+          <Item Value="EventDate"/>
+          <Item Value="FsSequenceNumber"/>
+          <Item Value="StreetAddress"/>
+          <Item Value="StateCode"/>
+          <Item Value="ZipCode"/>
+          <Item Value="OrganizationName"/>
+          <Item Value="LegalName"/>
+          <Item Value="Dba"/>
+          <Item Value="CustId"/>
+          <Item Value="AgencySourceCode"/>
+          <Item Value="RevenueSourceCode"/>
+          <Item Value="IndexCode"/>
+          <Item Value="Fund"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

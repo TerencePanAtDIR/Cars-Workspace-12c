@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="cars06report-fiscal-tf">
+    <default-activity id="__1">cars06report-fiscal</default-activity>
+    <view id="cars06report-fiscal">
+      <page>/cars06report-fiscal.jsff</page>
+    </view>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

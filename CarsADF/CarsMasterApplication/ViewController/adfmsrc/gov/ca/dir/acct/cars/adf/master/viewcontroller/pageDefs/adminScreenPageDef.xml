@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.64.93" id="adminScreenPageDef"
+                Package="gov.ca.dir.acct.cars.adf.master.viewcontroller.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <page path="oracle.ui.pattern.dynamicShell.model.dynamicTabShellDefinition"
+          id="pageTemplateBinding" Refresh="ifNeeded"/>
+    <taskFlow id="cars10reporttf1"
+              taskFlowId="/WEB-INF/cars10report-tf.xml#cars10report-tf"
+              activation="deferred"
+              xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+  </executables>
+  <bindings/>
+</pageDefinition>

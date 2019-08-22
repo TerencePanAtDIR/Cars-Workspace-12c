@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="Infar006-Search-tf">
+    <default-activity id="__1">Infar006Search</default-activity>
+    <view id="Infar006Search">
+      <page>/Infar006Search.jsff</page>
+    </view>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

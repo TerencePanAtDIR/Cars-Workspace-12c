@@ -1,0 +1,20 @@
+Entity :Address
+|__Attribute :PostalCode
+|____Change Precision to 12
+|__Attribute :AddressLine3
+|____Change Precision to 55
+|__Attribute :AddressLine2
+|____Change Precision to 55
+|__Attribute :StreetAddress
+|____Change Precision to 55
+|__Remove Key Constraint: SysC00160075
+|__Remove Key Constraint: SysC00160074
+|__Remove Key Constraint: SysC00160073
+|__Remove Key Constraint: SysC00160072
+|__Remove Key Constraint: SysC00160071
+|__Create Key for Constraint: SYS_C00163130
+|__Create Key for Constraint: SYS_C00163129
+|__Create Key for Constraint: SYS_C00163128
+|__Create Key for Constraint: SYS_C00163127
+|__Create Key for Constraint: SYS_C00163126
+

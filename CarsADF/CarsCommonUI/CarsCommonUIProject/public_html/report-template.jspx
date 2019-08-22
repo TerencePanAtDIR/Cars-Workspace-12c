@@ -1,0 +1,123 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=windows-1252"/>
+  <af:pageTemplateDef var="attrs">
+    <af:panelStretchLayout id="pt_psl1" topHeight="23px">
+      <f:facet name="bottom"/>
+      <f:facet name="center">
+        <af:panelSplitter id="pt_ps1" orientation="vertical"
+                          splitterPosition="94">
+          <f:facet name="first">
+            <af:panelStretchLayout id="pt_psl3" startWidth="0" endWidth="0"
+                                   topHeight="0" bottomHeight="0px">
+              <f:facet name="bottom"/>
+              <f:facet name="center">
+                <af:panelGroupLayout id="pt_pgl1" halign="center"
+                                     inlineStyle="font-size:x-small; font-weight:bold; text-align:center;"
+                                     layout="vertical">
+                  <h:outputFormat value="STATE OF CALIFORNIA" id="pt_of2"
+                                  style="font-size:small;"/>
+                  <h:outputFormat value="DEPARTMENT OF INDUSTRIAL RELATIONS"
+                                  id="pt_of3" style="font-size:small;"/>
+                  <h:outputFormat value="Centralized Accounts Receivable System (CARS)"
+                                  id="pt_of1" style="font-size:small;"/>
+                  <h:outputFormat value="#{attrs.title}" id="pt_of4"
+                                  style="font-size:small;"/>
+                  <af:outputFormatted value="Run Date: #{currentDateBean}" id="pt_of6"
+                                      inlineStyle="font-size:x-small;"
+                                      shortDesc="AS OF:">
+                    <af:convertDateTime dateStyle="full" type="both"
+                                        timeStyle="short"/>
+                  </af:outputFormatted>
+                </af:panelGroupLayout>
+              </f:facet>
+              <f:facet name="start"/>
+              <f:facet name="end"/>
+              <f:facet name="top"/>
+            </af:panelStretchLayout>
+          </f:facet>
+          <f:facet name="second">
+            <af:facetRef facetName="main"/>
+          </f:facet>
+        </af:panelSplitter>
+      </f:facet>
+      <f:facet name="start"/>
+      <f:facet name="end"/>
+      <f:facet name="top">
+        <af:panelGroupLayout
+                             xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                             id="pt_pgl2">
+          <af:panelHeader text="#{attrs.title}" id="pt_ph1">
+            <f:facet name="toolbar">
+              <af:toolbar id="pt_t1">
+                <af:commandToolbarButton id="pt_ctb2" icon="/printer_sml.png">
+                  <af:showPrintablePageBehavior/>
+                </af:commandToolbarButton>
+              </af:toolbar>
+            </f:facet>
+          </af:panelHeader>
+          <af:panelStretchLayout id="pt_psl2">
+            <f:facet name="bottom"/>
+            <f:facet name="center">
+              <jsp:text/>
+            </f:facet>
+            <f:facet name="start"/>
+            <f:facet name="end"/>
+            <f:facet name="top"/>
+          </af:panelStretchLayout>
+        </af:panelGroupLayout>
+      </f:facet>
+    </af:panelStretchLayout>
+    <af:xmlContent>
+      <component xmlns="http://xmlns.oracle.com/adf/faces/rich/component">
+        <display-name>report-template</display-name>
+        <facet>
+          <description>main facet</description>
+          <facet-name>main</facet-name>
+        </facet>
+        <attribute>
+          <attribute-name>title</attribute-name>
+          <attribute-class>java.lang.String</attribute-class>
+          <default-value>
+            title
+          </default-value>
+          <required>
+            true
+          </required>
+        </attribute>
+        <attribute>
+          <attribute-name>copyright</attribute-name>
+          <attribute-class>java.lang.String</attribute-class>
+        </attribute>
+        <attribute>
+          <attribute-name>
+            program_unit
+          </attribute-name>
+          <attribute-class>
+            java.lang.String
+          </attribute-class>
+          <required>
+            true
+          </required>
+        </attribute>
+        <attribute>
+          <attribute-name>
+            report_date
+          </attribute-name>
+          <attribute-class>
+            java.lang.String
+          </attribute-class>
+          <default-value>
+            report date
+          </default-value>
+          <required>
+            true
+          </required>
+        </attribute>
+      </component>
+    </af:xmlContent>
+  </af:pageTemplateDef>
+</jsp:root>

@@ -1,0 +1,468 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="cars01reportfiscalVO"
+  Version="11.1.1.64.93"
+  InheritPersonalization="true"
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  PageIterMode="Full"
+  UseGlueCode="false">
+  <DesignTime>
+    <Attr Name="_isExpertMode" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="gov.ca.dir.acct.cars.adf.cars01report.model.view.cars01reportfiscalVO_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <ViewAccessor
+    Name="ProgramUnit1"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.cars01report.model.view.ProgramUnit"
+    RowLevelBinds="true"/>
+  <ListBinding
+    Name="LOV_ProgramUnit"
+    ListVOName="ProgramUnit1"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="ProgramUnit"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="ProgramUnitCode"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <SQLQuery>
+    <![CDATA[SELECT * from (SELECT  
+        EVENT.AR_ROOT_DOCUMENT, --Invoice number
+        NVL(ORGANIZATION.LEGAL_NAME, PERSON.FIRST_NAME || ' ' || PERSON.MIDDLE_NAME || ' ' || PERSON.LAST_NAME) AS "Employer Name", --employer name
+        EVENT_TYPE.PROGRAM_UNIT_CODE  AS "program Unit", --program unit
+        EVENT.DATA_SOURCE_CODE   AS "Data Source",
+        trunc(EVENT.EVENT_DATE) "Issue Date", --issue date
+        trunc(EVENT.CREATED_DATE) "Setup Date",  
+        ACCOUNTING_CODE.INDEX_CODE,  --index
+        FUND_ALLOCATION.PCA_CODE,  --PCA_Code
+        ACCOUNTING_CODE.REVENUE_SOURCE_CODE AS "Revenue Source", --revenue source
+        ACCOUNTING_CODE.AGENCY_SOURCE_CODE AS "Agency Source", -- Agency source
+        FUND.FUND, --FUND
+        trunc(accounting_entry.posting_date) "Posting Date",
+        ACCOUNTING_ENTRY.AMOUNT, --INVOICE_AMOUNT
+        EVENT.EVENT_ID,
+        infar006.INFAR006_OUTBOUND_ID,
+        infar006.GROUP_ID_STG AS "GROUP_ID",
+        infar006.CUST_ID AS "CUSTOMER_ID",
+        TRUNC(infar006.ACCOUNTING_DT) AS Accounting_Dt
+FROM 
+ACCOUNTING_TRANSACTION           
+    INNER JOIN
+        ACCOUNTING_ENTRY
+            ON (ACCOUNTING_TRANSACTION.ACCTG_TRANSACTION_ID =
+                ACCOUNTING_ENTRY.ACCTG_TRANSACTION_ID)
+    LEFT JOIN INFAR006_OUTBOUND infar006
+        ON (ACCOUNTING_ENTRY.ACCTG_ENTRY_ID = infar006.ACCTG_ENTRY_ID)
+        AND (infar006.SYSTEM_DEFINED = 'A')
+    LEFT JOIN BATCH_TRANSACTION BT 
+            ON (ACCOUNTING_ENTRY.ACCTG_ENTRY_ID = BT.ACCTG_ENTRY_ID)
+    LEFT JOIN BATCH ON ( BATCH.BATCH_ID = BT.BATCH_ID)
+    INNER JOIN
+        ACCTG_TRANSACT_EVENT_ASSOC
+            ON (ACCOUNTING_TRANSACTION.ACCTG_TRANSACTION_ID =
+                ACCTG_TRANSACT_EVENT_ASSOC.ACCTG_TRANSACTION_ID)
+    INNER JOIN
+        ACCOUNTING_CODE
+            ON (ACCOUNTING_CODE.ACCOUNTING_CODE_ID =
+                ACCOUNTING_ENTRY.ACCOUNTING_CODE_ID)
+    LEFT JOIN FUND_ALLOCATION ON (ACCOUNTING_CODE.FUND_ALLOCATION_ID = FUND_ALLOCATION.FUND_ALLOCATION_ID    )
+    LEFT JOIN FUND            ON (FUND_ALLOCATION.FUND_to_ID = FUND.FUND_ID)
+    INNER JOIN
+        ACCOUNTING_ENTRY_TYPE
+            ON (ACCOUNTING_ENTRY.ACCTG_ENTRY_TYPE_ID =
+                ACCOUNTING_ENTRY_TYPE.ACCTG_ENTRY_TYPE_ID)
+    INNER JOIN EVENT
+            ON (EVENT.EVENT_ID = 
+            ACCTG_TRANSACT_EVENT_ASSOC.EVENT_ID)
+    INNER JOIN EVENT_TYPE
+            ON (EVENT.EVENT_TYPE_ID = 
+            EVENT_TYPE.EVENT_TYPE_ID)
+    INNER JOIN PARTICIPANT_ROLE
+            ON (EVENT.EVENT_ID = 
+            PARTICIPANT_ROLE.EVENT_ID)
+    LEFT JOIN ORGANIZATION
+            ON (ORGANIZATION.PARTY_ID = 
+            PARTICIPANT_ROLE.PARTY_ID)
+    LEFT JOIN PERSON
+            ON (PERSON.PARTY_ID =
+            PARTICIPANT_ROLE.PARTY_ID)
+    INNER JOIN PROGRAM_UNIT
+            ON (EVENT_TYPE.PROGRAM_UNIT_CODE =
+            PROGRAM_UNIT.PROGRAM_UNIT_CODE)
+WHERE PARTICIPANT_ROLE.PARTICIPANT_ROLE_TYPE_CODE = 'RES_PARTY' 
+AND PARTICIPANT_ROLE.EFFECTIVE_END_DATE IS NULL
+AND ((EVENT_TYPE.EVENT_TYPE_CODE IN ('010','015','020') and PROGRAM_UNIT.PROGRAM_UNIT_CODE ='CALOSHA') OR (EVENT_TYPE.EVENT_TYPE_CODE = '010' and PROGRAM_UNIT.PROGRAM_UNIT_CODE IN ('PV', 'EV','ART')))
+order by event.created_date desc)]]>
+  </SQLQuery>
+  <ViewAttribute
+    Name="ArRootDocument"
+    IsUpdateable="false"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Precision="255"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="AR_ROOT_DOCUMENT"
+    Expression="AR_ROOT_DOCUMENT"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="25"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="EmployerName"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="250"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName='"Employer Name"'
+    Expression='"Employer Name"'
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="250"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ProgramUnit"
+    IsUpdateable="false"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Precision="25"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName='"program Unit"'
+    Expression='"program Unit"'
+    SQLType="VARCHAR"
+    LOVName="LOV_ProgramUnit">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="25"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="DataSource"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="25"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName='"Data Source"'
+    Expression='"Data Source"'
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="25"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="IssueDate"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    AliasName='"Issue Date"'
+    Expression='"Issue Date"'
+    SQLType="DATE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="SetupDate"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    AliasName='"Setup Date"'
+    Expression='"Setup Date"'
+    SQLType="DATE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="IndexCode"
+    IsUpdateable="false"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Precision="4"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="INDEX_CODE"
+    Expression="INDEX_CODE"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="4"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="PcaCode"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="5"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="PCA_CODE"
+    Expression="PCA_CODE"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="5"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="RevenueSource"
+    IsUpdateable="false"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Precision="10"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName='"Revenue Source"'
+    Expression='"Revenue Source"'
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="10"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="AgencySource"
+    IsUpdateable="false"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Precision="3"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName='"Agency Source"'
+    Expression='"Agency Source"'
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="3"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Fund"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="9"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="FUND"
+    Expression="FUND"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="9"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="PostingDate"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    AliasName='"Posting Date"'
+    Expression='"Posting Date"'
+    SQLType="DATE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Amount"
+    IsUpdateable="false"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Precision="13"
+    Scale="2"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="AMOUNT"
+    Expression="AMOUNT"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="22"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="EventId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="EVENT_ID"
+    Expression="EVENT_ID"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="22"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Infar006OutboundId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="INFAR006_OUTBOUND_ID"
+    Expression="INFAR006_OUTBOUND_ID"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="22"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="GroupId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Precision="15"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="GROUP_ID"
+    Expression="GROUP_ID"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CustomerId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Precision="15"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="CUSTOMER_ID"
+    Expression="CUSTOMER_ID"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="AccountingDt"
+    IsUpdateable="false"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    AliasName="ACCOUNTING_DT"
+    Expression="ACCOUNTING_DT"
+    SQLType="DATE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="TotalCount"
+    IsUpdateable="false"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR">
+    <RecalcCondition><![CDATA[true]]></RecalcCondition>
+    <TransientExpression><![CDATA[adf.object.findRowSetForRow("").count("Amount")]]></TransientExpression>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="TotalInvoiceAmount"
+    IsUpdateable="false"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR">
+    <TransientExpression><![CDATA[adf.object.findRowSetForRow("").sum("Amount")]]></TransientExpression>
+  </ViewAttribute>
+  <ViewCriteria
+    Name="cars01reportfiscalVOCriteria"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.cars01report.model.view.cars01reportfiscalVO"
+    Conjunction="AND">
+    <Properties>
+      <CustomProperties>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="vcrow49"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="ProgramUnit"
+        ViewAttribute="ProgramUnit"
+        Operator="="
+        Conjunction="AND"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="IssueDate"
+        ViewAttribute="IssueDate"
+        Operator="BETWEEN"
+        Conjunction="AND"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="SetupDate"
+        ViewAttribute="SetupDate"
+        Operator="BETWEEN"
+        Conjunction="AND"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="gov.ca.dir.acct.cars.adf.cars01report.model.ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

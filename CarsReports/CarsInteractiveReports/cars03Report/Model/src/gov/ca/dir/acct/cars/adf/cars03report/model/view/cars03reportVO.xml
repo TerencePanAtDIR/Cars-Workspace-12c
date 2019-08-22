@@ -1,0 +1,430 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="cars03reportVO"
+  Version="11.1.1.64.93"
+  InheritPersonalization="true"
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  PageIterMode="Full"
+  UseGlueCode="false">
+  <DesignTime>
+    <Attr Name="_isExpertMode" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="gov.ca.dir.acct.cars.adf.cars03report.model.view.cars03reportVO_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <ViewAccessor
+    Name="ProgramUnitView1"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.cars03report.model.view.ProgramUnitView"
+    RowLevelBinds="true"/>
+  <ListBinding
+    Name="LOV_ProgramUnitCode"
+    ListVOName="ProgramUnitView1"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="ProgramUnitCode"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="ProgramUnitCode"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <SQLQuery>
+    <![CDATA[SELECT E.AR_ROOT_DOCUMENT,
+       NVL(O.LEGAL_NAME, P.FIRST_NAME || ' ' || P.MIDDLE_NAME || ' ' || P.LAST_NAME) AS EMPLOYER_NAME,
+       FUNC_GET_ISSUE_DATE(E.AR_ROOT_DOCUMENT) ISSUE_DATE,
+       AC.INDEX_CODE,
+       FUNC_GET_SETUP_DATE(E.AR_ROOT_DOCUMENT) SETUP_DATE,
+       trunc(A.ADJUSTMENT_DATE) ADJUSTMENT_DATE,
+       FUNC_GET_CURRENT_BALANCE(E.AR_ROOT_DOCUMENT, E.EVENT_DATE, AE.POSTING_DATE) CURRENT_BALANCE,
+       CASE 
+       WHEN ET.EVENT_TYPE_CODE IN('110', '115') THEN DECODE( D.GL_ACCOUNT_NUMBER, '1313', D.AMOUNT, C.AMOUNT * -1 )
+       ELSE  DECODE( D.GL_ACCOUNT_NUMBER, '1313', D.AMOUNT, C.AMOUNT * -1 ) END ADJUSTMENT_AMOUNT,
+       
+       CASE
+       WHEN ET.EVENT_TYPE_CODE IN ('125', '130', '530') THEN DECODE( D.GL_ACCOUNT_NUMBER, '1313', D.AMOUNT, C.AMOUNT * -1 )
+       ELSE FUNC_GET_CURRENT_BALANCE(E.AR_ROOT_DOCUMENT, E.EVENT_DATE, AE.POSTING_DATE) + DECODE( D.GL_ACCOUNT_NUMBER, '1313', D.AMOUNT, C.AMOUNT * -1 ) END ENDING_BALANCE,
+       AE.POSTING_DATE,
+       CASE
+       WHEN ET.EVENT_TYPE_CODE IN ('110', '145') THEN 'INCREASE'
+       WHEN ET.EVENT_TYPE_CODE IN ('115', '150', '155', '165') THEN 'DECREASE'
+       ELSE 'DECISION' END AMEND_TYPE,
+       ET.PROGRAM_UNIT_CODE
+  FROM ADJUSTMENT A
+      INNER JOIN accounting_entry AE ON AE.ACCTG_TRANSACTION_ID = A.ACCTG_TRANSACTION_ID
+      LEFT OUTER JOIN DEBIT D ON AE.ACCTG_ENTRY_ID = D.ACCTG_ENTRY_ID
+      LEFT OUTER JOIN CREDIT C ON AE.ACCTG_ENTRY_ID = C.ACCTG_ENTRY_ID
+      INNER JOIN accounting_code AC ON AC.ACCOUNTING_CODE_ID = AE.ACCOUNTING_CODE_ID
+      INNER JOIN acctg_transact_event_assoc ATES ON ATES.ACCTG_TRANSACTION_ID = A.ACCTG_TRANSACTION_ID
+      INNER JOIN EVENT E ON E.EVENT_ID = ATES.EVENT_ID
+      INNER JOIN EVENT_TYPE ET ON E.EVENT_TYPE_ID = ET.EVENT_TYPE_ID
+      INNER JOIN participant_role PR ON PR.EVENT_ID = E.EVENT_ID
+      LEFT JOIN organization O ON O.PARTY_ID = PR.PARTY_ID
+      LEFT JOIN PERSON P ON P.PARTY_ID = PR.PARTY_ID
+      LEFT JOIN batch_transaction BT ON AE.ACCTG_ENTRY_ID = BT.ACCTG_ENTRY_ID
+      
+ WHERE PR.PARTICIPANT_ROLE_TYPE_CODE = 'RES_PARTY' AND ET.EVENT_TYPE_CODE IN ('110', '115', '145', '150', '155', '165')
+ORDER BY ADJUSTMENT_DATE DESC]]>
+  </SQLQuery>
+  <ViewAttribute
+    Name="ArRootDocument"
+    IsUpdateable="false"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Precision="255"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="AR_ROOT_DOCUMENT"
+    Expression="AR_ROOT_DOCUMENT"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="25"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.cars03report.model.view.cars03reportVO.ArRootDocument_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="EmployerName"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="152"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="EMPLOYER_NAME"
+    Expression="EMPLOYER_NAME"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="152"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.cars03report.model.view.cars03reportVO.EmployerName_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="IssueDate"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    AliasName="ISSUE_DATE"
+    Expression="ISSUE_DATE"
+    SQLType="DATE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.cars03report.model.view.cars03reportVO.IssueDate_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="IndexCode"
+    IsUpdateable="false"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Precision="4"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="INDEX_CODE"
+    Expression="INDEX_CODE"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="4"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.cars03report.model.view.cars03reportVO.IndexCode_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="SetupDate"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    AliasName="SETUP_DATE"
+    Expression="SETUP_DATE"
+    SQLType="DATE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.cars03report.model.view.cars03reportVO.SetupDate_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="AdjustmentDate"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    AliasName="ADJUSTMENT_DATE"
+    Expression="ADJUSTMENT_DATE"
+    SQLType="DATE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.cars03report.model.view.cars03reportVO.AdjustmentDate_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CurrentBalance"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="CURRENT_BALANCE"
+    Expression="CURRENT_BALANCE"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <FMT_FORMATTER
+          ResId="gov.ca.dir.acct.cars.adf.cars03report.model.view.cars03reportVO.CurrentBalance_FMT_FORMATTER"/>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.cars03report.model.view.cars03reportVO.CurrentBalance_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="AdjustmentAmount"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="ADJUSTMENT_AMOUNT"
+    Expression="ADJUSTMENT_AMOUNT"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <FMT_FORMATTER
+          ResId="gov.ca.dir.acct.cars.adf.cars03report.model.view.cars03reportVO.AdjustmentAmount_FMT_FORMATTER"/>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.cars03report.model.view.cars03reportVO.AdjustmentAmount_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="EndingBalance"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="ENDING_BALANCE"
+    Expression="ENDING_BALANCE"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <FMT_FORMATTER
+          ResId="gov.ca.dir.acct.cars.adf.cars03report.model.view.cars03reportVO.EndingBalance_FMT_FORMATTER"/>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.cars03report.model.view.cars03reportVO.EndingBalance_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="PostingDate"
+    IsUpdateable="false"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    AliasName="POSTING_DATE"
+    Expression="POSTING_DATE"
+    SQLType="DATE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.cars03report.model.view.cars03reportVO.PostingDate_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="AmendType"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="8"
+    Type="java.lang.String"
+    ColumnType="CHAR"
+    AliasName="AMEND_TYPE"
+    Expression="AMEND_TYPE"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="8"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ProgramUnitCode"
+    IsUpdateable="false"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Precision="25"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="PROGRAM_UNIT_CODE"
+    Expression="PROGRAM_UNIT_CODE"
+    SQLType="VARCHAR"
+    LOVName="LOV_ProgramUnitCode">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="25"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CurrentDate"
+    IsUpdateable="false"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    AliasName="VIEW_ATTR"
+    SQLType="DATE">
+    <TransientExpression><![CDATA[adf.currentDate]]></TransientExpression>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.cars03report.model.view.cars03reportVO.CurrentDate_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="AdjustmentCount"
+    IsUpdateable="false"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="VIEW_ATTR"
+    SQLType="NUMERIC">
+    <RecalcCondition><![CDATA[true]]></RecalcCondition>
+    <TransientExpression><![CDATA[adf.object.findRowSetForRow("").count("ArRootDocument")]]></TransientExpression>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.cars03report.model.view.cars03reportVO.AdjustmentCount_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="AdjustmentAmountTotal"
+    IsUpdateable="false"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="VIEW_ATTR"
+    SQLType="NUMERIC">
+    <RecalcCondition><![CDATA[true]]></RecalcCondition>
+    <TransientExpression><![CDATA[adf.object.findRowSetForRow("").sum("AdjustmentAmount")]]></TransientExpression>
+    <Properties>
+      <SchemaBasedProperties>
+        <FMT_FORMATTER
+          ResId="gov.ca.dir.acct.cars.adf.cars03report.model.view.cars03reportVO.AdjustmentAmountTotal_FMT_FORMATTER"/>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.cars03report.model.view.cars03reportVO.AdjustmentAmountTotal_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewCriteria
+    Name="cars03reportVOCriteria"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.cars03report.model.view.cars03reportVO"
+    Conjunction="AND">
+    <Properties>
+      <CustomProperties>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="vcrow3"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="AdjustmentDate"
+        ViewAttribute="AdjustmentDate"
+        Operator="BETWEEN"
+        Conjunction="AND"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="ProgramUnitCode"
+        ViewAttribute="ProgramUnitCode"
+        Operator="="
+        Conjunction="AND"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="gov.ca.dir.acct.cars.adf.cars03report.model.ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

@@ -1,0 +1,2344 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE AppModule SYSTEM "jbo_03_01.dtd">
+<!---->
+<AppModule
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="CarsBCLookupServicesAM"
+  Version="11.1.1.64.93"
+  InheritPersonalization="true"
+  ComponentClass="gov.ca.dir.acct.cars.adf.service.appmodule.CarsBCLookupServicesAMImpl"
+  ClearCacheOnRollback="true"
+  ComponentInterface="gov.ca.dir.acct.cars.adf.service.appmodule.common.CarsBCLookupServicesAM"
+  ClientProxyName="gov.ca.dir.acct.cars.adf.service.appmodule.client.CarsBCLookupServicesAMClient">
+  <DesignTime>
+    <Attr Name="_deployType" Value="4096"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="gov.ca.dir.acct.cars.adf.service.appmodule.CarsBCLookupServicesAM_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <ViewUsage
+    Name="AccountingCodeView1"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.service.view.AccountingCodeView"/>
+  <ViewUsage
+    Name="AccountingEntryTypeView1"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.service.view.AccountingEntryTypeView"/>
+  <ViewUsage
+    Name="AccountingReceivableStatusView1"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.service.view.AccountingReceivableStatusView"/>
+  <ViewUsage
+    Name="AcctgEntryEventAssocRuleView1"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.service.view.AcctgEntryEventAssocRuleView"/>
+  <ViewUsage
+    Name="AdjustmentTypeView1"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.service.view.AdjustmentTypeView"/>
+  <ViewUsage
+    Name="AgencySourceView1"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.service.view.AgencySourceView"/>
+  <ViewUsage
+    Name="ArStatusTypeView1"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.service.view.ArStatusTypeView"/>
+  <ViewUsage
+    Name="BillTypeView1"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.service.view.BillTypeView"/>
+  <ViewUsage
+    Name="ContactMethodTypeView1"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.service.view.ContactMethodTypeView"/>
+  <ViewUsage
+    Name="EventTypeAssociationRuleView1"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.service.view.EventTypeAssociationRuleView"/>
+  <ViewUsage
+    Name="EventTypeView1"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.service.view.EventTypeView"/>
+  <ViewUsage
+    Name="FiscalPeriodView1"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.service.view.FiscalPeriodView"/>
+  <ViewUsage
+    Name="FundAllocationView1"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.service.view.FundAllocationView"/>
+  <ViewUsage
+    Name="FundView1"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.service.view.FundView"/>
+  <ViewUsage
+    Name="GlAccountTypeView1"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.service.view.GlAccountTypeView"/>
+  <ViewUsage
+    Name="GlAccountAssociationRuleView1"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.service.view.GlAccountAssociationRuleView"/>
+  <ViewUsage
+    Name="IndexCodeView1"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.service.view.IndexCodeView"/>
+  <ViewUsage
+    Name="GlAccountView1"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.service.view.GlAccountView"/>
+  <ViewUsage
+    Name="OtherTransactionTypeView1"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.service.view.OtherTransactionTypeView"/>
+  <ViewUsage
+    Name="ParticipantRoleTypeView1"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.service.view.ParticipantRoleTypeView"/>
+  <ViewUsage
+    Name="PartyAssociationTypeView1"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.service.view.PartyAssociationTypeView"/>
+  <ViewUsage
+    Name="PcaCodeView1"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.service.view.PcaCodeView"/>
+  <ViewUsage
+    Name="ProgramUnitView1"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.service.view.ProgramUnitView"/>
+  <ViewUsage
+    Name="ReceiptTypeView1"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.service.view.ReceiptTypeView"/>
+  <ViewUsage
+    Name="RevenueSourceCodeView1"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.service.view.RevenueSourceCodeView"/>
+  <ViewUsage
+    Name="TestView1"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.service.view.TestView"/>
+  <ViewUsage
+    Name="EventTypeLookupView1"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.service.view.EventTypeLookupView"/>
+  <ViewUsage
+    Name="EventTypeAssocRulesLookup1"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.service.view.EventTypeAssocRulesLookup"/>
+  <ViewUsage
+    Name="EventLookupView1"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.service.view.EventLookupView"/>
+  <ViewUsage
+    Name="FiscalPeriodLookupView1"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.service.view.FiscalPeriodLookupView"/>
+  <ViewUsage
+    Name="CreditRuleLookupView1"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.service.view.CreditRuleLookupView"/>
+  <ViewUsage
+    Name="DebitRuleLookupView1"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.service.view.DebitRuleLookupView"/>
+  <ViewUsage
+    Name="GlAccountAssocRuleLookupView1"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.service.view.GlAccountAssocRuleLookupView"/>
+  <ViewUsage
+    Name="ParticipantRoleView1"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.service.view.ParticipantRoleView"/>
+  <ViewUsage
+    Name="AcctgTransactEventAssocView1"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.service.view.AcctgTransactEventAssocView"/>
+  <ViewUsage
+    Name="AccountingCodeLookupView1"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.service.view.AccountingCodeLookupView"/>
+  <ViewUsage
+    Name="NoteTypeView1"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.service.view.NoteTypeView"/>
+  <ViewUsage
+    Name="ContactMethodView1"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.service.view.ContactMethodView"/>
+  <ViewUsage
+    Name="AccountingTransactionView1"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.service.view.AccountingTransactionView"/>
+  <ViewUsage
+    Name="AddressView1"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.service.view.AddressView"/>
+  <ViewUsage
+    Name="AccountingEntryStatusView1"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.service.view.AccountingEntryStatusView"/>
+  <ViewUsage
+    Name="BatchTypeView1"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.service.view.BatchTypeView"/>
+  <ViewUsage
+    Name="FsEntryTypeView1"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.service.view.FsEntryTypeView"/>
+  <ViewUsage
+    Name="FsEntryReasonTypeView1"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.service.view.FsEntryReasonTypeView"/>
+  <ViewUsage
+    Name="ReferenceCodeListView1"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.service.view.ReferenceCodeListView"/>
+  <ViewUsage
+    Name="ReferenceCodeListLookupView1"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.service.view.ReferenceCodeListLookupView"/>
+  <ViewUsage
+    Name="AccountingEntryView1"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.service.view.AccountingEntryView"/>
+  <ViewUsage
+    Name="CountryCodeLookupView1"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.service.view.CountryCodeLookupView"/>
+  <ViewUsage
+    Name="StateCodeLookupView1"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.service.view.StateCodeLookupView"/>
+  <Remote
+    Name="ServiceInterface"
+    ServerClassName="gov.ca.dir.acct.cars.adf.service.appmodule.server.serviceinterface.CarsBCLookupServicesAMServiceImpl"
+    ServerInterfaceName="gov.ca.dir.acct.cars.adf.service.appmodule.common.serviceinterface.CarsBCLookupServicesAMService">
+    <DesignTime>
+      <Attr Name="_webServiceName" Value="CarsBCLookupServicesAMService"/>
+      <Attr Name="_targetNameSpace"
+        Value="/gov/ca/dir/acct/cars/adf/service/appmodule/common/"/>
+    </DesignTime>
+  </Remote>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="gov.ca.dir.acct.cars.adf.service.CarsBCServicesBundle"/>
+  </ResourceBundle>
+  <ServiceViewUsage
+    ViewUsageName="AccountingCodeView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findAccountingCode"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="AccountingReceivableStatusView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findAccountingReceivableStatus"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="AcctgEntryEventAssocRuleView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findAcctgEntryEventAssocRule"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="AdjustmentTypeView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findAdjustmentType"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="AgencySourceView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findAgencySource"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="ArStatusTypeView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findArStatusType"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="BillTypeView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findBillType"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="ContactMethodTypeView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findContactMethodType"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="EventTypeAssociationRuleView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findEventTypeAssociationRule"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="EventTypeView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findEventType"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="FiscalPeriodView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findFiscalPeriod"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="FundAllocationView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findFundAllocation"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="FundView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findFund"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="GlAccountAssociationRuleView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findGlAccountAssociationRule"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="GlAccountTypeView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findGlAccountType"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="GlAccountView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findGlAccount"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="IndexCodeView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findIndexCode"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="OtherTransactionTypeView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findOtherTransactionType"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="ParticipantRoleTypeView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findParticipantRoleType"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="PartyAssociationTypeView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findPartyAssociationType"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="PcaCodeView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findPcaCode"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="ProgramUnitView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findProgramUnit"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="ReceiptTypeView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findReceiptType"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="RevenueSourceCodeView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findRevenueSourceCode"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="TestView1">
+    <DesignTime>
+      <AttrArray Name="_VCFindOps">
+        <Item Value="TestViewCriteria"/>
+      </AttrArray>
+      <AttrArray Name="__TestViewCriteria">
+        <Item Value="findTestView1TestViewCriteria"/>
+        <Item Value="varIndexCode"/>
+      </AttrArray>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="EventTypeLookupView1">
+    <DesignTime>
+      <AttrArray Name="_VCFindOps">
+        <Item Value="EventTypeLookupViewCriteria"/>
+      </AttrArray>
+      <AttrArray Name="__EventTypeLookupViewCriteria">
+        <Item Value="findEventTypeWithParams"/>
+        <Item Value="varEventTypeCode"/>
+        <Item Value="varProgramUnitCode"/>
+      </AttrArray>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="EventTypeAssocRulesLookup1">
+    <DesignTime>
+      <AttrArray Name="_VCFindOps">
+        <Item Value="EventTypeAssocRulesLookupCriteria"/>
+      </AttrArray>
+      <AttrArray Name="__EventTypeAssocRulesLookupCriteria">
+        <Item Value="findEventTypeAssocRuleWithParams"/>
+        <Item Value="varFromEventType"/>
+        <Item Value="varToEventType"/>
+      </AttrArray>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="AccountingCodeView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findAccountingCode"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="AccountingReceivableStatusView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findAccountingReceivableStatus"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="AcctgEntryEventAssocRuleView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findAcctgEntryEventAssocRule"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="AdjustmentTypeView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findAdjustmentType"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="AgencySourceView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findAgencySource"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="ArStatusTypeView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findArStatusType"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="BillTypeView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findBillType"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="ContactMethodTypeView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findContactMethodType"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="EventTypeAssocRulesLookup1">
+    <DesignTime>
+      <AttrArray Name="_VCFindOps">
+        <Item Value="EventTypeAssocRulesLookupCriteria"/>
+      </AttrArray>
+      <AttrArray Name="__EventTypeAssocRulesLookupCriteria">
+        <Item Value="findEventTypeAssocRuleWithParams"/>
+        <Item Value="varFromEventType"/>
+        <Item Value="varToEventType"/>
+      </AttrArray>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="EventTypeAssociationRuleView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findEventTypeAssociationRule"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="EventTypeLookupView1">
+    <DesignTime>
+      <AttrArray Name="_VCFindOps">
+        <Item Value="EventTypeLookupViewCriteria"/>
+      </AttrArray>
+      <AttrArray Name="__EventTypeLookupViewCriteria">
+        <Item Value="findEventTypeWithParams"/>
+        <Item Value="varEventTypeCode"/>
+        <Item Value="varProgramUnitCode"/>
+      </AttrArray>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="EventTypeView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findEventType"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="FiscalPeriodView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findFiscalPeriod"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="FundAllocationView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findFundAllocation"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="FundView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findFund"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="GlAccountAssociationRuleView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findGlAccountAssociationRule"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="GlAccountTypeView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findGlAccountType"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="GlAccountView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findGlAccount"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="IndexCodeView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findIndexCode"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="OtherTransactionTypeView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findOtherTransactionType"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="ParticipantRoleTypeView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findParticipantRoleType"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="PartyAssociationTypeView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findPartyAssociationType"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="PcaCodeView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findPcaCode"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="ProgramUnitView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findProgramUnit"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="ReceiptTypeView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findReceiptType"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="RevenueSourceCodeView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findRevenueSourceCode"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="TestView1">
+    <DesignTime>
+      <AttrArray Name="_VCFindOps">
+        <Item Value="TestViewCriteria"/>
+      </AttrArray>
+      <AttrArray Name="__TestViewCriteria">
+        <Item Value="findTestView1TestViewCriteria"/>
+        <Item Value="varIndexCode"/>
+      </AttrArray>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="FiscalPeriodLookupView1">
+    <DesignTime>
+      <AttrArray Name="__FiscalPeriodLookupViewCriteria">
+        <Item Value="findFiscalPeriodWithParams"/>
+        <Item Value="varFiscalDate"/>
+      </AttrArray>
+      <AttrArray Name="_VCFindOps">
+        <Item Value="FiscalPeriodLookupViewCriteria"/>
+      </AttrArray>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="CreditRuleLookupView1">
+    <DesignTime>
+      <AttrArray Name="__CreditRuleLookupViewCriteria">
+        <Item Value="findCreditRuleWithParams"/>
+        <Item Value="varAcctgEntryTypeId"/>
+      </AttrArray>
+      <AttrArray Name="_VCFindOps">
+        <Item Value="CreditRuleLookupViewCriteria"/>
+      </AttrArray>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="GlAccountAssocRuleLookupView1">
+    <DesignTime>
+      <AttrArray Name="_VCFindOps">
+        <Item Value="GlAccountAssocRuleLookupViewCriteria"/>
+      </AttrArray>
+      <AttrArray Name="__GlAccountAssocRuleLookupViewCriteria">
+        <Item Value="findGlAccountAssocRuleWithParams"/>
+        <Item Value="varAcctgEntryTypeId"/>
+      </AttrArray>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="DebitRuleLookupView1">
+    <DesignTime>
+      <AttrArray Name="__DebitRuleLookupViewCriteria">
+        <Item Value="findDebitRuleWithParams"/>
+        <Item Value="varAcctgEntryTypeId"/>
+      </AttrArray>
+      <AttrArray Name="_VCFindOps">
+        <Item Value="DebitRuleLookupViewCriteria"/>
+      </AttrArray>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="AcctgTransactEventAssocView1">
+    <DesignTime>
+      <AttrArray Name="_VCFindOps">
+        <Item Value="AcctgTransactEventAssocViewCriteria"/>
+      </AttrArray>
+      <AttrArray Name="__AcctgTransactEventAssocViewCriteria">
+        <Item Value="findAcctgTransactEventAssocWithParams"/>
+        <Item Value="varEventId"/>
+      </AttrArray>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="NoteTypeView1">
+    <DesignTime>
+      <AttrArray Name="_VCFindOps">
+        <Item Value="NoteTypeViewCriteria"/>
+      </AttrArray>
+      <AttrArray Name="__NoteTypeViewCriteria">
+        <Item Value="findNoteTypeWithParams"/>
+        <Item Value="varNoteTypeCode"/>
+      </AttrArray>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="AccountingCodeView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findAccountingCode"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="AccountingReceivableStatusView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findAccountingReceivableStatus"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="AcctgEntryEventAssocRuleView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findAcctgEntryEventAssocRule"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="AcctgTransactEventAssocView1">
+    <DesignTime>
+      <AttrArray Name="_VCFindOps">
+        <Item Value="AcctgTransactEventAssocViewCriteria"/>
+      </AttrArray>
+      <AttrArray Name="__AcctgTransactEventAssocViewCriteria">
+        <Item Value="findAcctgTransactEventAssocWithParams"/>
+        <Item Value="varEventId"/>
+      </AttrArray>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="AdjustmentTypeView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findAdjustmentType"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="AgencySourceView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findAgencySource"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="ArStatusTypeView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findArStatusType"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="BillTypeView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findBillType"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="ContactMethodTypeView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findContactMethodType"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="ContactMethodView1">
+    <DesignTime>
+      <AttrArray Name="_VCFindOps">
+        <Item Value="ContactMethodViewCriteria"/>
+      </AttrArray>
+      <AttrArray Name="__ContactMethodViewCriteria">
+        <Item Value="findContactMethodWithParam"/>
+        <Item Value="varPartyId"/>
+      </AttrArray>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="CreditRuleLookupView1">
+    <DesignTime>
+      <AttrArray Name="__CreditRuleLookupViewCriteria">
+        <Item Value="findCreditRuleWithParams"/>
+        <Item Value="varAcctgEntryTypeId"/>
+      </AttrArray>
+      <AttrArray Name="_VCFindOps">
+        <Item Value="CreditRuleLookupViewCriteria"/>
+      </AttrArray>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="DebitRuleLookupView1">
+    <DesignTime>
+      <AttrArray Name="__DebitRuleLookupViewCriteria">
+        <Item Value="findDebitRuleWithParams"/>
+        <Item Value="varAcctgEntryTypeId"/>
+      </AttrArray>
+      <AttrArray Name="_VCFindOps">
+        <Item Value="DebitRuleLookupViewCriteria"/>
+      </AttrArray>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="EventTypeAssocRulesLookup1">
+    <DesignTime>
+      <AttrArray Name="_VCFindOps">
+        <Item Value="EventTypeAssocRulesLookupCriteria"/>
+      </AttrArray>
+      <AttrArray Name="__EventTypeAssocRulesLookupCriteria">
+        <Item Value="findEventTypeAssocRuleWithParams"/>
+        <Item Value="varFromEventType"/>
+        <Item Value="varToEventType"/>
+      </AttrArray>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="EventTypeAssociationRuleView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findEventTypeAssociationRule"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="EventTypeLookupView1">
+    <DesignTime>
+      <AttrArray Name="_VCFindOps">
+        <Item Value="EventTypeLookupViewCriteria"/>
+      </AttrArray>
+      <AttrArray Name="__EventTypeLookupViewCriteria">
+        <Item Value="findEventTypeWithParams"/>
+        <Item Value="varEventTypeCode"/>
+        <Item Value="varProgramUnitCode"/>
+      </AttrArray>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="EventTypeView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findEventType"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="FiscalPeriodLookupView1">
+    <DesignTime>
+      <AttrArray Name="__FiscalPeriodLookupViewCriteria">
+        <Item Value="findFiscalPeriodWithParams"/>
+        <Item Value="varFiscalDate"/>
+      </AttrArray>
+      <AttrArray Name="_VCFindOps">
+        <Item Value="FiscalPeriodLookupViewCriteria"/>
+      </AttrArray>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="FiscalPeriodView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findFiscalPeriod"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="FundAllocationView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findFundAllocation"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="FundView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findFund"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="GlAccountAssocRuleLookupView1">
+    <DesignTime>
+      <AttrArray Name="_VCFindOps">
+        <Item Value="GlAccountAssocRuleLookupViewCriteria"/>
+      </AttrArray>
+      <AttrArray Name="__GlAccountAssocRuleLookupViewCriteria">
+        <Item Value="findGlAccountAssocRuleWithParams"/>
+        <Item Value="varAcctgEntryTypeId"/>
+      </AttrArray>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="GlAccountAssociationRuleView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findGlAccountAssociationRule"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="GlAccountTypeView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findGlAccountType"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="GlAccountView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findGlAccount"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="IndexCodeView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findIndexCode"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="NoteTypeView1">
+    <DesignTime>
+      <AttrArray Name="_VCFindOps">
+        <Item Value="NoteTypeViewCriteria"/>
+      </AttrArray>
+      <AttrArray Name="__NoteTypeViewCriteria">
+        <Item Value="findNoteTypeWithParams"/>
+        <Item Value="varNoteTypeCode"/>
+      </AttrArray>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="OtherTransactionTypeView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findOtherTransactionType"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="ParticipantRoleTypeView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findParticipantRoleType"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="PartyAssociationTypeView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findPartyAssociationType"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="PcaCodeView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findPcaCode"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="ProgramUnitView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findProgramUnit"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="ReceiptTypeView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findReceiptType"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="RevenueSourceCodeView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findRevenueSourceCode"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="TestView1">
+    <DesignTime>
+      <AttrArray Name="_VCFindOps">
+        <Item Value="TestViewCriteria"/>
+      </AttrArray>
+      <AttrArray Name="__TestViewCriteria">
+        <Item Value="findTestView1TestViewCriteria"/>
+        <Item Value="varIndexCode"/>
+      </AttrArray>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="AccountingTransactionView1">
+    <DesignTime>
+      <AttrArray Name="_VCFindOps">
+        <Item Value="AccountingTransactionViewCriteria"/>
+      </AttrArray>
+      <AttrArray Name="__AccountingTransactionViewCriteria">
+        <Item Value="findAccountingTransactionWithParams"/>
+        <Item Value="varTransactionId"/>
+      </AttrArray>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="AccountingCodeView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findAccountingCode"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="AccountingReceivableStatusView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findAccountingReceivableStatus"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="AccountingTransactionView1">
+    <DesignTime>
+      <AttrArray Name="_VCFindOps">
+        <Item Value="AccountingTransactionViewCriteria"/>
+      </AttrArray>
+      <AttrArray Name="__AccountingTransactionViewCriteria">
+        <Item Value="findAccountingTransactionWithParams"/>
+        <Item Value="varTransactionId"/>
+      </AttrArray>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="AcctgEntryEventAssocRuleView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findAcctgEntryEventAssocRule"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="AcctgTransactEventAssocView1">
+    <DesignTime>
+      <AttrArray Name="_VCFindOps">
+        <Item Value="AcctgTransactEventAssocViewCriteria"/>
+      </AttrArray>
+      <AttrArray Name="__AcctgTransactEventAssocViewCriteria">
+        <Item Value="findAcctgTransactEventAssocWithParams"/>
+        <Item Value="varEventId"/>
+      </AttrArray>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="AdjustmentTypeView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findAdjustmentType"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="AgencySourceView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findAgencySource"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="ArStatusTypeView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findArStatusType"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="BillTypeView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findBillType"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="ContactMethodTypeView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findContactMethodType"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="ContactMethodView1">
+    <DesignTime>
+      <AttrArray Name="_VCFindOps">
+        <Item Value="ContactMethodViewCriteria"/>
+      </AttrArray>
+      <AttrArray Name="__ContactMethodViewCriteria">
+        <Item Value="findContactMethodWithParam"/>
+        <Item Value="varPartyId"/>
+      </AttrArray>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="CreditRuleLookupView1">
+    <DesignTime>
+      <AttrArray Name="__CreditRuleLookupViewCriteria">
+        <Item Value="findCreditRuleWithParams"/>
+        <Item Value="varAcctgEntryTypeId"/>
+      </AttrArray>
+      <AttrArray Name="_VCFindOps">
+        <Item Value="CreditRuleLookupViewCriteria"/>
+      </AttrArray>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="DebitRuleLookupView1">
+    <DesignTime>
+      <AttrArray Name="__DebitRuleLookupViewCriteria">
+        <Item Value="findDebitRuleWithParams"/>
+        <Item Value="varAcctgEntryTypeId"/>
+      </AttrArray>
+      <AttrArray Name="_VCFindOps">
+        <Item Value="DebitRuleLookupViewCriteria"/>
+      </AttrArray>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="EventTypeAssocRulesLookup1">
+    <DesignTime>
+      <AttrArray Name="_VCFindOps">
+        <Item Value="EventTypeAssocRulesLookupCriteria"/>
+      </AttrArray>
+      <AttrArray Name="__EventTypeAssocRulesLookupCriteria">
+        <Item Value="findEventTypeAssocRuleWithParams"/>
+        <Item Value="varFromEventType"/>
+        <Item Value="varToEventType"/>
+      </AttrArray>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="EventTypeAssociationRuleView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findEventTypeAssociationRule"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="EventTypeLookupView1">
+    <DesignTime>
+      <AttrArray Name="_VCFindOps">
+        <Item Value="EventTypeLookupViewCriteria"/>
+      </AttrArray>
+      <AttrArray Name="__EventTypeLookupViewCriteria">
+        <Item Value="findEventTypeWithParams"/>
+        <Item Value="varEventTypeCode"/>
+        <Item Value="varProgramUnitCode"/>
+      </AttrArray>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="EventTypeView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findEventType"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="FiscalPeriodLookupView1">
+    <DesignTime>
+      <AttrArray Name="__FiscalPeriodLookupViewCriteria">
+        <Item Value="findFiscalPeriodWithParams"/>
+        <Item Value="varFiscalDate"/>
+      </AttrArray>
+      <AttrArray Name="_VCFindOps">
+        <Item Value="FiscalPeriodLookupViewCriteria"/>
+      </AttrArray>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="FiscalPeriodView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findFiscalPeriod"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="FundAllocationView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findFundAllocation"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="FundView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findFund"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="GlAccountAssocRuleLookupView1">
+    <DesignTime>
+      <AttrArray Name="_VCFindOps">
+        <Item Value="GlAccountAssocRuleLookupViewCriteria"/>
+      </AttrArray>
+      <AttrArray Name="__GlAccountAssocRuleLookupViewCriteria">
+        <Item Value="findGlAccountAssocRuleWithParams"/>
+        <Item Value="varAcctgEntryTypeId"/>
+      </AttrArray>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="GlAccountAssociationRuleView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findGlAccountAssociationRule"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="GlAccountTypeView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findGlAccountType"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="GlAccountView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findGlAccount"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="IndexCodeView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findIndexCode"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="NoteTypeView1">
+    <DesignTime>
+      <AttrArray Name="_VCFindOps">
+        <Item Value="NoteTypeViewCriteria"/>
+      </AttrArray>
+      <AttrArray Name="__NoteTypeViewCriteria">
+        <Item Value="findNoteTypeWithParams"/>
+        <Item Value="varNoteTypeCode"/>
+      </AttrArray>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="OtherTransactionTypeView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findOtherTransactionType"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="ParticipantRoleTypeView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findParticipantRoleType"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="ParticipantRoleView1">
+    <DesignTime>
+      <AttrArray Name="_VCFindOps">
+        <Item Value="ParticipantRoleViewCriteria"/>
+      </AttrArray>
+      <AttrArray Name="__ParticipantRoleViewCriteria">
+        <Item Value="findParticipantRoleWithParams"/>
+        <Item Value="varEventId"/>
+        <Item Value="varPartyRoleTypeCode"/>
+      </AttrArray>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="PartyAssociationTypeView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findPartyAssociationType"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="PcaCodeView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findPcaCode"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="ProgramUnitView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findProgramUnit"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="ReceiptTypeView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findReceiptType"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="RevenueSourceCodeView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findRevenueSourceCode"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="TestView1">
+    <DesignTime>
+      <AttrArray Name="_VCFindOps">
+        <Item Value="TestViewCriteria"/>
+      </AttrArray>
+      <AttrArray Name="__TestViewCriteria">
+        <Item Value="findTestView1TestViewCriteria"/>
+        <Item Value="varIndexCode"/>
+      </AttrArray>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="AddressView1">
+    <DesignTime>
+      <AttrArray Name="_VCFindOps">
+        <Item Value="AddressViewCriteria"/>
+      </AttrArray>
+      <AttrArray Name="__AddressViewCriteria">
+        <Item Value="findAddressWithParams"/>
+        <Item Value="varPartyId"/>
+      </AttrArray>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="ReferenceCodeListLookupView1">
+    <DesignTime>
+      <AttrArray Name="_VCFindOps">
+        <Item Value="SOAEmailLookupViewCriteria"/>
+        <Item Value="ReferenceCodeListLookupViewCriteria"/>
+      </AttrArray>
+      <AttrArray Name="__ReferenceCodeListLookupViewCriteria">
+        <Item Value="findReferenceCodeListWithParams"/>
+        <Item Value="varReferenceValue"/>
+        <Item Value="varDomainName"/>
+      </AttrArray>
+      <AttrArray Name="__SOAEmailLookupViewCriteria">
+        <Item Value="findSOARecipient"/>
+      </AttrArray>
+      <Attr Name="_FindOpName" Value="findReferenceCodeListLookupView"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="EventLookupView1">
+    <DesignTime>
+      <AttrArray Name="_VCFindOps">
+        <Item Value="EventLookupViewCriteria"/>
+      </AttrArray>
+      <AttrArray Name="__EventLookupViewCriteria">
+        <Item Value="findEventWithParams"/>
+        <Item Value="varEventId"/>
+        <Item Value="varCurrentDocument"/>
+        <Item Value="varReferenceDocument"/>
+      </AttrArray>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="AccountingCodeView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findAccountingCode"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="AccountingEntryTypeView1">
+    <DesignTime>
+      <AttrArray Name="_VCFindOps">
+        <Item Value="AccountingEntryTypeReversalViewCriteria"/>
+        <Item Value="AccountingEntryTypeViewCriteria"/>
+      </AttrArray>
+      <AttrArray Name="__AccountingEntryTypeViewCriteria">
+        <Item Value="findAccountingEntryTypeWithParams"/>
+        <Item Value="varAcctgEntryTypeId"/>
+      </AttrArray>
+      <Attr Name="_FindOpName" Value="findAccountingEntryType"/>
+      <AttrArray Name="__AccountingEntryTypeReversalViewCriteria">
+        <Item Value="findAccountingEntryTypeReversal"/>
+        <Item Value="varAcctgEntryTypeCode"/>
+      </AttrArray>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="AccountingReceivableStatusView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findAccountingReceivableStatus"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="AccountingTransactionView1">
+    <DesignTime>
+      <AttrArray Name="_VCFindOps">
+        <Item Value="AccountingTransactionViewCriteria"/>
+      </AttrArray>
+      <AttrArray Name="__AccountingTransactionViewCriteria">
+        <Item Value="findAccountingTransactionWithParams"/>
+        <Item Value="varTransactionId"/>
+      </AttrArray>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="AcctgEntryEventAssocRuleView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findAcctgEntryEventAssocRule"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="AcctgTransactEventAssocView1">
+    <DesignTime>
+      <AttrArray Name="_VCFindOps">
+        <Item Value="AcctgTransactEventAssocViewCriteria"/>
+      </AttrArray>
+      <AttrArray Name="__AcctgTransactEventAssocViewCriteria">
+        <Item Value="findAcctgTransactEventAssocWithParams"/>
+        <Item Value="varEventId"/>
+      </AttrArray>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="AddressView1">
+    <DesignTime>
+      <AttrArray Name="_VCFindOps">
+        <Item Value="AddressViewCriteria"/>
+      </AttrArray>
+      <AttrArray Name="__AddressViewCriteria">
+        <Item Value="findAddressWithParams"/>
+        <Item Value="varPartyId"/>
+      </AttrArray>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="AdjustmentTypeView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findAdjustmentType"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="AgencySourceView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findAgencySource"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="ArStatusTypeView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findArStatusType"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="BillTypeView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findBillType"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="ContactMethodTypeView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findContactMethodType"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="ContactMethodView1">
+    <DesignTime>
+      <AttrArray Name="_VCFindOps">
+        <Item Value="ContactMethodViewCriteria"/>
+      </AttrArray>
+      <AttrArray Name="__ContactMethodViewCriteria">
+        <Item Value="findContactMethodWithParam"/>
+        <Item Value="varPartyId"/>
+      </AttrArray>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="CreditRuleLookupView1">
+    <DesignTime>
+      <AttrArray Name="__CreditRuleLookupViewCriteria">
+        <Item Value="findCreditRuleWithParams"/>
+        <Item Value="varAcctgEntryTypeId"/>
+      </AttrArray>
+      <AttrArray Name="_VCFindOps">
+        <Item Value="CreditRuleLookupViewCriteria"/>
+      </AttrArray>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="DebitRuleLookupView1">
+    <DesignTime>
+      <AttrArray Name="__DebitRuleLookupViewCriteria">
+        <Item Value="findDebitRuleWithParams"/>
+        <Item Value="varAcctgEntryTypeId"/>
+      </AttrArray>
+      <AttrArray Name="_VCFindOps">
+        <Item Value="DebitRuleLookupViewCriteria"/>
+      </AttrArray>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="EventLookupView1">
+    <DesignTime>
+      <AttrArray Name="_VCFindOps">
+        <Item Value="EventLookupViewCriteria"/>
+      </AttrArray>
+      <AttrArray Name="__EventLookupViewCriteria">
+        <Item Value="findEventWithParams"/>
+        <Item Value="varEventId"/>
+        <Item Value="varCurrentDocument"/>
+        <Item Value="varReferenceDocument"/>
+      </AttrArray>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="EventTypeAssocRulesLookup1">
+    <DesignTime>
+      <AttrArray Name="_VCFindOps">
+        <Item Value="EventTypeAssocRulesLookupCriteria"/>
+      </AttrArray>
+      <AttrArray Name="__EventTypeAssocRulesLookupCriteria">
+        <Item Value="findEventTypeAssocRuleWithParams"/>
+        <Item Value="varFromEventType"/>
+        <Item Value="varToEventType"/>
+      </AttrArray>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="EventTypeAssociationRuleView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findEventTypeAssociationRule"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="EventTypeLookupView1">
+    <DesignTime>
+      <AttrArray Name="_VCFindOps">
+        <Item Value="EventTypeLookupViewCriteria"/>
+      </AttrArray>
+      <AttrArray Name="__EventTypeLookupViewCriteria">
+        <Item Value="findEventTypeWithParams"/>
+        <Item Value="varEventTypeCode"/>
+        <Item Value="varProgramUnitCode"/>
+      </AttrArray>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="EventTypeView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findEventType"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="FiscalPeriodLookupView1">
+    <DesignTime>
+      <AttrArray Name="__FiscalPeriodLookupViewCriteria">
+        <Item Value="findFiscalPeriodWithParams"/>
+        <Item Value="varFiscalDate"/>
+      </AttrArray>
+      <AttrArray Name="_VCFindOps">
+        <Item Value="FiscalPeriodLookupViewCriteria"/>
+      </AttrArray>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="FiscalPeriodView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findFiscalPeriod"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="FundAllocationView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findFundAllocation"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="FundView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findFund"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="GlAccountAssocRuleLookupView1">
+    <DesignTime>
+      <AttrArray Name="_VCFindOps">
+        <Item Value="GlAccountAssocRuleLookupViewCriteria"/>
+      </AttrArray>
+      <AttrArray Name="__GlAccountAssocRuleLookupViewCriteria">
+        <Item Value="findGlAccountAssocRuleWithParams"/>
+        <Item Value="varAcctgEntryTypeId"/>
+      </AttrArray>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="GlAccountAssociationRuleView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findGlAccountAssociationRule"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="GlAccountTypeView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findGlAccountType"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="GlAccountView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findGlAccount"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="IndexCodeView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findIndexCode"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="NoteTypeView1">
+    <DesignTime>
+      <AttrArray Name="_VCFindOps">
+        <Item Value="NoteTypeViewCriteria"/>
+      </AttrArray>
+      <AttrArray Name="__NoteTypeViewCriteria">
+        <Item Value="findNoteTypeWithParams"/>
+        <Item Value="varNoteTypeCode"/>
+      </AttrArray>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="OtherTransactionTypeView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findOtherTransactionType"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="ParticipantRoleTypeView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findParticipantRoleType"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="ParticipantRoleView1">
+    <DesignTime>
+      <AttrArray Name="_VCFindOps">
+        <Item Value="ParticipantRoleViewCriteria"/>
+      </AttrArray>
+      <AttrArray Name="__ParticipantRoleViewCriteria">
+        <Item Value="findParticipantRoleWithParams"/>
+        <Item Value="varEventId"/>
+        <Item Value="varPartyRoleTypeCode"/>
+      </AttrArray>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="PartyAssociationTypeView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findPartyAssociationType"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="PcaCodeView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findPcaCode"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="ProgramUnitView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findProgramUnit"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="ReceiptTypeView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findReceiptType"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="RevenueSourceCodeView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findRevenueSourceCode"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="TestView1">
+    <DesignTime>
+      <AttrArray Name="_VCFindOps">
+        <Item Value="TestViewCriteria"/>
+      </AttrArray>
+      <AttrArray Name="__TestViewCriteria">
+        <Item Value="findTestView1TestViewCriteria"/>
+        <Item Value="varIndexCode"/>
+      </AttrArray>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="AccountingCodeView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findAccountingCode"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="AccountingEntryView1">
+    <DesignTime>
+      <AttrArray Name="_VCFindOps">
+        <Item Value="AccountingEntryViewCriteria"/>
+      </AttrArray>
+      <AttrArray Name="__AccountingEntryViewCriteria">
+        <Item Value="findAccountingEntryWithParams"/>
+        <Item Value="varAcctgTransactionId"/>
+      </AttrArray>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="AccountingReceivableStatusView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findAccountingReceivableStatus"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="AccountingTransactionView1">
+    <DesignTime>
+      <AttrArray Name="_VCFindOps">
+        <Item Value="AccountingTransactionViewCriteria"/>
+      </AttrArray>
+      <AttrArray Name="__AccountingTransactionViewCriteria">
+        <Item Value="findAccountingTransactionWithParams"/>
+        <Item Value="varTransactionId"/>
+      </AttrArray>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="AcctgEntryEventAssocRuleView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findAcctgEntryEventAssocRule"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="AcctgTransactEventAssocView1">
+    <DesignTime>
+      <AttrArray Name="_VCFindOps">
+        <Item Value="AcctgTransactEventAssocViewCriteria"/>
+      </AttrArray>
+      <AttrArray Name="__AcctgTransactEventAssocViewCriteria">
+        <Item Value="findAcctgTransactEventAssocWithParams"/>
+        <Item Value="varEventId"/>
+      </AttrArray>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="AddressView1">
+    <DesignTime>
+      <AttrArray Name="_VCFindOps">
+        <Item Value="AddressViewCriteria"/>
+      </AttrArray>
+      <AttrArray Name="__AddressViewCriteria">
+        <Item Value="findAddressWithParams"/>
+        <Item Value="varPartyId"/>
+      </AttrArray>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="AdjustmentTypeView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findAdjustmentType"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="AgencySourceView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findAgencySource"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="ArStatusTypeView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findArStatusType"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="BillTypeView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findBillType"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="ContactMethodTypeView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findContactMethodType"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="ContactMethodView1">
+    <DesignTime>
+      <AttrArray Name="_VCFindOps">
+        <Item Value="ContactMethodViewCriteria"/>
+      </AttrArray>
+      <AttrArray Name="__ContactMethodViewCriteria">
+        <Item Value="findContactMethodWithParam"/>
+        <Item Value="varPartyId"/>
+      </AttrArray>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="CreditRuleLookupView1">
+    <DesignTime>
+      <AttrArray Name="__CreditRuleLookupViewCriteria">
+        <Item Value="findCreditRuleWithParams"/>
+        <Item Value="varAcctgEntryTypeId"/>
+      </AttrArray>
+      <AttrArray Name="_VCFindOps">
+        <Item Value="CreditRuleLookupViewCriteria"/>
+      </AttrArray>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="DebitRuleLookupView1">
+    <DesignTime>
+      <AttrArray Name="__DebitRuleLookupViewCriteria">
+        <Item Value="findDebitRuleWithParams"/>
+        <Item Value="varAcctgEntryTypeId"/>
+      </AttrArray>
+      <AttrArray Name="_VCFindOps">
+        <Item Value="DebitRuleLookupViewCriteria"/>
+      </AttrArray>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="EventLookupView1">
+    <DesignTime>
+      <AttrArray Name="_VCFindOps">
+        <Item Value="EventLookupViewCriteria"/>
+      </AttrArray>
+      <AttrArray Name="__EventLookupViewCriteria">
+        <Item Value="findEventWithParams"/>
+        <Item Value="varEventId"/>
+        <Item Value="varCurrentDocument"/>
+        <Item Value="varReferenceDocument"/>
+      </AttrArray>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="EventTypeAssocRulesLookup1">
+    <DesignTime>
+      <AttrArray Name="_VCFindOps">
+        <Item Value="EventTypeAssocRulesLookupCriteria"/>
+      </AttrArray>
+      <AttrArray Name="__EventTypeAssocRulesLookupCriteria">
+        <Item Value="findEventTypeAssocRuleWithParams"/>
+        <Item Value="varFromEventType"/>
+        <Item Value="varToEventType"/>
+      </AttrArray>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="EventTypeAssociationRuleView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findEventTypeAssociationRule"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="EventTypeLookupView1">
+    <DesignTime>
+      <AttrArray Name="_VCFindOps">
+        <Item Value="EventTypeLookupViewCriteria"/>
+      </AttrArray>
+      <AttrArray Name="__EventTypeLookupViewCriteria">
+        <Item Value="findEventTypeWithParams"/>
+        <Item Value="varEventTypeCode"/>
+        <Item Value="varProgramUnitCode"/>
+      </AttrArray>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="EventTypeView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findEventType"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="FiscalPeriodLookupView1">
+    <DesignTime>
+      <AttrArray Name="__FiscalPeriodLookupViewCriteria">
+        <Item Value="findFiscalPeriodWithParams"/>
+        <Item Value="varFiscalDate"/>
+      </AttrArray>
+      <AttrArray Name="_VCFindOps">
+        <Item Value="FiscalPeriodLookupViewCriteria"/>
+      </AttrArray>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="FiscalPeriodView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findFiscalPeriod"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="FundAllocationView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findFundAllocation"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="FundView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findFund"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="GlAccountAssocRuleLookupView1">
+    <DesignTime>
+      <AttrArray Name="_VCFindOps">
+        <Item Value="GlAccountAssocRuleLookupViewCriteria"/>
+      </AttrArray>
+      <AttrArray Name="__GlAccountAssocRuleLookupViewCriteria">
+        <Item Value="findGlAccountAssocRuleWithParams"/>
+        <Item Value="varAcctgEntryTypeId"/>
+      </AttrArray>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="GlAccountAssociationRuleView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findGlAccountAssociationRule"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="GlAccountTypeView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findGlAccountType"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="GlAccountView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findGlAccount"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="IndexCodeView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findIndexCode"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="NoteTypeView1">
+    <DesignTime>
+      <AttrArray Name="_VCFindOps">
+        <Item Value="NoteTypeViewCriteria"/>
+      </AttrArray>
+      <AttrArray Name="__NoteTypeViewCriteria">
+        <Item Value="findNoteTypeWithParams"/>
+        <Item Value="varNoteTypeCode"/>
+      </AttrArray>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="OtherTransactionTypeView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findOtherTransactionType"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="ParticipantRoleTypeView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findParticipantRoleType"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="ParticipantRoleView1">
+    <DesignTime>
+      <AttrArray Name="_VCFindOps">
+        <Item Value="ParticipantRoleViewCriteria"/>
+      </AttrArray>
+      <AttrArray Name="__ParticipantRoleViewCriteria">
+        <Item Value="findParticipantRoleWithParams"/>
+        <Item Value="varEventId"/>
+        <Item Value="varPartyRoleTypeCode"/>
+      </AttrArray>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="PartyAssociationTypeView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findPartyAssociationType"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="PcaCodeView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findPcaCode"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="ProgramUnitView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findProgramUnit"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="ReceiptTypeView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findReceiptType"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="RevenueSourceCodeView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findRevenueSourceCode"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="TestView1">
+    <DesignTime>
+      <AttrArray Name="_VCFindOps">
+        <Item Value="TestViewCriteria"/>
+      </AttrArray>
+      <AttrArray Name="__TestViewCriteria">
+        <Item Value="findTestView1TestViewCriteria"/>
+        <Item Value="varIndexCode"/>
+      </AttrArray>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="AccountingCodeView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findAccountingCode"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="AccountingEntryView1">
+    <DesignTime>
+      <AttrArray Name="_VCFindOps">
+        <Item Value="AccountingEntryViewCriteria"/>
+      </AttrArray>
+      <AttrArray Name="__AccountingEntryViewCriteria">
+        <Item Value="findAccountingEntryWithParams"/>
+        <Item Value="varAcctgTransactionId"/>
+      </AttrArray>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="AccountingReceivableStatusView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findAccountingReceivableStatus"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="AccountingTransactionView1">
+    <DesignTime>
+      <AttrArray Name="_VCFindOps">
+        <Item Value="AccountingTransactionViewCriteria"/>
+      </AttrArray>
+      <AttrArray Name="__AccountingTransactionViewCriteria">
+        <Item Value="findAccountingTransactionWithParams"/>
+        <Item Value="varTransactionId"/>
+      </AttrArray>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="AcctgEntryEventAssocRuleView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findAcctgEntryEventAssocRule"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="AcctgTransactEventAssocView1">
+    <DesignTime>
+      <AttrArray Name="_VCFindOps">
+        <Item Value="AcctgTransactEventAssocViewCriteria"/>
+      </AttrArray>
+      <AttrArray Name="__AcctgTransactEventAssocViewCriteria">
+        <Item Value="findAcctgTransactEventAssocWithParams"/>
+        <Item Value="varEventId"/>
+      </AttrArray>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="AddressView1">
+    <DesignTime>
+      <AttrArray Name="_VCFindOps">
+        <Item Value="AddressViewCriteria"/>
+      </AttrArray>
+      <AttrArray Name="__AddressViewCriteria">
+        <Item Value="findAddressWithParams"/>
+        <Item Value="varPartyId"/>
+      </AttrArray>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="AdjustmentTypeView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findAdjustmentType"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="AgencySourceView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findAgencySource"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="ArStatusTypeView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findArStatusType"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="BillTypeView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findBillType"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="ContactMethodTypeView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findContactMethodType"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="ContactMethodView1">
+    <DesignTime>
+      <AttrArray Name="_VCFindOps">
+        <Item Value="ContactMethodViewCriteria"/>
+      </AttrArray>
+      <AttrArray Name="__ContactMethodViewCriteria">
+        <Item Value="findContactMethodWithParam"/>
+        <Item Value="varPartyId"/>
+      </AttrArray>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="CreditRuleLookupView1">
+    <DesignTime>
+      <AttrArray Name="__CreditRuleLookupViewCriteria">
+        <Item Value="findCreditRuleWithParams"/>
+        <Item Value="varAcctgEntryTypeId"/>
+      </AttrArray>
+      <AttrArray Name="_VCFindOps">
+        <Item Value="CreditRuleLookupViewCriteria"/>
+      </AttrArray>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="DebitRuleLookupView1">
+    <DesignTime>
+      <AttrArray Name="__DebitRuleLookupViewCriteria">
+        <Item Value="findDebitRuleWithParams"/>
+        <Item Value="varAcctgEntryTypeId"/>
+      </AttrArray>
+      <AttrArray Name="_VCFindOps">
+        <Item Value="DebitRuleLookupViewCriteria"/>
+      </AttrArray>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="EventLookupView1">
+    <DesignTime>
+      <AttrArray Name="_VCFindOps">
+        <Item Value="EventLookupViewCriteria"/>
+      </AttrArray>
+      <AttrArray Name="__EventLookupViewCriteria">
+        <Item Value="findEventWithParams"/>
+        <Item Value="varEventId"/>
+        <Item Value="varCurrentDocument"/>
+        <Item Value="varReferenceDocument"/>
+      </AttrArray>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="EventTypeAssocRulesLookup1">
+    <DesignTime>
+      <AttrArray Name="_VCFindOps">
+        <Item Value="EventTypeAssocRulesLookupCriteria"/>
+      </AttrArray>
+      <AttrArray Name="__EventTypeAssocRulesLookupCriteria">
+        <Item Value="findEventTypeAssocRuleWithParams"/>
+        <Item Value="varFromEventType"/>
+        <Item Value="varToEventType"/>
+      </AttrArray>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="EventTypeAssociationRuleView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findEventTypeAssociationRule"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="EventTypeLookupView1">
+    <DesignTime>
+      <AttrArray Name="_VCFindOps">
+        <Item Value="EventTypeLookupViewCriteria"/>
+      </AttrArray>
+      <AttrArray Name="__EventTypeLookupViewCriteria">
+        <Item Value="findEventTypeWithParams"/>
+        <Item Value="varEventTypeCode"/>
+        <Item Value="varProgramUnitCode"/>
+      </AttrArray>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="EventTypeView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findEventType"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="FiscalPeriodLookupView1">
+    <DesignTime>
+      <AttrArray Name="__FiscalPeriodLookupViewCriteria">
+        <Item Value="findFiscalPeriodWithParams"/>
+        <Item Value="varFiscalDate"/>
+      </AttrArray>
+      <AttrArray Name="_VCFindOps">
+        <Item Value="FiscalPeriodLookupViewCriteria"/>
+      </AttrArray>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="FiscalPeriodView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findFiscalPeriod"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="FundAllocationView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findFundAllocation"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="FundView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findFund"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="GlAccountAssocRuleLookupView1">
+    <DesignTime>
+      <AttrArray Name="_VCFindOps">
+        <Item Value="GlAccountAssocRuleLookupViewCriteria"/>
+      </AttrArray>
+      <AttrArray Name="__GlAccountAssocRuleLookupViewCriteria">
+        <Item Value="findGlAccountAssocRuleWithParams"/>
+        <Item Value="varAcctgEntryTypeId"/>
+      </AttrArray>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="GlAccountAssociationRuleView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findGlAccountAssociationRule"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="GlAccountTypeView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findGlAccountType"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="GlAccountView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findGlAccount"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="IndexCodeView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findIndexCode"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="NoteTypeView1">
+    <DesignTime>
+      <AttrArray Name="_VCFindOps">
+        <Item Value="NoteTypeViewCriteria"/>
+      </AttrArray>
+      <AttrArray Name="__NoteTypeViewCriteria">
+        <Item Value="findNoteTypeWithParams"/>
+        <Item Value="varNoteTypeCode"/>
+      </AttrArray>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="OtherTransactionTypeView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findOtherTransactionType"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="ParticipantRoleTypeView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findParticipantRoleType"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="ParticipantRoleView1">
+    <DesignTime>
+      <AttrArray Name="_VCFindOps">
+        <Item Value="ParticipantRoleViewCriteria"/>
+      </AttrArray>
+      <AttrArray Name="__ParticipantRoleViewCriteria">
+        <Item Value="findParticipantRoleWithParams"/>
+        <Item Value="varEventId"/>
+        <Item Value="varPartyRoleTypeCode"/>
+      </AttrArray>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="PartyAssociationTypeView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findPartyAssociationType"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="PcaCodeView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findPcaCode"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="ProgramUnitView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findProgramUnit"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="ReceiptTypeView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findReceiptType"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="RevenueSourceCodeView1">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findRevenueSourceCode"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="TestView1">
+    <DesignTime>
+      <AttrArray Name="_VCFindOps">
+        <Item Value="TestViewCriteria"/>
+      </AttrArray>
+      <AttrArray Name="__TestViewCriteria">
+        <Item Value="findTestView1TestViewCriteria"/>
+        <Item Value="varIndexCode"/>
+      </AttrArray>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="AccountingCodeLookupView1">
+    <DesignTime>
+      <AttrArray Name="_VCFindOps">
+        <Item Value="AccountingCodeLookupViewCriteria"/>
+      </AttrArray>
+      <AttrArray Name="__AccountingCodeLookupViewCriteria">
+        <Item Value="findAccountingCodeWithParams"/>
+        <Item Value="varAgencySourceCode"/>
+        <Item Value="varRevenueSourceCode"/>
+        <Item Value="varIndexCode"/>
+        <Item Value="varEventTypeCode"/>
+        <Item Value="varEventTypeId"/>
+        <Item Value="varProgramUnitCode"/>
+        <Item Value="varTransactionCode"/>
+        <Item Value="varFund"/>
+        <Item Value="varFiscalPeriodId"/>
+      </AttrArray>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceInterface>
+    <Method
+      Name="findFiscalPeriodIdWithParams">
+      <Return
+        Type="java.lang.String"/>
+      <Parameter
+        Name="rootDocument"
+        Type="java.lang.String"/>
+    </Method>
+    <Method
+      Name="recheckReferenceDocument">
+      <Return
+        Type="oracle.jbo.domain.Number"/>
+      <Parameter
+        Name="referenceDocument"
+        Type="java.lang.String"/>
+      <Parameter
+        Name="processNum"
+        Type="int"/>
+      <Parameter
+        Name="waitTime"
+        Type="long"/>
+    </Method>
+    <Method
+      Name="findSOARecipient">
+      <Return
+        Type="java.lang.String"/>
+    </Method>
+    <Method
+      Name="validateAddress">
+      <Return
+        Type="java.lang.String"/>
+      <Parameter
+        Name="state"
+        Type="java.lang.String"/>
+      <Parameter
+        Name="zipCode"
+        Type="java.lang.String"/>
+      <Parameter
+        Name="province"
+        Type="java.lang.String"/>
+      <Parameter
+        Name="postalCode"
+        Type="java.lang.String"/>
+      <Parameter
+        Name="countryAbbreviation"
+        Type="java.lang.String"/>
+    </Method>
+  </ServiceInterface>
+  <ClientInterface>
+    <Method
+      Name="findFiscalPeriodIdWithParams">
+      <Return
+        Type="java.lang.String"/>
+      <Parameter
+        Name="rootDocument"
+        Type="java.lang.String"/>
+    </Method>
+    <Method
+      Name="recheckReferenceDocument">
+      <Return
+        Type="oracle.jbo.domain.Number"/>
+      <Parameter
+        Name="referenceDocument"
+        Type="java.lang.String"/>
+      <Parameter
+        Name="processNum"
+        Type="int"/>
+      <Parameter
+        Name="waitTime"
+        Type="long"/>
+    </Method>
+    <Method
+      Name="findSOARecipient">
+      <Return
+        Type="java.lang.String"/>
+    </Method>
+    <Method
+      Name="validateAddress">
+      <Return
+        Type="java.lang.String"/>
+      <Parameter
+        Name="state"
+        Type="java.lang.String"/>
+      <Parameter
+        Name="zipCode"
+        Type="java.lang.String"/>
+      <Parameter
+        Name="province"
+        Type="java.lang.String"/>
+      <Parameter
+        Name="postalCode"
+        Type="java.lang.String"/>
+      <Parameter
+        Name="countryAbbreviation"
+        Type="java.lang.String"/>
+    </Method>
+  </ClientInterface>
+</AppModule>

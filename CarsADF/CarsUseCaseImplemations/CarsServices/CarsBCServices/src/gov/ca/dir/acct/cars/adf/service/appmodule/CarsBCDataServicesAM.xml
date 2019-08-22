@@ -1,0 +1,1275 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE AppModule SYSTEM "jbo_03_01.dtd">
+<!---->
+<AppModule
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="CarsBCDataServicesAM"
+  Version="11.1.1.64.93"
+  InheritPersonalization="true"
+  ComponentClass="gov.ca.dir.acct.cars.adf.common.code.ApplicationModuleImpl"
+  ClearCacheOnRollback="true">
+  <DesignTime>
+    <Attr Name="_deployType" Value="4096"/>
+  </DesignTime>
+  <ViewUsage
+    Name="AccountingReceivableStatusView1"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.service.view.AccountingReceivableStatusView"/>
+  <ViewUsage
+    Name="AccountingTransactionAssocView1"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.service.view.AccountingTransactionAssocView"/>
+  <ViewUsage
+    Name="AcctgTransactEventAssocView1"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.service.view.AcctgTransactEventAssocView"/>
+  <ViewUsage
+    Name="AddressView1"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.service.view.AddressView"/>
+  <ViewUsage
+    Name="AdjustmentView1"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.service.view.AdjustmentView"/>
+  <ViewUsage
+    Name="ContactMethodView1"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.service.view.ContactMethodView"/>
+  <ViewUsage
+    Name="EventAssociationView1"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.service.view.EventAssociationView"/>
+  <ViewUsage
+    Name="EventView1"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.service.view.EventView"/>
+  <ViewUsage
+    Name="GlAccountBalanceView1"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.service.view.GlAccountBalanceView"/>
+  <ViewUsage
+    Name="NoteView1"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.service.view.NoteView"/>
+  <ViewUsage
+    Name="OrganizationView1"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.service.view.OrganizationView"/>
+  <ViewUsage
+    Name="OtherAccountTransView1"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.service.view.OtherAccountTransView"/>
+  <ViewUsage
+    Name="ParticipantRoleView1"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.service.view.ParticipantRoleView"/>
+  <ViewUsage
+    Name="PartyAssociationView1"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.service.view.PartyAssociationView"/>
+  <ViewUsage
+    Name="PartyView1"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.service.view.PartyView"/>
+  <ViewUsage
+    Name="PersonView1"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.service.view.PersonView"/>
+  <ViewUsage
+    Name="ReceiptView1"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.service.view.ReceiptView"/>
+  <ViewUsage
+    Name="CreditView1"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.service.view.CreditView"/>
+  <ViewUsage
+    Name="DebitView1"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.service.view.DebitView"/>
+  <ViewUsage
+    Name="ReceivableView1"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.service.view.ReceivableView"/>
+  <ViewUsage
+    Name="AccountingEntryView1"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.service.view.AccountingEntryView"/>
+  <ViewUsage
+    Name="CreditView2"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.service.view.CreditView"/>
+  <ViewUsage
+    Name="DebitView2"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.service.view.DebitView"/>
+  <ViewUsage
+    Name="AccountingTransactionView1"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.service.view.AccountingTransactionView"/>
+  <ViewUsage
+    Name="AdjustmentView2"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.service.view.AdjustmentView"/>
+  <ViewUsage
+    Name="OtherAccountTransView2"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.service.view.OtherAccountTransView"/>
+  <ViewUsage
+    Name="ReceiptView2"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.service.view.ReceiptView"/>
+  <ViewUsage
+    Name="ReceivableView2"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.service.view.ReceivableView"/>
+  <ViewUsage
+    Name="ReferenceCodeListView1"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.service.view.ReferenceCodeListView"/>
+  <ViewUsage
+    Name="AccountingEntryStatusView1"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.service.view.AccountingEntryStatusView"/>
+  <ViewUsage
+    Name="FsEntryTypeView1"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.service.view.FsEntryTypeView"/>
+  <ViewUsage
+    Name="FsEntryReasonTypeView1"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.service.view.FsEntryReasonTypeView"/>
+  <ViewUsage
+    Name="BatchTypeView1"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.service.view.BatchTypeView"/>
+  <ViewUsage
+    Name="BatchView1"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.service.view.BatchView"/>
+  <ViewUsage
+    Name="Infar001OutboundView1"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.service.view.Infar001OutboundView"/>
+  <ViewUsage
+    Name="Infar006OutboundView1"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.service.view.Infar006OutboundView"/>
+  <ViewUsage
+    Name="PartyRoleFSCustStatusView1"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.service.view.PartyRoleFSCustStatusView"/>
+  <ViewLinkUsage
+    Name="AgeyCredFkLink1"
+    ViewLinkObjectName="gov.ca.dir.acct.cars.adf.service.view.AgeyCredFkLink"
+    SrcViewUsageName="gov.ca.dir.acct.cars.adf.service.appmodule.CarsBCDataServicesAM.AccountingEntryView1"
+    DstViewUsageName="gov.ca.dir.acct.cars.adf.service.appmodule.CarsBCDataServicesAM.CreditView2"
+    Reversed="false"/>
+  <ViewLinkUsage
+    Name="AgeyDebiFkLink1"
+    ViewLinkObjectName="gov.ca.dir.acct.cars.adf.service.view.AgeyDebiFkLink"
+    SrcViewUsageName="gov.ca.dir.acct.cars.adf.service.appmodule.CarsBCDataServicesAM.AccountingEntryView1"
+    DstViewUsageName="gov.ca.dir.acct.cars.adf.service.appmodule.CarsBCDataServicesAM.DebitView2"
+    Reversed="false"/>
+  <ViewLinkUsage
+    Name="AgtnAdntFkLink1"
+    ViewLinkObjectName="gov.ca.dir.acct.cars.adf.service.view.AgtnAdntFkLink"
+    SrcViewUsageName="gov.ca.dir.acct.cars.adf.service.appmodule.CarsBCDataServicesAM.AccountingTransactionView1"
+    DstViewUsageName="gov.ca.dir.acct.cars.adf.service.appmodule.CarsBCDataServicesAM.AdjustmentView2"
+    Reversed="false"/>
+  <ViewLinkUsage
+    Name="AgtnOatnFkLink1"
+    ViewLinkObjectName="gov.ca.dir.acct.cars.adf.service.view.AgtnOatnFkLink"
+    SrcViewUsageName="gov.ca.dir.acct.cars.adf.service.appmodule.CarsBCDataServicesAM.AccountingTransactionView1"
+    DstViewUsageName="gov.ca.dir.acct.cars.adf.service.appmodule.CarsBCDataServicesAM.OtherAccountTransView2"
+    Reversed="false"/>
+  <ViewLinkUsage
+    Name="AgtnReptFkLink1"
+    ViewLinkObjectName="gov.ca.dir.acct.cars.adf.service.view.AgtnReptFkLink"
+    SrcViewUsageName="gov.ca.dir.acct.cars.adf.service.appmodule.CarsBCDataServicesAM.AccountingTransactionView1"
+    DstViewUsageName="gov.ca.dir.acct.cars.adf.service.appmodule.CarsBCDataServicesAM.ReceiptView2"
+    Reversed="false"/>
+  <ViewLinkUsage
+    Name="AgtnReleFkLink1"
+    ViewLinkObjectName="gov.ca.dir.acct.cars.adf.service.view.AgtnReleFkLink"
+    SrcViewUsageName="gov.ca.dir.acct.cars.adf.service.appmodule.CarsBCDataServicesAM.AccountingTransactionView1"
+    DstViewUsageName="gov.ca.dir.acct.cars.adf.service.appmodule.CarsBCDataServicesAM.ReceivableView2"
+    Reversed="false"/>
+  <!--ViewLinkUsage
+    Name="AgeyAgesFkViewLink1"
+    ViewLinkObjectName="gov.ca.dir.acct.cars.adf.service.view.AgeyAgesFkViewLink"
+    SrcViewUsageName="gov.ca.dir.acct.cars.adf.service.appmodule.CarsBCDataServicesAM.AccountingEntryView1"
+    DstViewUsageName="gov.ca.dir.acct.cars.adf.service.appmodule.CarsBCDataServicesAM.AccountingEntryStatusView1"
+    Reversed="false"/-->
+  <!--ViewLinkUsage
+    Name="FsetFertFkViewLink1"
+    ViewLinkObjectName="gov.ca.dir.acct.cars.adf.service.view.FsetFertFkViewLink"
+    SrcViewUsageName="gov.ca.dir.acct.cars.adf.service.appmodule.CarsBCDataServicesAM.FsEntryTypeView1"
+    DstViewUsageName="gov.ca.dir.acct.cars.adf.service.appmodule.CarsBCDataServicesAM.FsEntryReasonTypeView1"
+    Reversed="false"/-->
+  <!--ViewLinkUsage
+    Name="I10dBatchFkViewLink1"
+    ViewLinkObjectName="gov.ca.dir.acct.cars.adf.service.view.I10dBatchFkViewLink"
+    SrcViewUsageName="gov.ca.dir.acct.cars.adf.service.appmodule.CarsBCDataServicesAM.BatchView1"
+    DstViewUsageName="gov.ca.dir.acct.cars.adf.service.appmodule.CarsBCDataServicesAM.Infar001OutboundView1"
+    Reversed="false"/-->
+  <!--ViewLinkUsage
+    Name="I60dBatchFkViewLink1"
+    ViewLinkObjectName="gov.ca.dir.acct.cars.adf.service.view.I60dBatchFkViewLink"
+    SrcViewUsageName="gov.ca.dir.acct.cars.adf.service.appmodule.CarsBCDataServicesAM.BatchView1"
+    DstViewUsageName="gov.ca.dir.acct.cars.adf.service.appmodule.CarsBCDataServicesAM.Infar006OutboundView1"
+    Reversed="false"/-->
+  <Remote
+    Name="ServiceInterface"
+    ServerClassName="gov.ca.dir.acct.cars.adf.service.appmodule.server.serviceinterface.CarsBCDataServicesAMServiceImpl"
+    ServerInterfaceName="gov.ca.dir.acct.cars.adf.service.appmodule.common.serviceinterface.CarsBCDataServicesAMService">
+    <DesignTime>
+      <Attr Name="_webServiceName" Value="CarsBCDataServicesAMService"/>
+      <Attr Name="_targetNameSpace"
+        Value="/gov/ca/dir/acct/cars/adf/service/appmodule/common/"/>
+    </DesignTime>
+  </Remote>
+  <ServiceViewUsage
+    ViewUsageName="GlAccountBalanceView1"
+    CanCreate="true">
+    <DesignTime>
+      <Attr Name="_CreateOpName" Value="createGlAccountBalance"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="NoteView1"
+    CanCreate="true">
+    <DesignTime>
+      <Attr Name="_CreateOpName" Value="createNote"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="PartyAssociationView1"
+    CanCreate="true">
+    <DesignTime>
+      <Attr Name="_CreateOpName" Value="createPartyAssociation"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="PartyView1"
+    CanCreate="true">
+    <DesignTime>
+      <Attr Name="_CreateOpName" Value="createParty"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="GlAccountBalanceView1"
+    CanCreate="true">
+    <DesignTime>
+      <Attr Name="_CreateOpName" Value="createGlAccountBalance"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="NoteView1"
+    CanCreate="true">
+    <DesignTime>
+      <Attr Name="_CreateOpName" Value="createNote"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="PartyAssociationView1"
+    CanCreate="true">
+    <DesignTime>
+      <Attr Name="_CreateOpName" Value="createPartyAssociation"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="PartyView1"
+    CanCreate="true">
+    <DesignTime>
+      <Attr Name="_CreateOpName" Value="createParty"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="CreditView1"
+    CanCreate="true">
+    <DesignTime>
+      <Attr Name="_CreateOpName" Value="createCredit"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="DebitView1"
+    CanCreate="true">
+    <DesignTime>
+      <Attr Name="_CreateOpName" Value="createDebit"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="AccountingReceivableStatusView1"
+    CanCreate="true"
+    CanUpdate="true">
+    <DesignTime>
+      <Attr Name="_UpdateOpName" Value="updateAccountingReceivableStatus"/>
+      <Attr Name="_CreateOpName" Value="createAccountingReceivableStatus"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="AccountingTransactionAssocView1"
+    CanCreate="true"
+    CanUpdate="true">
+    <DesignTime>
+      <Attr Name="_UpdateOpName" Value="updateAccountingTransactionAssoc"/>
+      <Attr Name="_CreateOpName" Value="createAccountingTransactionAssoc"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="AcctgTransactEventAssocView1"
+    CanCreate="true"
+    CanUpdate="true">
+    <DesignTime>
+      <Attr Name="_UpdateOpName" Value="updateAcctgTransactEventAssoc"/>
+      <Attr Name="_CreateOpName" Value="createAcctgTransactEventAssoc"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="AddressView1"
+    CanCreate="true"
+    CanUpdate="true">
+    <DesignTime>
+      <Attr Name="_UpdateOpName" Value="updateAddress"/>
+      <Attr Name="_CreateOpName" Value="createAddress"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="AdjustmentView1"
+    CanCreate="true"
+    CanUpdate="true">
+    <DesignTime>
+      <Attr Name="_UpdateOpName" Value="updateAdjustment"/>
+      <Attr Name="_CreateOpName" Value="createAdjustment"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="ContactMethodView1"
+    CanCreate="true"
+    CanUpdate="true">
+    <DesignTime>
+      <AttrArray Name="_VCFindOps">
+        <Item Value="ContactMethodViewCriteria"/>
+      </AttrArray>
+      <AttrArray Name="__ContactMethodViewCriteria">
+        <Item Value="findContactMethodWithParam"/>
+        <Item Value="varPartyId"/>
+      </AttrArray>
+      <Attr Name="_UpdateOpName" Value="updateContactMethod"/>
+      <Attr Name="_CreateOpName" Value="createContactMethod"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="EventAssociationView1"
+    CanCreate="true"
+    CanUpdate="true">
+    <DesignTime>
+      <Attr Name="_UpdateOpName" Value="updateEventAssociation"/>
+      <Attr Name="_CreateOpName" Value="createEventAssociation"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="EventView1"
+    CanCreate="true"
+    CanUpdate="true">
+    <DesignTime>
+      <Attr Name="_UpdateOpName" Value="updateEvent"/>
+      <Attr Name="_CreateOpName" Value="createEvent"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="GlAccountBalanceView1"
+    CanCreate="true">
+    <DesignTime>
+      <Attr Name="_CreateOpName" Value="createGlAccountBalance"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="NoteView1"
+    CanCreate="true">
+    <DesignTime>
+      <Attr Name="_CreateOpName" Value="createNote"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="OrganizationView1"
+    CanCreate="true"
+    CanUpdate="true">
+    <DesignTime>
+      <Attr Name="_UpdateOpName" Value="updateOrganization"/>
+      <Attr Name="_CreateOpName" Value="createOrganization"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="OtherAccountTransView1"
+    CanCreate="true"
+    CanUpdate="true">
+    <DesignTime>
+      <Attr Name="_UpdateOpName" Value="updateOtherAccountTrans"/>
+      <Attr Name="_CreateOpName" Value="createOtherAccountTrans"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="ParticipantRoleView1"
+    CanCreate="true"
+    CanUpdate="true">
+    <DesignTime>
+      <AttrArray Name="_VCFindOps">
+        <Item Value="ParticipantRoleViewCriteria"/>
+      </AttrArray>
+      <AttrArray Name="__ParticipantRoleViewCriteria">
+        <Item Value="findParticipantRoleWithParam"/>
+        <Item Value="varEventId"/>
+      </AttrArray>
+      <Attr Name="_UpdateOpName" Value="updateParticipantRole"/>
+      <Attr Name="_CreateOpName" Value="createParticipantRole"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="PartyAssociationView1"
+    CanCreate="true">
+    <DesignTime>
+      <Attr Name="_CreateOpName" Value="createPartyAssociation"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="PartyView1"
+    CanCreate="true">
+    <DesignTime>
+      <Attr Name="_CreateOpName" Value="createParty"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="PersonView1"
+    CanCreate="true"
+    CanUpdate="true">
+    <DesignTime>
+      <Attr Name="_UpdateOpName" Value="updatePerson"/>
+      <Attr Name="_CreateOpName" Value="createPerson"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="GlAccountBalanceView1"
+    CanCreate="true">
+    <DesignTime>
+      <Attr Name="_CreateOpName" Value="createGlAccountBalance"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="NoteView1"
+    CanCreate="true">
+    <DesignTime>
+      <Attr Name="_CreateOpName" Value="createNote"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="PartyAssociationView1"
+    CanCreate="true">
+    <DesignTime>
+      <Attr Name="_CreateOpName" Value="createPartyAssociation"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="PartyView1"
+    CanCreate="true">
+    <DesignTime>
+      <Attr Name="_CreateOpName" Value="createParty"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="AccountingTransactionView1"
+    CanCreate="true"
+    CanUpdate="true">
+    <DesignTime>
+      <Attr Name="_UpdateOpName" Value="updateAccountingTransaction"/>
+      <Attr Name="_CreateOpName" Value="createAccountingTransaction"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="CreditView1"
+    CanCreate="true">
+    <DesignTime>
+      <Attr Name="_CreateOpName" Value="createCredit"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="DebitView1"
+    CanCreate="true">
+    <DesignTime>
+      <Attr Name="_CreateOpName" Value="createDebit"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="ReceivableView1"
+    CanCreate="true"
+    CanUpdate="true">
+    <DesignTime>
+      <Attr Name="_UpdateOpName" Value="updateReceivable"/>
+      <Attr Name="_CreateOpName" Value="createReceivable"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="AccountingReceivableStatusView1"
+    CanCreate="true"
+    CanUpdate="true">
+    <DesignTime>
+      <Attr Name="_UpdateOpName" Value="updateAccountingReceivableStatus"/>
+      <Attr Name="_CreateOpName" Value="createAccountingReceivableStatus"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="AccountingTransactionAssocView1"
+    CanCreate="true"
+    CanUpdate="true">
+    <DesignTime>
+      <Attr Name="_UpdateOpName" Value="updateAccountingTransactionAssoc"/>
+      <Attr Name="_CreateOpName" Value="createAccountingTransactionAssoc"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="AcctgTransactEventAssocView1"
+    CanCreate="true"
+    CanUpdate="true">
+    <DesignTime>
+      <Attr Name="_UpdateOpName" Value="updateAcctgTransactEventAssoc"/>
+      <Attr Name="_CreateOpName" Value="createAcctgTransactEventAssoc"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="AddressView1"
+    CanCreate="true"
+    CanUpdate="true">
+    <DesignTime>
+      <Attr Name="_UpdateOpName" Value="updateAddress"/>
+      <Attr Name="_CreateOpName" Value="createAddress"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="AdjustmentView1"
+    CanCreate="true"
+    CanUpdate="true">
+    <DesignTime>
+      <Attr Name="_UpdateOpName" Value="updateAdjustment"/>
+      <Attr Name="_CreateOpName" Value="createAdjustment"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="ContactMethodView1"
+    CanCreate="true"
+    CanUpdate="true">
+    <DesignTime>
+      <AttrArray Name="_VCFindOps">
+        <Item Value="ContactMethodViewCriteria"/>
+      </AttrArray>
+      <AttrArray Name="__ContactMethodViewCriteria">
+        <Item Value="findContactMethodWithParam"/>
+        <Item Value="varPartyId"/>
+      </AttrArray>
+      <Attr Name="_UpdateOpName" Value="updateContactMethod"/>
+      <Attr Name="_CreateOpName" Value="createContactMethod"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="EventAssociationView1"
+    CanCreate="true"
+    CanUpdate="true">
+    <DesignTime>
+      <Attr Name="_UpdateOpName" Value="updateEventAssociation"/>
+      <Attr Name="_CreateOpName" Value="createEventAssociation"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="EventView1"
+    CanCreate="true"
+    CanUpdate="true">
+    <DesignTime>
+      <Attr Name="_UpdateOpName" Value="updateEvent"/>
+      <Attr Name="_CreateOpName" Value="createEvent"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="GlAccountBalanceView1"
+    CanCreate="true">
+    <DesignTime>
+      <Attr Name="_CreateOpName" Value="createGlAccountBalance"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="NoteView1"
+    CanCreate="true">
+    <DesignTime>
+      <Attr Name="_CreateOpName" Value="createNote"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="OrganizationView1"
+    CanCreate="true"
+    CanUpdate="true">
+    <DesignTime>
+      <Attr Name="_UpdateOpName" Value="updateOrganization"/>
+      <Attr Name="_CreateOpName" Value="createOrganization"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="OtherAccountTransView1"
+    CanCreate="true"
+    CanUpdate="true">
+    <DesignTime>
+      <Attr Name="_UpdateOpName" Value="updateOtherAccountTrans"/>
+      <Attr Name="_CreateOpName" Value="createOtherAccountTrans"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="ParticipantRoleView1"
+    CanCreate="true"
+    CanUpdate="true">
+    <DesignTime>
+      <AttrArray Name="_VCFindOps">
+        <Item Value="ParticipantRoleViewCriteria"/>
+      </AttrArray>
+      <AttrArray Name="__ParticipantRoleViewCriteria">
+        <Item Value="findParticipantRoleWithParam"/>
+        <Item Value="varEventId"/>
+      </AttrArray>
+      <Attr Name="_UpdateOpName" Value="updateParticipantRole"/>
+      <Attr Name="_CreateOpName" Value="createParticipantRole"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="PartyAssociationView1"
+    CanCreate="true">
+    <DesignTime>
+      <Attr Name="_CreateOpName" Value="createPartyAssociation"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="PartyView1"
+    CanCreate="true">
+    <DesignTime>
+      <Attr Name="_CreateOpName" Value="createParty"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="PersonView1"
+    CanCreate="true"
+    CanUpdate="true">
+    <DesignTime>
+      <Attr Name="_UpdateOpName" Value="updatePerson"/>
+      <Attr Name="_CreateOpName" Value="createPerson"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="GlAccountBalanceView1"
+    CanCreate="true">
+    <DesignTime>
+      <Attr Name="_CreateOpName" Value="createGlAccountBalance"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="NoteView1"
+    CanCreate="true">
+    <DesignTime>
+      <Attr Name="_CreateOpName" Value="createNote"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="PartyAssociationView1"
+    CanCreate="true">
+    <DesignTime>
+      <Attr Name="_CreateOpName" Value="createPartyAssociation"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="PartyView1"
+    CanCreate="true">
+    <DesignTime>
+      <Attr Name="_CreateOpName" Value="createParty"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="AccountingTransactionView1"
+    CanCreate="true"
+    CanUpdate="true">
+    <DesignTime>
+      <Attr Name="_UpdateOpName" Value="updateAccountingTransaction"/>
+      <Attr Name="_CreateOpName" Value="createAccountingTransaction"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="CreditView1"
+    CanCreate="true">
+    <DesignTime>
+      <Attr Name="_CreateOpName" Value="createCredit"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="DebitView1"
+    CanCreate="true">
+    <DesignTime>
+      <Attr Name="_CreateOpName" Value="createDebit"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="ReceivableView1"
+    CanCreate="true"
+    CanUpdate="true">
+    <DesignTime>
+      <Attr Name="_UpdateOpName" Value="updateReceivable"/>
+      <Attr Name="_CreateOpName" Value="createReceivable"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="AccountingEntryView1"
+    CanCreate="true">
+    <DesignTime>
+      <Attr Name="_CreateOpName" Value="createAccountingEntry"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="AccountingReceivableStatusView1"
+    CanCreate="true"
+    CanUpdate="true">
+    <DesignTime>
+      <Attr Name="_UpdateOpName" Value="updateAccountingReceivableStatus"/>
+      <Attr Name="_CreateOpName" Value="createAccountingReceivableStatus"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="AccountingTransactionAssocView1"
+    CanCreate="true"
+    CanUpdate="true">
+    <DesignTime>
+      <Attr Name="_UpdateOpName" Value="updateAccountingTransactionAssoc"/>
+      <Attr Name="_CreateOpName" Value="createAccountingTransactionAssoc"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="AccountingTransactionView1"
+    CanCreate="true"
+    CanUpdate="true">
+    <DesignTime>
+      <Attr Name="_UpdateOpName" Value="updateAccountingTransaction"/>
+      <Attr Name="_CreateOpName" Value="createAccountingTransaction"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="AcctgTransactEventAssocView1"
+    CanCreate="true"
+    CanUpdate="true">
+    <DesignTime>
+      <Attr Name="_UpdateOpName" Value="updateAcctgTransactEventAssoc"/>
+      <Attr Name="_CreateOpName" Value="createAcctgTransactEventAssoc"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="AddressView1"
+    CanCreate="true"
+    CanUpdate="true">
+    <DesignTime>
+      <Attr Name="_UpdateOpName" Value="updateAddress"/>
+      <Attr Name="_CreateOpName" Value="createAddress"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="AdjustmentView1"
+    CanCreate="true"
+    CanUpdate="true">
+    <DesignTime>
+      <Attr Name="_UpdateOpName" Value="updateAdjustment"/>
+      <Attr Name="_CreateOpName" Value="createAdjustment"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="ContactMethodView1"
+    CanCreate="true"
+    CanUpdate="true">
+    <DesignTime>
+      <AttrArray Name="_VCFindOps">
+        <Item Value="ContactMethodViewCriteria"/>
+      </AttrArray>
+      <AttrArray Name="__ContactMethodViewCriteria">
+        <Item Value="findContactMethodWithParam"/>
+        <Item Value="varPartyId"/>
+      </AttrArray>
+      <Attr Name="_UpdateOpName" Value="updateContactMethod"/>
+      <Attr Name="_CreateOpName" Value="createContactMethod"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="CreditView1"
+    CanCreate="true">
+    <DesignTime>
+      <Attr Name="_CreateOpName" Value="createCredit"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="DebitView1"
+    CanCreate="true">
+    <DesignTime>
+      <Attr Name="_CreateOpName" Value="createDebit"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="EventAssociationView1"
+    CanCreate="true"
+    CanUpdate="true">
+    <DesignTime>
+      <Attr Name="_UpdateOpName" Value="updateEventAssociation"/>
+      <Attr Name="_CreateOpName" Value="createEventAssociation"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="EventView1"
+    CanCreate="true"
+    CanUpdate="true">
+    <DesignTime>
+      <Attr Name="_UpdateOpName" Value="updateEvent"/>
+      <Attr Name="_CreateOpName" Value="createEvent"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="GlAccountBalanceView1"
+    CanCreate="true">
+    <DesignTime>
+      <Attr Name="_CreateOpName" Value="createGlAccountBalance"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="NoteView1"
+    CanCreate="true">
+    <DesignTime>
+      <Attr Name="_CreateOpName" Value="createNote"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="OrganizationView1"
+    CanCreate="true"
+    CanUpdate="true">
+    <DesignTime>
+      <Attr Name="_UpdateOpName" Value="updateOrganization"/>
+      <Attr Name="_CreateOpName" Value="createOrganization"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="OtherAccountTransView1"
+    CanCreate="true"
+    CanUpdate="true">
+    <DesignTime>
+      <Attr Name="_UpdateOpName" Value="updateOtherAccountTrans"/>
+      <Attr Name="_CreateOpName" Value="createOtherAccountTrans"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="ParticipantRoleView1"
+    CanCreate="true"
+    CanUpdate="true">
+    <DesignTime>
+      <AttrArray Name="_VCFindOps">
+        <Item Value="ParticipantRoleViewCriteria"/>
+      </AttrArray>
+      <AttrArray Name="__ParticipantRoleViewCriteria">
+        <Item Value="findParticipantRoleWithParam"/>
+        <Item Value="varEventId"/>
+      </AttrArray>
+      <Attr Name="_UpdateOpName" Value="updateParticipantRole"/>
+      <Attr Name="_CreateOpName" Value="createParticipantRole"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="PartyAssociationView1"
+    CanCreate="true">
+    <DesignTime>
+      <Attr Name="_CreateOpName" Value="createPartyAssociation"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="PartyView1"
+    CanCreate="true">
+    <DesignTime>
+      <Attr Name="_CreateOpName" Value="createParty"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="PersonView1"
+    CanCreate="true"
+    CanUpdate="true">
+    <DesignTime>
+      <Attr Name="_UpdateOpName" Value="updatePerson"/>
+      <Attr Name="_CreateOpName" Value="createPerson"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="ReceivableView1"
+    CanCreate="true"
+    CanUpdate="true">
+    <DesignTime>
+      <Attr Name="_UpdateOpName" Value="updateReceivable"/>
+      <Attr Name="_CreateOpName" Value="createReceivable"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="AccountingEntryView1"
+    CanCreate="true">
+    <DesignTime>
+      <Attr Name="_CreateOpName" Value="createAccountingEntry"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="AccountingReceivableStatusView1"
+    CanCreate="true"
+    CanUpdate="true">
+    <DesignTime>
+      <Attr Name="_UpdateOpName" Value="updateAccountingReceivableStatus"/>
+      <Attr Name="_CreateOpName" Value="createAccountingReceivableStatus"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="AccountingTransactionAssocView1"
+    CanCreate="true"
+    CanUpdate="true">
+    <DesignTime>
+      <Attr Name="_UpdateOpName" Value="updateAccountingTransactionAssoc"/>
+      <Attr Name="_CreateOpName" Value="createAccountingTransactionAssoc"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="AccountingTransactionView1"
+    CanCreate="true"
+    CanUpdate="true">
+    <DesignTime>
+      <Attr Name="_UpdateOpName" Value="updateAccountingTransaction"/>
+      <Attr Name="_CreateOpName" Value="createAccountingTransaction"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="AcctgTransactEventAssocView1"
+    CanCreate="true"
+    CanUpdate="true">
+    <DesignTime>
+      <Attr Name="_UpdateOpName" Value="updateAcctgTransactEventAssoc"/>
+      <Attr Name="_CreateOpName" Value="createAcctgTransactEventAssoc"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="AddressView1"
+    CanCreate="true"
+    CanUpdate="true">
+    <DesignTime>
+      <Attr Name="_UpdateOpName" Value="updateAddress"/>
+      <Attr Name="_CreateOpName" Value="createAddress"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="AdjustmentView1"
+    CanCreate="true"
+    CanUpdate="true">
+    <DesignTime>
+      <Attr Name="_UpdateOpName" Value="updateAdjustment"/>
+      <Attr Name="_CreateOpName" Value="createAdjustment"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="ContactMethodView1"
+    CanCreate="true"
+    CanUpdate="true">
+    <DesignTime>
+      <AttrArray Name="_VCFindOps">
+        <Item Value="ContactMethodViewCriteria"/>
+      </AttrArray>
+      <AttrArray Name="__ContactMethodViewCriteria">
+        <Item Value="findContactMethodWithParam"/>
+        <Item Value="varPartyId"/>
+      </AttrArray>
+      <Attr Name="_UpdateOpName" Value="updateContactMethod"/>
+      <Attr Name="_CreateOpName" Value="createContactMethod"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="CreditView1"
+    CanCreate="true">
+    <DesignTime>
+      <Attr Name="_CreateOpName" Value="createCredit"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="DebitView1"
+    CanCreate="true">
+    <DesignTime>
+      <Attr Name="_CreateOpName" Value="createDebit"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="EventAssociationView1"
+    CanCreate="true"
+    CanUpdate="true">
+    <DesignTime>
+      <Attr Name="_UpdateOpName" Value="updateEventAssociation"/>
+      <Attr Name="_CreateOpName" Value="createEventAssociation"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="EventView1"
+    CanCreate="true"
+    CanUpdate="true">
+    <DesignTime>
+      <Attr Name="_UpdateOpName" Value="updateEvent"/>
+      <Attr Name="_CreateOpName" Value="createEvent"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="GlAccountBalanceView1"
+    CanCreate="true">
+    <DesignTime>
+      <Attr Name="_CreateOpName" Value="createGlAccountBalance"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="NoteView1"
+    CanCreate="true">
+    <DesignTime>
+      <Attr Name="_CreateOpName" Value="createNote"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="OrganizationView1"
+    CanCreate="true"
+    CanUpdate="true">
+    <DesignTime>
+      <Attr Name="_UpdateOpName" Value="updateOrganization"/>
+      <Attr Name="_CreateOpName" Value="createOrganization"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="OtherAccountTransView1"
+    CanCreate="true"
+    CanUpdate="true">
+    <DesignTime>
+      <Attr Name="_UpdateOpName" Value="updateOtherAccountTrans"/>
+      <Attr Name="_CreateOpName" Value="createOtherAccountTrans"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="ParticipantRoleView1"
+    CanCreate="true"
+    CanUpdate="true">
+    <DesignTime>
+      <AttrArray Name="_VCFindOps">
+        <Item Value="ParticipantRoleViewCriteria"/>
+      </AttrArray>
+      <AttrArray Name="__ParticipantRoleViewCriteria">
+        <Item Value="findParticipantRoleWithParam"/>
+        <Item Value="varEventId"/>
+      </AttrArray>
+      <Attr Name="_UpdateOpName" Value="updateParticipantRole"/>
+      <Attr Name="_CreateOpName" Value="createParticipantRole"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="PartyAssociationView1"
+    CanCreate="true">
+    <DesignTime>
+      <Attr Name="_CreateOpName" Value="createPartyAssociation"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="PartyView1"
+    CanCreate="true">
+    <DesignTime>
+      <Attr Name="_CreateOpName" Value="createParty"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="PersonView1"
+    CanCreate="true"
+    CanUpdate="true">
+    <DesignTime>
+      <Attr Name="_UpdateOpName" Value="updatePerson"/>
+      <Attr Name="_CreateOpName" Value="createPerson"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="ReceivableView1"
+    CanCreate="true"
+    CanUpdate="true">
+    <DesignTime>
+      <Attr Name="_UpdateOpName" Value="updateReceivable"/>
+      <Attr Name="_CreateOpName" Value="createReceivable"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="AccountingEntryView1"
+    CanCreate="true">
+    <DesignTime>
+      <Attr Name="_CreateOpName" Value="createAccountingEntry"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="AccountingReceivableStatusView1"
+    CanCreate="true"
+    CanUpdate="true">
+    <DesignTime>
+      <Attr Name="_UpdateOpName" Value="updateAccountingReceivableStatus"/>
+      <Attr Name="_CreateOpName" Value="createAccountingReceivableStatus"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="AccountingTransactionAssocView1"
+    CanCreate="true"
+    CanUpdate="true">
+    <DesignTime>
+      <Attr Name="_UpdateOpName" Value="updateAccountingTransactionAssoc"/>
+      <Attr Name="_CreateOpName" Value="createAccountingTransactionAssoc"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="AccountingTransactionView1"
+    CanCreate="true"
+    CanUpdate="true">
+    <DesignTime>
+      <Attr Name="_UpdateOpName" Value="updateAccountingTransaction"/>
+      <Attr Name="_CreateOpName" Value="createAccountingTransaction"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="AcctgTransactEventAssocView1"
+    CanCreate="true"
+    CanUpdate="true">
+    <DesignTime>
+      <Attr Name="_UpdateOpName" Value="updateAcctgTransactEventAssoc"/>
+      <Attr Name="_CreateOpName" Value="createAcctgTransactEventAssoc"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="AddressView1"
+    CanCreate="true"
+    CanUpdate="true">
+    <DesignTime>
+      <Attr Name="_UpdateOpName" Value="updateAddress"/>
+      <Attr Name="_CreateOpName" Value="createAddress"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="AdjustmentView1"
+    CanCreate="true"
+    CanUpdate="true">
+    <DesignTime>
+      <Attr Name="_UpdateOpName" Value="updateAdjustment"/>
+      <Attr Name="_CreateOpName" Value="createAdjustment"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="ContactMethodView1"
+    CanCreate="true"
+    CanUpdate="true">
+    <DesignTime>
+      <AttrArray Name="_VCFindOps">
+        <Item Value="ContactMethodViewCriteria"/>
+      </AttrArray>
+      <AttrArray Name="__ContactMethodViewCriteria">
+        <Item Value="findContactMethodWithParam"/>
+        <Item Value="varPartyId"/>
+      </AttrArray>
+      <Attr Name="_UpdateOpName" Value="updateContactMethod"/>
+      <Attr Name="_CreateOpName" Value="createContactMethod"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="CreditView1"
+    CanCreate="true">
+    <DesignTime>
+      <Attr Name="_CreateOpName" Value="createCredit"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="DebitView1"
+    CanCreate="true">
+    <DesignTime>
+      <Attr Name="_CreateOpName" Value="createDebit"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="EventAssociationView1"
+    CanCreate="true"
+    CanUpdate="true">
+    <DesignTime>
+      <Attr Name="_UpdateOpName" Value="updateEventAssociation"/>
+      <Attr Name="_CreateOpName" Value="createEventAssociation"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="EventView1"
+    CanCreate="true"
+    CanUpdate="true">
+    <DesignTime>
+      <Attr Name="_UpdateOpName" Value="updateEvent"/>
+      <Attr Name="_CreateOpName" Value="createEvent"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="GlAccountBalanceView1"
+    CanCreate="true">
+    <DesignTime>
+      <Attr Name="_CreateOpName" Value="createGlAccountBalance"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="NoteView1"
+    CanCreate="true">
+    <DesignTime>
+      <Attr Name="_CreateOpName" Value="createNote"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="OrganizationView1"
+    CanCreate="true"
+    CanUpdate="true">
+    <DesignTime>
+      <Attr Name="_UpdateOpName" Value="updateOrganization"/>
+      <Attr Name="_CreateOpName" Value="createOrganization"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="OtherAccountTransView1"
+    CanCreate="true"
+    CanUpdate="true">
+    <DesignTime>
+      <Attr Name="_UpdateOpName" Value="updateOtherAccountTrans"/>
+      <Attr Name="_CreateOpName" Value="createOtherAccountTrans"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="ParticipantRoleView1"
+    CanCreate="true"
+    CanUpdate="true">
+    <DesignTime>
+      <AttrArray Name="_VCFindOps">
+        <Item Value="ParticipantRoleViewCriteria"/>
+      </AttrArray>
+      <AttrArray Name="__ParticipantRoleViewCriteria">
+        <Item Value="findParticipantRoleWithParam"/>
+        <Item Value="varEventId"/>
+      </AttrArray>
+      <Attr Name="_UpdateOpName" Value="updateParticipantRole"/>
+      <Attr Name="_CreateOpName" Value="createParticipantRole"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="PartyAssociationView1"
+    CanCreate="true">
+    <DesignTime>
+      <Attr Name="_CreateOpName" Value="createPartyAssociation"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="PartyView1"
+    CanCreate="true">
+    <DesignTime>
+      <Attr Name="_CreateOpName" Value="createParty"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="PersonView1"
+    CanCreate="true"
+    CanUpdate="true">
+    <DesignTime>
+      <Attr Name="_UpdateOpName" Value="updatePerson"/>
+      <Attr Name="_CreateOpName" Value="createPerson"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="ReceivableView1"
+    CanCreate="true"
+    CanUpdate="true">
+    <DesignTime>
+      <Attr Name="_UpdateOpName" Value="updateReceivable"/>
+      <Attr Name="_CreateOpName" Value="createReceivable"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="AccountingEntryStatusView1"
+    CanCreate="true">
+    <DesignTime>
+      <Attr Name="_CreateOpName" Value="createAccountingEntryStatus"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="ReceiptView1"
+    CanCreate="true"
+    CanUpdate="true">
+    <DesignTime>
+      <Attr Name="_UpdateOpName" Value="updateReceipt"/>
+      <Attr Name="_CreateOpName" Value="createReceipt"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="PartyRoleFSCustStatusView1"
+    CanCreate="true">
+    <DesignTime>
+      <Attr Name="_CreateOpName" Value="createPartyRoleFSCustStatus"/>
+    </DesignTime>
+  </ServiceViewUsage>
+</AppModule>

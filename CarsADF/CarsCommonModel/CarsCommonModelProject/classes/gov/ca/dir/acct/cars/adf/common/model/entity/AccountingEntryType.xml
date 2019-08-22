@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="AccountingEntryType"
+  Version="11.1.1.64.93"
+  InheritPersonalization="true"
+  DBObjectType="table"
+  DBObjectName="ACCOUNTING_ENTRY_TYPE"
+  AliasName="AccountingEntryType"
+  BindingStyle="OracleName"
+  UseGlueCode="false"
+  RowClass="gov.ca.dir.acct.cars.adf.common.code.EntityImpl">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access"/>
+    <AttrArray Name="_publishEvents"/>
+  </DesignTime>
+  <Attribute
+    Name="AcctgEntryTypeId"
+    IsNotNull="true"
+    ColumnName="ACCTG_ENTRY_TYPE_ID"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="ACCOUNTING_ENTRY_TYPE"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="AcctgTransactCode"
+    IsNotNull="true"
+    Precision="3"
+    ColumnName="ACCTG_TRANSACT_CODE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="ACCOUNTING_ENTRY_TYPE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="3"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Description"
+    IsNotNull="true"
+    Precision="500"
+    ColumnName="DESCRIPTION"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="ACCOUNTING_ENTRY_TYPE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="500"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="TransactionReversal"
+    IsNotNull="true"
+    Precision="1"
+    ColumnName="TRANSACTION_REVERSAL"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="ACCOUNTING_ENTRY_TYPE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="EffectiveStartDate"
+    IsNotNull="true"
+    ColumnName="EFFECTIVE_START_DATE"
+    SQLType="TIMESTAMP"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="ACCOUNTING_ENTRY_TYPE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="EffectiveEndDate"
+    ColumnName="EFFECTIVE_END_DATE"
+    SQLType="TIMESTAMP"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="ACCOUNTING_ENTRY_TYPE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="DataSourceCode"
+    Precision="25"
+    ColumnName="DATA_SOURCE_CODE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="ACCOUNTING_ENTRY_TYPE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="25"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="CreatedBy"
+    IsNotNull="true"
+    Precision="25"
+    ColumnName="CREATED_BY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="ACCOUNTING_ENTRY_TYPE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="25"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="CreatedDate"
+    IsNotNull="true"
+    ColumnName="CREATED_DATE"
+    SQLType="TIMESTAMP"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="ACCOUNTING_ENTRY_TYPE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ModifiedBy"
+    Precision="25"
+    ColumnName="MODIFIED_BY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="ACCOUNTING_ENTRY_TYPE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="25"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ModifiedDate"
+    ColumnName="MODIFIED_DATE"
+    SQLType="TIMESTAMP"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="ACCOUNTING_ENTRY_TYPE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+  </Attribute>
+  <AccessorAttribute
+    Name="AcctgEntryEventAssocRule"
+    Association="gov.ca.dir.acct.cars.adf.common.model.entity.AeteAearFkAssoc"
+    AssociationEnd="gov.ca.dir.acct.cars.adf.common.model.entity.AeteAearFkAssoc.AcctgEntryEventAssocRule"
+    AssociationOtherEnd="gov.ca.dir.acct.cars.adf.common.model.entity.AeteAearFkAssoc.AccountingEntryType"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <AccessorAttribute
+    Name="GlAccountAssociationRule"
+    Association="gov.ca.dir.acct.cars.adf.common.model.entity.AeteGlarFkAssoc"
+    AssociationEnd="gov.ca.dir.acct.cars.adf.common.model.entity.AeteGlarFkAssoc.GlAccountAssociationRule"
+    AssociationOtherEnd="gov.ca.dir.acct.cars.adf.common.model.entity.AeteGlarFkAssoc.AccountingEntryType"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <Key
+    Name="AccountingEntryTypePk"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="ACCOUNTING_ENTRY_TYPE_PK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="gov.ca.dir.acct.cars.adf.common.model.entity.AccountingEntryType.AcctgEntryTypeId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC00160035">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C00160035"/>
+      <Attr Name="_checkCondition" Value='"ACCTG_ENTRY_TYPE_ID" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="gov.ca.dir.acct.cars.adf.common.model.entity.AccountingEntryType.AcctgEntryTypeId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC00160036">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C00160036"/>
+      <Attr Name="_checkCondition" Value='"ACCTG_TRANSACT_CODE" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="gov.ca.dir.acct.cars.adf.common.model.entity.AccountingEntryType.AcctgTransactCode"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC00160037">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C00160037"/>
+      <Attr Name="_checkCondition" Value='"DESCRIPTION" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="gov.ca.dir.acct.cars.adf.common.model.entity.AccountingEntryType.Description"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC00160038">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C00160038"/>
+      <Attr Name="_checkCondition" Value='"TRANSACTION_REVERSAL" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="gov.ca.dir.acct.cars.adf.common.model.entity.AccountingEntryType.TransactionReversal"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC00160039">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C00160039"/>
+      <Attr Name="_checkCondition" Value='"EFFECTIVE_START_DATE" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="gov.ca.dir.acct.cars.adf.common.model.entity.AccountingEntryType.EffectiveStartDate"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC00160040">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C00160040"/>
+      <Attr Name="_checkCondition" Value='"CREATED_BY" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="gov.ca.dir.acct.cars.adf.common.model.entity.AccountingEntryType.CreatedBy"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC00160041">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C00160041"/>
+      <Attr Name="_checkCondition" Value='"CREATED_DATE" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="gov.ca.dir.acct.cars.adf.common.model.entity.AccountingEntryType.CreatedDate"/>
+    </AttrArray>
+  </Key>
+</Entity>

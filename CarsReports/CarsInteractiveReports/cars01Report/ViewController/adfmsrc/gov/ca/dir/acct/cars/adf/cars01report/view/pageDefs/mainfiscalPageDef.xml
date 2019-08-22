@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.64.93" id="mainfiscalPageDef"
+                Package="gov.ca.dir.acct.cars.adf.cars01report.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <taskFlow id="cars01reportfiscaltf1"
+              taskFlowId="/WEB-INF/cars01reportfiscal-tf.xml#cars01reportfiscal-tf"
+              activation="deferred"
+              xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+  </executables>
+  <bindings/>
+</pageDefinition>

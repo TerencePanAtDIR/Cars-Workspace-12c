@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.64.93" id="Infar001SearchPageDef"
+                Package="gov.ca.dir.acct.cars.adf.usecase008.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="Infar001_1" RangeSize="25"
+              DataControl="SearchInfar001AMDataControl"
+              id="Infar001_1Iterator"/>
+    <searchRegion Criteria="SearchInfar001Criteria"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="Infar001_1Iterator" id="SearchInfar001CriteriaQuery"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="Infar001_1Iterator" id="Infar001_1">
+      <nodeDefinition DefName="gov.ca.dir.acct.cars.adf.usecase008.model.view.Infar001VO"
+                      Name="Infar001_10">
+        <AttrNames>
+          <Item Value="BatchId"/>
+          <Item Value="Account"/>
+          <Item Value="AcctgEntryId"/>
+          <Item Value="Altacct"/>
+          <Item Value="CustId"/>
+          <Item Value="Deptid"/>
+          <Item Value="Product"/>
+          <Item Value="BankAcctKey"/>
+          <Item Value="BankCd"/>
+          <Item Value="ControlCnt"/>
+          <Item Value="DepositBu"/>
+          <Item Value="DepositCnt"/>
+          <Item Value="DepositType"/>
+          <Item Value="PaymentId"/>
+          <Item Value="PaymentSeqNum"/>
+          <Item Value="TaxAmt"/>
+          <Item Value="ZzBnkDepositNum"/>
+          <Item Value="ZzIdentifier"/>
+          <Item Value="ProgramCode"/>
+          <Item Value="ProgramUnitCode"/>
+          <Item Value="AccountingDt"/>
+          <Item Value="ActivityId"/>
+          <Item Value="Affiliate"/>
+          <Item Value="AnalysisType"/>
+          <Item Value="BudgetDt"/>
+          <Item Value="BudgetRef"/>
+          <Item Value="BusinessUnitGl"/>
+          <Item Value="BusinessUnitPc"/>
+          <Item Value="CheckDt"/>
+          <Item Value="City"/>
+          <Item Value="ClassFld"/>
+          <Item Value="ControlAmt"/>
+          <Item Value="ControlCurrency"/>
+          <Item Value="County"/>
+          <Item Value="CreatedBy"/>
+          <Item Value="CreatedDate"/>
+          <Item Value="CreatedDttm"/>
+          <Item Value="DataSourceCode"/>
+          <Item Value="DepositId"/>
+          <Item Value="Descr50Mixed"/>
+          <Item Value="Document"/>
+          <Item Value="DstSeqNum"/>
+          <Item Value="FsRowId"/>
+          <Item Value="FundCode"/>
+          <Item Value="IdSeqNum"/>
+          <Item Value="IndexCode"/>
+          <Item Value="Infar001OutboundId"/>
+          <Item Value="LineDescr"/>
+          <Item Value="LineNoteText"/>
+          <Item Value="MiscPayment"/>
+          <Item Value="ModifiedBy"/>
+          <Item Value="ModifiedDate"/>
+          <Item Value="MonetaryAmount"/>
+          <Item Value="NoteText"/>
+          <Item Value="OperatingUnit"/>
+          <Item Value="PaymentAmt"/>
+          <Item Value="PaymentCurrency"/>
+          <Item Value="PpSw"/>
+          <Item Value="ProjectId"/>
+          <Item Value="ReceivedDt"/>
+          <Item Value="RefQualifierCode"/>
+          <Item Value="RefValue"/>
+          <Item Value="ResourceType"/>
+          <Item Value="SpeedchartKey"/>
+          <Item Value="Status"/>
+          <Item Value="TotalAmt"/>
+          <Item Value="ZzCashType"/>
+          <Item Value="ZzPaymentMethod"/>
+          <Item Value="ZzReceivedBySco"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

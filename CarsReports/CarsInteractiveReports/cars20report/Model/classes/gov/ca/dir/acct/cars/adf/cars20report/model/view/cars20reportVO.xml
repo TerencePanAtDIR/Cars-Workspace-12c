@@ -1,0 +1,448 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="cars20reportVO"
+  Version="11.1.1.64.93"
+  InheritPersonalization="true"
+  OrderBy='"ZBA_DATE","INDEX_CODE","PCA_CODE"'
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  PageIterMode="Full"
+  UseGlueCode="false">
+  <DesignTime>
+    <Attr Name="_isExpertMode" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="gov.ca.dir.acct.cars.adf.cars20report.model.view.cars20reportVO_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <ViewAccessor
+    Name="ProgramUnit1"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.cars20report.model.view.ProgramUnit"
+    RowLevelBinds="true"/>
+  <ListBinding
+    Name="LOV_ProgramUnitCode"
+    ListVOName="ProgramUnit1"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="ProgramUnitCode"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="ProgramUnitCode"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <SQLQuery>
+    <![CDATA[SELECT A.PCA_CODE,A.REVENUE_SOURCE_CODE, A.AGENCY_SOURCE_CODE,A.FUND, A.DATA_SOURCE_CODE,
+A.PROGRAM_UNIT_CODE, A.ZBA_Date ,  A.INDEX_CODE, 
+SUM(A.RECEIPT_AMOUNT - A.ADJUSTMENT_AMOUNT) PAYMENT_AMOUNT
+FROM (
+
+SELECT DISTINCT  FUND_ALLOCATION.PCA_CODE,AC.REVENUE_SOURCE_CODE, AC.AGENCY_SOURCE_CODE,FUND.FUND, R.DATA_SOURCE_CODE,
+ET.PROGRAM_UNIT_CODE, trunc(R.DEPOSIT_DATE) ZBA_Date,  AC.INDEX_CODE, 
+sum(nvl(AMOUNT,0)) RECEIPT_AMOUNT , 0 ADJUSTMENT_AMOUNT 
+  FROM receipt R
+      INNER JOIN accounting_entry AE ON AE.ACCTG_TRANSACTION_ID = R.ACCTG_TRANSACTION_ID
+      INNER JOIN accounting_code AC ON AC.ACCOUNTING_CODE_ID = AE.ACCOUNTING_CODE_ID
+      
+    LEFT JOIN FUND_ALLOCATION ON (AC.FUND_ALLOCATION_ID = FUND_ALLOCATION.FUND_ALLOCATION_ID    )
+    LEFT JOIN FUND            ON (FUND_ALLOCATION.FUND_to_ID = FUND.FUND_ID)
+
+      INNER JOIN acctg_transact_event_assoc ATES ON ATES.ACCTG_TRANSACTION_ID = R.ACCTG_TRANSACTION_ID
+      INNER JOIN EVENT E ON E.EVENT_ID = ATES.EVENT_ID
+      
+      INNER JOIN EVENT_TYPE ET ON (E.EVENT_TYPE_ID = ET.EVENT_TYPE_ID)
+        
+      INNER JOIN participant_role PR ON PR.EVENT_ID = E.EVENT_ID
+      LEFT JOIN organization O ON O.PARTY_ID = PR.PARTY_ID
+      LEFT JOIN PERSON P ON P.PARTY_ID = PR.PARTY_ID
+      LEFT JOIN batch_transaction BT ON AE.ACCTG_ENTRY_ID = BT.ACCTG_ENTRY_ID
+      where -- BILL_TYPE_CODE ='BILLED' AND 
+ ET.EVENT_TYPE_CODE IN (215,220,225,245) 
+and  RECEIPT_TYPE_CODE IN('CHECK','EDF', 'EFT', 'JPMC_LOCK_BOX', 'USB_LOCK_BOX', 'VISA_MASTER_CREDIT_CARD', 'AMEX_CREDIT_CARD','DISCOVER_CREDIT_CARD')
+           
+GROUP BY FUND_ALLOCATION.PCA_CODE,AC.REVENUE_SOURCE_CODE, AC.AGENCY_SOURCE_CODE,FUND.FUND, R.DATA_SOURCE_CODE,
+ET.PROGRAM_UNIT_CODE, R.DEPOSIT_DATE ,  AC.INDEX_CODE  
+
+union 
+-------------------  event 265 270 275 but exclude TC 456 
+SELECT DISTINCT  FUND_ALLOCATION.PCA_CODE,AC.REVENUE_SOURCE_CODE, AC.AGENCY_SOURCE_CODE,FUND.FUND, R.DATA_SOURCE_CODE,
+ET.PROGRAM_UNIT_CODE, trunc(R.DEPOSIT_DATE) ZBA_Date,  AC.INDEX_CODE, 
+sum(nvl(AMOUNT,0)) RECEIPT_AMOUNT , 0 ADJUSTMENT_AMOUNT 
+  FROM receipt R
+      INNER JOIN accounting_entry AE ON AE.ACCTG_TRANSACTION_ID = R.ACCTG_TRANSACTION_ID
+      inner join accounting_entry_type aet on AE.ACCTG_ENTRY_TYPE_ID = AET.ACCTG_ENTRY_TYPE_ID
+      INNER JOIN accounting_code AC ON AC.ACCOUNTING_CODE_ID = AE.ACCOUNTING_CODE_ID
+      
+    LEFT JOIN FUND_ALLOCATION ON (AC.FUND_ALLOCATION_ID = FUND_ALLOCATION.FUND_ALLOCATION_ID    )
+    LEFT JOIN FUND            ON (FUND_ALLOCATION.FUND_to_ID = FUND.FUND_ID)
+
+      INNER JOIN acctg_transact_event_assoc ATES ON ATES.ACCTG_TRANSACTION_ID = R.ACCTG_TRANSACTION_ID
+      INNER JOIN EVENT E ON E.EVENT_ID = ATES.EVENT_ID
+      
+      INNER JOIN EVENT_TYPE ET ON (E.EVENT_TYPE_ID = ET.EVENT_TYPE_ID)
+        
+      INNER JOIN participant_role PR ON PR.EVENT_ID = E.EVENT_ID
+      LEFT JOIN organization O ON O.PARTY_ID = PR.PARTY_ID
+      LEFT JOIN PERSON P ON P.PARTY_ID = PR.PARTY_ID
+      LEFT JOIN batch_transaction BT ON AE.ACCTG_ENTRY_ID = BT.ACCTG_ENTRY_ID
+      where -- BILL_TYPE_CODE ='BILLED' AND 
+ ET.EVENT_TYPE_CODE IN ( 265, 270, 275)
+ and AET.ACCTG_TRANSACT_CODE  <> 456
+and  RECEIPT_TYPE_CODE IN('CHECK','EDF', 'EFT', 'JPMC_LOCK_BOX', 'USB_LOCK_BOX', 'VISA_MASTER_CREDIT_CARD', 'AMEX_CREDIT_CARD','DISCOVER_CREDIT_CARD')
+           
+GROUP BY FUND_ALLOCATION.PCA_CODE,AC.REVENUE_SOURCE_CODE, AC.AGENCY_SOURCE_CODE,FUND.FUND, R.DATA_SOURCE_CODE,
+ET.PROGRAM_UNIT_CODE, R.DEPOSIT_DATE ,  AC.INDEX_CODE  
+
+ 
+ union 
+
+
+SELECT DISTINCT  FUND_ALLOCATION.PCA_CODE,AC.REVENUE_SOURCE_CODE, AC.AGENCY_SOURCE_CODE,FUND.FUND, R.DATA_SOURCE_CODE,
+ET.PROGRAM_UNIT_CODE, trunc(R.DEPOSIT_DATE) ZBA_Date,  AC.INDEX_CODE, 
+0 RECEIPT_AMOUNT, sum(nvl(AMOUNT,0)) ADJUSTMENT_AMOUNT  
+  FROM receipt R
+    inner join accounting_transaction_assoc  on R.ACCTG_TRANSACTION_ID =
+    accounting_transaction_assoc.ACCTG_TRANSACTION_FROM_ID
+    INNER JOIN acctg_transact_event_assoc ATES
+   ON ATES.ACCTG_TRANSACTION_ID =ACCOUNTING_TRANSACTION_ASSOC.ACCTG_TRANSACTION_TO_ID
+   INNER JOIN accounting_entry AE
+          ON  ATES.ACCTG_TRANSACTION_ID =AE.ACCTG_TRANSACTION_ID
+         INNER JOIN accounting_code AC
+          ON AC.ACCOUNTING_CODE_ID = AE.ACCOUNTING_CODE_ID
+       LEFT JOIN FUND_ALLOCATION
+          ON (AC.FUND_ALLOCATION_ID = FUND_ALLOCATION.FUND_ALLOCATION_ID)
+       LEFT JOIN FUND ON (FUND_ALLOCATION.FUND_to_ID = FUND.FUND_ID)
+      INNER JOIN EVENT E ON E.EVENT_ID = ATES.EVENT_ID
+       INNER JOIN EVENT_TYPE ET ON (E.EVENT_TYPE_ID = ET.EVENT_TYPE_ID) 
+       INNER JOIN participant_role PR ON PR.EVENT_ID = E.EVENT_ID
+       LEFT JOIN organization O ON O.PARTY_ID = PR.PARTY_ID
+       LEFT JOIN PERSON P ON P.PARTY_ID = PR.PARTY_ID
+   LEFT JOIN batch_transaction BT
+          ON AE.ACCTG_ENTRY_ID = BT.ACCTG_ENTRY_ID
+           INNER JOIN FUND_ALLOCATION FL ON AC.FUND_ALLOCATION_ID = FL.FUND_ALLOCATION_ID
+       INNER JOIN FUND F ON FL.FUND_TO_ID = F.FUND_ID
+        LEFT JOIN FUND_ALLOCATION ON (AC.FUND_ALLOCATION_ID = FUND_ALLOCATION.FUND_ALLOCATION_ID    )
+    LEFT JOIN FUND            ON (FUND_ALLOCATION.FUND_to_ID = FUND.FUND_ID)
+
+      where -- BILL_TYPE_CODE ='BILLED' AND 
+ ET.EVENT_TYPE_CODE IN (315, 320, 322, 325, 330, 340, 341, 342, 343, 344, 900 )
+ 
+and  RECEIPT_TYPE_CODE IN('CHECK','EDF', 'EFT', 'JPMC_LOCK_BOX', 'USB_LOCK_BOX', 'VISA_MASTER_CREDIT_CARD', 'AMEX_CREDIT_CARD','DISCOVER_CREDIT_CARD')
+ 
+ GROUP BY FUND_ALLOCATION.PCA_CODE,AC.REVENUE_SOURCE_CODE, AC.AGENCY_SOURCE_CODE,FUND.FUND, R.DATA_SOURCE_CODE,
+ET.PROGRAM_UNIT_CODE, R.DEPOSIT_DATE ,  AC.INDEX_CODE  
+) A
+
+GROUP BY  A.PCA_CODE,A.REVENUE_SOURCE_CODE, A.AGENCY_SOURCE_CODE,A.FUND, A.DATA_SOURCE_CODE,
+A.PROGRAM_UNIT_CODE, A.ZBA_Date ,  A.INDEX_CODE]]>
+  </SQLQuery>
+  <ViewAttribute
+    Name="PcaCode"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="5"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="PCA_CODE"
+    Expression="PCA_CODE"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="5"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.cars20report.model.view.cars20reportVO.PcaCode_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="RevenueSourceCode"
+    IsUpdateable="false"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Precision="6"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="REVENUE_SOURCE_CODE"
+    Expression="REVENUE_SOURCE_CODE"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="6"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.cars20report.model.view.cars20reportVO.RevenueSourceCode_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="AgencySourceCode"
+    IsUpdateable="false"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Precision="2"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="AGENCY_SOURCE_CODE"
+    Expression="AGENCY_SOURCE_CODE"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="2"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.cars20report.model.view.cars20reportVO.AgencySourceCode_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Fund"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="4"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="FUND"
+    Expression="FUND"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="4"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.cars20report.model.view.cars20reportVO.Fund_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  
+  <ViewAttribute
+    Name="ProgramUnitCode"
+    IsUpdateable="false"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Precision="25"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="PROGRAM_UNIT_CODE"
+    Expression="PROGRAM_UNIT_CODE"
+    SQLType="VARCHAR"
+    LOVName="LOV_ProgramUnitCode">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="25"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.cars20report.model.view.cars20reportVO.ProgramUnitCode_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  
+  <ViewAttribute
+    Name="DataSourceCode"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="25"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="DATA_SOURCE_CODE"
+    Expression="DATA_SOURCE_CODE"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="25"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.cars20report.model.view.cars20reportVO.DataSourceCode_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  
+  
+  <ViewAttribute
+    Name="ZbaDate"
+    IsUpdateable="false"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    AliasName="ZBA_DATE"
+    Expression="ZBA_DATE"
+    SQLType="DATE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.cars20report.model.view.cars20reportVO.ZbaDate_LABEL"/>
+        <TOOLTIP
+          ResId="gov.ca.dir.acct.cars.adf.cars20report.model.view.cars20reportVO.ZbaDate_TOOLTIP"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="IndexCode"
+    IsUpdateable="false"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Precision="4"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="INDEX_CODE"
+    Expression="INDEX_CODE"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="4"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.cars20report.model.view.cars20reportVO.IndexCode_LABEL"/>
+        <TOOLTIP
+          ResId="gov.ca.dir.acct.cars.adf.cars20report.model.view.cars20reportVO.IndexCode_TOOLTIP"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="PaymentAmount"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="PAYMENT_AMOUNT"
+    Expression="PAYMENT_AMOUNT"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <FMT_FORMATTER
+          ResId="gov.ca.dir.acct.cars.adf.cars20report.model.view.cars20reportVO.PaymentAmount_FMT_FORMATTER"/>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.cars20report.model.view.cars20reportVO.PaymentAmount_LABEL"/>
+        <TOOLTIP
+          ResId="gov.ca.dir.acct.cars.adf.cars20report.model.view.cars20reportVO.PaymentAmount_TOOLTIP"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="PaymentAmountTotal"
+    IsUpdateable="false"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="VIEW_ATTR"
+    SQLType="NUMERIC">
+    <RecalcCondition><![CDATA[true]]></RecalcCondition>
+    <TransientExpression><![CDATA[adf.object.findRowSetForRow("").sum("PaymentAmount")]]></TransientExpression>
+    <Properties>
+      <SchemaBasedProperties>
+        <FMT_FORMATTER
+          ResId="gov.ca.dir.acct.cars.adf.cars20report.model.view.cars20reportVO.PaymentAmountTotal_FMT_FORMATTER"/>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.cars20report.model.view.cars20reportVO.PaymentAmountTotal_LABEL"/>
+        <TOOLTIP
+          ResId="gov.ca.dir.acct.cars.adf.cars20report.model.view.cars20reportVO.PaymentAmountTotal_TOOLTIP"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CurrentDate"
+    IsUpdateable="false"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    AliasName="VIEW_ATTR"
+    SQLType="DATE">
+    <TransientExpression><![CDATA[adf.currentDate]]></TransientExpression>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.cars20report.model.view.cars20reportVO.CurrentDate_LABEL"/>
+        <TOOLTIP
+          ResId="gov.ca.dir.acct.cars.adf.cars20report.model.view.cars20reportVO.CurrentDate_TOOLTIP"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewCriteria
+    Name="cars20reportVOCriteria"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.cars20report.model.view.cars20reportVO"
+    Conjunction="AND">
+    <Properties>
+      <CustomProperties>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="vcrow6"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="DataSourceCode"
+        ViewAttribute="DataSourceCode"
+        Operator="="
+        Conjunction="AND"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="ProgramUnitCode"
+        ViewAttribute="ProgramUnitCode"
+        Operator="="
+        Conjunction="AND"
+        Required="Optional"/>
+     
+      <ViewCriteriaItem
+        Name="ZbaDate"
+        ViewAttribute="ZbaDate"
+        Operator="BETWEEN"
+        Conjunction="AND"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="gov.ca.dir.acct.cars.adf.cars20report.model.ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://xmlns.oracle.com/adfm/application"
+             version="11.1.1.64.93" id="DataBindings" SeparateXMLFiles="false"
+             Package="gov.ca.dir.acct.cars.adf.usecase008.view" ClientType="Generic">
+  <definitionFactories>
+    <factory nameSpace="http://xmlns.oracle.com/adf/controller/binding"
+             className="oracle.adf.controller.internal.binding.TaskFlowBindingDefFactoryImpl"/>
+    <dtfactory className="oracle.adf.controller.internal.dtrt.binding.BindingDTObjectFactory"/>
+  </definitionFactories>
+  <pageMap>
+    <page path="/Infar001Search.jsff"
+          usageId="gov_ca_dir_acct_cars_adf_usecase008_view_Infar001SearchPageDef"/>
+    <page path="/MainUseCase008.jspx"
+          usageId="gov_ca_dir_acct_cars_adf_usecase008_view_MainUseCase008PageDef"/>
+  </pageMap>
+  <pageDefinitionUsages>
+    <page id="gov_ca_dir_acct_cars_adf_usecase008_view_Infar001SearchPageDef"
+          path="gov.ca.dir.acct.cars.adf.usecase008.view.pageDefs.Infar001SearchPageDef"/>
+    <page id="gov_ca_dir_acct_cars_adf_usecase008_view_MainUseCase008PageDef"
+          path="gov.ca.dir.acct.cars.adf.usecase008.view.pageDefs.MainUseCase008PageDef"/>
+  </pageDefinitionUsages>
+  <dataControlUsages>
+    <BC4JDataControl id="SearchInfar001AMDataControl"
+                     Package="gov.ca.dir.acct.cars.adf.usecase008.model.appmodules"
+                     FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl"
+                     SupportsTransactions="true" SupportsFindMode="true"
+                     SupportsRangesize="true" SupportsResetState="true"
+                     SupportsSortCollection="true"
+                     Configuration="SearchInfar001AMLocal" syncMode="Immediate"
+                     xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+  </dataControlUsages>
+</Application>

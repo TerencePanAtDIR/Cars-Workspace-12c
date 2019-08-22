@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.64.93" id="searchByRootDocPageDef"
+                Package="Cars_Ar_Search">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="ViewArRootDocuments1" RangeSize="100"
+              DataControl="CarsSearchEventsDataControl"
+              id="ViewArRootDocuments1Iterator"/>
+    <searchRegion Criteria="SearchCarsInvoicesCriteriaCALOSHA"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="ViewArRootDocuments1Iterator"
+                  id="SearchCarsInvoicesCriteriaQuery"/>
+    <searchRegion Criteria="#{pageFlowScope.QueryOperationBean.searchCriteriaName}"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="SearchAllIterator"
+                  id="SearchCarsInvoicesCriteriaANYQuery"
+                  InitialQueryOverridden="false"/>
+    <iterator id="SearchAllIterator"
+              DataControl="CarsSearchEventsDataControl" RangeSize="100"
+              Binds="#{pageFlowScope.QueryOperationBean.searchDataBindName}"/>
+    <iterator Binds="OrgParticipantRoleAddressView1" RangeSize="1"
+              DataControl="CarsSearchEventsDataControl"
+              id="OrgParticipantRoleAddressView1Iterator" CacheResults="false"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="SearchAllIterator" id="ViewAllRootDocuments1">
+      <nodeDefinition DefName="gov.ca.dir.acct.cars.adf.usecase001.model.CarsEventDetails.ViewArRootDocuments"
+                      Name="ViewArRootDocuments11">
+        <AttrNames>
+          <Item Value="ArRootDocument"/>
+          <Item Value="LegalName"/>
+          <Item Value="CreatedBy"/>
+          <Item Value="Contingent"/>
+          <Item Value="ArBalance"/>
+          <Item Value="FiscalYearName"/>
+          <Item Value="RevenueSourceCode"/>
+          <Item Value="AgencySourceCode"/>
+          <Item Value="ProgramUnitCode"/>
+          <Item Value="DataSourceCode"/>
+          <Item Value="IndexCode"/>
+          <Item Value="PcaCode"/>
+          <Item Value="Fund"/>
+          <Item Value="FundDetail"/>
+          <Item Value="FundSource"/>
+          <Item Value="IssueDate"/>
+          <Item Value="CreatedDate"/>
+          <Item Value="CustId"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="doResetViewArRootDocuments1"
+                  InstanceName="CarsSearchEventsDataControl.dataProvider"
+                  DataControl="CarsSearchEventsDataControl"
+                  RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="doResetViewArRootDocuments1"
+                  IsViewObjectMethod="false"
+                  ReturnName="data.CarsSearchEventsDataControl.methodResults.doResetViewArRootDocuments1_CarsSearchEventsDataControl_dataProvider_doResetViewArRootDocuments1_result">
+      <NamedData NDName="searchCriteriaName" NDType="java.lang.String"/>
+    </methodAction>
+    <action IterBinding="ViewArRootDocuments1Iterator"
+            id="setCurrentRowWithKeyValue"
+            InstanceName="CarsSearchEventsDataControl.ViewArRootDocuments1"
+            DataControl="CarsSearchEventsDataControl"
+            RequiresUpdateModel="false" Action="setCurrentRowWithKeyValue">
+      <NamedData NDName="rowKey" NDValue="#{pageFlowScope.varRootDocument}"
+                 NDType="java.lang.String"/>
+    </action>
+    <attributeValues IterBinding="OrgParticipantRoleAddressView1Iterator"
+                     id="AddressType">
+      <AttrNames>
+        <Item Value="AddressType"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="OrgParticipantRoleAddressView1Iterator"
+                     id="StreetAddress">
+      <AttrNames>
+        <Item Value="StreetAddress"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="OrgParticipantRoleAddressView1Iterator"
+                     id="AddressLine2">
+      <AttrNames>
+        <Item Value="AddressLine2"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="OrgParticipantRoleAddressView1Iterator"
+                     id="City">
+      <AttrNames>
+        <Item Value="City"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="OrgParticipantRoleAddressView1Iterator"
+                     id="StateCode">
+      <AttrNames>
+        <Item Value="StateCode"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="OrgParticipantRoleAddressView1Iterator"
+                     id="ZipCode">
+      <AttrNames>
+        <Item Value="ZipCode"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="OrgParticipantRoleAddressView1Iterator"
+                     id="ContactMethodTypeCode">
+      <AttrNames>
+        <Item Value="ContactMethodTypeCode"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="OrgParticipantRoleAddressView1Iterator"
+                     id="ContactMethodValue">
+      <AttrNames>
+        <Item Value="ContactMethodValue"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="OrgParticipantRoleAddressView1Iterator"
+                     id="LegalName">
+      <AttrNames>
+        <Item Value="LegalName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="OrgParticipantRoleAddressView1Iterator"
+                     id="Dba">
+      <AttrNames>
+        <Item Value="Dba"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="OrgParticipantRoleAddressView1Iterator"
+                     id="OrganizationName">
+      <AttrNames>
+        <Item Value="OrganizationName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="OrgParticipantRoleAddressView1Iterator"
+                     id="FsSequenceNumber">
+      <AttrNames>
+        <Item Value="FsSequenceNumber"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="OrgParticipantRoleAddressView1Iterator"
+                     id="Fein">
+      <AttrNames>
+        <Item Value="Fein"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="OrgParticipantRoleAddressView1Iterator"
+                     id="CustId">
+      <AttrNames>
+        <Item Value="CustId"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

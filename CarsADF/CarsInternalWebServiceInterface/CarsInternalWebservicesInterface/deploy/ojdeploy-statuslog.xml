@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<ojdeploy-log>
+  <deploy-task>
+    <target>
+      <profile>adflibCarsInternalWebservicesInterface</profile>
+      <workspace>/C:/Eclipse/workspace/CarsADF/CarsInternalWebServiceInterface/CarsInternalWebServiceInterface.jws</workspace>
+      <project>CarsInternalWebservicesInterface.jpr</project>
+      <output-file>/C:/Temp/carslibrary/adflibCarsInternalWebservicesInterface.jar</output-file>
+    </target>
+    <status exitcode="0">SUCCESS</status>
+  </deploy-task>
+  <summary>
+    <start-time>2019-04-15 11:50:38 PDT</start-time>
+    <end-time>2019-04-15 11:50:57 PDT</end-time>
+    <total-tasks>1</total-tasks>
+    <failures>0</failures>
+    <status exitcode="0">SUCCESS</status>
+  </summary>
+</ojdeploy-log>

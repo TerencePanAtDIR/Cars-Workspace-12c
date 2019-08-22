@@ -1,0 +1,582 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:pageTemplate viewId="/use-case-template.jspx" id="pt1">
+    <f:facet name="main">
+      <af:group id="g1">
+        <af:panelGroupLayout id="pgl1" layout="vertical">
+          <af:panelCollection id="pc1" inlineStyle="width:auto;">
+            <f:facet name="menus"/>
+            <f:facet name="toolbar">
+              <af:toolbar id="t2">
+                <af:commandToolbarButton text="Excel" id="ctb1"
+                                         icon="/export_excel_sml.png">
+                  <af:exportCollectionActionListener type="excelHTML"
+                                                     exportedId="t1"
+                                                     filename="Infar006Search.xls"/>
+                </af:commandToolbarButton>
+                <af:commandToolbarButton text="Back"
+                                         id="ctb2" action="backToSearch"/>
+              </af:toolbar>
+            </f:facet>
+            <f:facet name="statusbar"/>
+            <af:table value="#{bindings.Infar006_1.collectionModel}" var="row"
+                      rows="#{bindings.Infar006_1.rangeSize}"
+                      emptyText="#{bindings.Infar006_1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                      fetchSize="#{bindings.Infar006_1.rangeSize}"
+                      rowBandingInterval="0" id="t1"
+                      filterModel="#{bindings.Infar006_1Query.queryDescriptor}"
+                      queryListener="#{bindings.Infar006_1Query.processQuery}"
+                      filterVisible="true" varStatus="vs">
+              <af:column sortProperty="#{bindings.Infar006_1.hints.BatchId.name}"
+                         sortable="true" headerText="Batch ID" id="c47"
+                         width="105" filterable="true">
+                <af:outputText value="#{row.BatchId}" id="ot16"/>
+              </af:column>
+              <af:column sortProperty="#{bindings.Infar006_1.hints.EventTypeCode.name}"
+                         filterable="true" sortable="false"
+                         headerText="#{bindings.Infar006_1.hints.EventTypeCode.label}"
+                         id="c18">
+                <af:inputText value="#{row.bindings.EventTypeCode.inputValue}"
+                              label="#{bindings.Infar006_1.hints.EventTypeCode.label}"
+                              required="#{bindings.Infar006_1.hints.EventTypeCode.mandatory}"
+                              columns="#{bindings.Infar006_1.hints.EventTypeCode.displayWidth}"
+                              maximumLength="#{bindings.Infar006_1.hints.EventTypeCode.precision}"
+                              shortDesc="#{bindings.Infar006_1.hints.EventTypeCode.tooltip}"
+                              id="it1">
+                  <f:validator binding="#{row.bindings.EventTypeCode.validator}"/>
+                </af:inputText>
+              </af:column>
+              <af:column sortProperty="#{bindings.Infar006_1.hints.EventTypeName.name}"
+                         filterable="true" sortable="false"
+                         headerText="#{bindings.Infar006_1.hints.EventTypeName.label}"
+                         id="c4">
+                <af:inputText value="#{row.bindings.EventTypeName.inputValue}"
+                              label="#{bindings.Infar006_1.hints.EventTypeName.label}"
+                              required="#{bindings.Infar006_1.hints.EventTypeName.mandatory}"
+                              columns="#{bindings.Infar006_1.hints.EventTypeName.displayWidth}"
+                              maximumLength="#{bindings.Infar006_1.hints.EventTypeName.precision}"
+                              shortDesc="#{bindings.Infar006_1.hints.EventTypeName.tooltip}"
+                              id="it2">
+                  <f:validator binding="#{row.bindings.EventTypeName.validator}"/>
+                </af:inputText>
+              </af:column>
+              <af:column sortProperty="#{bindings.Infar006_1.hints.ProgramUnitCode.name}"
+                         sortable="true" headerText="Program Unit Code" id="c70"
+                         filterable="true">
+                <af:outputText value="#{row.ProgramUnitCode}" id="ot27"/>
+              </af:column>
+              <af:column sortProperty="#{bindings.Infar006_1.hints.Status.name}"
+                         sortable="true"
+                         headerText="#{bindings.Infar006_1.hints.Status.label}"
+                         id="c104" filterable="true">
+                <af:outputText value="#{row.Status}" id="ot92"/>
+              </af:column>
+              <af:column sortProperty="#{bindings.Infar006_1.hints.Item.name}"
+                         sortable="true" headerText="Root Document" id="c9"
+                         filterable="true">
+                <af:outputText value="#{row.Item}" id="ot6"/>
+              </af:column>
+              <af:column sortProperty="#{bindings.Infar006_1.hints.ItemLine.name}"
+                         sortable="true"
+                         headerText="#{bindings.Infar006_1.hints.ItemLine.label}"
+                         id="c32" filterable="true">
+                <af:outputText value="#{row.ItemLine}" id="ot95">
+                  <af:convertNumber groupingUsed="false"
+                                    pattern="#{bindings.Infar006_1.hints.ItemLine.format}"/>
+                </af:outputText>
+              </af:column>
+              <af:column sortProperty="#{bindings.Infar006_1.hints.Account.name}"
+                         sortable="true"
+                         headerText="#{bindings.Infar006_1.hints.Account.label}"
+                         id="c80" width="105" filterable="true">
+                <af:outputText value="#{row.Account}" id="ot32"/>
+              </af:column>
+              <af:column sortProperty="#{bindings.Infar006_1.hints.Altacct.name}"
+                         sortable="true"
+                         headerText="#{bindings.Infar006_1.hints.Altacct.label}"
+                         id="c90" filterable="true">
+                <af:outputText value="#{row.Altacct}" id="ot12"/>
+              </af:column>
+              <af:column sortProperty="#{bindings.Infar006_1.hints.Chartfield1.name}"
+                         sortable="true"
+                         headerText="#{bindings.Infar006_1.hints.Chartfield1.label}"
+                         id="c96" filterable="true">
+                <af:outputText value="#{row.Chartfield1}" id="ot57"/>
+              </af:column>
+              <af:column sortProperty="#{bindings.Infar006_1.hints.Deptid.name}"
+                         sortable="true"
+                         headerText="#{bindings.Infar006_1.hints.Deptid.label}"
+                         id="c14" filterable="true">
+                <af:outputText value="#{row.Deptid}" id="ot41"/>
+              </af:column>
+              <af:column sortProperty="#{bindings.Infar006_1.hints.FundCode.name}"
+                         sortable="true"
+                         headerText="#{bindings.Infar006_1.hints.FundCode.label}"
+                         id="c21" filterable="true">
+                <af:outputText value="#{row.FundCode}" id="ot96"/>
+              </af:column>
+              <af:column sortProperty="#{bindings.Infar006_1.hints.Product.name}"
+                         sortable="true"
+                         headerText="#{bindings.Infar006_1.hints.Product.label}"
+                         id="c13" filterable="true">
+                <af:outputText value="#{row.Product}" id="ot35"/>
+              </af:column>
+              <af:column sortProperty="#{bindings.Infar006_1.hints.ProgramCode.name}"
+                         sortable="true"
+                         headerText="#{bindings.Infar006_1.hints.ProgramCode.label}"
+                         id="c97" filterable="true" visible="false">
+                <af:outputText value="#{row.ProgramCode}" id="ot85"/>
+              </af:column>
+              <af:column sortProperty="#{bindings.Infar006_1.hints.AcctgEntryId.name}"
+                         sortable="true"
+                         headerText="#{bindings.Infar006_1.hints.AcctgEntryId.label}"
+                         id="c77" width="106" filterable="true" visible="false">
+                <af:outputText value="#{row.AcctgEntryId}" id="ot24"/>
+              </af:column>
+              <af:column sortProperty="#{bindings.Infar006_1.hints.AccountingDt.name}"
+                         sortable="true"
+                         headerText="#{bindings.Infar006_1.hints.AccountingDt.label}"
+                         id="c16" width="105" filterable="true">
+                <af:outputText value="#{row.AccountingDt}" id="ot91">
+                  <af:convertDateTime pattern="#{bindings.Infar006_1.hints.AccountingDt.format}"/>
+                </af:outputText>
+                <f:facet name="filter">
+                  <af:inputDate value="#{vs.filterCriteria.AccountingDt}"
+                                id="id10"/>
+                </f:facet>
+              </af:column>
+              <af:column sortProperty="#{bindings.Infar006_1.hints.CollectionChkbox.name}"
+                         sortable="true"
+                         headerText="#{bindings.Infar006_1.hints.CollectionChkbox.label}"
+                         id="c61" filterable="true">
+                <af:outputText value="#{row.CollectionChkbox}" id="ot22"/>
+              </af:column>
+              <af:column sortProperty="#{bindings.Infar006_1.hints.ControlAmt.name}"
+                         sortable="true"
+                         headerText="#{bindings.Infar006_1.hints.ControlAmt.label}"
+                         id="c95" filterable="true">
+                <af:outputText value="#{row.ControlAmt}" id="ot99"/>
+              </af:column>
+              <af:column sortProperty="#{bindings.Infar006_1.hints.ControlCnt.name}"
+                         sortable="true"
+                         headerText="#{bindings.Infar006_1.hints.ControlCnt.label}"
+                         id="c37" filterable="true">
+                <af:outputText value="#{row.ControlCnt}" id="ot104">
+                  <af:convertNumber groupingUsed="false"
+                                    pattern="#{bindings.Infar006_1.hints.ControlCnt.format}"/>
+                </af:outputText>
+              </af:column>
+              <af:column sortProperty="#{bindings.Infar006_1.hints.CustId.name}"
+                         sortable="true"
+                         headerText="#{bindings.Infar006_1.hints.CustId.label}"
+                         id="c94" filterable="true">
+                <af:outputText value="#{row.CustId}" id="ot25"/>
+              </af:column>
+              <af:column sortProperty="#{bindings.Infar006_1.hints.DisputeChkbox.name}"
+                         sortable="true"
+                         headerText="#{bindings.Infar006_1.hints.DisputeChkbox.label}"
+                         id="c36" filterable="true" visible="false">
+                <af:outputText value="#{row.DisputeChkbox}" id="ot1"/>
+              </af:column>
+              <af:column sortProperty="#{bindings.Infar006_1.hints.DstSeqNum.name}"
+                         sortable="true"
+                         headerText="#{bindings.Infar006_1.hints.DstSeqNum.label}"
+                         id="c58" filterable="true">
+                <af:outputText value="#{row.DstSeqNum}" id="ot20">
+                  <af:convertNumber groupingUsed="false"
+                                    pattern="#{bindings.Infar006_1.hints.DstSeqNum.format}"/>
+                </af:outputText>
+              </af:column>
+              <af:column sortProperty="#{bindings.Infar006_1.hints.EntryAmt.name}"
+                         sortable="true"
+                         headerText="#{bindings.Infar006_1.hints.EntryAmt.label}"
+                         id="c43" filterable="true">
+                <af:outputText value="#{row.EntryAmt}" id="ot17"/>
+              </af:column>
+              <af:column sortProperty="#{bindings.Infar006_1.hints.EntryType.name}"
+                         sortable="true"
+                         headerText="#{bindings.Infar006_1.hints.EntryType.label}"
+                         id="c91" filterable="true">
+                <af:outputText value="#{row.EntryType}" id="ot87"/>
+              </af:column>
+              <af:column sortProperty="#{bindings.Infar006_1.hints.GroupBu.name}"
+                         sortable="true"
+                         headerText="#{bindings.Infar006_1.hints.GroupBu.label}"
+                         id="c44" filterable="true">
+                <af:outputText value="#{row.GroupBu}" id="ot19"/>
+              </af:column>
+              <af:column sortProperty="#{bindings.Infar006_1.hints.GroupIdStg.name}"
+                         sortable="true"
+                         headerText="#{bindings.Infar006_1.hints.GroupIdStg.label}"
+                         id="c10" filterable="true">
+                <af:outputText value="#{row.GroupIdStg}" id="ot39"/>
+              </af:column>
+              <af:column sortProperty="#{bindings.Infar006_1.hints.GroupSeqNum.name}"
+                         sortable="true"
+                         headerText="#{bindings.Infar006_1.hints.GroupSeqNum.label}"
+                         id="c40" filterable="true">
+                <af:outputText value="#{row.GroupSeqNum}" id="ot77">
+                  <af:convertNumber groupingUsed="false"
+                                    pattern="#{bindings.Infar006_1.hints.GroupSeqNum.format}"/>
+                </af:outputText>
+              </af:column>
+              <af:column sortProperty="#{bindings.Infar006_1.hints.GroupType.name}"
+                         sortable="true"
+                         headerText="#{bindings.Infar006_1.hints.GroupType.label}"
+                         id="c105" filterable="true">
+                <af:outputText value="#{row.GroupType}" id="ot105"/>
+              </af:column>
+              <af:column sortProperty="#{bindings.Infar006_1.hints.MonetaryAmount.name}"
+                         sortable="true"
+                         headerText="#{bindings.Infar006_1.hints.MonetaryAmount.label}"
+                         id="c78" filterable="true">
+                <af:outputText value="#{row.MonetaryAmount}" id="ot33"/>
+              </af:column>
+              <af:column sortProperty="#{bindings.Infar006_1.hints.PostAction.name}"
+                         sortable="true"
+                         headerText="#{bindings.Infar006_1.hints.PostAction.label}"
+                         id="c8" filterable="true">
+                <af:outputText value="#{row.PostAction}" id="ot46"/>
+              </af:column>
+              <af:column sortProperty="#{bindings.Infar006_1.hints.SystemDefined.name}"
+                         sortable="true"
+                         headerText="#{bindings.Infar006_1.hints.SystemDefined.label}"
+                         id="c100" filterable="true">
+                <af:outputText value="#{row.SystemDefined}" id="ot21"/>
+              </af:column>
+              <af:column sortProperty="#{bindings.Infar006_1.hints.ActivityId.name}"
+                         sortable="true"
+                         headerText="#{bindings.Infar006_1.hints.ActivityId.label}"
+                         id="c50" width="62" visible="false" filterable="true">
+                <af:outputText value="#{row.ActivityId}" id="ot42"/>
+              </af:column>
+              <af:column sortProperty="#{bindings.Infar006_1.hints.AddressSeqNum.name}"
+                         sortable="true"
+                         headerText="#{bindings.Infar006_1.hints.AddressSeqNum.label}"
+                         id="c101" visible="false" filterable="true">
+                <af:outputText value="#{row.AddressSeqNum}" id="ot3">
+                  <af:convertNumber groupingUsed="false"
+                                    pattern="#{bindings.Infar006_1.hints.AddressSeqNum.format}"/>
+                </af:outputText>
+              </af:column>
+              <af:column sortProperty="#{bindings.Infar006_1.hints.Affiliate.name}"
+                         sortable="true"
+                         headerText="#{bindings.Infar006_1.hints.Affiliate.label}"
+                         id="c98" visible="false" filterable="true">
+                <af:outputText value="#{row.Affiliate}" id="ot103"/>
+              </af:column>
+              <af:column sortProperty="#{bindings.Infar006_1.hints.AffiliateIntra1.name}"
+                         sortable="true"
+                         headerText="#{bindings.Infar006_1.hints.AffiliateIntra1.label}"
+                         id="c85" visible="false" filterable="true">
+                <af:outputText value="#{row.AffiliateIntra1}" id="ot81"/>
+              </af:column>
+              <af:column sortProperty="#{bindings.Infar006_1.hints.AffiliateIntra2.name}"
+                         sortable="true"
+                         headerText="#{bindings.Infar006_1.hints.AffiliateIntra2.label}"
+                         id="c12" visible="false" filterable="true">
+                <af:outputText value="#{row.AffiliateIntra2}" id="ot53"/>
+              </af:column>
+              <af:column sortProperty="#{bindings.Infar006_1.hints.AnalysisType.name}"
+                         sortable="true"
+                         headerText="#{bindings.Infar006_1.hints.AnalysisType.label}"
+                         id="c5" visible="false" filterable="true">
+                <af:outputText value="#{row.AnalysisType}" id="ot79"/>
+              </af:column>
+              <af:column sortProperty="#{bindings.Infar006_1.hints.AsofDt.name}"
+                         sortable="true"
+                         headerText="#{bindings.Infar006_1.hints.AsofDt.label}"
+                         id="c79" visible="false" filterable="true">
+                <af:outputText value="#{row.AsofDt}" id="ot101">
+                  <af:convertDateTime pattern="#{bindings.Infar006_1.hints.AsofDt.format}"/>
+                </af:outputText>
+                <f:facet name="filter">
+                  <af:inputDate value="#{vs.filterCriteria.AsofDt}" id="id7"/>
+                </f:facet>
+              </af:column>
+              <af:column sortProperty="#{bindings.Infar006_1.hints.BudgetDt.name}"
+                         sortable="true"
+                         headerText="#{bindings.Infar006_1.hints.BudgetDt.label}"
+                         id="c64" filterable="true" visible="false">
+                <af:outputText value="#{row.BudgetDt}" id="ot29">
+                  <af:convertDateTime pattern="#{bindings.Infar006_1.hints.BudgetDt.format}"/>
+                </af:outputText>
+                <f:facet name="filter">
+                  <af:inputDate value="#{vs.filterCriteria.BudgetDt}" id="id4"/>
+                </f:facet>
+              </af:column>
+              <af:column sortProperty="#{bindings.Infar006_1.hints.BudgetRef.name}"
+                         sortable="true"
+                         headerText="#{bindings.Infar006_1.hints.BudgetRef.label}"
+                         id="c33" visible="false" filterable="true">
+                <af:outputText value="#{row.BudgetRef}" id="ot98"/>
+              </af:column>
+              <af:column sortProperty="#{bindings.Infar006_1.hints.EntryReason.name}"
+                         sortable="true"
+                         headerText="#{bindings.Infar006_1.hints.EntryReason.label}"
+                         id="c59" filterable="true">
+                <af:outputText value="#{row.EntryReason}" id="ot52"/>
+              </af:column>
+              <af:column sortProperty="#{bindings.Infar006_1.hints.BusinessUnitGl.name}"
+                         sortable="true"
+                         headerText="#{bindings.Infar006_1.hints.BusinessUnitGl.label}"
+                         id="c55" filterable="true">
+                <af:outputText value="#{row.BusinessUnitGl}" id="ot10"/>
+              </af:column>
+              <af:column sortProperty="#{bindings.Infar006_1.hints.NoteText.name}"
+                         sortable="true"
+                         headerText="#{bindings.Infar006_1.hints.NoteText.label}"
+                         id="c25" filterable="true">
+                <af:outputText value="#{row.NoteText}" id="ot58"/>
+              </af:column>
+              <af:column sortProperty="#{bindings.Infar006_1.hints.BusinessUnitPc.name}"
+                         sortable="true"
+                         headerText="#{bindings.Infar006_1.hints.BusinessUnitPc.label}"
+                         id="c89" visible="false" filterable="true">
+                <af:outputText value="#{row.BusinessUnitPc}" id="ot64"/>
+              </af:column>
+              <af:column sortProperty="#{bindings.Infar006_1.hints.Chartfield2.name}"
+                         sortable="true"
+                         headerText="#{bindings.Infar006_1.hints.Chartfield2.label}"
+                         id="c82" visible="false" filterable="true">
+                <af:outputText value="#{row.Chartfield2}" id="ot56"/>
+              </af:column>
+              <af:column sortProperty="#{bindings.Infar006_1.hints.Chartfield3.name}"
+                         sortable="true"
+                         headerText="#{bindings.Infar006_1.hints.Chartfield3.label}"
+                         id="c3" visible="false" filterable="true">
+                <af:outputText value="#{row.Chartfield3}" id="ot100"/>
+              </af:column>
+              <af:column sortProperty="#{bindings.Infar006_1.hints.ClassFld.name}"
+                         sortable="true"
+                         headerText="#{bindings.Infar006_1.hints.ClassFld.label}"
+                         id="c17" visible="false" filterable="true">
+                <af:outputText value="#{row.ClassFld}" id="ot51"/>
+              </af:column>
+              <af:column sortProperty="#{bindings.Infar006_1.hints.CollectionDt.name}"
+                         sortable="true"
+                         headerText="#{bindings.Infar006_1.hints.CollectionDt.label}"
+                         id="c81" visible="false" filterable="true">
+                <af:outputText value="#{row.CollectionDt}" id="ot2">
+                  <af:convertDateTime pattern="#{bindings.Infar006_1.hints.CollectionDt.format}"/>
+                </af:outputText>
+                <f:facet name="filter">
+                  <af:inputDate value="#{vs.filterCriteria.CollectionDt}"
+                                id="id12"/>
+                </f:facet>
+              </af:column>
+              <af:column sortProperty="#{bindings.Infar006_1.hints.CollectionStatus.name}"
+                         sortable="true"
+                         headerText="#{bindings.Infar006_1.hints.CollectionStatus.label}"
+                         id="c53" visible="false" filterable="true">
+                <af:outputText value="#{row.CollectionStatus}" id="ot11"/>
+              </af:column>
+              <af:column sortProperty="#{bindings.Infar006_1.hints.Collector.name}"
+                         sortable="true"
+                         headerText="#{bindings.Infar006_1.hints.Collector.label}"
+                         id="c48" visible="false" filterable="true">
+                <af:outputText value="#{row.Collector}" id="ot14"/>
+              </af:column>
+              <af:column sortProperty="#{bindings.Infar006_1.hints.ContractNum.name}"
+                         sortable="true"
+                         headerText="#{bindings.Infar006_1.hints.ContractNum.label}"
+                         id="c74" visible="false" filterable="true">
+                <af:outputText value="#{row.ContractNum}" id="ot62"/>
+              </af:column>
+              <af:column sortProperty="#{bindings.Infar006_1.hints.CrAnalyst.name}"
+                         sortable="true"
+                         headerText="#{bindings.Infar006_1.hints.CrAnalyst.label}"
+                         id="c6" visible="false" filterable="true">
+                <af:outputText value="#{row.CrAnalyst}" id="ot74"/>
+              </af:column>
+              <af:column sortProperty="#{bindings.Infar006_1.hints.CreatedBy.name}"
+                         sortable="true"
+                         headerText="#{bindings.Infar006_1.hints.CreatedBy.label}"
+                         id="c72" filterable="true" visible="false">
+                <af:outputText value="#{row.CreatedBy}" id="ot55"/>
+              </af:column>
+              <af:column sortProperty="#{bindings.Infar006_1.hints.CreatedDate.name}"
+                         sortable="true"
+                         headerText="#{bindings.Infar006_1.hints.CreatedDate.label}"
+                         id="c69" filterable="true">
+                <af:outputText value="#{row.CreatedDate}" id="ot34">
+                  <af:convertDateTime pattern="#{bindings.Infar006_1.hints.CreatedDate.format}"/>
+                </af:outputText>
+                <f:facet name="filter">
+                  <af:inputDate value="#{vs.filterCriteria.CreatedDate}"
+                                id="id9"/>
+                </f:facet>
+              </af:column>
+              <af:column sortProperty="#{bindings.Infar006_1.hints.DataSourceCode.name}"
+                         sortable="true"
+                         headerText="#{bindings.Infar006_1.hints.DataSourceCode.label}"
+                         id="c1" filterable="true" visible="false">
+                <af:outputText value="#{row.DataSourceCode}" id="ot50"/>
+              </af:column>
+              <af:column sortProperty="#{bindings.Infar006_1.hints.DisputeAmount.name}"
+                         sortable="true"
+                         headerText="#{bindings.Infar006_1.hints.DisputeAmount.label}"
+                         id="c99" visible="false" filterable="true">
+                <af:outputText value="#{row.DisputeAmount}" id="ot49"/>
+              </af:column>
+              <af:column sortProperty="#{bindings.Infar006_1.hints.DisputeDate.name}"
+                         sortable="true"
+                         headerText="#{bindings.Infar006_1.hints.DisputeDate.label}"
+                         id="c27" visible="false" filterable="true">
+                <af:outputText value="#{row.DisputeDate}" id="ot30">
+                  <af:convertDateTime pattern="#{bindings.Infar006_1.hints.DisputeDate.format}"/>
+                </af:outputText>
+                <f:facet name="filter">
+                  <af:inputDate value="#{vs.filterCriteria.DisputeDate}"
+                                id="id2"/>
+                </f:facet>
+              </af:column>
+              <af:column sortProperty="#{bindings.Infar006_1.hints.DisputeStatus.name}"
+                         sortable="true"
+                         headerText="#{bindings.Infar006_1.hints.DisputeStatus.label}"
+                         id="c86" visible="false" filterable="true">
+                <af:outputText value="#{row.DisputeStatus}" id="ot67"/>
+              </af:column>
+              <af:column sortProperty="#{bindings.Infar006_1.hints.Document.name}"
+                         sortable="true"
+                         headerText="#{bindings.Infar006_1.hints.Document.label}"
+                         id="c20" visible="false" filterable="true">
+                <af:outputText value="#{row.Document}" id="ot43"/>
+              </af:column>
+              <af:column sortProperty="#{bindings.Infar006_1.hints.DueDt.name}"
+                         sortable="true"
+                         headerText="#{bindings.Infar006_1.hints.DueDt.label}"
+                         id="c54" visible="false" filterable="true">
+                <af:outputText value="#{row.DueDt}" id="ot59">
+                  <af:convertDateTime pattern="#{bindings.Infar006_1.hints.DueDt.format}"/>
+                </af:outputText>
+                <f:facet name="filter">
+                  <af:inputDate value="#{vs.filterCriteria.DueDt}" id="id6"/>
+                </f:facet>
+              </af:column>
+              <af:column sortProperty="#{bindings.Infar006_1.hints.Infar006OutboundId.name}"
+                         sortable="true"
+                         headerText="#{bindings.Infar006_1.hints.Infar006OutboundId.label}"
+                         id="c19" filterable="true" visible="false">
+                <af:outputText value="#{row.Infar006OutboundId}" id="ot60"/>
+              </af:column>
+              <af:column sortProperty="#{bindings.Infar006_1.hints.ModifiedBy.name}"
+                         sortable="true"
+                         headerText="#{bindings.Infar006_1.hints.ModifiedBy.label}"
+                         id="c2" filterable="true" visible="false">
+                <af:outputText value="#{row.ModifiedBy}" id="ot102"/>
+              </af:column>
+              <af:column sortProperty="#{bindings.Infar006_1.hints.ModifiedDate.name}"
+                         sortable="true"
+                         headerText="#{bindings.Infar006_1.hints.ModifiedDate.label}"
+                         id="c15" filterable="true">
+                <af:outputText value="#{row.ModifiedDate}" id="ot48">
+                  <af:convertDateTime pattern="#{bindings.Infar006_1.hints.ModifiedDate.format}"/>
+                </af:outputText>
+                <f:facet name="filter">
+                  <af:inputDate value="#{vs.filterCriteria.ModifiedDate}"
+                                id="id8"/>
+                </f:facet>
+              </af:column>
+              <af:column sortProperty="#{bindings.Infar006_1.hints.OperatingUnit.name}"
+                         sortable="true"
+                         headerText="#{bindings.Infar006_1.hints.OperatingUnit.label}"
+                         id="c42" visible="false" filterable="true">
+                <af:outputText value="#{row.OperatingUnit}" id="ot69"/>
+              </af:column>
+              <af:column sortProperty="#{bindings.Infar006_1.hints.PoRef.name}"
+                         sortable="true"
+                         headerText="#{bindings.Infar006_1.hints.PoRef.label}"
+                         id="c7" visible="false" filterable="true">
+                <af:outputText value="#{row.PoRef}" id="ot72"/>
+              </af:column>
+              <af:column sortProperty="#{bindings.Infar006_1.hints.ProjectId.name}"
+                         sortable="true"
+                         headerText="#{bindings.Infar006_1.hints.ProjectId.label}"
+                         id="c28" visible="false" filterable="true">
+                <af:outputText value="#{row.ProjectId}" id="ot18"/>
+              </af:column>
+              <af:column sortProperty="#{bindings.Infar006_1.hints.PymntTermsCd.name}"
+                         sortable="true"
+                         headerText="#{bindings.Infar006_1.hints.PymntTermsCd.label}"
+                         id="c102" visible="false" filterable="true">
+                <af:outputText value="#{row.PymntTermsCd}" id="ot61"/>
+              </af:column>
+              <af:column sortProperty="#{bindings.Infar006_1.hints.ResourceCategory.name}"
+                         sortable="true"
+                         headerText="#{bindings.Infar006_1.hints.ResourceCategory.label}"
+                         id="c63" visible="false" filterable="true">
+                <af:outputText value="#{row.ResourceCategory}" id="ot54"/>
+              </af:column>
+              <af:column sortProperty="#{bindings.Infar006_1.hints.ResourceSubCat.name}"
+                         sortable="true"
+                         headerText="#{bindings.Infar006_1.hints.ResourceSubCat.label}"
+                         id="c11" visible="false" filterable="true">
+                <af:outputText value="#{row.ResourceSubCat}" id="ot7"/>
+              </af:column>
+              <af:column sortProperty="#{bindings.Infar006_1.hints.ResourceType.name}"
+                         sortable="true"
+                         headerText="#{bindings.Infar006_1.hints.ResourceType.label}"
+                         id="c60" visible="false" filterable="true">
+                <af:outputText value="#{row.ResourceType}" id="ot9"/>
+              </af:column>
+              <af:column sortProperty="#{bindings.Infar006_1.hints.UserDt1.name}"
+                         sortable="true"
+                         headerText="#{bindings.Infar006_1.hints.UserDt1.label}"
+                         id="c46" visible="false" filterable="true">
+                <af:outputText value="#{row.UserDt1}" id="ot90">
+                  <af:convertDateTime pattern="#{bindings.Infar006_1.hints.UserDt1.format}"/>
+                </af:outputText>
+                <f:facet name="filter">
+                  <af:inputDate value="#{vs.filterCriteria.UserDt1}" id="id5"/>
+                </f:facet>
+              </af:column>
+              <af:column sortProperty="#{bindings.Infar006_1.hints.UserDt2.name}"
+                         sortable="true"
+                         headerText="#{bindings.Infar006_1.hints.UserDt2.label}"
+                         id="c56" visible="false" filterable="true">
+                <af:outputText value="#{row.UserDt2}" id="ot36">
+                  <af:convertDateTime pattern="#{bindings.Infar006_1.hints.UserDt2.format}"/>
+                </af:outputText>
+                <f:facet name="filter">
+                  <af:inputDate value="#{vs.filterCriteria.UserDt2}" id="id1"/>
+                </f:facet>
+              </af:column>
+              <af:column sortProperty="#{bindings.Infar006_1.hints.UserDt3.name}"
+                         sortable="true"
+                         headerText="#{bindings.Infar006_1.hints.UserDt3.label}"
+                         id="c87" visible="false" filterable="true">
+                <af:outputText value="#{row.UserDt3}" id="ot89">
+                  <af:convertDateTime pattern="#{bindings.Infar006_1.hints.UserDt3.format}"/>
+                </af:outputText>
+                <f:facet name="filter">
+                  <af:inputDate value="#{vs.filterCriteria.UserDt3}" id="id11"/>
+                </f:facet>
+              </af:column>
+              <af:column sortProperty="#{bindings.Infar006_1.hints.UserDt4.name}"
+                         sortable="true"
+                         headerText="#{bindings.Infar006_1.hints.UserDt4.label}"
+                         id="c83" visible="false" filterable="true">
+                <af:outputText value="#{row.UserDt4}" id="ot65">
+                  <af:convertDateTime pattern="#{bindings.Infar006_1.hints.UserDt4.format}"/>
+                </af:outputText>
+                <f:facet name="filter">
+                  <af:inputDate value="#{vs.filterCriteria.UserDt4}" id="id3"/>
+                </f:facet>
+              </af:column>
+              <af:column sortProperty="#{bindings.Infar006_1.hints.BillOfLading.name}"
+                         filterable="true" sortable="false"
+                         headerText="#{bindings.Infar006_1.hints.BillOfLading.label}"
+                         id="c22">
+                <af:outputText value="#{row.BillOfLading}" id="ot4"/>
+              </af:column>
+            </af:table>
+          </af:panelCollection>
+        </af:panelGroupLayout>
+      </af:group>
+    </f:facet>
+    <f:attribute name="title" value="#{pageFlowScope.InfarPageTitle}"/>
+  </af:pageTemplate>
+</jsp:root>

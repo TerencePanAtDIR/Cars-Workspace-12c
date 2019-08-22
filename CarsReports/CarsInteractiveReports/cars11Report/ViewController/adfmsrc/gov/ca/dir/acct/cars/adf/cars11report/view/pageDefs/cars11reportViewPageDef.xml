@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.64.93" id="cars11reportViewPageDef"
+                Package="gov.ca.dir.acct.cars.adf.cars11report.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="report11VO1" RangeSize="25"
+              DataControl="report11AMDataControl" id="report11VO1Iterator"/>
+    <searchRegion Binds="report11VO1Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="report11VO1Query"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="report11VO1Iterator" id="report11VO1">
+      <nodeDefinition DefName="gov.ca.dir.acct.cars.adf.cars11report.model.view.report11VO"
+                      Name="report11VO10">
+        <AttrNames>
+          <Item Value="CurrentDocument"/>
+          <Item Value="LegalName"/>
+          <Item Value="ProgramUnitCode"/>
+          <Item Value="StreetAddress"/>
+          <Item Value="City"/>
+          <Item Value="FiscalYearName"/>
+          <Item Value="IndexCode"/>
+          <Item Value="PcaCode"/>
+          <Item Value="RevenueSourceCode"/>
+          <Item Value="AgencySourceCode"/>
+          <Item Value="Fund"/>          
+          <Item Value="IssueDate"/>
+          <Item Value="Age_0_30"/>
+          <Item Value="Age_31_60"/>
+          <Item Value="Age_61_90"/>
+          <Item Value="Age_91_120"/>
+          <Item Value="Age_120"/>          
+          <Item Value="Age_0_30_SUM"/>
+          <Item Value="Age_0_30_Count"/>
+          <Item Value="Age_31_60_SUM"/>
+          <Item Value="Age_120_SUM"/>
+          <Item Value="Age_31_60_Count"/>
+          <Item Value="Age_61_90_SUM"/>
+          <Item Value="Age_61_90_Count"/>
+          <Item Value="Age_91_120_SUM"/>
+          <Item Value="Age_91_120_Count"/>
+          <Item Value="Age_120_Count"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="report11VO1Iterator" id="Age_120_SUM">
+      <AttrNames>
+        <Item Value="Age_120_SUM"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="report11VO1Iterator" id="Age_120_Count">
+      <AttrNames>
+        <Item Value="Age_120_Count"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="report11VO1Iterator" id="Age_0_30_SUM">
+      <AttrNames>
+        <Item Value="Age_0_30_SUM"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="report11VO1Iterator" id="Age_0_30_Count">
+      <AttrNames>
+        <Item Value="Age_0_30_Count"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="report11VO1Iterator" id="Age_31_60_SUM">
+      <AttrNames>
+        <Item Value="Age_31_60_SUM"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="report11VO1Iterator" id="Age_31_60_Count">
+      <AttrNames>
+        <Item Value="Age_31_60_Count"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="report11VO1Iterator" id="Age_61_90_SUM">
+      <AttrNames>
+        <Item Value="Age_61_90_SUM"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="report11VO1Iterator" id="Age_61_90_Count">
+      <AttrNames>
+        <Item Value="Age_61_90_Count"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="report11VO1Iterator" id="Age_91_120_SUM">
+      <AttrNames>
+        <Item Value="Age_91_120_SUM"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="report11VO1Iterator" id="Age_91_120_Count">
+      <AttrNames>
+        <Item Value="Age_91_120_Count"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

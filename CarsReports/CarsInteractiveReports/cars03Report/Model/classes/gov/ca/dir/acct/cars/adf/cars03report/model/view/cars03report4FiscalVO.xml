@@ -1,0 +1,520 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="cars03report4FiscalVO"
+  Version="11.1.1.64.93"
+  InheritPersonalization="true"
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  PageIterMode="Full"
+  UseGlueCode="false">
+  <DesignTime>
+    <Attr Name="_isExpertMode" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="gov.ca.dir.acct.cars.adf.cars03report.model.view.cars03report4FiscalVO_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <ViewAccessor
+    Name="ProgramUnitView1"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.cars03report.model.view.ProgramUnitView"
+    RowLevelBinds="true"/>
+  <ListBinding
+    Name="LOV_ProgramUnitCode"
+    ListVOName="ProgramUnitView1"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="ProgramUnitCode"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="ProgramUnitCode"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <SQLQuery>
+    <![CDATA[SELECT DISTINCT E.AR_ROOT_DOCUMENT,
+       NVL(O.LEGAL_NAME, P.FIRST_NAME || ' ' || P.MIDDLE_NAME || ' ' || P.LAST_NAME) AS EMPLOYER_NAME,
+       FUNC_GET_ISSUE_DATE(E.AR_ROOT_DOCUMENT) ISSUE_DATE,
+       FUNC_GET_FISCAL_YEAR(E.AR_ROOT_DOCUMENT) FISCAL_YEAR,    
+       CASE
+       WHEN ET.EVENT_TYPE_CODE IN ('110', '145') THEN 'INCREASE'
+       WHEN ET.EVENT_TYPE_CODE IN ('115', '150', '155', '165') THEN 'DECREASE'
+       ELSE 'DECISION' END AMEND_TYPE,
+       trunc(A.ADJUSTMENT_DATE) ADJUSTMENT_DATE,
+       CASE 
+       WHEN ET.EVENT_TYPE_CODE IN('110', '115') THEN DECODE( D.GL_ACCOUNT_NUMBER, '1313', D.AMOUNT, C.AMOUNT * -1 )
+       ELSE  DECODE( D.GL_ACCOUNT_NUMBER, '1313', D.AMOUNT, C.AMOUNT * -1 ) END ADJUSTMENT_AMOUNT, 
+       AC.INDEX_CODE,
+       FA.PCA_CODE,
+       AC.REVENUE_SOURCE_CODE,
+       AC.AGENCY_SOURCE_CODE,
+       F.FUND,
+       ET.PROGRAM_UNIT_CODE,
+       I006O.GROUP_ID_STG FISCAL_GROUP_ID,
+       I006O.ACCOUNTING_DT ACCOUNTING_DATE
+  FROM ADJUSTMENT A
+      INNER JOIN accounting_entry AE ON AE.ACCTG_TRANSACTION_ID = A.ACCTG_TRANSACTION_ID      
+      LEFT OUTER JOIN DEBIT D ON AE.ACCTG_ENTRY_ID = D.ACCTG_ENTRY_ID
+      LEFT OUTER JOIN CREDIT C ON AE.ACCTG_ENTRY_ID = C.ACCTG_ENTRY_ID
+      LEFT JOIN Infar006_Outbound I006O ON I006O.ACCTG_ENTRY_ID = AE.ACCTG_ENTRY_ID
+      LEFT JOIN BATCH B ON B.BATCH_ID =  I006O.BATCH_ID       
+      INNER JOIN accounting_code AC ON AC.ACCOUNTING_CODE_ID = AE.ACCOUNTING_CODE_ID
+      INNER JOIN FUND_ALLOCATION FA ON FA.FUND_ALLOCATION_ID = AC.FUND_ALLOCATION_ID
+      INNER JOIN FUND F ON F.FUND_ID = FA.FUND_TO_ID
+      INNER JOIN acctg_transact_event_assoc ATES ON ATES.ACCTG_TRANSACTION_ID = A.ACCTG_TRANSACTION_ID
+      INNER JOIN EVENT E ON E.EVENT_ID = ATES.EVENT_ID
+      INNER JOIN EVENT_TYPE ET ON E.EVENT_TYPE_ID = ET.EVENT_TYPE_ID
+      INNER JOIN participant_role PR ON PR.EVENT_ID = E.EVENT_ID
+      LEFT JOIN organization O ON O.PARTY_ID = PR.PARTY_ID
+      LEFT JOIN PERSON P ON P.PARTY_ID = PR.PARTY_ID      
+ WHERE PR.PARTICIPANT_ROLE_TYPE_CODE = 'RES_PARTY' AND ET.EVENT_TYPE_CODE IN ('110', '115', '145', '150', '155', '165')
+ORDER BY ADJUSTMENT_DATE DESC]]>
+  </SQLQuery>
+  <ViewAttribute
+    Name="ArRootDocument"
+    IsUpdateable="false"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Precision="255"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="AR_ROOT_DOCUMENT"
+    Expression="AR_ROOT_DOCUMENT"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="25"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.cars03report.model.view.cars03report4FiscalVO.ArRootDocument_LABEL"/>
+        <TOOLTIP
+          ResId="gov.ca.dir.acct.cars.adf.cars03report.model.view.cars03report4FiscalVO.ArRootDocument_TOOLTIP"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="EmployerName"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="250"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="EMPLOYER_NAME"
+    Expression="EMPLOYER_NAME"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="250"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.cars03report.model.view.cars03report4FiscalVO.EmployerName_LABEL"/>
+        <TOOLTIP
+          ResId="gov.ca.dir.acct.cars.adf.cars03report.model.view.cars03report4FiscalVO.EmployerName_TOOLTIP"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="IssueDate"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    AliasName="ISSUE_DATE"
+    Expression="ISSUE_DATE"
+    SQLType="DATE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.cars03report.model.view.cars03report4FiscalVO.IssueDate_LABEL"/>
+        <TOOLTIP
+          ResId="gov.ca.dir.acct.cars.adf.cars03report.model.view.cars03report4FiscalVO.IssueDate_TOOLTIP"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="FiscalYear"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="4000"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="FISCAL_YEAR"
+    Expression="FISCAL_YEAR"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="4000"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.cars03report.model.view.cars03report4FiscalVO.FiscalYear_LABEL"/>
+        <TOOLTIP
+          ResId="gov.ca.dir.acct.cars.adf.cars03report.model.view.cars03report4FiscalVO.FiscalYear_TOOLTIP"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="AmendType"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="8"
+    Type="java.lang.String"
+    ColumnType="CHAR"
+    AliasName="AMEND_TYPE"
+    Expression="AMEND_TYPE"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="8"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.cars03report.model.view.cars03report4FiscalVO.AmendType_LABEL"/>
+        <TOOLTIP
+          ResId="gov.ca.dir.acct.cars.adf.cars03report.model.view.cars03report4FiscalVO.AmendType_TOOLTIP"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="AdjustmentDate"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    AliasName="ADJUSTMENT_DATE"
+    Expression="ADJUSTMENT_DATE"
+    SQLType="DATE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.cars03report.model.view.cars03report4FiscalVO.AdjustmentDate_LABEL"/>
+        <TOOLTIP
+          ResId="gov.ca.dir.acct.cars.adf.cars03report.model.view.cars03report4FiscalVO.AdjustmentDate_TOOLTIP"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="AdjustmentAmount"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="ADJUSTMENT_AMOUNT"
+    Expression="ADJUSTMENT_AMOUNT"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <FMT_FORMATTER
+          ResId="gov.ca.dir.acct.cars.adf.cars03report.model.view.cars03report4FiscalVO.AdjustmentAmount_FMT_FORMATTER"/>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.cars03report.model.view.cars03report4FiscalVO.AdjustmentAmount_LABEL"/>
+        <TOOLTIP
+          ResId="gov.ca.dir.acct.cars.adf.cars03report.model.view.cars03report4FiscalVO.AdjustmentAmount_TOOLTIP"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="IndexCode"
+    IsUpdateable="false"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Precision="4"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="INDEX_CODE"
+    Expression="INDEX_CODE"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="4"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.cars03report.model.view.cars03report4FiscalVO.IndexCode_LABEL"/>
+        <TOOLTIP
+          ResId="gov.ca.dir.acct.cars.adf.cars03report.model.view.cars03report4FiscalVO.IndexCode_TOOLTIP"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="PcaCode"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="5"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="PCA_CODE"
+    Expression="PCA_CODE"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="5"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.cars03report.model.view.cars03report4FiscalVO.PcaCode_LABEL"/>
+        <TOOLTIP
+          ResId="gov.ca.dir.acct.cars.adf.cars03report.model.view.cars03report4FiscalVO.PcaCode_TOOLTIP"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="RevenueSourceCode"
+    IsUpdateable="false"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Precision="10"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="REVENUE_SOURCE_CODE"
+    Expression="REVENUE_SOURCE_CODE"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="10"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.cars03report.model.view.cars03report4FiscalVO.RevenueSourceCode_LABEL"/>
+        <TOOLTIP
+          ResId="gov.ca.dir.acct.cars.adf.cars03report.model.view.cars03report4FiscalVO.RevenueSourceCode_TOOLTIP"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="AgencySourceCode"
+    IsUpdateable="false"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Precision="3"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="AGENCY_SOURCE_CODE"
+    Expression="AGENCY_SOURCE_CODE"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="3"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.cars03report.model.view.cars03report4FiscalVO.AgencySourceCode_LABEL"/>
+        <TOOLTIP
+          ResId="gov.ca.dir.acct.cars.adf.cars03report.model.view.cars03report4FiscalVO.AgencySourceCode_TOOLTIP"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Fund"
+    IsUpdateable="false"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Precision="9"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="FUND"
+    Expression="FUND"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="9"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.cars03report.model.view.cars03report4FiscalVO.Fund_LABEL"/>
+        <TOOLTIP
+          ResId="gov.ca.dir.acct.cars.adf.cars03report.model.view.cars03report4FiscalVO.Fund_TOOLTIP"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ProgramUnitCode"
+    IsUpdateable="false"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Precision="25"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="PROGRAM_UNIT_CODE"
+    Expression="PROGRAM_UNIT_CODE"
+    SQLType="VARCHAR"
+    LOVName="LOV_ProgramUnitCode">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="25"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.cars03report.model.view.cars03report4FiscalVO.ProgramUnitCode_LABEL"/>
+        <TOOLTIP
+          ResId="gov.ca.dir.acct.cars.adf.cars03report.model.view.cars03report4FiscalVO.ProgramUnitCode_TOOLTIP"/>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="FiscalGroupId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Precision="15"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="FISCAL_GROUP_ID"
+    Expression="FISCAL_GROUP_ID"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.cars03report.model.view.cars03report4FiscalVO.FiscalGroupId_LABEL"/>
+        <TOOLTIP
+          ResId="gov.ca.dir.acct.cars.adf.cars03report.model.view.cars03report4FiscalVO.FiscalGroupId_TOOLTIP"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="AccountingDate"
+    IsUpdateable="false"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    AliasName="ACCOUNTING_DATE"
+    Expression="ACCOUNTING_DATE"
+    SQLType="DATE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.cars03report.model.view.cars03report4FiscalVO.AccountingDate_LABEL"/>
+        <TOOLTIP
+          ResId="gov.ca.dir.acct.cars.adf.cars03report.model.view.cars03report4FiscalVO.AccountingDate_TOOLTIP"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="AdjustCount"
+    IsUpdateable="false"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="VIEW_ATTR"
+    SQLType="NUMERIC">
+    <TransientExpression><![CDATA[adf.object.findRowSetForRow("").count("ArRootDocument")]]></TransientExpression>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.cars03report.model.view.cars03report4FiscalVO.AdjustCount_LABEL"/>
+        <TOOLTIP
+          ResId="gov.ca.dir.acct.cars.adf.cars03report.model.view.cars03report4FiscalVO.AdjustCount_TOOLTIP"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="AdjustAmtTotal"
+    IsUpdateable="false"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="VIEW_ATTR"
+    SQLType="NUMERIC">
+    <TransientExpression><![CDATA[adf.object.findRowSetForRow("").sum("AdjustmentAmount")]]></TransientExpression>
+    <Properties>
+      <SchemaBasedProperties>
+        <FMT_FORMATTER
+          ResId="gov.ca.dir.acct.cars.adf.cars03report.model.view.cars03report4FiscalVO.AdjustAmtTotal_FMT_FORMATTER"/>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.cars03report.model.view.cars03report4FiscalVO.AdjustAmtTotal_LABEL"/>
+        <TOOLTIP
+          ResId="gov.ca.dir.acct.cars.adf.cars03report.model.view.cars03report4FiscalVO.AdjustAmtTotal_TOOLTIP"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewCriteria
+    Name="cars03report4FiscalVOCriteria"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.cars03report.model.view.cars03report4FiscalVO"
+    Conjunction="AND">
+    <Properties>
+      <CustomProperties>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="vcrow16"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="AdjustmentDate"
+        ViewAttribute="AdjustmentDate"
+        Operator="BETWEEN"
+        Conjunction="AND"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="ProgramUnitCode"
+        ViewAttribute="ProgramUnitCode"
+        Operator="="
+        Conjunction="AND"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="gov.ca.dir.acct.cars.adf.cars03report.model.ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

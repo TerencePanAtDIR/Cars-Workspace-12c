@@ -1,0 +1,19 @@
+Entity :Infar001Outbound
+|__Create Attribute for column: ITEM
+|__Create Attribute for column: ITEM_LINE
+|__Create Attribute for column: PAY_AMT
+|__Remove Key Constraint: SysC00160510
+|__Remove Key Constraint: SysC00160509
+|__Remove Key Constraint: SysC00160508
+|__Remove Key Constraint: SysC00160507
+|__Remove Key Constraint: SysC00160506
+|__Remove Key Constraint: SysC00160505
+|__Remove Key Constraint: SysC00160504
+|__Create Key for Constraint: SYS_C00163441
+|__Create Key for Constraint: SYS_C00163440
+|__Create Key for Constraint: SYS_C00163439
+|__Create Key for Constraint: SYS_C00163438
+|__Create Key for Constraint: SYS_C00163437
+|__Create Key for Constraint: SYS_C00163436
+|__Create Key for Constraint: SYS_C00163435
+

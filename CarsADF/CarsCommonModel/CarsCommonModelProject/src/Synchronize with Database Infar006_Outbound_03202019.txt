@@ -1,0 +1,52 @@
+Entity :Infar006Outbound
+|__Remove Key Constraint: SysC00160415
+|__Remove Key Constraint: SysC00160414
+|__Remove Key Constraint: SysC00160413
+|__Remove Key Constraint: SysC00160412
+|__Remove Key Constraint: SysC00160411
+|__Remove Key Constraint: SysC00160410
+|__Remove Key Constraint: SysC00160409
+|__Remove Key Constraint: SysC00160408
+|__Remove Key Constraint: SysC00160407
+|__Remove Key Constraint: SysC00160406
+|__Remove Key Constraint: SysC00160405
+|__Remove Key Constraint: SysC00160404
+|__Remove Key Constraint: SysC00160403
+|__Remove Key Constraint: SysC00160402
+|__Remove Key Constraint: SysC00160401
+|__Remove Key Constraint: SysC00160400
+|__Remove Key Constraint: SysC00160399
+|__Remove Key Constraint: SysC00160398
+|__Remove Key Constraint: SysC00160397
+|__Remove Key Constraint: SysC00160396
+|__Remove Key Constraint: SysC00160395
+|__Remove Key Constraint: SysC00160394
+|__Remove Key Constraint: SysC00160393
+|__Remove Key Constraint: SysC00160392
+|__Remove Key Constraint: SysC00160391
+|__Create Key for Constraint: SYS_C00163434
+|__Create Key for Constraint: SYS_C00163433
+|__Create Key for Constraint: SYS_C00163432
+|__Create Key for Constraint: SYS_C00163431
+|__Create Key for Constraint: SYS_C00163430
+|__Create Key for Constraint: SYS_C00163429
+|__Create Key for Constraint: SYS_C00163428
+|__Create Key for Constraint: SYS_C00163427
+|__Create Key for Constraint: SYS_C00163426
+|__Create Key for Constraint: SYS_C00163425
+|__Create Key for Constraint: SYS_C00163424
+|__Create Key for Constraint: SYS_C00163423
+|__Create Key for Constraint: SYS_C00163422
+|__Create Key for Constraint: SYS_C00163421
+|__Create Key for Constraint: SYS_C00163420
+|__Create Key for Constraint: SYS_C00163419
+|__Create Key for Constraint: SYS_C00163418
+|__Create Key for Constraint: SYS_C00163417
+|__Create Key for Constraint: SYS_C00163416
+|__Create Key for Constraint: SYS_C00163415
+|__Create Key for Constraint: SYS_C00163414
+|__Create Key for Constraint: SYS_C00163413
+|__Create Key for Constraint: SYS_C00163412
+|__Create Key for Constraint: SYS_C00163411
+|__Create Key for Constraint: SYS_C00163410
+

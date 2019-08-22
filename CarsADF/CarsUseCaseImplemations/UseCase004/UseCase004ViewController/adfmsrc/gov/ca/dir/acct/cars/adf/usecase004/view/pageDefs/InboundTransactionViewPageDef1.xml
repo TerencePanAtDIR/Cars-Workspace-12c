@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.64.93" id="InboundTransactionViewPageDef1"
+                Package="gov.ca.dir.acct.cars.adf.usecase004.view.pageDefs">
+  <parameters/>
+  <executables>
+    <iterator Binds="RequestErrorLogView1" RangeSize="25"
+              DataControl="InboundTransactionMngrAMDataControl"
+              id="RequestErrorLogView1Iterator">
+      <sortCriteria>
+        <sort attribute="CreatedDate" ascending="false"/>
+      </sortCriteria>
+    </iterator>
+    <searchRegion Binds="RequestErrorLogView1Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="RequestErrorLogView1Query"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="RequestErrorLogView1Iterator" id="RequestErrorLogView1">
+      <nodeDefinition DefName="gov.ca.dir.acct.cars.adf.usecase004.model.view.RequestErrorLogView"
+                      Name="RequestErrorLogView10">
+        <AttrNames>
+          <Item Value="ComponentInstanceId"/>
+          <Item Value="ComponentName"/>
+          <Item Value="CompositeInstanceId"/>
+          <Item Value="ConversationId"/>
+          <Item Value="CreatedBy"/>
+          <Item Value="CreatedDate"/>
+          <Item Value="DataSourceCode"/>
+          <Item Value="Ecid"/>
+          <Item Value="ErrorCode"/>
+          <Item Value="ErrorDetail"/>
+          <Item Value="ErrorLevel"/>
+          <Item Value="ErrorLogId"/>
+          <Item Value="ErrorMessage"/>
+          <Item Value="FaultCode"/>
+          <Item Value="FaultLocation"/>
+          <Item Value="ModifiedBy"/>
+          <Item Value="ModifiedDate"/>
+          <Item Value="RequestId"/>
+          <Item Value="Severity"/>
+          <Item Value="EnvironmentName"/>
+          <Item Value="PacketId"/>
+          <Item Value="PacketTransport"/>
+          <Item Value="PayloadName"/>
+          <Item Value="ProgramUnitCode"/>
+          <Item Value="SchemaName"/>
+          <Item Value="SchemaVersionNumber"/>
+          <Item Value="Status"/>
+          <Item Value="SubmitDate"/>
+          <Item Value="SubmittedBy"/>
+          <Item Value="RequestId1"/>
+          <Item Value="IsReviewed" Binds="IsReviewed"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction"
+            DataControl="InboundTransactionMngrAMDataControl"/>
+    <button IterBinding="RequestErrorLogView1Iterator" id="IsReviewed"
+            DTSupportsMRU="false" StaticList="true">
+      <AttrNames>
+        <Item Value="IsReviewed"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="Y"/>
+        <Item Value="N"/>
+      </ValueList>
+    </button>
+    <action id="Rollback" RequiresUpdateModel="false"
+            Action="rollbackTransaction"
+            DataControl="InboundTransactionMngrAMDataControl"
+            InstanceName="InboundTransactionMngrAMDataControl.RequestErrorLogView1"/>
+    <methodAction id="setCriteriaParams"
+                  InstanceName="InboundTransactionMngrAMDataControl.dataProvider"
+                  DataControl="InboundTransactionMngrAMDataControl"
+                  RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="setCriteriaParams" IsViewObjectMethod="false">
+      <NamedData NDName="varStatus"
+                 NDValue="${bindings.setCriteriaParams_varStatus}" NDType="java.lang.String"/>
+      <NamedData NDName="varIsReviewed"
+                 NDValue="${bindings.setCriteriaParams_varIsReviewed}"
+                 NDType="java.lang.String"/>
+    </methodAction>
+  </bindings>
+</pageDefinition>

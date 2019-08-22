@@ -1,0 +1,818 @@
+<schema xmlns="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="/gov/ca/dir/acct/cars/adf/service/appmodule/common/types/"
+     xmlns:tns="/gov/ca/dir/acct/cars/adf/service/appmodule/common/types/" xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/"
+     xmlns:ns1="http://xmlns.oracle.com/adf/svc/types/">
+    <import namespace="/gov/ca/dir/acct/cars/adf/service/view/common/" schemaLocation="../../../view/common/GlAccountAssocRuleLookupViewSDO.xsd"/>
+    <import namespace="/gov/ca/dir/acct/cars/adf/service/view/common/" schemaLocation="../../../view/common/AcctgTransactEventAssocViewSDO.xsd"/>
+    <import namespace="/gov/ca/dir/acct/cars/adf/service/view/common/" schemaLocation="../../../view/common/PcaCodeViewSDO.xsd"/>
+    <import namespace="/gov/ca/dir/acct/cars/adf/service/view/common/" schemaLocation="../../../view/common/FundViewSDO.xsd"/>
+    <import namespace="/gov/ca/dir/acct/cars/adf/service/view/common/" schemaLocation="../../../view/common/FiscalPeriodLookupViewSDO.xsd"/>
+    <import namespace="/gov/ca/dir/acct/cars/adf/service/view/common/" schemaLocation="../../../view/common/PartyAssociationTypeViewSDO.xsd"/>
+    <import namespace="/gov/ca/dir/acct/cars/adf/service/view/common/" schemaLocation="../../../view/common/AccountingReceivableStatusViewSDO.xsd"/>
+    <import namespace="/gov/ca/dir/acct/cars/adf/service/view/common/" schemaLocation="../../../view/common/BillTypeViewSDO.xsd"/>
+    <import namespace="/gov/ca/dir/acct/cars/adf/service/view/common/" schemaLocation="../../../view/common/EventTypeAssocRulesLookupSDO.xsd"/>
+    <import namespace="/gov/ca/dir/acct/cars/adf/service/view/common/" schemaLocation="../../../view/common/OtherTransactionTypeViewSDO.xsd"/>
+    <import namespace="/gov/ca/dir/acct/cars/adf/service/view/common/" schemaLocation="../../../view/common/AcctgEntryEventAssocRuleViewSDO.xsd"/>
+    <import namespace="/gov/ca/dir/acct/cars/adf/service/view/common/" schemaLocation="../../../view/common/ReferenceCodeListLookupViewSDO.xsd"/>
+    <import namespace="/gov/ca/dir/acct/cars/adf/service/view/common/" schemaLocation="../../../view/common/ProgramUnitViewSDO.xsd"/>
+    <import namespace="/gov/ca/dir/acct/cars/adf/service/view/common/" schemaLocation="../../../view/common/AccountingEntryViewSDO.xsd"/>
+    <import namespace="/gov/ca/dir/acct/cars/adf/service/view/common/" schemaLocation="../../../view/common/GlAccountTypeViewSDO.xsd"/>
+    <import namespace="/gov/ca/dir/acct/cars/adf/service/view/common/" schemaLocation="../../../view/common/NoteTypeViewSDO.xsd"/>
+    <import namespace="/gov/ca/dir/acct/cars/adf/service/view/common/" schemaLocation="../../../view/common/AddressViewSDO.xsd"/>
+    <import namespace="http://xmlns.oracle.com/adf/svc/types/" schemaLocation="classpath:/META-INF/wsdl/BC4JService.xsd"/>
+    <import namespace="/gov/ca/dir/acct/cars/adf/service/view/common/" schemaLocation="../../../view/common/ParticipantRoleTypeViewSDO.xsd"/>
+    <import namespace="/gov/ca/dir/acct/cars/adf/service/view/common/" schemaLocation="../../../view/common/AgencySourceViewSDO.xsd"/>
+    <import namespace="/gov/ca/dir/acct/cars/adf/service/view/common/" schemaLocation="../../../view/common/FiscalPeriodViewSDO.xsd"/>
+    <import namespace="/gov/ca/dir/acct/cars/adf/service/view/common/" schemaLocation="../../../view/common/ParticipantRoleViewSDO.xsd"/>
+    <import namespace="/gov/ca/dir/acct/cars/adf/service/view/common/" schemaLocation="../../../view/common/RevenueSourceCodeViewSDO.xsd"/>
+    <import namespace="/gov/ca/dir/acct/cars/adf/service/view/common/" schemaLocation="../../../view/common/IndexCodeViewSDO.xsd"/>
+    <import namespace="/gov/ca/dir/acct/cars/adf/service/view/common/" schemaLocation="../../../view/common/EventTypeLookupViewSDO.xsd"/>
+    <import namespace="/gov/ca/dir/acct/cars/adf/service/view/common/" schemaLocation="../../../view/common/DebitRuleLookupViewSDO.xsd"/>
+    <import namespace="/gov/ca/dir/acct/cars/adf/service/view/common/" schemaLocation="../../../view/common/AdjustmentTypeViewSDO.xsd"/>
+    <import namespace="/gov/ca/dir/acct/cars/adf/service/view/common/" schemaLocation="../../../view/common/EventTypeViewSDO.xsd"/>
+    <import namespace="/gov/ca/dir/acct/cars/adf/service/view/common/" schemaLocation="../../../view/common/EventTypeAssociationRuleViewSDO.xsd"/>
+    <import namespace="/gov/ca/dir/acct/cars/adf/service/view/common/" schemaLocation="../../../view/common/CreditRuleLookupViewSDO.xsd"/>
+    <import namespace="/gov/ca/dir/acct/cars/adf/service/view/common/" schemaLocation="../../../view/common/ContactMethodTypeViewSDO.xsd"/>
+    <import namespace="/gov/ca/dir/acct/cars/adf/service/view/common/" schemaLocation="../../../view/common/AccountingEntryTypeViewSDO.xsd"/>
+    <import namespace="/gov/ca/dir/acct/cars/adf/service/view/common/" schemaLocation="../../../view/common/ArStatusTypeViewSDO.xsd"/>
+    <import namespace="/gov/ca/dir/acct/cars/adf/service/view/common/" schemaLocation="../../../view/common/AccountingCodeLookupViewSDO.xsd"/>
+    <import namespace="/gov/ca/dir/acct/cars/adf/service/view/common/" schemaLocation="../../../view/common/ReceiptTypeViewSDO.xsd"/>
+    <import namespace="/gov/ca/dir/acct/cars/adf/service/view/common/" schemaLocation="../../../view/common/FundAllocationViewSDO.xsd"/>
+    <import namespace="/gov/ca/dir/acct/cars/adf/service/view/common/" schemaLocation="../../../view/common/AccountingTransactionViewSDO.xsd"/>
+    <import namespace="/gov/ca/dir/acct/cars/adf/service/view/common/" schemaLocation="../../../view/common/AccountingCodeViewSDO.xsd"/>
+    <import namespace="/gov/ca/dir/acct/cars/adf/service/view/common/" schemaLocation="../../../view/common/EventLookupViewSDO.xsd"/>
+    <import namespace="/gov/ca/dir/acct/cars/adf/service/view/common/" schemaLocation="../../../view/common/GlAccountViewSDO.xsd"/>
+    <import namespace="/gov/ca/dir/acct/cars/adf/service/view/common/" schemaLocation="../../../view/common/ContactMethodViewSDO.xsd"/>
+    <import namespace="/gov/ca/dir/acct/cars/adf/service/view/common/" schemaLocation="../../../view/common/GlAccountAssociationRuleViewSDO.xsd"/>
+    <import namespace="/gov/ca/dir/acct/cars/adf/service/view/common/" schemaLocation="../../../view/common/TestViewSDO.xsd"/>
+    <element name="findAccountingCode">
+        <complexType>
+            <sequence>
+                <element name="findCriteria" type="ns1:FindCriteria"/>
+                <element name="findControl" type="ns1:FindControl"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findAccountingCodeResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="ns0:AccountingCodeViewSDO" minOccurs="0" maxOccurs="unbounded"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findAccountingReceivableStatus">
+        <complexType>
+            <sequence>
+                <element name="findCriteria" type="ns1:FindCriteria"/>
+                <element name="findControl" type="ns1:FindControl"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findAccountingReceivableStatusResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="ns0:AccountingReceivableStatusViewSDO" minOccurs="0" maxOccurs="unbounded"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findAcctgEntryEventAssocRule">
+        <complexType>
+            <sequence>
+                <element name="findCriteria" type="ns1:FindCriteria"/>
+                <element name="findControl" type="ns1:FindControl"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findAcctgEntryEventAssocRuleResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="ns0:AcctgEntryEventAssocRuleViewSDO" minOccurs="0" maxOccurs="unbounded"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findAdjustmentType">
+        <complexType>
+            <sequence>
+                <element name="findCriteria" type="ns1:FindCriteria"/>
+                <element name="findControl" type="ns1:FindControl"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findAdjustmentTypeResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="ns0:AdjustmentTypeViewSDO" minOccurs="0" maxOccurs="unbounded"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findAgencySource">
+        <complexType>
+            <sequence>
+                <element name="findCriteria" type="ns1:FindCriteria"/>
+                <element name="findControl" type="ns1:FindControl"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findAgencySourceResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="ns0:AgencySourceViewSDO" minOccurs="0" maxOccurs="unbounded"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findArStatusType">
+        <complexType>
+            <sequence>
+                <element name="findCriteria" type="ns1:FindCriteria"/>
+                <element name="findControl" type="ns1:FindControl"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findArStatusTypeResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="ns0:ArStatusTypeViewSDO" minOccurs="0" maxOccurs="unbounded"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findBillType">
+        <complexType>
+            <sequence>
+                <element name="findCriteria" type="ns1:FindCriteria"/>
+                <element name="findControl" type="ns1:FindControl"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findBillTypeResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="ns0:BillTypeViewSDO" minOccurs="0" maxOccurs="unbounded"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findContactMethodType">
+        <complexType>
+            <sequence>
+                <element name="findCriteria" type="ns1:FindCriteria"/>
+                <element name="findControl" type="ns1:FindControl"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findContactMethodTypeResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="ns0:ContactMethodTypeViewSDO" minOccurs="0" maxOccurs="unbounded"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findEventTypeAssociationRule">
+        <complexType>
+            <sequence>
+                <element name="findCriteria" type="ns1:FindCriteria"/>
+                <element name="findControl" type="ns1:FindControl"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findEventTypeAssociationRuleResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="ns0:EventTypeAssociationRuleViewSDO" minOccurs="0" maxOccurs="unbounded"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findEventType">
+        <complexType>
+            <sequence>
+                <element name="findCriteria" type="ns1:FindCriteria"/>
+                <element name="findControl" type="ns1:FindControl"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findEventTypeResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="ns0:EventTypeViewSDO" minOccurs="0" maxOccurs="unbounded"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findFiscalPeriod">
+        <complexType>
+            <sequence>
+                <element name="findCriteria" type="ns1:FindCriteria"/>
+                <element name="findControl" type="ns1:FindControl"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findFiscalPeriodResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="ns0:FiscalPeriodViewSDO" minOccurs="0" maxOccurs="unbounded"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findFundAllocation">
+        <complexType>
+            <sequence>
+                <element name="findCriteria" type="ns1:FindCriteria"/>
+                <element name="findControl" type="ns1:FindControl"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findFundAllocationResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="ns0:FundAllocationViewSDO" minOccurs="0" maxOccurs="unbounded"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findFund">
+        <complexType>
+            <sequence>
+                <element name="findCriteria" type="ns1:FindCriteria"/>
+                <element name="findControl" type="ns1:FindControl"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findFundResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="ns0:FundViewSDO" minOccurs="0" maxOccurs="unbounded"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findGlAccountAssociationRule">
+        <complexType>
+            <sequence>
+                <element name="findCriteria" type="ns1:FindCriteria"/>
+                <element name="findControl" type="ns1:FindControl"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findGlAccountAssociationRuleResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="ns0:GlAccountAssociationRuleViewSDO" minOccurs="0" maxOccurs="unbounded"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findGlAccountType">
+        <complexType>
+            <sequence>
+                <element name="findCriteria" type="ns1:FindCriteria"/>
+                <element name="findControl" type="ns1:FindControl"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findGlAccountTypeResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="ns0:GlAccountTypeViewSDO" minOccurs="0" maxOccurs="unbounded"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findGlAccount">
+        <complexType>
+            <sequence>
+                <element name="findCriteria" type="ns1:FindCriteria"/>
+                <element name="findControl" type="ns1:FindControl"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findGlAccountResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="ns0:GlAccountViewSDO" minOccurs="0" maxOccurs="unbounded"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findIndexCode">
+        <complexType>
+            <sequence>
+                <element name="findCriteria" type="ns1:FindCriteria"/>
+                <element name="findControl" type="ns1:FindControl"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findIndexCodeResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="ns0:IndexCodeViewSDO" minOccurs="0" maxOccurs="unbounded"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findOtherTransactionType">
+        <complexType>
+            <sequence>
+                <element name="findCriteria" type="ns1:FindCriteria"/>
+                <element name="findControl" type="ns1:FindControl"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findOtherTransactionTypeResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="ns0:OtherTransactionTypeViewSDO" minOccurs="0" maxOccurs="unbounded"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findParticipantRoleType">
+        <complexType>
+            <sequence>
+                <element name="findCriteria" type="ns1:FindCriteria"/>
+                <element name="findControl" type="ns1:FindControl"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findParticipantRoleTypeResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="ns0:ParticipantRoleTypeViewSDO" minOccurs="0" maxOccurs="unbounded"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findPartyAssociationType">
+        <complexType>
+            <sequence>
+                <element name="findCriteria" type="ns1:FindCriteria"/>
+                <element name="findControl" type="ns1:FindControl"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findPartyAssociationTypeResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="ns0:PartyAssociationTypeViewSDO" minOccurs="0" maxOccurs="unbounded"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findPcaCode">
+        <complexType>
+            <sequence>
+                <element name="findCriteria" type="ns1:FindCriteria"/>
+                <element name="findControl" type="ns1:FindControl"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findPcaCodeResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="ns0:PcaCodeViewSDO" minOccurs="0" maxOccurs="unbounded"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findProgramUnit">
+        <complexType>
+            <sequence>
+                <element name="findCriteria" type="ns1:FindCriteria"/>
+                <element name="findControl" type="ns1:FindControl"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findProgramUnitResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="ns0:ProgramUnitViewSDO" minOccurs="0" maxOccurs="unbounded"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findReceiptType">
+        <complexType>
+            <sequence>
+                <element name="findCriteria" type="ns1:FindCriteria"/>
+                <element name="findControl" type="ns1:FindControl"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findReceiptTypeResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="ns0:ReceiptTypeViewSDO" minOccurs="0" maxOccurs="unbounded"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findRevenueSourceCode">
+        <complexType>
+            <sequence>
+                <element name="findCriteria" type="ns1:FindCriteria"/>
+                <element name="findControl" type="ns1:FindControl"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findRevenueSourceCodeResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="ns0:RevenueSourceCodeViewSDO" minOccurs="0" maxOccurs="unbounded"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findTestView1TestViewCriteria">
+        <complexType>
+            <sequence>
+                <element name="findCriteria" type="ns1:FindCriteria"/>
+                <element name="varIndexCode" type="string"/>
+                <element name="findControl" type="ns1:FindControl"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findTestView1TestViewCriteriaResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="ns0:TestViewSDO" minOccurs="0" maxOccurs="unbounded"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findEventTypeWithParams">
+        <complexType>
+            <sequence>
+                <element name="findCriteria" type="ns1:FindCriteria"/>
+                <element name="varEventTypeCode" type="string"/>
+                <element name="varProgramUnitCode" type="string"/>
+                <element name="findControl" type="ns1:FindControl"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findEventTypeWithParamsResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="ns0:EventTypeLookupViewSDO" minOccurs="0" maxOccurs="unbounded"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findEventTypeAssocRuleWithParams">
+        <complexType>
+            <sequence>
+                <element name="findCriteria" type="ns1:FindCriteria"/>
+                <element name="varFromEventType" type="string"/>
+                <element name="varToEventType" type="string"/>
+                <element name="findControl" type="ns1:FindControl"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findEventTypeAssocRuleWithParamsResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="ns0:EventTypeAssocRulesLookupSDO" minOccurs="0" maxOccurs="unbounded"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findFiscalPeriodWithParams">
+        <complexType>
+            <sequence>
+                <element name="findCriteria" type="ns1:FindCriteria"/>
+                <element name="varFiscalDate" type="ns1:date-Date"/>
+                <element name="findControl" type="ns1:FindControl"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findFiscalPeriodWithParamsResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="ns0:FiscalPeriodLookupViewSDO" minOccurs="0" maxOccurs="unbounded"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findCreditRuleWithParams">
+        <complexType>
+            <sequence>
+                <element name="findCriteria" type="ns1:FindCriteria"/>
+                <element name="varAcctgEntryTypeId" type="int"/>
+                <element name="findControl" type="ns1:FindControl"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findCreditRuleWithParamsResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="ns0:CreditRuleLookupViewSDO" minOccurs="0" maxOccurs="unbounded"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findGlAccountAssocRuleWithParams">
+        <complexType>
+            <sequence>
+                <element name="findCriteria" type="ns1:FindCriteria"/>
+                <element name="varAcctgEntryTypeId" type="string"/>
+                <element name="findControl" type="ns1:FindControl"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findGlAccountAssocRuleWithParamsResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="ns0:GlAccountAssocRuleLookupViewSDO" minOccurs="0" maxOccurs="unbounded"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findDebitRuleWithParams">
+        <complexType>
+            <sequence>
+                <element name="findCriteria" type="ns1:FindCriteria"/>
+                <element name="varAcctgEntryTypeId" type="int"/>
+                <element name="findControl" type="ns1:FindControl"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findDebitRuleWithParamsResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="ns0:DebitRuleLookupViewSDO" minOccurs="0" maxOccurs="unbounded"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findAcctgTransactEventAssocWithParams">
+        <complexType>
+            <sequence>
+                <element name="findCriteria" type="ns1:FindCriteria"/>
+                <element name="varEventId" type="int"/>
+                <element name="findControl" type="ns1:FindControl"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findAcctgTransactEventAssocWithParamsResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="ns0:AcctgTransactEventAssocViewSDO" minOccurs="0" maxOccurs="unbounded"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findNoteTypeWithParams">
+        <complexType>
+            <sequence>
+                <element name="findCriteria" type="ns1:FindCriteria"/>
+                <element name="varNoteTypeCode" type="string"/>
+                <element name="findControl" type="ns1:FindControl"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findNoteTypeWithParamsResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="ns0:NoteTypeViewSDO" minOccurs="0" maxOccurs="unbounded"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findContactMethodWithParam">
+        <complexType>
+            <sequence>
+                <element name="findCriteria" type="ns1:FindCriteria"/>
+                <element name="varPartyId" type="string"/>
+                <element name="findControl" type="ns1:FindControl"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findContactMethodWithParamResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="ns0:ContactMethodViewSDO" minOccurs="0" maxOccurs="unbounded"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findAccountingTransactionWithParams">
+        <complexType>
+            <sequence>
+                <element name="findCriteria" type="ns1:FindCriteria"/>
+                <element name="varTransactionId" type="string"/>
+                <element name="findControl" type="ns1:FindControl"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findAccountingTransactionWithParamsResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="ns0:AccountingTransactionViewSDO" minOccurs="0" maxOccurs="unbounded"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findParticipantRoleWithParams">
+        <complexType>
+            <sequence>
+                <element name="findCriteria" type="ns1:FindCriteria"/>
+                <element name="varEventId" type="int"/>
+                <element name="varPartyRoleTypeCode" type="string"/>
+                <element name="findControl" type="ns1:FindControl"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findParticipantRoleWithParamsResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="ns0:ParticipantRoleViewSDO" minOccurs="0" maxOccurs="unbounded"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findAddressWithParams">
+        <complexType>
+            <sequence>
+                <element name="findCriteria" type="ns1:FindCriteria"/>
+                <element name="varPartyId" type="string"/>
+                <element name="findControl" type="ns1:FindControl"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findAddressWithParamsResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="ns0:AddressViewSDO" minOccurs="0" maxOccurs="unbounded"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findReferenceCodeListWithParams">
+        <complexType>
+            <sequence>
+                <element name="findCriteria" type="ns1:FindCriteria"/>
+                <element name="varReferenceValue" type="string"/>
+                <element name="varDomainName" type="string"/>
+                <element name="findControl" type="ns1:FindControl"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findReferenceCodeListWithParamsResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="ns0:ReferenceCodeListLookupViewSDO" minOccurs="0" maxOccurs="unbounded"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findEventWithParams">
+        <complexType>
+            <sequence>
+                <element name="findCriteria" type="ns1:FindCriteria"/>
+                <element name="varEventId" type="string"/>
+                <element name="varCurrentDocument" type="string"/>
+                <element name="varReferenceDocument" type="string"/>
+                <element name="findControl" type="ns1:FindControl"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findEventWithParamsResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="ns0:EventLookupViewSDO" minOccurs="0" maxOccurs="unbounded"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findAccountingEntryType">
+        <complexType>
+            <sequence>
+                <element name="findCriteria" type="ns1:FindCriteria"/>
+                <element name="findControl" type="ns1:FindControl"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findAccountingEntryTypeResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="ns0:AccountingEntryTypeViewSDO" minOccurs="0" maxOccurs="unbounded"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findAccountingEntryTypeWithParams">
+        <complexType>
+            <sequence>
+                <element name="findCriteria" type="ns1:FindCriteria"/>
+                <element name="varAcctgEntryTypeId" type="string"/>
+                <element name="findControl" type="ns1:FindControl"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findAccountingEntryTypeWithParamsResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="ns0:AccountingEntryTypeViewSDO" minOccurs="0" maxOccurs="unbounded"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findAccountingEntryTypeReversal">
+        <complexType>
+            <sequence>
+                <element name="findCriteria" type="ns1:FindCriteria"/>
+                <element name="varAcctgEntryTypeCode" type="string"/>
+                <element name="findControl" type="ns1:FindControl"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findAccountingEntryTypeReversalResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="ns0:AccountingEntryTypeViewSDO" minOccurs="0" maxOccurs="unbounded"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findAccountingEntryWithParams">
+        <complexType>
+            <sequence>
+                <element name="findCriteria" type="ns1:FindCriteria"/>
+                <element name="varAcctgTransactionId" type="string"/>
+                <element name="findControl" type="ns1:FindControl"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findAccountingEntryWithParamsResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="ns0:AccountingEntryViewSDO" minOccurs="0" maxOccurs="unbounded"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findAccountingCodeWithParams">
+        <complexType>
+            <sequence>
+                <element name="findCriteria" type="ns1:FindCriteria"/>
+                <element name="varAgencySourceCode" type="string"/>
+                <element name="varRevenueSourceCode" type="string"/>
+                <element name="varIndexCode" type="string"/>
+                <element name="varEventTypeCode" type="string"/>
+                <element name="varEventTypeId" type="string"/>
+                <element name="varProgramUnitCode" type="string"/>
+                <element name="varTransactionCode" type="string"/>
+                <element name="varFund" type="string"/>
+                <element name="varFiscalPeriodId" type="string"/>
+                <element name="findControl" type="ns1:FindControl"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findAccountingCodeWithParamsResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="ns0:AccountingCodeLookupViewSDO" minOccurs="0" maxOccurs="unbounded"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findFiscalPeriodIdWithParams">
+        <complexType>
+            <sequence>
+                <element name="rootDocument" type="string"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findFiscalPeriodIdWithParamsResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="string"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="recheckReferenceDocument">
+        <complexType>
+            <sequence>
+                <element name="referenceDocument" type="string"/>
+                <element name="processNum" type="int"/>
+                <element name="waitTime" type="long"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="recheckReferenceDocumentResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="decimal"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findReferenceCodeListLookupView">
+        <complexType>
+            <sequence>
+                <element name="findCriteria" type="ns1:FindCriteria"/>
+                <element name="findControl" type="ns1:FindControl"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findReferenceCodeListLookupViewResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="ns0:ReferenceCodeListLookupViewSDO" minOccurs="0" maxOccurs="unbounded"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="validateAddress">
+        <complexType>
+            <sequence>
+                <element name="state" type="string"/>
+                <element name="zipCode" type="string"/>
+                <element name="province" type="string"/>
+                <element name="postalCode" type="string"/>
+                <element name="countryAbbreviation" type="string"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="validateAddressResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="string"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findSOARecipient">
+        <complexType>
+            <sequence>
+                <element name="findCriteria" type="ns1:FindCriteria"/>
+                <element name="findControl" type="ns1:FindControl"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findSOARecipientResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="ns0:ReferenceCodeListLookupViewSDO" minOccurs="0" maxOccurs="unbounded"/>
+            </sequence>
+        </complexType>
+    </element>
+</schema>

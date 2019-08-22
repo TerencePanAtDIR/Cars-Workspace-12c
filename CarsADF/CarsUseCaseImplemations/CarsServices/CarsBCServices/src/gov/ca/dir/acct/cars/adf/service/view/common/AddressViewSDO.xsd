@@ -1,0 +1,42 @@
+<xsd:schema xmlns:sdoJava="commonj.sdo/java" xmlns:ns0="http://xmlns.oracle.com/adf/svc/types/" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+     targetNamespace="/gov/ca/dir/acct/cars/adf/service/view/common/" xmlns="/gov/ca/dir/acct/cars/adf/service/view/common/"
+     elementFormDefault="qualified" sdoJava:package="gov.ca.dir.acct.cars.adf.service.view.common">
+    <xsd:import schemaLocation="classpath:/META-INF/wsdl/BC4JService.xsd" namespace="http://xmlns.oracle.com/adf/svc/types/"/>
+    <xsd:import schemaLocation="classpath:/xml/sdoJava.xsd" namespace="commonj.sdo/java"/>
+    <xsd:complexType name="AddressViewSDO">
+        <xsd:annotation>
+            <xsd:appinfo source="http://xmlns.oracle.com/adf/svc/metadata/">
+                <key xmlns="http://xmlns.oracle.com/adf/svc/metadata/">
+                    <attribute>AddressId</attribute>
+                </key>
+            </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="AddressId" type="xsd:decimal" minOccurs="0"/>
+            <xsd:element name="PartyId" type="xsd:decimal" minOccurs="0"/>
+            <xsd:element name="AddressType" type="xsd:string" minOccurs="0" nillable="true"/>
+            <xsd:element name="StreetAddress" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="AddressLine2" type="xsd:string" minOccurs="0" nillable="true"/>
+            <xsd:element name="AddressLine3" type="xsd:string" minOccurs="0" nillable="true"/>
+            <xsd:element name="City" type="xsd:string" minOccurs="0" nillable="true"/>
+            <xsd:element name="Country" type="xsd:string" minOccurs="0" nillable="true"/>
+            <xsd:element name="CountryAbbreviation" type="xsd:string" minOccurs="0" nillable="true"/>
+            <xsd:element name="StateCode" type="xsd:string" minOccurs="0" nillable="true"/>
+            <xsd:element name="State" type="xsd:string" minOccurs="0" nillable="true"/>
+            <xsd:element name="ZipCode" type="xsd:string" minOccurs="0" nillable="true"/>
+            <xsd:element name="Zip4" type="xsd:string" minOccurs="0" nillable="true"/>
+            <xsd:element name="CountyName" type="xsd:string" minOccurs="0" nillable="true"/>
+            <xsd:element name="Town" type="xsd:string" minOccurs="0" nillable="true"/>
+            <xsd:element name="Locality" type="xsd:string" minOccurs="0" nillable="true"/>
+            <xsd:element name="Province" type="xsd:string" minOccurs="0" nillable="true"/>
+            <xsd:element name="PostalCode" type="xsd:string" minOccurs="0" nillable="true"/>
+            <xsd:element name="FsSequenceNumber" type="xsd:decimal" minOccurs="0" nillable="true"/>
+            <xsd:element name="DataSourceCode" type="xsd:string" minOccurs="0" nillable="true"/>
+            <xsd:element name="CreatedBy" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="CreatedDate" type="ns0:dateTime-Timestamp" minOccurs="0"/>
+            <xsd:element name="ModifiedBy" type="xsd:string" minOccurs="0" nillable="true"/>
+            <xsd:element name="ModifiedDate" type="ns0:dateTime-Timestamp" minOccurs="0" nillable="true"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="addressViewSDO" type="AddressViewSDO"/>
+</xsd:schema>

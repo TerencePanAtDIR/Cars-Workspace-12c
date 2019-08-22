@@ -1,0 +1,15 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<BC4JConfig version="11.1" xmlns="http://xmlns.oracle.com/bc4j/configuration">
+   <AppModuleConfigBag ApplicationName="gov.ca.dir.acct.cars.adf.usecase004.model.appmodule.InboundTransactionMngrAM">
+      <AppModuleConfig name="InboundTransactionMngrAMLocal" ApplicationName="gov.ca.dir.acct.cars.adf.usecase004.model.appmodule.InboundTransactionMngrAM" DeployPlatform="LOCAL" jbo.project="gov.ca.dir.acct.cars.adf.usecase004.model.UseCase004Model">
+         <Security AppModuleJndiName="gov.ca.dir.acct.cars.adf.usecase004.model.appmodule.InboundTransactionMngrAM"/>
+         <Custom JDBCDataSource="java:comp/env/jdbc/carsdevDS"/>
+      </AppModuleConfig>
+      <AppModuleConfig name="InboundTransactionMngrAMShared" ApplicationName="gov.ca.dir.acct.cars.adf.usecase004.model.appmodule.InboundTransactionMngrAM" DeployPlatform="LOCAL" jbo.project="gov.ca.dir.acct.cars.adf.usecase004.model.UseCase004Model">
+         <AM-Pooling jbo.ampool.maxpoolsize="1" jbo.ampool.isuseexclusive="false"/>
+         <Security AppModuleJndiName="gov.ca.dir.acct.cars.adf.usecase004.model.appmodule.InboundTransactionMngrAM"/>
+         <Custom JDBCDataSource="java:comp/env/jdbc/carsdevDS"/>
+      </AppModuleConfig>
+   </AppModuleConfigBag>
+   <AppModuleConfigBag ApplicationName="gov.ca.dir.acct.cars.adf.usecase004.model.appmodule.AppModule1"/>
+</BC4JConfig>

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="Infar-Search-tf">
+    <default-activity id="__18">Infar001OrInfar006</default-activity>
+    <input-parameter-definition id="__20">
+      <name id="__19">batchType</name>
+      <value>#{pageFlowScope.batchType}</value>
+      <required/>
+    </input-parameter-definition>
+    <input-parameter-definition id="__43">
+      <name id="__42">batchId</name>
+      <value>#{pageFlowScope.batchId}</value>
+      <required/>
+    </input-parameter-definition>
+    <input-parameter-definition id="__24">
+      <name id="__25">pageTitle</name>
+      <value>#{pageFlowScope.InfarPageTitle}</value>
+      <required/>
+    </input-parameter-definition>
+    <router id="Infar001OrInfar006">
+      <case id="__3">
+        <expression id="__5">#{pageFlowScope.batchType eq 'INFAR006'}</expression>
+        <outcome id="__15">goToInfar006</outcome>
+      </case>
+      <case id="__1">
+        <expression id="__4">#{pageFlowScope.batchType eq 'INFAR018'}</expression>
+        <outcome id="__16">goToInfar001</outcome>
+      </case>
+      <case>
+        <expression>#{pageFlowScope.batchType eq 'INFAR018_CARS'}</expression>
+        <outcome id="__22">goToInfar001</outcome>
+      </case>
+      <case>
+        <expression>#{pageFlowScope.batchType eq 'INFAR001_CARS'}</expression>
+        <outcome id="__23">goToInfar001</outcome>
+      </case>
+      <case>
+        <expression>#{pageFlowScope.batchType eq 'INFAR037_CARS'}</expression>
+        <outcome id="__26">goToInfar037</outcome>
+      </case>
+      <default-outcome id="__2">goToInfar006</default-outcome>
+    </router>
+    <view id="UseCase009Infar006Search">
+      <page id="__6">/UseCase009Infar006Search.jsff</page>
+    </view>
+    <view id="UseCase009Infar001Search">
+      <page id="__7">/UseCase009Infar001Search.jsff</page>
+    </view>
+    <task-flow-return id="BackToBatchSearch">
+      <outcome id="__21">
+        <name>BackToBatchSearch</name>
+      </outcome>
+    </task-flow-return>
+    <method-call id="setBatchIdBindVC">
+      <method>#{bindings.setBatchIdBindVC.execute}</method>
+      <outcome id="__44">
+        <fixed-outcome>setBatchIdBindVC</fixed-outcome>
+      </outcome>
+    </method-call>
+    <view id="UseCase009Infar037Search">
+      <page>/UseCase009Infar037Search.jsff</page>
+    </view>
+    <control-flow-rule id="__8">
+      <from-activity-id id="__9">Infar001OrInfar006</from-activity-id>
+      <control-flow-case id="__10">
+        <from-outcome id="__11">goToInfar006</from-outcome>
+        <to-activity-id id="__12">setBatchIdBindVC</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__14">
+        <from-outcome id="__17">goToInfar001</from-outcome>
+        <to-activity-id id="__13">UseCase009Infar001Search</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__27">
+        <from-outcome id="__28">goToInfar037</from-outcome>
+        <to-activity-id id="__29">UseCase009Infar037Search</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__32">
+      <from-activity-id id="__33">UseCase009Infar006Search</from-activity-id>
+      <control-flow-case id="__34">
+        <from-outcome id="__36">backToSearch</from-outcome>
+        <to-activity-id id="__35">BackToBatchSearch</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__37">
+      <from-activity-id id="__38">UseCase009Infar001Search</from-activity-id>
+      <control-flow-case id="__40">
+        <from-outcome id="__41">backToSearch</from-outcome>
+        <to-activity-id id="__39">BackToBatchSearch</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__50">
+      <from-activity-id id="__51">setBatchIdBindVC</from-activity-id>
+      <control-flow-case id="__54">
+        <from-outcome id="__53">setBatchIdBindVC</from-outcome>
+        <to-activity-id id="__52">UseCase009Infar006Search</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__30">
+      <from-activity-id id="__31">UseCase009Infar037Search</from-activity-id>
+      <control-flow-case id="__46">
+        <from-outcome id="__47">backToSearch</from-outcome>
+        <to-activity-id id="__45">BackToBatchSearch</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+    <!--setBatchIdBindVC is a method in the impl class of Infar006 VO.
+- It takes in a batch Id as a parameter.
+- It applies a ViewCriteria from Infar006VO that sets batch_id = func param
+
+> After it goes to infar006 Search page, there is a table with the VC already applied-->
+    <!--- Infar001 table however is loaded through a master child link.
+- It links a one to many relationship from the batch_id of the InfarBatchVO to the Infar001VO.
+- Had to do this since for some reason the solution I used for 006 did not work for 001, even though when I debugged the 001 solution was going through the right steps-->
+  </task-flow-definition>
+</adfc-config>

@@ -1,0 +1,340 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:pageTemplate viewId="/report-template.jspx" id="pt1">
+    <f:facet name="main">
+        <af:panelGroupLayout layout="vertical" id="pgl1">
+          <af:query headerText="Search" disclosed="true" id="q1"
+                    model="#{bindings.cars04reportVO1Query.queryModel}"
+                    value="#{bindings.cars04reportVO1Query.queryDescriptor}"
+                    resultComponentId="::pc1"
+                    queryListener="#{bindings.cars04reportVO1Query.processQuery}"
+                    queryOperationListener="#{bindings.cars04reportVO1Query.processQueryOperation}"
+                    saveQueryMode="hidden"/>
+          <af:panelCollection id="pc1"
+                              styleClass="AFStretchWidth">
+            <f:facet name="menus"/>
+            <f:facet name="toolbar">
+              <af:toolbar id="t2">
+                <af:commandToolbarButton id="ctb1" icon="/export_excel_sml.png">
+                  <af:exportCollectionActionListener exportedId="t1"
+                                                     type="excelHTML"
+                                                     filename="cars_04.xls"/>
+                </af:commandToolbarButton>
+              </af:toolbar>
+            </f:facet>
+            <f:facet name="statusbar"/>
+            <af:table value="#{bindings.cars04reportVO1.collectionModel}"
+                      var="row" rows="#{adfFacesContext.outputMode ne 'printable'? 25: bindings.cars04reportVO1.estimatedRowCount}"
+                      emptyText="#{bindings.cars04reportVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                      fetchSize="-1"
+                      rowBandingInterval="0"
+                      filterModel="#{bindings.cars04reportVO1Query.queryDescriptor}"
+                      queryListener="#{bindings.cars04reportVO1Query.processQuery}"
+                      filterVisible="true" varStatus="vs"
+                      selectionListener="#{bindings.cars04reportVO1.collectionModel.makeCurrent}"
+                      rowSelection="multiple" id="t1">
+              <af:column sortProperty="#{bindings.cars04reportVO1.hints.employerName.name}"
+                         filterable="true" sortable="true"
+                         headerText="#{bindings.cars04reportVO1.hints.Employername.label}"
+                         id="c17" width="175" align="left">
+                <af:outputText value="#{row.Employername}" id="ot14"/>
+              </af:column>
+              <af:column sortProperty="#{bindings.cars04reportVO1.hints.InvoiceNumber.name}"
+                         filterable="true" sortable="true"
+                         headerText="#{bindings.cars04reportVO1.hints.InvoiceNumber.label}"
+                         id="c8" inlineStyle="text-align:left;" align="left">
+                <af:outputText value="#{row.InvoiceNumber}" id="ot2"/>
+              </af:column>
+              <af:column sortProperty="#{bindings.cars04reportVO1.hints.IssueDate.name}"
+                         filterable="true" sortable="true"
+                         headerText="#{bindings.cars04reportVO1.hints.IssueDate.label}"
+                         id="c1" inlineStyle="text-align:left;" align="left">
+                <f:facet name="filter">
+                  <af:inputDate value="#{vs.filterCriteria.IssueDate}"
+                                id="id2"/>
+                </f:facet>
+                <af:outputText value="#{row.IssueDate}" id="ot1">
+                  <af:convertDateTime pattern="#{bindings.cars04reportVO1.hints.IssueDate.format}"/>
+                </af:outputText>
+              </af:column>
+              <af:column sortProperty="#{bindings.cars04reportVO1.hints.FiscalYear.name}"
+                         filterable="true" sortable="true"
+                         headerText="#{bindings.cars04reportVO1.hints.FiscalYear.label}"
+                         id="c10" inlineStyle="text-align:left;" width="50"
+                         align="left">
+                <af:outputText value="#{row.FiscalYear}" id="ot13"/>
+              </af:column>
+            <af:column sortProperty="#{bindings.cars04reportVO1.hints.CheckDate.name}"
+                       filterable="true" sortable="true"
+                       headerText="#{bindings.cars04reportVO1.hints.CheckDate.label}"
+                       id="c16" inlineStyle="text-align:left;" align="left">
+              <af:outputText value="#{row.CheckDate}" id="ot18">
+                <af:convertDateTime pattern="#{bindings.cars04reportVO1.hints.CheckDate.format}"/>
+              </af:outputText>
+              <f:facet name="filter">
+                <af:inputDate id="id1" value="#{vs.filterCriteria.CheckDate}"/>
+              </f:facet>
+            </af:column>
+            <af:column id="c19"
+                       sortProperty="#{bindings.cars04reportVO1.hints.DepositSlipNumber.name}"
+                       filterable="true" sortable="true"
+                       headerText="#{bindings.cars04reportVO1.hints.DepositSlipNumber.label}"
+                       align="left">
+              <af:outputText value="#{row.DepositSlipNumber}" id="ot19"/>
+            </af:column>
+            <af:column sortProperty="#{bindings.cars04reportVO1.hints.Court.name}"
+                         filterable="true" sortable="true"
+                         headerText="#{bindings.cars04reportVO1.hints.Court.label}"
+                         id="c3" inlineStyle="text-align:left;" width="60"
+                         align="left">
+                <af:outputText value="#{row.Court}" id="ot17">
+                  <af:convertNumber groupingUsed="false"
+                                    pattern="#{bindings.cars04reportVO1.hints.Court.format}"/>
+                </af:outputText>
+                <f:facet name="footer">
+                  <af:outputFormatted value="#{bindings.CourtTotal.inputValue}"
+                                      id="of2" inlineStyle="font-weight:bold; text-align:left;">
+                    <af:convertNumber groupingUsed="false"
+                                      pattern="#{bindings.cars04reportVO1.hints.CourtTotal.format}"/>
+                  </af:outputFormatted>
+                </f:facet>
+              </af:column>
+              <af:column sortProperty="#{bindings.cars04reportVO1.hints.Interest.name}"
+                         filterable="true" sortable="true"
+                         headerText="#{bindings.cars04reportVO1.hints.Interest.label}"
+                         id="c15" inlineStyle="text-align:left;" width="60"
+                         align="left">
+                <af:outputText value="#{row.Interest}" id="ot10">
+                  <af:convertNumber groupingUsed="false"
+                                    pattern="#{bindings.cars04reportVO1.hints.Interest.format}"/>
+                </af:outputText>
+                <f:facet name="footer">
+                  <af:outputFormatted value="#{bindings.InterestTotal.inputValue}"
+                                      id="of3" inlineStyle="font-weight:bold; text-align:left;">
+                    <af:convertNumber groupingUsed="false"
+                                      pattern="#{bindings.cars04reportVO1.hints.InterestTotal.format}"/>
+                  </af:outputFormatted>
+                </f:facet>
+              </af:column>
+              <af:column sortProperty="#{bindings.cars04reportVO1.hints.PostJudInterest.name}"
+                         filterable="true" sortable="true"
+                         headerText="#{bindings.cars04reportVO1.hints.PostJudInterest.label}"
+                         id="c9" inlineStyle="text-align:left;" width="60"
+                         align="left">
+                <af:outputText value="#{row.PostJudInterest}" id="ot16">
+                  <af:convertNumber groupingUsed="false"
+                                    pattern="#{bindings.cars04reportVO1.hints.PostJudInterest.format}"/>
+                </af:outputText>
+                <f:facet name="footer">
+                  <af:outputFormatted value="#{bindings.PostJudIntTotal.inputValue}"
+                                      id="of4" inlineStyle="font-weight:bold; text-align:left;">
+                    <af:convertNumber groupingUsed="false"
+                                      pattern="#{bindings.cars04reportVO1.hints.PostJudIntTotal.format}"/>
+                  </af:outputFormatted>
+                </f:facet>
+              </af:column>
+              <af:column sortProperty="#{bindings.cars04reportVO1.hints.Nsf.name}"
+                         filterable="true" sortable="true"
+                         headerText="#{bindings.cars04reportVO1.hints.Nsf.label}"
+                         id="c7" inlineStyle="text-align:left;" width="60"
+                         align="left">
+                <af:outputText value="#{row.Nsf}" id="ot3">
+                  <af:convertNumber groupingUsed="false"
+                                    pattern="#{bindings.cars04reportVO1.hints.Nsf.format}"/>
+                </af:outputText>
+                <f:facet name="footer">
+                  <af:outputFormatted value="#{bindings.NsfTotal.inputValue}"
+                                      id="of6" inlineStyle="font-weight:bold; text-align:left;">
+                    <af:convertNumber groupingUsed="false"
+                                      pattern="#{bindings.cars04reportVO1.hints.NsfTotal.format}"/>
+                  </af:outputFormatted>
+                </f:facet>
+              </af:column>
+              <af:column sortProperty="#{bindings.cars04reportVO1.hints.CollectionFee.name}"
+                         headerText="#{bindings.cars04reportVO1.hints.CollectionFee.label}"
+                         id="c2" sortable="true" filterable="true"
+                         inlineStyle="text-align:left;" width="60"
+                         align="left">
+                <af:outputText value="#{row.CollectionFee}" id="ot15">
+                  <af:convertNumber groupingUsed="false"
+                                    pattern="#{bindings.cars04reportVO1.hints.CollectionFee.format}"/>
+                </af:outputText>
+                <f:facet name="footer">
+                  <af:outputFormatted value="#{bindings.CollectionFeeTotal.inputValue}"
+                                      id="of5" inlineStyle="font-weight:bold; text-align:left;">
+                    <af:convertNumber groupingUsed="false"
+                                      pattern="#{bindings.cars04reportVO1.hints.CollectionFeeTotal.format}"/>
+                  </af:outputFormatted>
+                </f:facet>
+              </af:column>
+            <af:column id="c28"
+                       headerText="#{bindings.cars04reportVO1.hints.BilledAmount.label}"
+                       sortable="true" filterable="true" align="left"
+                       inlineStyle="text-align:left;"
+                       sortProperty="#{bindings.cars04reportVO1.hints.BilledAmount.name}">
+              <af:outputText value="#{row.BilledAmount}" id="ot28">
+                <af:convertNumber pattern="#{bindings.cars04reportVO1.hints.BilledAmount.format}"/>
+              </af:outputText>
+              <f:facet name="footer">
+                <af:outputFormatted value="#{bindings.BilledTotal.inputValue}"
+                                    id="of11" inlineStyle="font-weight:bold;">
+                  <af:convertNumber groupingUsed="false"
+                                    pattern="#{bindings.cars04reportVO1.hints.BilledTotal.format}"/>
+                </af:outputFormatted>
+              </f:facet>
+            </af:column>
+            <af:column sortProperty="#{bindings.cars04reportVO1.hints.UnbilledAmount.name}"
+                       filterable="true" sortable="true"
+                       headerText="#{bindings.cars04reportVO1.hints.UnbilledAmount.label}"
+                       id="c13" inlineStyle="text-align:left;" align="left">
+              <af:outputText value="#{row.UnbilledAmount}" id="ot9">
+                <af:convertNumber groupingUsed="false"
+                                  pattern="#{bindings.cars04reportVO1.hints.UnbilledAmount.format}"/>
+              </af:outputText>
+              <f:facet name="footer">
+                <af:outputFormatted value="#{bindings.UnbilledAmountTotal.inputValue}"
+                                    id="of9"
+                                    inlineStyle="font-weight:bold; text-align:left;">
+                  <af:convertNumber groupingUsed="false"
+                                    pattern="#{bindings.cars04reportVO1.hints.UnbilledAmountTotal.format}"/>
+                </af:outputFormatted>
+              </f:facet>
+            </af:column>
+            <af:column id="c27"
+                       headerText="#{bindings.cars04reportVO1.hints.BilledAdjustment.label}"
+                       sortable="true" filterable="true"
+                       sortProperty="#{bindings.cars04reportVO1.hints.BilledAdjustment.name}">
+              <af:outputText value="#{row.BilledAdjustment}" id="ot26">
+                <af:convertNumber groupingUsed="false"
+                                  pattern="#{bindings.cars04reportVO1.hints.BilledAdjustmentAmount.format}"/>
+              </af:outputText>
+              <f:facet name="footer">
+                <af:outputFormatted value="#{bindings.BilledAdjTotal.inputValue}"
+                                    id="of1"
+                                    inlineStyle="font-weight:bold; text-align:left;">
+                  <af:convertNumber groupingUsed="false"
+                                    pattern="#{bindings.cars04reportVO1.hints.BilledAdjTotal.format}"/>
+                </af:outputFormatted>
+              </f:facet>
+            </af:column>
+            <af:column id="c26"
+                       headerText="#{bindings.cars04reportVO1.hints.UnbilledAdjustment.label}"
+                       align="left" sortable="true" filterable="true"
+                       sortProperty="#{bindings.cars04reportVO1.hints.UnbilledAdjustment.name}">
+              <af:outputText value="#{row.UnbilledAdjustment}" id="ot27">
+                <af:convertNumber groupingUsed="false"
+                                  pattern="#{bindings.cars04reportVO1.hints.BilledAdjustmentAmount.format}"/>
+              </af:outputText>
+              <f:facet name="footer">
+                <af:outputFormatted value="#{bindings.UnbilledAdjTotal.inputValue}"
+                                    id="of10"
+                                    inlineStyle="font-weight:bold; text-align:left;">
+                  <af:convertNumber groupingUsed="false"
+                                    pattern="#{bindings.cars04reportVO1.hints.UnbilledAdjTotal.format}"/>
+                </af:outputFormatted>
+              </f:facet>
+              <f:facet name="filter"/>
+            </af:column>
+            <af:column sortProperty="#{bindings.cars04reportVO1.hints.PaymentAmount.name}"
+                       filterable="true" sortable="true"
+                       headerText="#{bindings.cars04reportVO1.hints.PaymentAmount.label}"
+                       id="c12" inlineStyle="text-align:left;" align="left">
+              <af:outputText value="#{row.PaymentAmount}" id="ot4">
+                <af:convertNumber groupingUsed="false"
+                                  pattern="#{bindings.cars04reportVO1.hints.PaymentAmount.format}"/>
+              </af:outputText>
+              <f:facet name="footer">
+                <af:outputFormatted value="#{bindings.PaymentTotal.inputValue}"
+                                    id="of8"
+                                    inlineStyle="font-weight:bold; text-align:left;">
+                  <af:convertNumber groupingUsed="false"
+                                    pattern="#{bindings.cars04reportVO1.hints.PaymentTotal.format}"/>
+                </af:outputFormatted>
+              </f:facet>
+            </af:column>
+            <af:column sortProperty="#{bindings.cars04reportVO1.hints.CheckNumber.name}"
+                       filterable="true" sortable="true"
+                       headerText="#{bindings.cars04reportVO1.hints.CheckNumber.label}"
+                       id="c11" inlineStyle="text-align:left;" align="left">
+              <af:outputText value="#{row.CheckNumber}" id="ot11"/>
+            </af:column>
+            <af:column sortProperty="#{bindings.cars04reportVO1.hints.ReceiptDate.name}"
+                       filterable="true" sortable="true"
+                       headerText="#{bindings.cars04reportVO1.hints.ReceiptDate.label}"
+                       id="c4" inlineStyle="text-align:left;" align="left">
+              <f:facet name="filter">
+                <af:inputDate value="#{vs.filterCriteria.ReceiptDate}"
+                              id="id3"/>
+              </f:facet>
+              <af:outputText value="#{row.ReceiptDate}" id="ot5">
+                <af:convertDateTime pattern="#{bindings.cars04reportVO1.hints.ReceiptDate.format}"/>
+              </af:outputText>
+            </af:column>
+            <af:column sortProperty="#{bindings.cars04reportVO1.hints.BatchNumber.name}"
+                       headerText="#{bindings.cars04reportVO1.hints.BatchNumber.label}"
+                       id="c14" sortable="true" filterable="true" align="left">
+              <af:outputText value="#{row.BatchNumber}" id="ot7"/>
+            </af:column>
+            <af:column id="c5"
+                       sortProperty="#{bindings.cars04reportVO1.hints.BatchDate.name}"
+                       filterable="true" sortable="true"
+                       headerText="#{bindings.cars04reportVO1.hints.BatchDate.label}"
+                       inlineStyle="text-align:left;" align="left">
+              <af:outputText value="#{row.BatchDate}" id="ot12">
+                <af:convertDateTime pattern="#{bindings.cars04reportVO1.hints.BatchDate.format}"/>
+              </af:outputText>
+              <f:facet name="filter">
+                <af:inputDate id="id18" value="#{vs.filterCriteria.BatchDate}"/>
+              </f:facet>
+            </af:column>
+            <af:column sortProperty="#{bindings.cars04reportVO1.hints.IndexCode.name}"
+                         filterable="true" sortable="true"
+                         headerText="#{bindings.cars04reportVO1.hints.IndexCode.label}"
+                         id="c18" inlineStyle="text-align:left;" width="50"
+                         align="left">
+                <af:outputText value="#{row.IndexCode}" id="ot6"/>
+              </af:column>
+            <af:column id="c20" sortProperty="#{bindings.cars04reportVO1.hints.PcaCode.name}"
+                       headerText="#{bindings.cars04reportVO1.hints.PcaCode.label}"
+                       sortable="true" filterable="true" align="left">
+              <af:outputText value="#{row.PcaCode}" id="ot20"/>
+            </af:column>
+            <af:column id="c21" sortProperty="#{bindings.cars04reportVO1.hints.RevenueSourceCode.name}"
+                       headerText="#{bindings.cars04reportVO1.hints.RevenueSourceCode.label}"
+                       sortable="true" filterable="true" align="left">
+              <af:outputText value="#{row.RevenueSourceCode}" id="ot21"/>
+            </af:column>
+            <af:column id="c22"  sortProperty="#{bindings.cars04reportVO1.hints.AgencySourceCode.name}"
+                       headerText="#{bindings.cars04reportVO1.hints.AgencySourceCode.label}"
+                       sortable="true" filterable="true" align="left">
+              <af:outputText value="#{row.AgencySourceCode}" id="ot22"/>
+            </af:column>
+            <af:column id="c23" sortProperty="#{bindings.cars04reportVO1.hints.Fund.name}"
+                       headerText="#{bindings.cars04reportVO1.hints.Fund.label}"
+                       sortable="true" filterable="true" align="left">
+              <af:outputText value="#{row.Fund}" id="ot23"/>
+            </af:column>
+            <af:column id="c24" sortProperty="#{bindings.cars04reportVO1.hints.ProgramUnitCode.name}"
+            sortable="true" filterable="true"
+                       headerText="#{bindings.cars04reportVO1.hints.ProgramUnitCode.label}"
+                       align="left">
+              <af:outputText value="#{row.ProgramUnitCode}" id="ot24"/>
+            </af:column>
+            <af:column id="c25"
+                       sortProperty="#{bindings.cars04reportVO1.hints.DataSourceCode.name}"
+                       sortable="true" filterable="true"
+                       headerText="#{bindings.cars04reportVO1.hints.DataSourceCode.label}"
+                       align="left">
+              <af:outputText value="#{row.DataSourceCode}" id="ot25"/>
+            </af:column>
+          </af:table>
+          </af:panelCollection>
+        </af:panelGroupLayout>
+    </f:facet>
+    <f:attribute name="program_unit" value="Cal-OSHA"/>
+    <f:attribute name="title" value=" CASH RECEIPTS REPORT- CHECKS"/>
+    <f:attribute name="report_date" value=" "/>
+  </af:pageTemplate>
+</jsp:root>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://xmlns.oracle.com/adfm/application"
+             version="11.1.1.64.93" id="DataBindings" SeparateXMLFiles="false"
+             Package="gov.ca.dir.acct.cars.adf.usecase030.view" ClientType="Generic">
+  <definitionFactories>
+    <factory nameSpace="http://xmlns.oracle.com/adf/controller/binding"
+             className="oracle.adf.controller.internal.binding.TaskFlowBindingDefFactoryImpl"/>
+    <dtfactory className="oracle.adf.controller.internal.dtrt.binding.BindingDTObjectFactory"/>
+  </definitionFactories>
+  <pageMap>
+    <page path="/TestMaps.jspx"
+          usageId="gov_ca_dir_acct_cars_adf_usecase030_view_TestMapsPageDef"/>
+    <page path="/PendingCarsReclass.jsff"
+          usageId="gov_ca_dir_acct_cars_adf_usecase030_view_PendingCarsReclassPageDef"/>
+    <page path="/ReverseCarsEvents.jsff"
+          usageId="gov_ca_dir_acct_cars_adf_usecase030_view_ReverseCarsEventsPageDef"/>
+  </pageMap>
+  <pageDefinitionUsages>
+    <page id="gov_ca_dir_acct_cars_adf_usecase030_view_CarsThematicMapsPageDef"
+          path="gov.ca.dir.acct.cars.adf.usecase030.view.pageDefs.CarsThematicMapsPageDef"/>
+    <page id="gov_ca_dir_acct_cars_adf_usecase030_view_TestMapsPageDef"
+          path="gov.ca.dir.acct.cars.adf.usecase030.view.pageDefs.TestMapsPageDef"/>
+    <page id="gov_ca_dir_acct_cars_adf_usecase030_view_PendingCarsReclassPageDef"
+          path="gov.ca.dir.acct.cars.adf.usecase030.view.pageDefs.PendingCarsReclassPageDef"/>
+    <page id="gov_ca_dir_acct_cars_adf_usecase030_view_ReverseCarsEventsPageDef"
+          path="gov.ca.dir.acct.cars.adf.usecase030.view.pageDefs.ReverseCarsEventsPageDef"/>
+  </pageDefinitionUsages>
+  <dataControlUsages>
+    <BC4JDataControl id="ReclassAMDataControl"
+                     Package="gov.ca.dir.acct.cars.adf.usecase030.model.services"
+                     FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl"
+                     SupportsTransactions="true" SupportsFindMode="true"
+                     SupportsRangesize="true" SupportsResetState="true"
+                     SupportsSortCollection="true"
+                     Configuration="ReclassAMLocal" syncMode="Immediate"
+                     xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+    <BC4JDataControl id="ReverseAMDataControl"
+                     Package="gov.ca.dir.acct.cars.adf.usecase030.model.services"
+                     FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl"
+                     SupportsTransactions="true" SupportsFindMode="true"
+                     SupportsRangesize="true" SupportsResetState="true"
+                     SupportsSortCollection="true"
+                     Configuration="ReverseAMLocal" syncMode="Immediate"
+                     xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+  </dataControlUsages>
+</Application>

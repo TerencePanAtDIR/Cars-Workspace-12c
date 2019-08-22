@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.64.93" id="PreviousDayBatchPageDef"
+                Package="CalstarsBatch">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="Batch1" RangeSize="25"
+              DataControl="CalstarsBatchDataControl" id="Batch1Iterator"
+              ChangeEventPolicy="ppr"/>
+    <iterator Binds="BatchTransaction2" RangeSize="25"
+              DataControl="CalstarsBatchDataControl"
+              id="BatchTransaction2Iterator" ChangeEventPolicy="ppr"/>
+    <searchRegion Binds="BatchTransaction2Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="BatchTransaction2Query"/>
+    <searchRegion Criteria="BatchCriteria"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="Batch1Iterator" id="BatchCriteriaQuery"/>
+  </executables>
+  <bindings>
+    <list ListOperMode="navigation" IterBinding="Batch1Iterator"
+          id="BatchNumber1">
+      <AttrNames>
+        <Item Value="BatchNumber"/>
+      </AttrNames>
+    </list>
+    <tree IterBinding="BatchTransaction2Iterator" id="BatchTransaction2">
+      <nodeDefinition DefName="gov.ca.dir.acct.cars.adf.usecase006.model.CalstarsBatchVOs.BatchTransaction"
+                      Name="BatchTransaction20">
+        <AttrNames>
+          <Item Value="AcctgTransactCode"/>
+          <Item Value="ReverseTransaction"/>
+          <Item Value="CurrentDocumentNumber"/>
+          <Item Value="ReferenceDocumentNumber"/>
+          <Item Value="BatchSequenceNumber"/>
+          <Item Value="RevenueSourceCode"/>
+          <Item Value="AgencySourceCode"/>
+          <Item Value="TransactionAmount"/>
+          <Item Value="DocumentDate"/>
+          <Item Value="VendorName"/>
+          <Item Value="IndexCode"/>
+          <Item Value="PcaCode"/>
+          <Item Value="Fund"/>
+          <Item Value="FundSource"/>
+          <Item Value="FundDetail"/>
+          <Item Value="LocationCode"/>
+          <Item Value="DepositNumber"/>
+          <Item Value="FiscalYearName"/>
+          <Item Value="NoteText"/>
+          <Item Value="Status"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <listOfValues StaticList="false" IterBinding="Batch1Iterator"
+                  Uses="LOV_Status" id="Status"/>
+    <attributeValues IterBinding="Batch1Iterator" id="BatchCount">
+      <AttrNames>
+        <Item Value="BatchCount"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Batch1Iterator" id="TotalBatchAmount">
+      <AttrNames>
+        <Item Value="TotalBatchAmount"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Batch1Iterator" id="DataSourceCode">
+      <AttrNames>
+        <Item Value="DataSourceCode"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Batch1Iterator" id="FiscalMonthName">
+      <AttrNames>
+        <Item Value="FiscalMonthName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Batch1Iterator" id="ModifiedBy">
+      <AttrNames>
+        <Item Value="ModifiedBy"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Batch1Iterator" id="ModifiedDate">
+      <AttrNames>
+        <Item Value="ModifiedDate"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="Batch1Iterator" StaticList="false" Uses="LOV_Status"
+          id="Status1" DTSupportsMRU="true"/>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction"
+            DataControl="CalstarsBatchDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false"
+            Action="rollbackTransaction"
+            DataControl="CalstarsBatchDataControl"/>
+  </bindings>
+</pageDefinition>

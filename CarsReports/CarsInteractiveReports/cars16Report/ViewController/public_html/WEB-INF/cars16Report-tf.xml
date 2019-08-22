@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="cars16Report-tf">
+    <default-activity id="__1">cars16Reportview</default-activity>
+    <view id="cars16Reportview">
+      <page>/cars16Reportview.jsff</page>
+    </view>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

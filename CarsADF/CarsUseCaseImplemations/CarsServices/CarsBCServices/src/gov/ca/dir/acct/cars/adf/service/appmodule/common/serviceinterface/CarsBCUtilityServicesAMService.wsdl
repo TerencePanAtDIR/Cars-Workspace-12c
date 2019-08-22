@@ -1,0 +1,444 @@
+<wsdl:definitions
+     name="CarsBCUtilityServicesAMService"
+     targetNamespace="/gov/ca/dir/acct/cars/adf/service/appmodule/common/"
+     xmlns:errors="http://xmlns.oracle.com/adf/svc/errors/"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+     xmlns:tns="/gov/ca/dir/acct/cars/adf/service/appmodule/common/"
+     xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+     xmlns:types="/gov/ca/dir/acct/cars/adf/service/appmodule/common/types/"
+    >
+    <wsdl:documentation>
+        <name>Cars Bc Utility Services Am</name>
+    </wsdl:documentation>
+    <wsdl:import namespace="http://xmlns.oracle.com/adf/svc/errors/" location="classpath:/META-INF/wsdl/ServiceException.wsdl"/>
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="/gov/ca/dir/acct/cars/adf/service/appmodule/common/types/" schemaLocation="CarsBCUtilityServicesAMService.xsd"/>
+        </schema>
+    </wsdl:types>
+    <wsdl:message name="CarsBCUtilityServicesAMService_getEventIDSequence">
+        <wsdl:part name="parameters" element="types:getEventIDSequence"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCUtilityServicesAMService_getEventIDSequenceResponse">
+        <wsdl:part name="parameters" element="types:getEventIDSequenceResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCUtilityServicesAMService_getARStatusIDSequence">
+        <wsdl:part name="parameters" element="types:getARStatusIDSequence"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCUtilityServicesAMService_getARStatusIDSequenceResponse">
+        <wsdl:part name="parameters" element="types:getARStatusIDSequenceResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCUtilityServicesAMService_getPartyIDSequence">
+        <wsdl:part name="parameters" element="types:getPartyIDSequence"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCUtilityServicesAMService_getPartyIDSequenceResponse">
+        <wsdl:part name="parameters" element="types:getPartyIDSequenceResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCUtilityServicesAMService_getParticipantRoleIdSequence">
+        <wsdl:part name="parameters" element="types:getParticipantRoleIdSequence"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCUtilityServicesAMService_getParticipantRoleIdSequenceResponse">
+        <wsdl:part name="parameters" element="types:getParticipantRoleIdSequenceResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCUtilityServicesAMService_getContactMethodIdSequence">
+        <wsdl:part name="parameters" element="types:getContactMethodIdSequence"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCUtilityServicesAMService_getContactMethodIdSequenceResponse">
+        <wsdl:part name="parameters" element="types:getContactMethodIdSequenceResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCUtilityServicesAMService_getAddressIdSequence">
+        <wsdl:part name="parameters" element="types:getAddressIdSequence"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCUtilityServicesAMService_getAddressIdSequenceResponse">
+        <wsdl:part name="parameters" element="types:getAddressIdSequenceResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCUtilityServicesAMService_getAcctgTransactionIdSequence">
+        <wsdl:part name="parameters" element="types:getAcctgTransactionIdSequence"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCUtilityServicesAMService_getAcctgTransactionIdSequenceResponse">
+        <wsdl:part name="parameters" element="types:getAcctgTransactionIdSequenceResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCUtilityServicesAMService_getAcctgEntryIdSequence">
+        <wsdl:part name="parameters" element="types:getAcctgEntryIdSequence"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCUtilityServicesAMService_getAcctgEntryIdSequenceResponse">
+        <wsdl:part name="parameters" element="types:getAcctgEntryIdSequenceResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCUtilityServicesAMService_getNoteIdSequence">
+        <wsdl:part name="parameters" element="types:getNoteIdSequence"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCUtilityServicesAMService_getNoteIdSequenceResponse">
+        <wsdl:part name="parameters" element="types:getNoteIdSequenceResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCUtilityServicesAMService_isEventReversed">
+        <wsdl:part name="parameters" element="types:isEventReversed"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCUtilityServicesAMService_isEventReversedResponse">
+        <wsdl:part name="parameters" element="types:isEventReversedResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCUtilityServicesAMService_isChildrenExist">
+        <wsdl:part name="parameters" element="types:isChildrenExist"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCUtilityServicesAMService_isChildrenExistResponse">
+        <wsdl:part name="parameters" element="types:isChildrenExistResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCUtilityServicesAMService_is2YearsPrior">
+        <wsdl:part name="parameters" element="types:is2YearsPrior"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCUtilityServicesAMService_is2YearsPriorResponse">
+        <wsdl:part name="parameters" element="types:is2YearsPriorResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCUtilityServicesAMService_getCurrentBalance">
+        <wsdl:part name="parameters" element="types:getCurrentBalance"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCUtilityServicesAMService_getCurrentBalanceResponse">
+        <wsdl:part name="parameters" element="types:getCurrentBalanceResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCUtilityServicesAMService_isReclassNeeded">
+        <wsdl:part name="parameters" element="types:isReclassNeeded"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCUtilityServicesAMService_isReclassNeededResponse">
+        <wsdl:part name="parameters" element="types:isReclassNeededResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCUtilityServicesAMService_findAROtherReferenceDocumentWithParams">
+        <wsdl:part name="parameters" element="types:findAROtherReferenceDocumentWithParams"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCUtilityServicesAMService_findAROtherReferenceDocumentWithParamsResponse">
+        <wsdl:part name="parameters" element="types:findAROtherReferenceDocumentWithParamsResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCUtilityServicesAMService_findAROthersContingentRefDoc">
+        <wsdl:part name="parameters" element="types:findAROthersContingentRefDoc"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCUtilityServicesAMService_findAROthersContingentRefDocResponse">
+        <wsdl:part name="parameters" element="types:findAROthersContingentRefDocResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCUtilityServicesAMService_isAROthersRefDocExisted">
+        <wsdl:part name="parameters" element="types:isAROthersRefDocExisted"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCUtilityServicesAMService_isAROthersRefDocExistedResponse">
+        <wsdl:part name="parameters" element="types:isAROthersRefDocExistedResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCUtilityServicesAMService_isDecisionAfterReclassExisted">
+        <wsdl:part name="parameters" element="types:isDecisionAfterReclassExisted"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCUtilityServicesAMService_isDecisionAfterReclassExistedResponse">
+        <wsdl:part name="parameters" element="types:isDecisionAfterReclassExistedResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="CarsBCUtilityServicesAMService">
+        <wsdl:documentation/>
+        <wsdl:operation name="getEventIDSequence">
+            <wsdl:input message="tns:CarsBCUtilityServicesAMService_getEventIDSequence"/>
+            <wsdl:output message="tns:CarsBCUtilityServicesAMService_getEventIDSequenceResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="getARStatusIDSequence">
+            <wsdl:input message="tns:CarsBCUtilityServicesAMService_getARStatusIDSequence"/>
+            <wsdl:output message="tns:CarsBCUtilityServicesAMService_getARStatusIDSequenceResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="getPartyIDSequence">
+            <wsdl:input message="tns:CarsBCUtilityServicesAMService_getPartyIDSequence"/>
+            <wsdl:output message="tns:CarsBCUtilityServicesAMService_getPartyIDSequenceResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="getParticipantRoleIdSequence">
+            <wsdl:input message="tns:CarsBCUtilityServicesAMService_getParticipantRoleIdSequence"/>
+            <wsdl:output message="tns:CarsBCUtilityServicesAMService_getParticipantRoleIdSequenceResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="getContactMethodIdSequence">
+            <wsdl:input message="tns:CarsBCUtilityServicesAMService_getContactMethodIdSequence"/>
+            <wsdl:output message="tns:CarsBCUtilityServicesAMService_getContactMethodIdSequenceResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="getAddressIdSequence">
+            <wsdl:input message="tns:CarsBCUtilityServicesAMService_getAddressIdSequence"/>
+            <wsdl:output message="tns:CarsBCUtilityServicesAMService_getAddressIdSequenceResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="getAcctgTransactionIdSequence">
+            <wsdl:input message="tns:CarsBCUtilityServicesAMService_getAcctgTransactionIdSequence"/>
+            <wsdl:output message="tns:CarsBCUtilityServicesAMService_getAcctgTransactionIdSequenceResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="getAcctgEntryIdSequence">
+            <wsdl:input message="tns:CarsBCUtilityServicesAMService_getAcctgEntryIdSequence"/>
+            <wsdl:output message="tns:CarsBCUtilityServicesAMService_getAcctgEntryIdSequenceResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="getNoteIdSequence">
+            <wsdl:input message="tns:CarsBCUtilityServicesAMService_getNoteIdSequence"/>
+            <wsdl:output message="tns:CarsBCUtilityServicesAMService_getNoteIdSequenceResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="isEventReversed">
+            <wsdl:input message="tns:CarsBCUtilityServicesAMService_isEventReversed"/>
+            <wsdl:output message="tns:CarsBCUtilityServicesAMService_isEventReversedResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="isChildrenExist">
+            <wsdl:input message="tns:CarsBCUtilityServicesAMService_isChildrenExist"/>
+            <wsdl:output message="tns:CarsBCUtilityServicesAMService_isChildrenExistResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="is2YearsPrior">
+            <wsdl:input message="tns:CarsBCUtilityServicesAMService_is2YearsPrior"/>
+            <wsdl:output message="tns:CarsBCUtilityServicesAMService_is2YearsPriorResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="getCurrentBalance">
+            <wsdl:input message="tns:CarsBCUtilityServicesAMService_getCurrentBalance"/>
+            <wsdl:output message="tns:CarsBCUtilityServicesAMService_getCurrentBalanceResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="isReclassNeeded">
+            <wsdl:input message="tns:CarsBCUtilityServicesAMService_isReclassNeeded"/>
+            <wsdl:output message="tns:CarsBCUtilityServicesAMService_isReclassNeededResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="findAROtherReferenceDocumentWithParams">
+            <wsdl:input message="tns:CarsBCUtilityServicesAMService_findAROtherReferenceDocumentWithParams"/>
+            <wsdl:output message="tns:CarsBCUtilityServicesAMService_findAROtherReferenceDocumentWithParamsResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="findAROthersContingentRefDoc">
+            <wsdl:input message="tns:CarsBCUtilityServicesAMService_findAROthersContingentRefDoc"/>
+            <wsdl:output message="tns:CarsBCUtilityServicesAMService_findAROthersContingentRefDocResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="isAROthersRefDocExisted">
+            <wsdl:input message="tns:CarsBCUtilityServicesAMService_isAROthersRefDocExisted"/>
+            <wsdl:output message="tns:CarsBCUtilityServicesAMService_isAROthersRefDocExistedResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="isDecisionAfterReclassExisted">
+            <wsdl:input message="tns:CarsBCUtilityServicesAMService_isDecisionAfterReclassExisted"/>
+            <wsdl:output message="tns:CarsBCUtilityServicesAMService_isDecisionAfterReclassExistedResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="CarsBCUtilityServicesAMServiceSoapHttp" type="tns:CarsBCUtilityServicesAMService">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="getEventIDSequence">
+            <soap:operation soapAction="/gov/ca/dir/acct/cars/adf/service/appmodule/common/getEventIDSequence"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getARStatusIDSequence">
+            <soap:operation soapAction="/gov/ca/dir/acct/cars/adf/service/appmodule/common/getARStatusIDSequence"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getPartyIDSequence">
+            <soap:operation soapAction="/gov/ca/dir/acct/cars/adf/service/appmodule/common/getPartyIDSequence"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getParticipantRoleIdSequence">
+            <soap:operation soapAction="/gov/ca/dir/acct/cars/adf/service/appmodule/common/getParticipantRoleIdSequence"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getContactMethodIdSequence">
+            <soap:operation soapAction="/gov/ca/dir/acct/cars/adf/service/appmodule/common/getContactMethodIdSequence"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getAddressIdSequence">
+            <soap:operation soapAction="/gov/ca/dir/acct/cars/adf/service/appmodule/common/getAddressIdSequence"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getAcctgTransactionIdSequence">
+            <soap:operation soapAction="/gov/ca/dir/acct/cars/adf/service/appmodule/common/getAcctgTransactionIdSequence"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getAcctgEntryIdSequence">
+            <soap:operation soapAction="/gov/ca/dir/acct/cars/adf/service/appmodule/common/getAcctgEntryIdSequence"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getNoteIdSequence">
+            <soap:operation soapAction="/gov/ca/dir/acct/cars/adf/service/appmodule/common/getNoteIdSequence"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="isEventReversed">
+            <soap:operation soapAction="/gov/ca/dir/acct/cars/adf/service/appmodule/common/isEventReversed"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="isChildrenExist">
+            <soap:operation soapAction="/gov/ca/dir/acct/cars/adf/service/appmodule/common/isChildrenExist"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="is2YearsPrior">
+            <soap:operation soapAction="/gov/ca/dir/acct/cars/adf/service/appmodule/common/is2YearsPrior"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getCurrentBalance">
+            <soap:operation soapAction="/gov/ca/dir/acct/cars/adf/service/appmodule/common/getCurrentBalance"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="isReclassNeeded">
+            <soap:operation soapAction="/gov/ca/dir/acct/cars/adf/service/appmodule/common/isReclassNeeded"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="findAROtherReferenceDocumentWithParams">
+            <soap:operation soapAction="/gov/ca/dir/acct/cars/adf/service/appmodule/common/findAROtherReferenceDocumentWithParams"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="findAROthersContingentRefDoc">
+            <soap:operation soapAction="/gov/ca/dir/acct/cars/adf/service/appmodule/common/findAROthersContingentRefDoc"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="isAROthersRefDocExisted">
+            <soap:operation soapAction="/gov/ca/dir/acct/cars/adf/service/appmodule/common/isAROthersRefDocExisted"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="isDecisionAfterReclassExisted">
+            <soap:operation soapAction="/gov/ca/dir/acct/cars/adf/service/appmodule/common/isDecisionAfterReclassExisted"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="CarsBCUtilityServicesAMService">
+        <wsdl:port name="CarsBCUtilityServicesAMServiceSoapHttpPort" binding="tns:CarsBCUtilityServicesAMServiceSoapHttp">
+            <soap:address location="http://localhost:7101/CarsServicesApplication-CarsBCServices-context-root/CarsBCUtilityServicesAMService"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

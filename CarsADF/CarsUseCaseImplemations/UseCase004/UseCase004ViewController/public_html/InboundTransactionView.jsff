@@ -1,0 +1,205 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+  <af:pageTemplate viewId="/use-case-template.jspx" id="pt1">
+    <f:facet name="main">
+      <af:group id="g1">
+        <af:panelCollection id="pc1">
+          <f:facet name="menus"/>
+          <f:facet name="toolbar">
+            <af:toolbar id="t2">
+              <af:selectOneChoice label="Display"
+                                  valueChangeListener="#{ShowAllBean.showAllCheckBoxChangeListener}"
+                                  id="soc2" immediate="true" autoSubmit="true">
+                <af:selectItem label="Outstanding Items" value="O" id="si2"/>
+                <af:selectItem label="All Items" value="A" id="si3"/>
+              </af:selectOneChoice>
+              <af:commandToolbarButton actionListener="#{bindings.Rollback.execute}"
+                                       text="Undo" disabled="false" id="ctb1">
+                <af:resetActionListener/>
+              </af:commandToolbarButton>
+              <af:commandToolbarButton actionListener="#{bindings.Commit.execute}"
+                                       text="Save" id="ctb2" disabled="false"/>
+            </af:toolbar>
+          </f:facet>
+          <f:facet name="statusbar"/>
+          <af:table value="#{bindings.RequestErrorLogView1.collectionModel}"
+                    var="row" rows="#{adfFacesContext.outputMode eq 'printable' ? bindings.RequestErrorLogView1.estimatedRowCount : bindings.RequestErrorLogView1.rangeSize }"
+                    emptyText="#{bindings.RequestErrorLogView1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                    fetchSize="#{adfFacesContext.outputMode eq 'printable' ? bindings.RequestErrorLogView1.estimatedRowCount : bindings.RequestErrorLogView1.rangeSize }"
+                    rowBandingInterval="0"
+                    filterModel="#{bindings.RequestErrorLogView1Query.queryDescriptor}"
+                    queryListener="#{bindings.RequestErrorLogView1Query.processQuery}"
+                    filterVisible="true" varStatus="vs"
+                    selectionListener="#{bindings.RequestErrorLogView1.collectionModel.makeCurrent}"
+                    rowSelection="multiple" id="t1"
+                    columnStretching="column:c3"
+                    binding="#{RefreshBean.toRefresh}"
+                    partialTriggers="::soc2 ::ctb1 ::ctb2 sbc3 ::si2 ::si3">
+            <af:column sortProperty="#{bindings.RequestErrorLogView1.hints.IsReviewed.name}"
+                       sortable="false"
+                       headerText="#{bindings.RequestErrorLogView1.hints.IsReviewed.label}"
+                       id="c2" width="35" align="center">
+              <f:facet name="header">
+                <af:selectBooleanCheckbox id="sbc3"
+                                          valueChangeListener="#{UpdateStatus.selectAllCheckBoxVCL}"
+                                          autoSubmit="true"/>
+              </f:facet>
+              <af:selectBooleanCheckbox value="#{row.bindings.IsReviewed.inputValue}"
+                                        label="#{row.bindings.IsReviewed.label}"
+                                        shortDesc="#{bindings.RequestErrorLogView1.hints.IsReviewed.tooltip}"
+                                        id="sbc1" autoSubmit="true"/>
+            </af:column>
+            <af:column sortProperty="#{bindings.RequestErrorLogView1.hints.Status.name}"
+                       sortable="true"
+                       headerText="#{bindings.RequestErrorLogView1.hints.Status.label}"
+                       id="c4" width="55" filterable="true">
+              <af:selectOneChoice value="#{row.bindings.Status.inputValue}"
+                                  label="#{row.bindings.Status.label}"
+                                  required="#{bindings.RequestErrorLogView1.hints.Status.mandatory}"
+                                  shortDesc="#{bindings.RequestErrorLogView1.hints.Status.tooltip}"
+                                  id="soc1" readOnly="true">
+                <f:selectItems value="#{row.bindings.Status.items}" id="si1"/>
+              </af:selectOneChoice>
+            </af:column>
+            <af:column sortProperty="#{bindings.RequestErrorLogView1.hints.RequestId1.name}"
+                       sortable="true"
+                       headerText="#{bindings.RequestErrorLogView1.hints.RequestId1.label}"
+                       id="c1" width="75" filterable="true">
+              <af:inputText value="#{row.bindings.RequestId1.inputValue}"
+                            label="#{bindings.RequestErrorLogView1.hints.RequestId1.label}"
+                            required="#{bindings.RequestErrorLogView1.hints.RequestId1.mandatory}"
+                            columns="#{bindings.RequestErrorLogView1.hints.RequestId1.displayWidth}"
+                            maximumLength="#{bindings.RequestErrorLogView1.hints.RequestId1.precision}"
+                            shortDesc="#{bindings.RequestErrorLogView1.hints.RequestId1.tooltip}"
+                            id="it10" readOnly="true">
+                <f:validator binding="#{row.bindings.RequestId1.validator}"/>
+              </af:inputText>
+            </af:column>
+            <af:column sortProperty="#{bindings.RequestErrorLogView1.hints.ProgramUnitCode.name}"
+                       sortable="true"
+                       headerText="#{bindings.RequestErrorLogView1.hints.ProgramUnitCode.label}"
+                       id="c13" width="101" filterable="true">
+              <af:inputText value="#{row.bindings.ProgramUnitCode.inputValue}"
+                            label="#{bindings.RequestErrorLogView1.hints.ProgramUnitCode.label}"
+                            required="#{bindings.RequestErrorLogView1.hints.ProgramUnitCode.mandatory}"
+                            columns="#{bindings.RequestErrorLogView1.hints.ProgramUnitCode.displayWidth}"
+                            maximumLength="#{bindings.RequestErrorLogView1.hints.ProgramUnitCode.precision}"
+                            shortDesc="#{bindings.RequestErrorLogView1.hints.ProgramUnitCode.tooltip}"
+                            id="it5" readOnly="true">
+                <f:validator binding="#{row.bindings.ProgramUnitCode.validator}"/>
+              </af:inputText>
+            </af:column>
+            <af:column sortProperty="#{bindings.RequestErrorLogView1.hints.PacketId.name}"
+                       sortable="true"
+                       headerText="#{bindings.RequestErrorLogView1.hints.PacketId.label}"
+                       id="c15" width="224" filterable="true">
+              <af:inputText value="#{row.bindings.PacketId.inputValue}"
+                            label="#{bindings.RequestErrorLogView1.hints.PacketId.label}"
+                            required="#{bindings.RequestErrorLogView1.hints.PacketId.mandatory}"
+                            columns="#{bindings.RequestErrorLogView1.hints.PacketId.displayWidth}"
+                            maximumLength="#{bindings.RequestErrorLogView1.hints.PacketId.precision}"
+                            shortDesc="#{bindings.RequestErrorLogView1.hints.PacketId.tooltip}"
+                            id="it11" readOnly="true">
+                <f:validator binding="#{row.bindings.PacketId.validator}"/>
+              </af:inputText>
+            </af:column>
+            <af:column sortProperty="#{bindings.RequestErrorLogView1.hints.PayloadName.name}"
+                       filterable="true" sortable="true"
+                       headerText="#{bindings.RequestErrorLogView1.hints.PayloadName.label}"
+                       id="c9" width="103">
+              <af:inputText value="#{row.bindings.PayloadName.inputValue}"
+                            label="#{bindings.RequestErrorLogView1.hints.PayloadName.label}"
+                            required="#{bindings.RequestErrorLogView1.hints.PayloadName.mandatory}"
+                            columns="#{bindings.RequestErrorLogView1.hints.PayloadName.displayWidth}"
+                            maximumLength="#{bindings.RequestErrorLogView1.hints.PayloadName.precision}"
+                            shortDesc="#{bindings.RequestErrorLogView1.hints.PayloadName.tooltip}"
+                            id="it13" readOnly="true">
+                <f:validator binding="#{row.bindings.PayloadName.validator}"/>
+              </af:inputText>
+            </af:column>
+            <af:column sortProperty="#{bindings.RequestErrorLogView1.hints.SubmitDate.name}"
+                       filterable="true" sortable="true"
+                       headerText="#{bindings.RequestErrorLogView1.hints.SubmitDate.label}"
+                       id="c7" width="102">
+              <f:facet name="filter">
+                <af:inputDate value="#{vs.filterCriteria.SubmitDate}" id="id2"/>
+              </f:facet>
+              <af:inputDate value="#{row.bindings.SubmitDate.inputValue}"
+                            label="#{bindings.RequestErrorLogView1.hints.SubmitDate.label}"
+                            required="#{bindings.RequestErrorLogView1.hints.SubmitDate.mandatory}"
+                            shortDesc="#{bindings.RequestErrorLogView1.hints.SubmitDate.tooltip}"
+                            id="id3" readOnly="true">
+                <f:validator binding="#{row.bindings.SubmitDate.validator}"/>
+                <af:convertDateTime pattern="#{bindings.RequestErrorLogView1.hints.SubmitDate.format}"/>
+              </af:inputDate>
+            </af:column>
+            <af:column sortProperty="#{bindings.RequestErrorLogView1.hints.SubmittedBy.name}"
+                       filterable="true" sortable="true"
+                       headerText="#{bindings.RequestErrorLogView1.hints.SubmittedBy.label}"
+                       id="c14" width="100">
+              <af:inputText value="#{row.bindings.SubmittedBy.inputValue}"
+                            label="#{bindings.RequestErrorLogView1.hints.SubmittedBy.label}"
+                            required="#{bindings.RequestErrorLogView1.hints.SubmittedBy.mandatory}"
+                            columns="#{bindings.RequestErrorLogView1.hints.SubmittedBy.displayWidth}"
+                            maximumLength="#{bindings.RequestErrorLogView1.hints.SubmittedBy.precision}"
+                            shortDesc="#{bindings.RequestErrorLogView1.hints.SubmittedBy.tooltip}"
+                            id="it8" readOnly="true">
+                <f:validator binding="#{row.bindings.SubmittedBy.validator}"/>
+              </af:inputText>
+            </af:column>
+            <af:column sortProperty="#{bindings.RequestErrorLogView1.hints.CreatedDate.name}"
+                       filterable="true" sortable="true"
+                       headerText="#{bindings.RequestErrorLogView1.hints.CreatedDate.label}"
+                       id="c8" width="98">
+              <f:facet name="filter">
+                <af:inputDate value="#{vs.filterCriteria.CreatedDate}"
+                              id="id4"/>
+              </f:facet>
+              <af:inputDate value="#{row.bindings.CreatedDate.inputValue}"
+                            label="#{bindings.RequestErrorLogView1.hints.CreatedDate.label}"
+                            required="#{bindings.RequestErrorLogView1.hints.CreatedDate.mandatory}"
+                            shortDesc="#{bindings.RequestErrorLogView1.hints.CreatedDate.tooltip}"
+                            id="id1" readOnly="true">
+                <f:validator binding="#{row.bindings.CreatedDate.validator}"/>
+                <af:convertDateTime pattern="#{bindings.RequestErrorLogView1.hints.CreatedDate.format}"/>
+              </af:inputDate>
+            </af:column>
+            <af:column sortProperty="#{bindings.RequestErrorLogView1.hints.ErrorCode.name}"
+                       filterable="true" sortable="true"
+                       headerText="#{bindings.RequestErrorLogView1.hints.ErrorCode.label}"
+                       id="c10" width="64" noWrap="false">
+              <af:inputText value="#{row.bindings.ErrorCode.inputValue}"
+                            label="#{bindings.RequestErrorLogView1.hints.ErrorCode.label}"
+                            required="#{bindings.RequestErrorLogView1.hints.ErrorCode.mandatory}"
+                            columns="#{bindings.RequestErrorLogView1.hints.ErrorCode.displayWidth}"
+                            maximumLength="#{bindings.RequestErrorLogView1.hints.ErrorCode.precision}"
+                            shortDesc="#{bindings.RequestErrorLogView1.hints.ErrorCode.tooltip}"
+                            id="it3" wrap="hard" readOnly="true">
+                <f:validator binding="#{row.bindings.ErrorCode.validator}"/>
+              </af:inputText>
+            </af:column>
+            <af:column sortProperty="#{bindings.RequestErrorLogView1.hints.ErrorDetail.name}"
+                       filterable="true" sortable="true"
+                       headerText="#{bindings.RequestErrorLogView1.hints.ErrorDetail.label}"
+                       id="c3" width="105" noWrap="false" minimumWidth="150">
+              <af:inputText value="#{fn:replace(row.bindings.ErrorDetail.inputValue,'&amp;lt;','&lt;')}"
+                            label="#{bindings.RequestErrorLogView1.hints.ErrorDetail.label}"
+                            required="#{bindings.RequestErrorLogView1.hints.ErrorDetail.mandatory}"
+                            columns="#{bindings.RequestErrorLogView1.hints.ErrorDetail.displayWidth}"
+                            maximumLength="#{bindings.RequestErrorLogView1.hints.ErrorDetail.precision}"
+                            shortDesc="#{bindings.RequestErrorLogView1.hints.ErrorDetail.tooltip}"
+                            id="it4" readOnly="true" wrap="hard">
+                <f:validator binding="#{row.bindings.ErrorDetail.validator}"/>
+              </af:inputText>
+            </af:column>
+          </af:table>
+          <f:facet name="viewMenu"/>
+        </af:panelCollection>
+      </af:group>
+    </f:facet>
+    <f:attribute name="title" value="Inbound Transaction Management"/>
+  </af:pageTemplate>
+</jsp:root>

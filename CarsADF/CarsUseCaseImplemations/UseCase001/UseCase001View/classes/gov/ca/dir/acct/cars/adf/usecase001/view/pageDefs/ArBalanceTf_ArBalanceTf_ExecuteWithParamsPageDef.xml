@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.64.93"
+                id="ArBalanceTf_ArBalanceTf_ExecuteWithParamsPageDef"
+                Package="gov.ca.dir.acct.cars.adf.usecase001.view.pageDefs"
+                SkipValidation="true">
+  <parameters/>
+  <executables>
+    <iterator Binds="GetArRootDocumentGlBalancesView1" RangeSize="25"
+              DataControl="CarsSearchEventsDataControl"
+              id="GetArRootDocumentGlBalancesView1Iterator" Refresh="never"/>
+  </executables>
+  <bindings>
+    <action IterBinding="GetArRootDocumentGlBalancesView1Iterator"
+            id="ExecuteWithParams" RequiresUpdateModel="true"
+            Action="executeWithParams">
+      <NamedData NDName="BIND_VAR_AR_ROOT_DOCUMENT"
+                 NDValue="#{pageFlowScope.ArRootDocumentBalance}"
+                 NDType="java.lang.String"/>
+    </action>
+  </bindings>
+</pageDefinition>

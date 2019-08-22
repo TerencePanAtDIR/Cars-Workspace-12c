@@ -1,0 +1,4 @@
+The following Synchronization Actions were performed successfully:
+
+Entity :Infar001Outbound
+  Create Attribute for column: AR_ROOT_DOCUMENT

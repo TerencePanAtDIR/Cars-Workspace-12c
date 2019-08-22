@@ -1,0 +1,10 @@
+<?xml version = '1.0' standalone = 'yes' ?>
+<ojdeploy-build>
+  <deploy>
+    <parameter name="workspace" value="C:\Eclipse\workspace\CarsADF\CarsUseCaseImplemations\UseCase030\UseCase030.jws"/>
+    <parameter name="project" value="ViewController"/>
+    <parameter name="profile" value="*"/>
+    <parameter name="nocompile" value="false"/>
+    <parameter name="outputfile" value="C:\Temp\carslibrary\UIDeploy\${profile.name}"/>
+  </deploy>
+</ojdeploy-build>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="ReceiptView"
+  Version="11.1.1.64.93"
+  InheritPersonalization="true"
+  SelectList="Receipt.OFFSET_PAYMENT_CODE, 
+       Receipt.ACCTG_TRANSACTION_ID"
+  FromList="RECEIPT Receipt"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  RowClass="gov.ca.dir.acct.cars.adf.usecase001.model.CarsEventDetails.ReceiptViewRowImpl"
+  ComponentClass="gov.ca.dir.acct.cars.adf.usecase001.model.CarsEventDetails.ReceiptViewImpl"
+  PageIterMode="Full"
+  UseGlueCode="false">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="gov.ca.dir.acct.cars.adf.usecase001.model.CarsEventDetails.ReceiptView_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <ViewAccessor
+    Name="OffsetPaymentCodeView1"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.usecase001.model.CarsEventDetails.OffsetPaymentCodeView"
+    RowLevelBinds="true"/>
+  <ListBinding
+    Name="LOV_OffsetPaymentCode"
+    ListVOName="OffsetPaymentCodeView1"
+    ListRangeSize="-1"
+    NullValueFlag="none"
+    NullValueId="LOV_OffsetPaymentCode_LOVUIHints_NullValueId"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="OffsetPaymentCode"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="ReferenceCode"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <EntityUsage
+    Name="Receipt"
+    Entity="gov.ca.dir.acct.cars.adf.common.model.entity.Receipt"
+    DeleteParticipant="false"/>
+  <ViewAttribute
+    Name="OffsetPaymentCode"
+    PrecisionRule="true"
+    EntityAttrName="OffsetPaymentCode"
+    EntityUsage="Receipt"
+    AliasName="OFFSET_PAYMENT_CODE"
+    LOVName="LOV_OffsetPaymentCode">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="AcctgTransactionId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="AcctgTransactionId"
+    EntityUsage="Receipt"
+    AliasName="ACCTG_TRANSACTION_ID"/>
+  <ViewLinkAccessor
+    Name="AccountingEntryStatusView"
+    ViewLink="gov.ca.dir.acct.cars.adf.usecase001.model.CarsEventDetails.ReceiptAccountingEntryStatusViewLink"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="gov.ca.dir.acct.cars.adf.usecase001.model.UseCase001ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

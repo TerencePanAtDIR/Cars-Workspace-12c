@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.64.93" id="viewEventsForRootDocPageDef"
+                Package="Cars_Ar_Search">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="ViewInitiatingEvents1" RangeSize="25"
+              DataControl="CarsSearchEventsDataControl"
+              id="ViewInitiatingEvents1Iterator" Refresh="always"/>
+    <iterator id="ViewArRootDocuments1Iterator" Binds="ViewArRootDocuments1"
+              DataControl="CarsSearchEventsDataControl" RangeSize="25"
+              Refresh="always"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="ViewInitiatingEvents1Iterator"
+          id="ViewInitiatingEvents1" ChangeEventPolicy="ppr">
+      <nodeDefinition DefName="gov.ca.dir.acct.cars.adf.usecase001.model.CarsEventDetails.ViewInitiatingEvents"
+                      Name="ViewInitiatingEvents10">
+        <AttrNames>
+          <Item Value="ArRootDocument"/>
+          <Item Value="AcctgTransactionId"/>
+          <Item Value="AdditionalReference"/>
+          <Item Value="AdjustmentDate"/>
+          <Item Value="AdjustmentTypeCode"/>
+          <Item Value="Amount"/>
+          <Item Value="BillTypeCode"/>
+          <Item Value="CreatedDate"/>
+          <Item Value="CurrentDocument"/>
+          <Item Value="DataSourceCode"/>
+          <Item Value="DepositDate"/>
+          <Item Value="DepositSlipNumber"/>
+          <Item Value="DueDate"/>
+          <Item Value="EventDate"/>
+          <Item Value="EventId"/>
+          <Item Value="EventTypeCode"/>
+          <Item Value="EventTypeName"/>
+          <Item Value="OtherTransactionDate"/>
+          <Item Value="OtherTransactTypeCode"/>
+          <Item Value="ProgramUnitCode"/>
+          <Item Value="ReceiptControlNumber"/>
+          <Item Value="ReceiptDate"/>
+          <Item Value="ReceiptTypeCode"/>
+          <Item Value="ReceivableEstablishDate"/>
+          <Item Value="ReferenceDocument"/>
+        </AttrNames>
+        <Accessors>
+          <Item Value="ViewChildEvents"/>
+        </Accessors>
+      </nodeDefinition>
+      <nodeDefinition DefName="gov.ca.dir.acct.cars.adf.usecase001.model.CarsEventDetails.ViewChildEvents"
+                      Name="ViewInitiatingEvents11">
+        <AttrNames>
+          <Item Value="AcctgTransactionId"/>
+          <Item Value="OffsetPaymentCode"/>
+          <Item Value="AdditionalReference"/>
+          <Item Value="AdjustmentDate"/>
+          <Item Value="AdjustmentTypeCode"/>
+          <Item Value="Amount"/>
+          <Item Value="BillTypeCode"/>
+          <Item Value="CreatedDate"/>
+          <Item Value="CurrentDocument"/>
+          <Item Value="DataSourceCode"/>
+          <Item Value="DepositDate"/>
+          <Item Value="DepositSlipNumber"/>
+          <Item Value="DueDate"/>
+          <Item Value="EventDate"/>
+          <Item Value="EventId"/>
+          <Item Value="EventTypeCode"/>
+          <Item Value="EventTypeName"/>
+          <Item Value="OtherTransactionDate"/>
+          <Item Value="OtherTransactTypeCode"/>
+          <Item Value="ProgramUnitCode"/>
+          <Item Value="ReceiptControlNumber"/>
+          <Item Value="ReceiptDate"/>
+          <Item Value="ReceiptTypeCode"/>
+          <Item Value="ReceivableEstablishDate"/>
+          <Item Value="ReferenceDocument"/>
+        </AttrNames>
+        <Accessors>
+          <Item Value="CurrentDocumentViewChildEvents"/>
+        </Accessors>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="ViewArRootDocuments1Iterator"
+                     id="ArRootDocument">
+      <AttrNames>
+        <Item Value="ArRootDocument"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ViewArRootDocuments1Iterator" id="IssueDate">
+      <AttrNames>
+        <Item Value="IssueDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ViewArRootDocuments1Iterator" id="LegalName">
+      <AttrNames>
+        <Item Value="LegalName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ViewArRootDocuments1Iterator" id="IndexCode">
+      <AttrNames>
+        <Item Value="IndexCode"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ViewArRootDocuments1Iterator"
+                     id="AgencySourceCode">
+      <AttrNames>
+        <Item Value="AgencySourceCode"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ViewArRootDocuments1Iterator"
+                     id="RevenueSourceCode">
+      <AttrNames>
+        <Item Value="RevenueSourceCode"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ViewArRootDocuments1Iterator" id="ArBalance">
+      <AttrNames>
+        <Item Value="ArBalance"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

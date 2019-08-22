@@ -1,0 +1,171 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:pageTemplate viewId="/report-template.jspx" id="pt1">
+    <f:facet name="main">
+        <af:panelGroupLayout id="pgl1" layout="scroll">
+        <af:panelGroupLayout id="pgl2" layout="vertical">
+          <af:query id="qryId1" headerText="Search" disclosed="true"
+                    value="#{bindings.cars03report4FiscalVOCriteriaQuery.queryDescriptor}"
+                    model="#{bindings.cars03report4FiscalVOCriteriaQuery.queryModel}"
+                    queryListener="#{bindings.cars03report4FiscalVOCriteriaQuery.processQuery}"
+                    queryOperationListener="#{bindings.cars03report4FiscalVOCriteriaQuery.processQueryOperation}"
+                    resultComponentId="::pc1:t1"/>
+        </af:panelGroupLayout>
+        <af:panelCollection id="pc1" styleClass="AFStretchWidth">
+          <f:facet name="toolbar">
+            <af:toolbar id="t2">
+              <af:commandToolbarButton id="ctb1" icon="/export_excel_sml.png">
+                <af:exportCollectionActionListener type="excelHTML"
+                                                   exportedId="t1"
+                                                   filename="cars_export_ar_adjust_amend.xls"/>
+              </af:commandToolbarButton>
+            </af:toolbar>
+          </f:facet>
+          <af:table value="#{bindings.cars03report4FiscalVO1.collectionModel}"
+                    var="row"
+                    rows="#{bindings.cars03report4FiscalVO1.rangeSize}"
+                    emptyText="#{bindings.cars03report4FiscalVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                    fetchSize="-1" rowBandingInterval="0"
+                    filterModel="#{bindings.cars03report4FiscalVOCriteriaQuery.queryDescriptor}"
+                    queryListener="#{bindings.cars03report4FiscalVOCriteriaQuery.processQuery}"
+                    filterVisible="true" varStatus="vs"
+                    selectionListener="#{bindings.cars03report4FiscalVO1.collectionModel.makeCurrent}"
+                    id="t1" inlineStyle="height:225px;"
+                    contentDelivery="immediate" rowSelection="single"
+                    autoHeightRows="25" width="-1">
+            <af:column sortProperty="#{bindings.cars03report4FiscalVO1.hints.ArRootDocument.name}"
+                       filterable="true" sortable="true"
+                       headerText="#{bindings.cars03report4FiscalVO1.hints.ArRootDocument.label}"
+                       id="c4">
+              <af:outputText value="#{row.ArRootDocument}" id="ot8"/>
+            </af:column>
+            <af:column sortProperty="#{bindings.cars03report4FiscalVO1.hints.EmployerName.name}"
+                       filterable="true" sortable="true"
+                       headerText="#{bindings.cars03report4FiscalVO1.hints.EmployerName.label}"
+                       id="c2">
+              <af:outputText value="#{row.EmployerName}" id="ot15"/>
+            </af:column>
+            <af:column sortProperty="#{bindings.cars03report4FiscalVO1.hints.IssueDate.name}"
+                       filterable="true" sortable="true"
+                       headerText="#{bindings.cars03report4FiscalVO1.hints.IssueDate.label}"
+                       id="c5">
+              <f:facet name="filter">
+                <af:inputDate value="#{vs.filterCriteria.IssueDate}" id="id1"/>
+              </f:facet>
+              <af:outputText value="#{row.IssueDate}" id="ot13">
+                <af:convertDateTime pattern="#{bindings.cars03report4FiscalVO1.hints.IssueDate.format}"/>
+              </af:outputText>
+            </af:column>
+            <af:column sortProperty="#{bindings.cars03report4FiscalVO1.hints.FiscalYear.name}"
+                       filterable="true" sortable="true"
+                       headerText="#{bindings.cars03report4FiscalVO1.hints.FiscalYear.label}"
+                       id="c15">
+              <af:outputText value="#{row.FiscalYear}" id="ot12"/>
+            </af:column>
+            <af:column sortProperty="#{bindings.cars03report4FiscalVO1.hints.AmendType.name}"
+                       filterable="true" sortable="true"
+                       headerText="#{bindings.cars03report4FiscalVO1.hints.AmendType.label}"
+                       id="c9">
+              <af:outputText value="#{row.AmendType}" id="ot1"/>
+            </af:column>
+            <af:column sortProperty="#{bindings.cars03report4FiscalVO1.hints.AdjustmentDate.name}"
+                       filterable="true" sortable="true"
+                       headerText="#{bindings.cars03report4FiscalVO1.hints.AdjustmentDate.label}"
+                       id="c8">
+              <f:facet name="filter">
+                <af:inputDate value="#{vs.filterCriteria.AdjustmentDate}"
+                              id="id3"/>
+              </f:facet>
+              <af:outputText value="#{row.AdjustmentDate}" id="ot14">
+                <af:convertDateTime pattern="#{bindings.cars03report4FiscalVO1.hints.AdjustmentDate.format}"/>
+              </af:outputText>
+            </af:column>
+            <af:column sortProperty="#{bindings.cars03report4FiscalVO1.hints.AdjustmentAmount.name}"
+                       filterable="true" sortable="true"
+                       headerText="#{bindings.cars03report4FiscalVO1.hints.AdjustmentAmount.label}"
+                       id="c1">
+              <af:outputText value="#{row.AdjustmentAmount}" id="ot2"
+                             inlineStyle="font-weight:bold;">
+                <af:convertNumber groupingUsed="false"
+                                  pattern="#{bindings.cars03report4FiscalVO1.hints.AdjustmentAmount.format}"/>
+              </af:outputText>
+              <f:facet name="footer">
+                <af:outputFormatted value="#{bindings.AdjustAmtTotal.inputValue}"
+                                    id="of2" inlineStyle="font-weight:bold;"/>
+              </f:facet>
+            </af:column>
+            <af:column sortProperty="#{bindings.cars03report4FiscalVO1.hints.IndexCode.name}"
+                       filterable="true" sortable="true"
+                       headerText="#{bindings.cars03report4FiscalVO1.hints.IndexCode.label}"
+                       id="c10">
+              <af:outputText value="#{row.IndexCode}" id="ot3"/>
+            </af:column>
+            <af:column sortProperty="#{bindings.cars03report4FiscalVO1.hints.PcaCode.name}"
+                       filterable="true" sortable="true"
+                       headerText="#{bindings.cars03report4FiscalVO1.hints.PcaCode.label}"
+                       id="c6">
+              <af:outputText value="#{row.PcaCode}" id="ot4"/>
+            </af:column>
+            <af:column sortProperty="#{bindings.cars03report4FiscalVO1.hints.RevenueSourceCode.name}"
+                       filterable="true" sortable="true"
+                       headerText="#{bindings.cars03report4FiscalVO1.hints.RevenueSourceCode.label}"
+                       id="c7">
+              <af:outputText value="#{row.RevenueSourceCode}" id="ot11"/>
+            </af:column>
+            <af:column sortProperty="#{bindings.cars03report4FiscalVO1.hints.AgencySourceCode.name}"
+                       filterable="true" sortable="true"
+                       headerText="#{bindings.cars03report4FiscalVO1.hints.AgencySourceCode.label}"
+                       id="c14">
+              <af:outputText value="#{row.AgencySourceCode}" id="ot5"/>
+            </af:column>
+            <af:column sortProperty="#{bindings.cars03report4FiscalVO1.hints.Fund.name}"
+                       filterable="true" sortable="true"
+                       headerText="#{bindings.cars03report4FiscalVO1.hints.Fund.label}"
+                       id="c11">
+              <af:outputText value="#{row.Fund}" id="ot10"/>
+            </af:column>
+            <af:column sortProperty="#{bindings.cars03report4FiscalVO1.hints.ProgramUnitCode.name}"
+                       filterable="true" sortable="true"
+                       headerText="#{bindings.cars03report4FiscalVO1.hints.ProgramUnitCode.label}"
+                       id="c13">
+              <af:outputText value="#{row.ProgramUnitCode}" id="ot9"/>
+            </af:column>
+            <af:column sortProperty="#{bindings.cars03report4FiscalVO1.hints.FiscalGroupId.name}"
+                       filterable="true" sortable="true"
+                       headerText="#{bindings.cars03report4FiscalVO1.hints.FiscalGroupId.label}"
+                       id="c12">
+              <af:outputText value="#{row.FiscalGroupId}" id="ot7"/>
+            </af:column>
+            <af:column sortProperty="#{bindings.cars03report4FiscalVO1.hints.AccountingDate.name}"
+                       filterable="true" sortable="true"
+                       headerText="#{bindings.cars03report4FiscalVO1.hints.AccountingDate.label}"
+                       id="c3">
+              <f:facet name="filter">
+                <af:inputDate value="#{vs.filterCriteria.AccountingDate}"
+                              id="id2"/>
+              </f:facet>
+              <af:outputText value="#{row.AccountingDate}" id="ot6">
+                <af:convertDateTime pattern="#{bindings.cars03report4FiscalVO1.hints.AccountingDate.format}"/>
+              </af:outputText>
+            </af:column>
+            <af:column id="c16" headerText="Count">
+              <f:facet name="footer">
+                <af:outputFormatted value="#{bindings.AdjustCount.inputValue}"
+                                    id="of1" inlineStyle="font-weight:bold;">
+                  <af:convertNumber pattern="#{bindings.cars03report4FiscalVO1.hints.AdjustCount.format}"
+                                    groupingUsed="false"/>
+                </af:outputFormatted>
+              </f:facet>
+            </af:column>
+          </af:table>
+        </af:panelCollection>
+      </af:panelGroupLayout>
+    </f:facet>
+    <f:attribute name="program_unit" value="Cal-OSHA"/>
+    <f:attribute name="title"
+                 value="Accounts Receivable Amendment and Adjustment"/> 
+    <f:attribute name="report_date" value=""/>                 
+  </af:pageTemplate>
+</jsp:root>

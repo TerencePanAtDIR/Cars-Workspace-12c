@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.64.93" id="UseCase009CustomerSearchPageDef"
+                Package="gov.ca.dir.acct.cars.adf.usecase009.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="CustomerInformation1" RangeSize="25"
+              DataControl="InfarAMDataControl"
+              id="CustomerInformation1Iterator"/>
+    <searchRegion Criteria="CustomerInformationVOCriteria"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="CustomerInformation1Iterator"
+                  id="CustomerInformationVOCriteriaQuery"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="CustomerInformation1Iterator" id="CustomerInformation1">
+      <nodeDefinition DefName="gov.ca.dir.acct.cars.adf.usecase009.model.view.CustomerInformationVO"
+                      Name="CustomerInformation10">
+        <AttrNames>
+          <Item Value="ArRootDocument"/>
+          <Item Value="CustId"/>
+          <Item Value="FsProcessStatus"/>
+          <Item Value="DataSourceCode"/>
+          <Item Value="ProgramUnitCode"/>
+          <Item Value="EffectiveStartDate"/>
+          <Item Value="EffectiveEndDate"/>
+          <Item Value="OrganizationName"/>
+          <Item Value="EventCreatedDate"/>
+          <Item Value="EventDate"/>
+          <Item Value="CreatedBy"/>
+          <Item Value="PartyType"/>
+          <Item Value="Dba"/>
+          <Item Value="Fein"/>
+          <Item Value="LegalName"/>
+          <Item Value="NaicsCode"/>
+          <Item Value="Sein"/>
+          <Item Value="SicCode"/>
+          <Item Value="StreetAddress"/>
+          <Item Value="AddressLine2"/>
+          <Item Value="AddressLine3"/>
+          <Item Value="City"/>
+          <Item Value="CountyName"/>
+          <Item Value="StateCode"/>
+          <Item Value="State"/>
+          <Item Value="ZipCode"/>
+          <Item Value="Province"/>
+          <Item Value="PostalCode"/>
+          <Item Value="CountryAbbreviation"/>
+          <Item Value="Country"/>
+          <Item Value="FsSequenceNumber"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action id="Commit" DataControl="InfarAMDataControl"
+            RequiresUpdateModel="true" Action="commitTransaction"/>
+    <action id="Rollback" DataControl="InfarAMDataControl"
+            RequiresUpdateModel="false" Action="rollbackTransaction"/>
+    <attributeValues IterBinding="CustomerInformation1Iterator"
+                     id="FsProcessStatus">
+      <AttrNames>
+        <Item Value="FsProcessStatus"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

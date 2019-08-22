@@ -1,0 +1,128 @@
+<xsd:schema xmlns:sdoJava="commonj.sdo/java" xmlns:ns0="http://xmlns.oracle.com/adf/svc/types/" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+     targetNamespace="/gov/ca/dir/acct/cars/adf/service/view/common/" xmlns="/gov/ca/dir/acct/cars/adf/service/view/common/"
+     elementFormDefault="qualified" sdoJava:package="gov.ca.dir.acct.cars.adf.service.view.common">
+    <xsd:annotation>
+        <xsd:documentation>
+            <name>Infar 006 Outbound View</name>
+        </xsd:documentation>
+    </xsd:annotation>
+    <xsd:import schemaLocation="classpath:/META-INF/wsdl/BC4JService.xsd" namespace="http://xmlns.oracle.com/adf/svc/types/"/>
+    <xsd:import schemaLocation="classpath:/xml/sdoJava.xsd" namespace="commonj.sdo/java"/>
+    <xsd:complexType name="Infar006OutboundViewSDO">
+        <xsd:annotation>
+            <xsd:appinfo source="http://xmlns.oracle.com/adf/svc/metadata/">
+                <key xmlns="http://xmlns.oracle.com/adf/svc/metadata/">
+                    <attribute>Infar006OutboundId</attribute>
+                </key>
+            </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="BatchId" type="xsd:decimal" minOccurs="0"/>
+            <xsd:element name="Infar006OutboundId" type="xsd:decimal" minOccurs="0"/>
+            <xsd:element name="Account" type="xsd:string" minOccurs="0" nillable="true"/>
+            <xsd:element name="AccountingDt" type="ns0:date-Date" minOccurs="0" nillable="true"/>
+            <xsd:element name="AcctgEntryId" type="xsd:decimal" minOccurs="0" nillable="true"/>
+            <xsd:element name="ActivityId" type="xsd:string" minOccurs="0" nillable="true"/>
+            <xsd:element name="AddressSeqNum" type="xsd:int" minOccurs="0" nillable="true"/>
+            <xsd:element name="Affiliate" type="xsd:string" minOccurs="0" nillable="true"/>
+            <xsd:element name="AffiliateIntra1" type="xsd:string" minOccurs="0" nillable="true"/>
+            <xsd:element name="AffiliateIntra2" type="xsd:string" minOccurs="0" nillable="true"/>
+            <xsd:element name="Altacct" type="xsd:string" minOccurs="0" nillable="true"/>
+            <xsd:element name="AnalysisType" type="xsd:string" minOccurs="0" nillable="true"/>
+            <xsd:element name="AsofDt" type="ns0:date-Date" minOccurs="0" nillable="true"/>
+            <xsd:element name="BudgetDt" type="ns0:date-Date" minOccurs="0" nillable="true"/>
+            <xsd:element name="BudgetRef" type="xsd:string" minOccurs="0" nillable="true"/>
+            <xsd:element name="BusinessUnitGl" type="xsd:string" minOccurs="0" nillable="true"/>
+            <xsd:element name="BusinessUnitPc" type="xsd:string" minOccurs="0" nillable="true"/>
+            <xsd:element name="Chartfield1" type="xsd:string" minOccurs="0" nillable="true"/>
+            <xsd:element name="Chartfield2" type="xsd:string" minOccurs="0" nillable="true"/>
+            <xsd:element name="Chartfield3" type="xsd:string" minOccurs="0" nillable="true"/>
+            <xsd:element name="ClassFld" type="xsd:string" minOccurs="0" nillable="true"/>
+            <xsd:element name="CollectionChkbox" type="xsd:string" minOccurs="0" nillable="true"/>
+            <xsd:element name="CollectionDt" type="ns0:date-Date" minOccurs="0" nillable="true"/>
+            <xsd:element name="CollectionStatus" type="xsd:string" minOccurs="0" nillable="true"/>
+            <xsd:element name="Collector" type="xsd:string" minOccurs="0" nillable="true"/>
+            <xsd:element name="ContractNum" type="xsd:string" minOccurs="0" nillable="true"/>
+            <xsd:element name="ControlAmt" type="xsd:decimal" minOccurs="0" nillable="true"/>
+            <xsd:element name="ControlCnt" type="xsd:int" minOccurs="0" nillable="true"/>
+            <xsd:element name="CrAnalyst" type="xsd:string" minOccurs="0" nillable="true"/>
+            <xsd:element name="CreatedBy" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="CreatedDate" type="ns0:date-Date" minOccurs="0"/>
+            <xsd:element name="CustId" type="xsd:string" minOccurs="0" nillable="true"/>
+            <xsd:element name="DataSourceCode" type="xsd:string" minOccurs="0" nillable="true"/>
+            <xsd:element name="Deptid" type="xsd:string" minOccurs="0" nillable="true"/>
+            <xsd:element name="DisputeAmount" type="xsd:decimal" minOccurs="0" nillable="true"/>
+            <xsd:element name="DisputeChkbox" type="xsd:string" minOccurs="0" nillable="true"/>
+            <xsd:element name="DisputeDate" type="ns0:date-Date" minOccurs="0" nillable="true"/>
+            <xsd:element name="DisputeStatus" type="xsd:string" minOccurs="0" nillable="true"/>
+            <xsd:element name="Document" type="xsd:string" minOccurs="0" nillable="true"/>
+            <xsd:element name="DstSeqNum" type="xsd:int" minOccurs="0" nillable="true"/>
+            <xsd:element name="DueDt" type="ns0:date-Date" minOccurs="0" nillable="true"/>
+            <xsd:element name="EntryAmt" type="xsd:decimal" minOccurs="0" nillable="true"/>
+            <xsd:element name="EntryReason" type="xsd:string" minOccurs="0" nillable="true"/>
+            <xsd:element name="EntryType" type="xsd:string" minOccurs="0" nillable="true"/>
+            <xsd:element name="FundCode" type="xsd:string" minOccurs="0" nillable="true"/>
+            <xsd:element name="GroupBu" type="xsd:string" minOccurs="0" nillable="true"/>
+            <xsd:element name="GroupIdStg" type="xsd:string" minOccurs="0" nillable="true"/>
+            <xsd:element name="GroupSeqNum" type="xsd:int" minOccurs="0" nillable="true"/>
+            <xsd:element name="GroupType" type="xsd:string" minOccurs="0" nillable="true"/>
+            <xsd:element name="Item" type="xsd:string" minOccurs="0" nillable="true"/>
+            <xsd:element name="ItemLine" type="xsd:int" minOccurs="0" nillable="true"/>
+            <xsd:element name="ModifiedBy" type="xsd:string" minOccurs="0" nillable="true"/>
+            <xsd:element name="ModifiedDate" type="ns0:date-Date" minOccurs="0" nillable="true"/>
+            <xsd:element name="MonetaryAmount" type="xsd:decimal" minOccurs="0" nillable="true"/>
+            <xsd:element name="NoteText" type="xsd:string" minOccurs="0" nillable="true"/>
+            <xsd:element name="OperatingUnit" type="xsd:string" minOccurs="0" nillable="true"/>
+            <xsd:element name="PoRef" type="xsd:string" minOccurs="0" nillable="true"/>
+            <xsd:element name="PostAction" type="xsd:string" minOccurs="0" nillable="true"/>
+            <xsd:element name="Product" type="xsd:string" minOccurs="0" nillable="true"/>
+            <xsd:element name="ProgramCode" type="xsd:string" minOccurs="0" nillable="true"/>
+            <xsd:element name="ProjectId" type="xsd:string" minOccurs="0" nillable="true"/>
+            <xsd:element name="PymntTermsCd" type="xsd:string" minOccurs="0" nillable="true"/>
+            <xsd:element name="ResourceCategory" type="xsd:string" minOccurs="0" nillable="true"/>
+            <xsd:element name="ResourceSubCat" type="xsd:string" minOccurs="0" nillable="true"/>
+            <xsd:element name="ResourceType" type="xsd:string" minOccurs="0" nillable="true"/>
+            <xsd:element name="Status" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="SystemDefined" type="xsd:string" minOccurs="0" nillable="true"/>
+            <xsd:element name="UserDt1" type="ns0:date-Date" minOccurs="0" nillable="true"/>
+            <xsd:element name="UserDt2" type="ns0:date-Date" minOccurs="0" nillable="true"/>
+            <xsd:element name="UserDt3" type="ns0:date-Date" minOccurs="0" nillable="true"/>
+            <xsd:element name="UserDt4" type="ns0:date-Date" minOccurs="0" nillable="true"/>
+            <xsd:element name="ZzAgncyObj" type="xsd:string" minOccurs="0" nillable="true"/>
+            <xsd:element name="ZzAgncySrc" type="xsd:string" minOccurs="0" nillable="true"/>
+            <xsd:element name="ZzAppropSymb" type="xsd:string" minOccurs="0" nillable="true"/>
+            <xsd:element name="ZzCharacter" type="xsd:string" minOccurs="0" nillable="true"/>
+            <xsd:element name="ZzComponent" type="xsd:string" minOccurs="0" nillable="true"/>
+            <xsd:element name="ZzDeptUse1" type="xsd:string" minOccurs="0" nillable="true"/>
+            <xsd:element name="ZzDeptUse2" type="xsd:string" minOccurs="0" nillable="true"/>
+            <xsd:element name="ZzElement" type="xsd:string" minOccurs="0" nillable="true"/>
+            <xsd:element name="ZzEnactmentYear" type="xsd:string" minOccurs="0" nillable="true"/>
+            <xsd:element name="ZzFiscalYear" type="xsd:string" minOccurs="0" nillable="true"/>
+            <xsd:element name="ZzFund" type="xsd:string" minOccurs="0" nillable="true"/>
+            <xsd:element name="ZzFundSrc" type="xsd:string" minOccurs="0" nillable="true"/>
+            <xsd:element name="ZzGlAccount" type="xsd:string" minOccurs="0" nillable="true"/>
+            <xsd:element name="ZzIndex" type="xsd:string" minOccurs="0" nillable="true"/>
+            <xsd:element name="ZzIntStruct1" type="xsd:string" minOccurs="0" nillable="true"/>
+            <xsd:element name="ZzIntStruct2" type="xsd:string" minOccurs="0" nillable="true"/>
+            <xsd:element name="ZzIntStruct3" type="xsd:string" minOccurs="0" nillable="true"/>
+            <xsd:element name="ZzIntStruct4" type="xsd:string" minOccurs="0" nillable="true"/>
+            <xsd:element name="ZzIntStruct5" type="xsd:string" minOccurs="0" nillable="true"/>
+            <xsd:element name="ZzLocation" type="xsd:string" minOccurs="0" nillable="true"/>
+            <xsd:element name="ZzMethod" type="xsd:string" minOccurs="0" nillable="true"/>
+            <xsd:element name="ZzMultipurpose" type="xsd:string" minOccurs="0" nillable="true"/>
+            <xsd:element name="ZzObjDetail" type="xsd:string" minOccurs="0" nillable="true"/>
+            <xsd:element name="ZzOrgCode" type="xsd:string" minOccurs="0" nillable="true"/>
+            <xsd:element name="ZzProgCostAcct" type="xsd:string" minOccurs="0" nillable="true"/>
+            <xsd:element name="ZzProgram" type="xsd:string" minOccurs="0" nillable="true"/>
+            <xsd:element name="ZzProject" type="xsd:string" minOccurs="0" nillable="true"/>
+            <xsd:element name="ZzReference" type="xsd:string" minOccurs="0" nillable="true"/>
+            <xsd:element name="ZzSource" type="xsd:string" minOccurs="0" nillable="true"/>
+            <xsd:element name="ZzSubFund" type="xsd:string" minOccurs="0" nillable="true"/>
+            <xsd:element name="ZzSubsidiary" type="xsd:string" minOccurs="0" nillable="true"/>
+            <xsd:element name="ZzTask" type="xsd:string" minOccurs="0" nillable="true"/>
+            <xsd:element name="ZzWorkPhase" type="xsd:string" minOccurs="0" nillable="true"/>
+            <xsd:element name="ProgramUnitCode" type="xsd:string" minOccurs="0" nillable="true"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="infar006OutboundViewSDO" type="Infar006OutboundViewSDO"/>
+</xsd:schema>

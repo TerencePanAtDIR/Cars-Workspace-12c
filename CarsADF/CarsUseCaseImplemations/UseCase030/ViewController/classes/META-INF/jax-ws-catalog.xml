@@ -1,0 +1,4 @@
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+  <system systemId="http://cssoady3.ad.dir.ca.gov:7777/soa-infra/services/default/CarsEventRouterSCA/CARSIntakeWebService?WSDL"
+          uri="../com/oracle/xmlns/carscompositeworkspace/carseventroutersca/carsintakewebservice/CARSIntakeWebService.wsdl"/>
+</catalog>

@@ -1,0 +1,25 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<BC4JConfig version="11.1" xmlns="http://xmlns.oracle.com/bc4j/configuration">
+   <AppModuleConfigBag ApplicationName="gov.ca.dir.acct.cars.adf.usecase030.model.services.ReclassAM">
+      <AppModuleConfig name="ReclassAMLocal" ApplicationName="gov.ca.dir.acct.cars.adf.usecase030.model.services.ReclassAM" DeployPlatform="LOCAL" jbo.project="gov.ca.dir.acct.cars.adf.usecase030.model.Model">
+         <Security AppModuleJndiName="gov.ca.dir.acct.cars.adf.usecase030.model.services.ReclassAM"/>
+         <Custom JDBCDataSource="java:comp/env/jdbc/carsdevDS"/>
+      </AppModuleConfig>
+      <AppModuleConfig name="ReclassAMShared" ApplicationName="gov.ca.dir.acct.cars.adf.usecase030.model.services.ReclassAM" DeployPlatform="LOCAL" jbo.project="gov.ca.dir.acct.cars.adf.usecase030.model.Model">
+         <AM-Pooling jbo.ampool.maxpoolsize="1" jbo.ampool.isuseexclusive="false"/>
+         <Security AppModuleJndiName="gov.ca.dir.acct.cars.adf.usecase030.model.services.ReclassAM"/>
+         <Custom JDBCDataSource="java:comp/env/jdbc/carsdevDS"/>
+      </AppModuleConfig>
+   </AppModuleConfigBag>
+   <AppModuleConfigBag ApplicationName="gov.ca.dir.acct.cars.adf.usecase030.model.services.ReverseAM">
+      <AppModuleConfig name="ReverseAMLocal" DeployPlatform="LOCAL" jbo.project="gov.ca.dir.acct.cars.adf.usecase030.model.Model" java.naming.factory.initial="oracle.jbo.common.JboInitialContextFactory" ApplicationName="gov.ca.dir.acct.cars.adf.usecase030.model.services.ReverseAM">
+         <Security AppModuleJndiName="gov.ca.dir.acct.cars.adf.usecase030.model.services.ReverseAM"/>
+         <Custom JDBCDataSource="java:comp/env/jdbc/carsdevDS"/>
+      </AppModuleConfig>
+      <AppModuleConfig name="ReverseAMShared" DeployPlatform="LOCAL" jbo.project="gov.ca.dir.acct.cars.adf.usecase030.model.Model" java.naming.factory.initial="oracle.jbo.common.JboInitialContextFactory" ApplicationName="gov.ca.dir.acct.cars.adf.usecase030.model.services.ReverseAM">
+         <AM-Pooling jbo.ampool.isuseexclusive="false" jbo.ampool.maxpoolsize="1"/>
+         <Security AppModuleJndiName="gov.ca.dir.acct.cars.adf.usecase030.model.services.ReverseAM"/>
+         <Custom JDBCDataSource="java:comp/env/jdbc/carsdevDS"/>
+      </AppModuleConfig>
+   </AppModuleConfigBag>
+</BC4JConfig>

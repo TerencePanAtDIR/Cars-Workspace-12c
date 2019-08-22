@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.64.93" id="cars01reportviewfiscalPageDef"
+                Package="gov.ca.dir.acct.cars.adf.cars01report.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="cars01reportfiscal1" RangeSize="25"
+              DataControl="cars01reportAMDataControl"
+              id="cars01reportfiscal1Iterator"/>
+    <searchRegion Criteria="cars01reportfiscalVOCriteria"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="cars01reportfiscal1Iterator"
+                  id="cars01reportfiscalVOCriteriaQuery"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="cars01reportfiscal1Iterator" id="cars01reportfiscal1">
+      <nodeDefinition DefName="gov.ca.dir.acct.cars.adf.cars01report.model.view.cars01reportfiscalVO"
+                      Name="cars01reportfiscal10">
+        <AttrNames>
+          <Item Value="ArRootDocument"/>
+          <Item Value="EmployerName"/>
+          <Item Value="ProgramUnit"/>
+          <Item Value="DataSource"/>
+          <Item Value="IssueDate"/>
+          <Item Value="IndexCode"/>
+          <Item Value="PcaCode"/>
+          <Item Value="RevenueSource"/>
+          <Item Value="AgencySource"/>
+          <Item Value="Fund"/>
+          <Item Value="SetupDate"/>
+          <Item Value="Amount"/>
+          <Item Value="EventId"/>
+          <Item Value="Infar006OutboundId"/>
+          <Item Value="GroupId"/>
+          <Item Value="CustomerId"/>
+          <Item Value="AccountingDt"/>
+          <Item Value="TotalCount"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="cars01reportfiscal1Iterator" id="TotalCount">
+      <AttrNames>
+        <Item Value="TotalCount"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="cars01reportfiscal1Iterator"
+                     id="TotalInvoiceAmount">
+      <AttrNames>
+        <Item Value="TotalInvoiceAmount"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

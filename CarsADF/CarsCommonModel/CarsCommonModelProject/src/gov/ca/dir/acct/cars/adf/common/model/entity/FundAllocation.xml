@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="FundAllocation"
+  Version="11.1.1.64.93"
+  InheritPersonalization="true"
+  DBObjectType="table"
+  DBObjectName="FUND_ALLOCATION"
+  AliasName="FundAllocation"
+  BindingStyle="OracleName"
+  UseGlueCode="false"
+  RowClass="gov.ca.dir.acct.cars.adf.common.code.EntityImpl">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access"/>
+    <AttrArray Name="_publishEvents"/>
+  </DesignTime>
+  <Attribute
+    Name="FundAllocationId"
+    IsNotNull="true"
+    ColumnName="FUND_ALLOCATION_ID"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="FUND_ALLOCATION"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="FundFromId"
+    ColumnName="FUND_FROM_ID"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="FUND_ALLOCATION">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="FundToId"
+    ColumnName="FUND_TO_ID"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="FUND_ALLOCATION">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="PcaCode"
+    Precision="5"
+    ColumnName="PCA_CODE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="FUND_ALLOCATION">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="5"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Percentage"
+    Precision="6"
+    Scale="5"
+    ColumnName="PERCENTAGE"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="FUND_ALLOCATION">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="8"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="DistributionMethod"
+    Precision="1"
+    ColumnName="DISTRIBUTION_METHOD"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="FUND_ALLOCATION">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="EffectiveStartDate"
+    IsNotNull="true"
+    ColumnName="EFFECTIVE_START_DATE"
+    SQLType="TIMESTAMP"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="FUND_ALLOCATION">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="EffectiveEndDate"
+    ColumnName="EFFECTIVE_END_DATE"
+    SQLType="TIMESTAMP"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="FUND_ALLOCATION">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="DataSourceCode"
+    Precision="25"
+    ColumnName="DATA_SOURCE_CODE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="FUND_ALLOCATION">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="25"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="CreatedBy"
+    IsNotNull="true"
+    Precision="25"
+    ColumnName="CREATED_BY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="FUND_ALLOCATION">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="25"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="CreatedDate"
+    IsNotNull="true"
+    ColumnName="CREATED_DATE"
+    SQLType="TIMESTAMP"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="FUND_ALLOCATION">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ModifiedBy"
+    Precision="25"
+    ColumnName="MODIFIED_BY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="FUND_ALLOCATION">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="25"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ModifiedDate"
+    ColumnName="MODIFIED_DATE"
+    SQLType="TIMESTAMP"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="FUND_ALLOCATION">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+  </Attribute>
+  <AccessorAttribute
+    Name="AccountingCode"
+    Association="gov.ca.dir.acct.cars.adf.common.model.entity.FdanAgceFkAssoc"
+    AssociationEnd="gov.ca.dir.acct.cars.adf.common.model.entity.FdanAgceFkAssoc.AccountingCode"
+    AssociationOtherEnd="gov.ca.dir.acct.cars.adf.common.model.entity.FdanAgceFkAssoc.FundAllocation"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <AccessorAttribute
+    Name="Fund"
+    Association="gov.ca.dir.acct.cars.adf.common.model.entity.FundFdanFromFkAssoc"
+    AssociationEnd="gov.ca.dir.acct.cars.adf.common.model.entity.FundFdanFromFkAssoc.Fund"
+    AssociationOtherEnd="gov.ca.dir.acct.cars.adf.common.model.entity.FundFdanFromFkAssoc.FundAllocation"
+    Type="gov.ca.dir.acct.cars.adf.common.code.EntityImpl"
+    IsUpdateable="true"/>
+  <AccessorAttribute
+    Name="Fund1"
+    Association="gov.ca.dir.acct.cars.adf.common.model.entity.FundFdanToFkAssoc"
+    AssociationEnd="gov.ca.dir.acct.cars.adf.common.model.entity.FundFdanToFkAssoc.Fund1"
+    AssociationOtherEnd="gov.ca.dir.acct.cars.adf.common.model.entity.FundFdanToFkAssoc.FundAllocation1"
+    Type="gov.ca.dir.acct.cars.adf.common.code.EntityImpl"
+    IsUpdateable="true"/>
+  <AccessorAttribute
+    Name="PcaCode1"
+    Association="gov.ca.dir.acct.cars.adf.common.model.entity.PaceFdanFkAssoc"
+    AssociationEnd="gov.ca.dir.acct.cars.adf.common.model.entity.PaceFdanFkAssoc.PcaCode1"
+    AssociationOtherEnd="gov.ca.dir.acct.cars.adf.common.model.entity.PaceFdanFkAssoc.FundAllocation"
+    Type="gov.ca.dir.acct.cars.adf.common.code.EntityImpl"
+    IsUpdateable="true"/>
+  <Key
+    Name="FdanArc">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="FDAN_ARC"/>
+      <Attr Name="_checkCondition" Value=" 
+        (  (PCA_CODE IS NOT NULL) AND 
+         (FUND_FROM_ID IS NULL) ) OR 
+        (  (FUND_FROM_ID IS NOT NULL) AND 
+         (PCA_CODE IS NULL) ) "/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="gov.ca.dir.acct.cars.adf.common.model.entity.FundAllocation.FundFromId"/>
+      <Item
+        Value="gov.ca.dir.acct.cars.adf.common.model.entity.FundAllocation.PcaCode"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="FundAllocationPk"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="FUND_ALLOCATION_PK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="gov.ca.dir.acct.cars.adf.common.model.entity.FundAllocation.FundAllocationId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC00160244">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C00160244"/>
+      <Attr Name="_checkCondition" Value='"FUND_ALLOCATION_ID" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="gov.ca.dir.acct.cars.adf.common.model.entity.FundAllocation.FundAllocationId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC00160245">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C00160245"/>
+      <Attr Name="_checkCondition" Value='"EFFECTIVE_START_DATE" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="gov.ca.dir.acct.cars.adf.common.model.entity.FundAllocation.EffectiveStartDate"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC00160246">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C00160246"/>
+      <Attr Name="_checkCondition" Value='"CREATED_BY" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="gov.ca.dir.acct.cars.adf.common.model.entity.FundAllocation.CreatedBy"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC00160247">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C00160247"/>
+      <Attr Name="_checkCondition" Value='"CREATED_DATE" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="gov.ca.dir.acct.cars.adf.common.model.entity.FundAllocation.CreatedDate"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="FundFdanFromFk">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="FUND_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="FUND_FDAN_FROM_FK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="gov.ca.dir.acct.cars.adf.common.model.entity.FundAllocation.FundFromId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="FundFdanToFk">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="FUND_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="FUND_FDAN_TO_FK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="gov.ca.dir.acct.cars.adf.common.model.entity.FundAllocation.FundToId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="PaceFdanFk">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="PCA_CODE_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="PACE_FDAN_FK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="gov.ca.dir.acct.cars.adf.common.model.entity.FundAllocation.PcaCode"/>
+    </AttrArray>
+  </Key>
+</Entity>

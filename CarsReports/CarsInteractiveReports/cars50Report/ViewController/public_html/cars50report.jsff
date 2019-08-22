@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces">
+  <af:pageTemplate viewId="/report-template.jspx" id="pt1">
+    <f:facet name="main">
+      <dvt:barGraph id="barGraph1"
+                    value="#{bindings.CarsCashGlBillTypeProgramUnitView2.graphModel}"
+                    subType="BAR_VERT_STACK">
+        <dvt:background>
+          <dvt:specialEffects/>
+        </dvt:background>
+        <dvt:graphPlotArea/>
+        <dvt:seriesSet>
+          <dvt:series/>
+        </dvt:seriesSet>
+        <dvt:o1Axis/>
+        <dvt:y1Axis/>
+        <dvt:legendArea automaticPlacement="AP_NEVER"/>
+        <dvt:legendTitle text="Legend Title"/>
+        <dvt:graphFootnote text="Footnote"/>
+        <dvt:graphSubtitle text="Subtitle"/>
+        <dvt:graphTitle text="Title"/>
+        <dvt:o1Title text="O1-Axis Title"/>
+        <dvt:y1Title text="Y1-Axis Title"/>
+      </dvt:barGraph>
+    </f:facet>
+    <f:attribute name="title" value="CARS Receipts"/>
+    <f:attribute name="program_unit" value="CARS"/>
+    <f:attribute name="report_date" value="2018"/>
+  </af:pageTemplate>
+</jsp:root>

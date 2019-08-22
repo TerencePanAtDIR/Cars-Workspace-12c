@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.64.93"
+                id="CarsEventSearchFlow_CarsEventSearchFlow_ExecuteWithParams2PageDef"
+                Package="gov.ca.dir.acct.cars.adf.usecase001.view.pageDefs"
+                SkipValidation="true">
+  <parameters/>
+  <executables>
+    <iterator Binds="ViewArBalance1" RangeSize="25"
+              DataControl="CarsSearchEventsDataControl"
+              id="ViewArBalance1Iterator" Refresh="never"/>
+  </executables>
+  <bindings>
+    <action IterBinding="ViewArBalance1Iterator" id="ExecuteWithParams"
+            RequiresUpdateModel="true" Action="executeWithParams">
+      <NamedData NDName="inputImisNumber"
+                 NDValue="#{pageFlowScope.varArRootDocument2}"
+                 NDType="java.lang.String"/>
+    </action>
+  </bindings>
+</pageDefinition>

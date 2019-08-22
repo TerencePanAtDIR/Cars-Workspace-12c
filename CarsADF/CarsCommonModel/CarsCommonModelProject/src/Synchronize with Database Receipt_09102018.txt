@@ -1,0 +1,3 @@
+Entity :Receipt
+|__Create Attribute for column: OFFSET_PAYMENT_CODE
+

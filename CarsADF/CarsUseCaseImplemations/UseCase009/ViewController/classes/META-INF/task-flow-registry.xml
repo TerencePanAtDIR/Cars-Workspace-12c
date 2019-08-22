@@ -1,0 +1,10 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<task-flow-registry xmlns="http://xmlns.oracle.com/adf/controller/rc">
+   <task-flow-descriptor path="WEB-INF/Batch-tf.xml" id="Batch-tf" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false"/>
+   <task-flow-descriptor path="WEB-INF/Infar-Search-tf.xml" id="Infar-Search-tf" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false">
+      <input-parameter name="batchType"/>
+      <input-parameter name="pageTitle"/>
+      <input-parameter name="batchId"/>
+   </task-flow-descriptor>
+   <task-flow-descriptor path="WEB-INF/Customer-Search-tf.xml" id="Customer-Search-tf" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false"/>
+</task-flow-registry>

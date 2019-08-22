@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.64.93" id="cars10ReportViewPageDef"
+                Package="gov.ca.dir.acct.cars.adf.cars10report.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="cars10reportVO1"
+              DataControl="cars10ReportAMDataControl"
+              id="cars10reportVO1Iterator" RangeSize="10"/>
+    <searchRegion Binds="cars10reportVO1Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="cars10reportVO1Query"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="cars10reportVO1Iterator" id="cars10reportVO1">
+      <nodeDefinition DefName="gov.ca.dir.acct.cars.adf.cars10report.model.view.cars10reportVO"
+                      Name="cars10reportVO10">
+        <AttrNames>
+          <Item Value="CurrentDocument"/>
+          <Item Value="ProgramUnitCode"/>
+          <Item Value="FiscalYear"/>
+          <Item Value="IndexCode"/>
+          <Item Value="PcaCode"/>
+          <Item Value="AgencySourceCode"/>
+          <Item Value="RevenueSourceCode"/>
+          <Item Value="Fund"/>
+          <Item Value="LegalName"/>
+          <Item Value="StreetAddress"/>
+          <Item Value="City"/>
+          <Item Value="DocketNumber"/>
+          <Item Value="DecisionAmount"/>
+          <Item Value="DecisionDate"/>
+          <Item Value="DueAmount"/>
+          <Item Value="Balance"/>
+          <Item Value="TotalPayment"/>
+          <Item Value="TotalDueAmount"/>
+          <Item Value="GrandTotalPayment"/>
+          <Item Value="TotalBalance"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="cars10reportVO1Iterator" id="TotalDueAmount">
+      <AttrNames>
+        <Item Value="TotalDueAmount"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="cars10reportVO1Iterator"
+                     id="GrandTotalPayment">
+      <AttrNames>
+        <Item Value="GrandTotalPayment"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="cars10reportVO1Iterator" id="TotalBalance">
+      <AttrNames>
+        <Item Value="TotalBalance"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="cars10reportVO1Iterator" id="ReportDate">
+      <AttrNames>
+        <Item Value="ReportDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="cars10reportVO1Iterator" id="TotalRecords">
+      <AttrNames>
+        <Item Value="TotalRecords"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

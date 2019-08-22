@@ -1,0 +1,122 @@
+Entity :AccountingEntry
+|__Attribute :EntryReasonId
+|____Change Mandatory to:true
+|__Create Key for Constraint: SYS_C00154555
+
+Entity :AcctgEntryEventAssocRule
+|__Attribute :EntryReasonId
+|____Change Mandatory to:true
+|__Create Key for Constraint: SYS_C00154556
+
+Entity :BatchTransaction
+|__Attribute :Status
+|____Change Mandatory to:true
+|__Attribute :BatchTypeCode
+|____Change Precision to 25
+|__Create Key for Constraint: SYS_C00157015
+
+Entity :CarsRequest
+|__Attribute :Status
+|____Change Mandatory to:true
+|__Create Key for Constraint: SYS_C00157017
+
+Entity :Event
+|__Create Key for Constraint: EVENT_CURRENT_DOCUMENT_UK
+
+Entity :Infar001Outbound
+|__Attribute :MonetaryAmount
+|____Change Precision, Scale  to (28, 3)
+|__Attribute :TaxAmt
+|____Change Precision, Scale  to (28, 3)
+|__Attribute :PaymentAmt
+|____Change Precision, Scale  to (28, 3)
+|__Attribute :ControlAmt
+|____Change Precision, Scale  to (28, 3)
+|__Attribute :TotalAmt
+|____Change Precision, Scale  to (28, 3)
+|__Set transient, as column missing for attribute DjdRowId
+|__Set transient, as column missing for attribute CiRowId
+|__Set transient, as column missing for attribute IrRowId
+|__Set transient, as column missing for attribute PiRowId
+|__Set transient, as column missing for attribute DcRowId
+|__Set transient, as column missing for attribute FhRowId
+|__Create Attribute for column: FS_ROW_ID
+
+Entity :Infar006Outbound
+|__Attribute :MonetaryAmount
+|____Change Precision, Scale  to (28, 3)
+|____Change Mandatory to:true
+|__Attribute :SystemDefined
+|____Change Mandatory to:true
+|__Attribute :DstSeqNum
+|____Change Mandatory to:true
+|__Attribute :CollectionChkbox
+|____Change Mandatory to:true
+|__Attribute :DisputeAmount
+|____Change Precision, Scale  to (28, 3)
+|__Attribute :DisputeChkbox
+|____Change Mandatory to:true
+|__Attribute :EntryAmt
+|____Change Precision, Scale  to (28, 3)
+|____Change Mandatory to:true
+|__Attribute :EntryType
+|____Change Mandatory to:true
+|__Attribute :Item
+|____Change Mandatory to:true
+|__Attribute :CustId
+|____Change Mandatory to:true
+|__Attribute :GroupSeqNum
+|____Change Mandatory to:true
+|__Attribute :PostAction
+|____Change Mandatory to:true
+|__Attribute :ControlCnt
+|____Change Mandatory to:true
+|__Attribute :ControlAmt
+|____Change Precision, Scale  to (28, 3)
+|____Change Mandatory to:true
+|__Attribute :GroupType
+|____Change Mandatory to:true
+|__Attribute :AccountingDt
+|____Change Mandatory to:true
+|__Attribute :GroupIdStg
+|____Change Mandatory to:true
+|__Attribute :GroupBu
+|____Change Mandatory to:true
+|__Create Key for Constraint: SYS_C00154591
+|__Create Key for Constraint: SYS_C00154590
+|__Create Key for Constraint: SYS_C00154589
+|__Create Key for Constraint: SYS_C00154588
+|__Create Key for Constraint: SYS_C00154587
+|__Create Key for Constraint: SYS_C00154586
+|__Create Key for Constraint: SYS_C00154585
+|__Create Key for Constraint: SYS_C00154584
+|__Create Key for Constraint: SYS_C00154583
+|__Create Key for Constraint: SYS_C00154582
+|__Create Key for Constraint: SYS_C00154581
+|__Create Key for Constraint: SYS_C00154580
+|__Create Key for Constraint: SYS_C00154579
+|__Create Key for Constraint: SYS_C00154578
+|__Create Key for Constraint: SYS_C00154577
+|__Create Key for Constraint: SYS_C00154576
+|__Create Key for Constraint: SYS_C00154575
+
+Entity :ParticipantRole
+|__Attribute :Status
+|____Change Mandatory to:true
+|__Create Key for Constraint: SYS_C00157016
+
+4/13/2018
+Entity :Infar006Outbound
+|__Attribute :ProgramUnitCode
+|____Change Mandatory to:true
+|__Create Key for Constraint: SYS_C00157276
+
+4/13/2018
+Entity :Infar001Outbound
+|__Attribute :FsRowId
+|____Change Mandatory to:true
+|__Attribute :ProgramUnitCode
+|____Change Mandatory to:true
+|__Create Key for Constraint: SYS_C00157273
+|__Create Key for Constraint: SYS_C00157271
+

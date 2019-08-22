@@ -1,0 +1,156 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:pageTemplate viewId="/report-template.jspx" id="pt1">
+    <f:facet name="main">
+      <af:panelGroupLayout layout="vertical" id="pgl1">
+        <af:panelHeader text="cars16ReportVO1" id="ph1">
+          <af:query id="qryId1" headerText="Search" disclosed="true"
+                    value="#{bindings.cars16ReportVOCriteriaQuery.queryDescriptor}"
+                    model="#{bindings.cars16ReportVOCriteriaQuery.queryModel}"
+                    queryListener="#{bindings.cars16ReportVOCriteriaQuery.processQuery}"
+                    queryOperationListener="#{bindings.cars16ReportVOCriteriaQuery.processQueryOperation}"
+                    resultComponentId="::pc1:resId1"/>
+        </af:panelHeader>
+        <af:panelCollection id="pc1" styleClass=" AFStretchWidth    ">
+          <f:facet name="menus"/>
+          <f:facet name="toolbar">
+            <af:toolbar id="t1">
+              <af:commandToolbarButton id="ctb1" icon=" /export_excel_sml.png">
+                <af:exportCollectionActionListener exportedId="resId1"
+                                                   type="excelHTML"
+                                                   filename="cars_accounts_receivable_status.xls"
+                                                   title="Accounts Receivable Status"/>
+              </af:commandToolbarButton>
+            </af:toolbar>
+          </f:facet>
+          <f:facet name="statusbar"/>
+          <af:table value="#{bindings.cars16ReportVO1.collectionModel}"
+                    var="row" rows="#{adfFacesContext.outputMode ne 'printable'? 25: bindings.cars16ReportVO1.estimatedRowCount}"
+                    emptyText="#{bindings.cars16ReportVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                    fetchSize="-1"
+                    rowBandingInterval="0"
+                    filterModel="#{bindings.cars16ReportVOCriteriaQuery.queryDescriptor}"
+                    queryListener="#{bindings.cars16ReportVOCriteriaQuery.processQuery}"
+                    filterVisible="true" varStatus="vs"
+                    selectedRowKeys="#{bindings.cars16ReportVO1.collectionModel.selectedRow}"
+                    selectionListener="#{bindings.cars16ReportVO1.collectionModel.makeCurrent}"
+                    rowSelection="single" id="resId1">
+            <af:column sortProperty="#{bindings.cars16ReportVO1.hints.InvoiceNumber.name}"
+                       filterable="true" sortable="true"
+                       headerText="#{bindings.cars16ReportVO1.hints.InvoiceNumber.label}"
+                       id="resId1c1">
+              <af:outputText value="#{row.InvoiceNumber}" id="ot14"/>
+            </af:column>
+            <af:column sortProperty="#{bindings.cars16ReportVO1.hints.EmployerName.name}"
+                       filterable="true" sortable="true"
+                       headerText="#{bindings.cars16ReportVO1.hints.EmployerName.label}"
+                       id="resId1c2">
+              <af:outputText value="#{row.EmployerName}" id="ot3"/>
+            </af:column>
+            <af:column sortProperty="#{bindings.cars16ReportVO1.hints.ProgramUnit.name}"
+                       filterable="true" sortable="true"
+                       headerText="#{bindings.cars16ReportVO1.hints.ProgramUnit.label}"
+                       id="resId1c3">
+              <af:outputText value="#{row.ProgramUnit}" id="ot1"/>
+            </af:column>
+            <af:column sortProperty="#{bindings.cars16ReportVO1.hints.DataSource.name}"
+                       filterable="true" sortable="true"
+                       headerText="#{bindings.cars16ReportVO1.hints.DataSource.label}"
+                       id="resId1c4">
+              <af:outputText value="#{row.DataSource}" id="ot6"/>
+            </af:column>
+            <af:column sortProperty="#{bindings.cars16ReportVO1.hints.IssueDate.name}"
+                       filterable="true" sortable="true"
+                       headerText="#{bindings.cars16ReportVO1.hints.IssueDate.label}"
+                       id="resId1c5">
+              <f:facet name="filter">
+                <af:inputDate value="#{vs.filterCriteria.IssueDate}" id="id1"/>
+              </f:facet>
+              <af:outputText value="#{row.IssueDate}" id="ot4">
+                <af:convertDateTime pattern="#{bindings.cars16ReportVO1.hints.IssueDate.format}"/>
+              </af:outputText>
+            </af:column>
+            <af:column sortProperty="#{bindings.cars16ReportVO1.hints.FiscalYear.name}"
+                       filterable="true" sortable="true"
+                       headerText="#{bindings.cars16ReportVO1.hints.FiscalYear.label}"
+                       id="resId1c6">
+              <af:outputText value="#{row.FiscalYear}" id="ot9"/>
+            </af:column>
+            <af:column sortProperty="#{bindings.cars16ReportVO1.hints.InvoiceAmount.name}"
+                       filterable="true" sortable="true"
+                       headerText="#{bindings.cars16ReportVO1.hints.InvoiceAmount.label}"
+                       id="resId1c7">
+              <af:outputText value="#{row.InvoiceAmount}" id="ot8">
+                <af:convertNumber groupingUsed="false"
+                                  pattern="#{bindings.cars16ReportVO1.hints.InvoiceAmount.format}"/>
+              </af:outputText>
+            </af:column>
+            <af:column sortProperty="#{bindings.cars16ReportVO1.hints.CancelledAmount.name}"
+                       filterable="true" sortable="true"
+                       headerText="#{bindings.cars16ReportVO1.hints.CancelledAmount.label}"
+                       id="resId1c8">
+              <af:outputText value="#{row.CancelledAmount}" id="ot12">
+                <af:convertNumber groupingUsed="false"
+                                  pattern="#{bindings.cars16ReportVO1.hints.CancelledAmount.format}"/>
+              </af:outputText>
+            </af:column>
+            <af:column sortProperty="#{bindings.cars16ReportVO1.hints.PaidAmount.name}"
+                       filterable="true" sortable="true"
+                       headerText="#{bindings.cars16ReportVO1.hints.PaidAmount.label}"
+                       id="resId1c9">
+              <af:outputText value="#{row.PaidAmount}" id="ot15">
+                <af:convertNumber groupingUsed="false"
+                                  pattern="#{bindings.cars16ReportVO1.hints.PaidAmount.format}"/>
+              </af:outputText>
+            </af:column>
+            <af:column sortProperty="#{bindings.cars16ReportVO1.hints.Balance.name}"
+                       filterable="true" sortable="true"
+                       headerText="#{bindings.cars16ReportVO1.hints.Balance.label}"
+                       id="resId1c10">
+              <af:outputText value="#{row.Balance}" id="ot7">
+                <af:convertNumber groupingUsed="false"
+                                  pattern="#{bindings.cars16ReportVO1.hints.Balance.format}"/>
+              </af:outputText>
+            </af:column>
+            <af:column sortProperty="#{bindings.cars16ReportVO1.hints.IndexCode.name}"
+                       filterable="true" sortable="true"
+                       headerText="#{bindings.cars16ReportVO1.hints.IndexCode.label}"
+                       id="resId1c11">
+              <af:outputText value="#{row.IndexCode}" id="ot5"/>
+            </af:column>
+            <af:column sortProperty="#{bindings.cars16ReportVO1.hints.PcaCode.name}"
+                       filterable="true" sortable="true"
+                       headerText="#{bindings.cars16ReportVO1.hints.PcaCode.label}"
+                       id="resId1c12">
+              <af:outputText value="#{row.PcaCode}" id="ot11"/>
+            </af:column>
+            <af:column sortProperty="#{bindings.cars16ReportVO1.hints.RevenueSource.name}"
+                       filterable="true" sortable="true"
+                       headerText="#{bindings.cars16ReportVO1.hints.RevenueSource.label}"
+                       id="resId1c13">
+              <af:outputText value="#{row.RevenueSource}" id="ot10"/>
+            </af:column>
+            <af:column sortProperty="#{bindings.cars16ReportVO1.hints.AgencySource.name}"
+                       filterable="true" sortable="true"
+                       headerText="#{bindings.cars16ReportVO1.hints.AgencySource.label}"
+                       id="resId1c14">
+              <af:outputText value="#{row.AgencySource}" id="ot13"/>
+            </af:column>
+            <af:column sortProperty="#{bindings.cars16ReportVO1.hints.Fund.name}"
+                       filterable="true" sortable="true"
+                       headerText="#{bindings.cars16ReportVO1.hints.Fund.label}"
+                       id="resId1c15">
+              <af:outputText value="#{row.Fund}" id="ot2"/>
+            </af:column>
+          </af:table>
+        </af:panelCollection>
+      </af:panelGroupLayout>
+    </f:facet>
+    <f:attribute name="program_unit"
+                 value="(PV)"/>
+    <f:attribute name="title" value="Accounts Receivable Status"/>
+    <f:attribute name="report_date" value="#{bindings.CurrentDate.inputValue}"/>
+  </af:pageTemplate>
+</jsp:root>

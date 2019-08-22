@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://xmlns.oracle.com/adfm/application"
+             version="11.1.1.64.93" id="DataBindings" SeparateXMLFiles="false"
+             Package="gov.ca.dir.acct.cars.adf.cars12report.view" ClientType="Generic">
+  <pageMap>
+    <page path="/cars12ReportTest.jspx"
+          usageId="gov_ca_dir_acct_cars_adf_view_cars12ReportTestPageDef"/>
+    <page path="/cars12Report.jsff"
+          usageId="gov_ca_dir_acct_cars_adf_view_cars12ReportPageDef"/>
+  </pageMap>
+  <definitionFactories>
+    <factory nameSpace="http://xmlns.oracle.com/adf/controller/binding"
+             className="oracle.adf.controller.internal.binding.TaskFlowBindingDefFactoryImpl"/>
+    <dtfactory className="oracle.adf.controller.internal.dtrt.binding.BindingDTObjectFactory"/>
+  </definitionFactories>
+  <dataControlUsages>
+    <BC4JDataControl id="cars12ReportAMDataControl"
+                     Package="gov.ca.dir.acct.cars.adf.cars12report.model.appmodule"
+                     FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl"
+                     SupportsTransactions="true" SupportsFindMode="true"
+                     SupportsRangesize="true" SupportsResetState="true"
+                     SupportsSortCollection="true"
+                     Configuration="cars12ReportAMLocal" syncMode="Immediate"
+                     xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+  </dataControlUsages>
+  <pageDefinitionUsages>
+    <page id="gov_ca_dir_acct_cars_adf_view_cars12ReportTestPageDef"
+          path="gov.ca.dir.acct.cars.adf.cars12report.view.pageDefs.cars12ReportTestPageDef"/>
+    <page id="gov_ca_dir_acct_cars_adf_view_cars12ReportPageDef"
+          path="gov.ca.dir.acct.cars.adf.cars12report.view.pageDefs.cars12ReportPageDef"/>
+  </pageDefinitionUsages>
+</Application>

@@ -1,0 +1,129 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:pageTemplate viewId="/report-template.jspx" id="pt1">
+    <f:facet name="main">
+      <af:panelCollection id="pc1">
+        <f:facet name="menus"/>
+        <f:facet name="toolbar">
+          <af:toolbar id="t2">
+            <af:commandToolbarButton id="ctb1" icon="/export_excel_sml.png">
+              <af:exportCollectionActionListener type="excelHTML"
+                                                 exportedId="t1"/>
+            </af:commandToolbarButton>
+          </af:toolbar>
+        </f:facet>
+        <f:facet name="statusbar"/>
+        <af:table value="#{bindings.cars13Report1.collectionModel}" var="row"
+                  rows="#{bindings.cars13Report1.rangeSize}"
+                  emptyText="#{bindings.cars13Report1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                  fetchSize="#{bindings.cars13Report1.rangeSize}"
+                  rowBandingInterval="0"
+                  filterModel="#{bindings.cars13Report1Query.queryDescriptor}"
+                  queryListener="#{bindings.cars13Report1Query.processQuery}"
+                  filterVisible="true" varStatus="vs"
+                  selectionListener="#{bindings.cars13Report1.collectionModel.makeCurrent}"
+                  rowSelection="multiple" id="t1">
+          <af:column sortProperty="#{bindings.cars13Report1.hints.InvoiceNumber.name}"
+                     filterable="true" sortable="true"
+                     headerText="#{bindings.cars13Report1.hints.InvoiceNumber.label}"
+                     id="c7">
+            <af:outputText value="#{row.InvoiceNumber}" id="ot5"/>
+            <f:facet name="footer">
+              <af:outputFormatted value="TOTALS" id="of1"
+                                  inlineStyle="font-weight:bold;"/>
+            </f:facet>
+          </af:column>
+          <af:column sortProperty="#{bindings.cars13Report1.hints.Employer.name}"
+                     filterable="true" sortable="true"
+                     headerText="#{bindings.cars13Report1.hints.Employer.label}"
+                     id="c8">
+            <af:outputText value="#{row.Employer}" id="ot1"/>
+          </af:column>
+          <af:column sortProperty="#{bindings.cars13Report1.hints.IssueDate.name}"
+                     filterable="true" sortable="true"
+                     headerText="#{bindings.cars13Report1.hints.IssueDate.label}"
+                     id="c6">
+            <f:facet name="filter">
+              <af:inputDate value="#{vs.filterCriteria.IssueDate}" id="id3"/>
+            </f:facet>
+            <af:outputText value="#{row.IssueDate}" id="ot10">
+              <af:convertDateTime pattern="#{bindings.cars13Report1.hints.IssueDate.format}"/>
+            </af:outputText>
+          </af:column>
+          <af:column sortProperty="#{bindings.cars13Report1.hints.FiscalYear.name}"
+                     filterable="true" sortable="true"
+                     headerText="#{bindings.cars13Report1.hints.FiscalYear.label}"
+                     id="c1">
+            <af:outputText value="#{row.FiscalYear}" id="ot8"/>
+          </af:column>
+          <af:column sortProperty="#{bindings.cars13Report1.hints.IndexCode.name}"
+                     filterable="true" sortable="true"
+                     headerText="#{bindings.cars13Report1.hints.IndexCode.label}"
+                     id="c2">
+            <af:outputText value="#{row.IndexCode}" id="ot3"/>
+          </af:column>
+          <af:column sortProperty="#{bindings.cars13Report1.hints.WriteoffApplyDate.name}"
+                     filterable="true" sortable="true"
+                     headerText="#{bindings.cars13Report1.hints.WriteoffApplyDate.label}"
+                     id="c5">
+            <f:facet name="filter">
+              <af:inputDate value="#{vs.filterCriteria.WriteoffApplyDate}"
+                            id="id2"/>
+            </f:facet>
+            <af:outputText value="#{row.WriteoffApplyDate}" id="ot4">
+              <af:convertDateTime pattern="#{bindings.cars13Report1.hints.WriteoffApplyDate.format}"/>
+            </af:outputText>
+          </af:column>
+          <af:column sortProperty="#{bindings.cars13Report1.hints.ScoApplicationNumber.name}"
+                     filterable="true" sortable="true"
+                     headerText="#{bindings.cars13Report1.hints.ScoApplicationNumber.label}"
+                     id="c9">
+            <af:outputText value="#{row.ScoApplicationNumber}" id="ot9"/>
+            <f:facet name="footer">
+              <af:outputFormatted value="#{bindings.TotalApplication.inputValue}" id="of3"
+                                  inlineStyle="font-weight:bold;"/>
+            </f:facet>
+          </af:column>
+          <af:column sortProperty="#{bindings.cars13Report1.hints.CurrentBalance.name}"
+                     sortable="true"
+                     headerText="#{bindings.cars13Report1.hints.CurrentBalance.label}"
+                     id="c3" filterable="true">
+            <af:outputText value="#{row.CurrentBalance}" id="ot6">
+              <af:convertNumber groupingUsed="false"
+                                pattern="#{bindings.cars13Report1.hints.CurrentBalance.format}"
+                                type="currency"/>
+            </af:outputText>
+            <f:facet name="footer">
+              <af:outputFormatted id="of2" inlineStyle="font-weight:bold;"
+                                  value="#{bindings.TotalCurrentBalance.inputValue}"/>
+            </f:facet>
+          </af:column>
+          <af:column sortProperty="#{bindings.cars13Report1.hints.ScoResponseDate.name}"
+                     filterable="true" sortable="true"
+                     headerText="#{bindings.cars13Report1.hints.ScoResponseDate.label}"
+                     id="c10">
+            <f:facet name="filter">
+              <af:inputDate value="#{vs.filterCriteria.ScoResponseDate}"
+                            id="id1"/>
+            </f:facet>
+            <af:outputText value="#{row.ScoResponseDate}" id="ot2">
+              <af:convertDateTime pattern="#{bindings.cars13Report1.hints.ScoResponseDate.format}"/>
+            </af:outputText>
+          </af:column>
+          <af:column sortProperty="#{bindings.cars13Report1.hints.ScoResponseNumber.name}"
+                     filterable="true" sortable="true"
+                     headerText="#{bindings.cars13Report1.hints.ScoResponseNumber.label}"
+                     id="c4">
+            <af:outputText value="#{row.ScoResponseNumber}" id="ot7"/>
+          </af:column>
+        </af:table>
+      </af:panelCollection>
+    </f:facet>
+    <f:attribute name="program_unit" value="Cal-OSHA"/>
+    <f:attribute name="title"
+                 value="Account Receivable SCO Write-Off Report"/>
+    <f:attribute name="report_date" value="#{bindings.currentDate.inputValue}"/>
+  </af:pageTemplate>
+</jsp:root>

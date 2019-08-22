@@ -1,0 +1,222 @@
+<wsdl:definitions
+     name="CarsBCLoggingServicesAMService"
+     targetNamespace="/gov/ca/dir/acct/cars/adf/service/appmodule/common/"
+     xmlns:errors="http://xmlns.oracle.com/adf/svc/errors/"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+     xmlns:tns="/gov/ca/dir/acct/cars/adf/service/appmodule/common/"
+     xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+     xmlns:types="/gov/ca/dir/acct/cars/adf/service/appmodule/common/types/"
+    >
+    <wsdl:documentation>
+        <name>Cars Bc Logging Services Am</name>
+    </wsdl:documentation>
+    <wsdl:import namespace="http://xmlns.oracle.com/adf/svc/errors/" location="classpath:/META-INF/wsdl/ServiceException.wsdl"/>
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="/gov/ca/dir/acct/cars/adf/service/appmodule/common/types/" schemaLocation="CarsBCLoggingServicesAMService.xsd"/>
+        </schema>
+    </wsdl:types>
+    <wsdl:message name="CarsBCLoggingServicesAMService_createCarsErrorLog">
+        <wsdl:part name="parameters" element="types:createCarsErrorLog"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCLoggingServicesAMService_createCarsErrorLogResponse">
+        <wsdl:part name="parameters" element="types:createCarsErrorLogResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCLoggingServicesAMService_findCarsErrorMessageWithParams">
+        <wsdl:part name="parameters" element="types:findCarsErrorMessageWithParams"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCLoggingServicesAMService_findCarsErrorMessageWithParamsResponse">
+        <wsdl:part name="parameters" element="types:findCarsErrorMessageWithParamsResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCLoggingServicesAMService_createCarsRequest">
+        <wsdl:part name="parameters" element="types:createCarsRequest"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCLoggingServicesAMService_createCarsRequestResponse">
+        <wsdl:part name="parameters" element="types:createCarsRequestResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCLoggingServicesAMService_updateCarsRequest">
+        <wsdl:part name="parameters" element="types:updateCarsRequest"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCLoggingServicesAMService_updateCarsRequestResponse">
+        <wsdl:part name="parameters" element="types:updateCarsRequestResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCLoggingServicesAMService_findCarsRequestWithParams">
+        <wsdl:part name="parameters" element="types:findCarsRequestWithParams"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCLoggingServicesAMService_findCarsRequestWithParamsResponse">
+        <wsdl:part name="parameters" element="types:findCarsRequestWithParamsResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCLoggingServicesAMService_getErrorLogIdSequence">
+        <wsdl:part name="parameters" element="types:getErrorLogIdSequence"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCLoggingServicesAMService_getErrorLogIdSequenceResponse">
+        <wsdl:part name="parameters" element="types:getErrorLogIdSequenceResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCLoggingServicesAMService_getRequestIdSequence">
+        <wsdl:part name="parameters" element="types:getRequestIdSequence"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCLoggingServicesAMService_getRequestIdSequenceResponse">
+        <wsdl:part name="parameters" element="types:getRequestIdSequenceResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCLoggingServicesAMService_findCarsRequestWithInstanceIdParam">
+        <wsdl:part name="parameters" element="types:findCarsRequestWithInstanceIdParam"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCLoggingServicesAMService_findCarsRequestWithInstanceIdParamResponse">
+        <wsdl:part name="parameters" element="types:findCarsRequestWithInstanceIdParamResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="CarsBCLoggingServicesAMService">
+        <wsdl:documentation>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="CarsErrorLogView1" xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/"
+                 SDOName="ns0:CarsErrorLogViewSDO" CreateOpName="createCarsErrorLog"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="CarsErrorMessageView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:CarsErrorMessageViewSDO"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="CarsRequestView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:CarsRequestViewSDO"
+                 CreateOpName="createCarsRequest" UpdateOpName="updateCarsRequest"/>
+        </wsdl:documentation>
+        <wsdl:operation name="createCarsErrorLog">
+            <wsdl:input message="tns:CarsBCLoggingServicesAMService_createCarsErrorLog"/>
+            <wsdl:output message="tns:CarsBCLoggingServicesAMService_createCarsErrorLogResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="findCarsErrorMessageWithParams">
+            <wsdl:input message="tns:CarsBCLoggingServicesAMService_findCarsErrorMessageWithParams"/>
+            <wsdl:output message="tns:CarsBCLoggingServicesAMService_findCarsErrorMessageWithParamsResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="createCarsRequest">
+            <wsdl:input message="tns:CarsBCLoggingServicesAMService_createCarsRequest"/>
+            <wsdl:output message="tns:CarsBCLoggingServicesAMService_createCarsRequestResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="updateCarsRequest">
+            <wsdl:input message="tns:CarsBCLoggingServicesAMService_updateCarsRequest"/>
+            <wsdl:output message="tns:CarsBCLoggingServicesAMService_updateCarsRequestResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="findCarsRequestWithParams">
+            <wsdl:input message="tns:CarsBCLoggingServicesAMService_findCarsRequestWithParams"/>
+            <wsdl:output message="tns:CarsBCLoggingServicesAMService_findCarsRequestWithParamsResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="getErrorLogIdSequence">
+            <wsdl:input message="tns:CarsBCLoggingServicesAMService_getErrorLogIdSequence"/>
+            <wsdl:output message="tns:CarsBCLoggingServicesAMService_getErrorLogIdSequenceResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="getRequestIdSequence">
+            <wsdl:input message="tns:CarsBCLoggingServicesAMService_getRequestIdSequence"/>
+            <wsdl:output message="tns:CarsBCLoggingServicesAMService_getRequestIdSequenceResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="findCarsRequestWithInstanceIdParam">
+            <wsdl:input message="tns:CarsBCLoggingServicesAMService_findCarsRequestWithInstanceIdParam"/>
+            <wsdl:output message="tns:CarsBCLoggingServicesAMService_findCarsRequestWithInstanceIdParamResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="CarsBCLoggingServicesAMServiceSoapHttp" type="tns:CarsBCLoggingServicesAMService">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="createCarsErrorLog">
+            <soap:operation soapAction="/gov/ca/dir/acct/cars/adf/service/appmodule/common/createCarsErrorLog"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="findCarsErrorMessageWithParams">
+            <soap:operation soapAction="/gov/ca/dir/acct/cars/adf/service/appmodule/common/findCarsErrorMessageWithParams"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="createCarsRequest">
+            <soap:operation soapAction="/gov/ca/dir/acct/cars/adf/service/appmodule/common/createCarsRequest"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="updateCarsRequest">
+            <soap:operation soapAction="/gov/ca/dir/acct/cars/adf/service/appmodule/common/updateCarsRequest"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="findCarsRequestWithParams">
+            <soap:operation soapAction="/gov/ca/dir/acct/cars/adf/service/appmodule/common/findCarsRequestWithParams"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getErrorLogIdSequence">
+            <soap:operation soapAction="/gov/ca/dir/acct/cars/adf/service/appmodule/common/getErrorLogIdSequence"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getRequestIdSequence">
+            <soap:operation soapAction="/gov/ca/dir/acct/cars/adf/service/appmodule/common/getRequestIdSequence"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="findCarsRequestWithInstanceIdParam">
+            <soap:operation soapAction="/gov/ca/dir/acct/cars/adf/service/appmodule/common/findCarsRequestWithInstanceIdParam"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="CarsBCLoggingServicesAMService">
+        <wsdl:port name="CarsBCLoggingServicesAMServiceSoapHttpPort" binding="tns:CarsBCLoggingServicesAMServiceSoapHttp">
+            <soap:address location="http://localhost:7101/CarsServicesApplication-CarsBCServices-context-root/CarsBCLoggingServicesAMService"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

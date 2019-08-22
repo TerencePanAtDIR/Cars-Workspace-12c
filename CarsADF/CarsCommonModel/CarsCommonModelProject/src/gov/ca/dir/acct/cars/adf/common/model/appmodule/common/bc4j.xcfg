@@ -1,0 +1,16 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<BC4JConfig version="11.1" xmlns="http://xmlns.oracle.com/bc4j/configuration">
+   <AppModuleConfigBag ApplicationName="gov.ca.dir.acct.cars.adf.common.model.appmodule.DefaultAM">
+      <AppModuleConfig name="DefaultAMLocal" jbo.project="gov.ca.dir.acct.cars.adf.common.model.CarsCommonModelProject" ApplicationName="gov.ca.dir.acct.cars.adf.common.model.appmodule.DefaultAM" DeployPlatform="LOCAL">
+         <Database jbo.TypeMapEntries="Java"/>
+         <Security AppModuleJndiName="gov.ca.dir.acct.cars.adf.common.model.appmodule.DefaultAM"/>
+         <Custom JDBCDataSource="java:comp/env/jdbc/carsdevDS"/>
+      </AppModuleConfig>
+      <AppModuleConfig name="DefaultAMShared" jbo.project="gov.ca.dir.acct.cars.adf.common.model.CarsCommonModelProject" ApplicationName="gov.ca.dir.acct.cars.adf.common.model.appmodule.DefaultAM" DeployPlatform="LOCAL">
+         <AM-Pooling jbo.ampool.maxpoolsize="1" jbo.ampool.isuseexclusive="false"/>
+         <Database jbo.TypeMapEntries="Java"/>
+         <Security AppModuleJndiName="gov.ca.dir.acct.cars.adf.common.model.appmodule.DefaultAM"/>
+         <Custom JDBCDataSource="java:comp/env/jdbc/carsdevDS"/>
+      </AppModuleConfig>
+   </AppModuleConfigBag>
+</BC4JConfig>

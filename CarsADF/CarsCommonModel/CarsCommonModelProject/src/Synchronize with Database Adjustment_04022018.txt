@@ -1,0 +1,5 @@
+Entity :Adjustment
+|__Key :AgtnAdntFk
+|____Change Deferred Constraint to:true
+|____Change Initially Deferrable Constraint to:true
+

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.64.93" id="cars03report4fiscalViewPageDef"
+                Package="gov.ca.dir.acct.cars.adf.cars03report.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="cars03report4FiscalVO1" RangeSize="25"
+              DataControl="cars03reportAMDataControl"
+              id="cars03report4FiscalVO1Iterator"/>
+    <searchRegion Criteria="cars03report4FiscalVOCriteria"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="cars03report4FiscalVO1Iterator"
+                  id="cars03report4FiscalVOCriteriaQuery"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="cars03report4FiscalVO1Iterator"
+          id="cars03report4FiscalVO1">
+      <nodeDefinition DefName="gov.ca.dir.acct.cars.adf.cars03report.model.view.cars03report4FiscalVO"
+                      Name="cars03report4FiscalVO10">
+        <AttrNames>
+          <Item Value="ArRootDocument"/>
+          <Item Value="EmployerName"/>
+          <Item Value="IssueDate"/>
+          <Item Value="FiscalYear"/>
+          <Item Value="AmendType"/>
+          <Item Value="AdjustmentDate"/>
+          <Item Value="AdjustmentAmount"/>
+          <Item Value="IndexCode"/>
+          <Item Value="PcaCode"/>
+          <Item Value="RevenueSourceCode"/>
+          <Item Value="AgencySourceCode"/>
+          <Item Value="Fund"/>
+          <Item Value="ProgramUnitCode"/>
+          <Item Value="FiscalGroupId"/>
+          <Item Value="AccountingDate"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="cars03report4FiscalVO1Iterator"
+                     id="AdjustCount">
+      <AttrNames>
+        <Item Value="AdjustCount"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="cars03report4FiscalVO1Iterator"
+                     id="AdjustAmtTotal">
+      <AttrNames>
+        <Item Value="AdjustAmtTotal"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

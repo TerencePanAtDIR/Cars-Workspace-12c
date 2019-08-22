@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="reverse-cars-events">
+    <default-activity id="__1">ReverseCarsEvents</default-activity>
+    <managed-bean id="__5">
+      <managed-bean-name id="__3">ReverseCarsEventsBean</managed-bean-name>
+      <managed-bean-class id="__2">gov.ca.dir.acct.cars.adf.usecase030.view.ReverseCarsEventsBean</managed-bean-class>
+      <managed-bean-scope id="__4">backingBean</managed-bean-scope>
+    </managed-bean>
+    <view id="ReverseCarsEvents">
+      <page>/ReverseCarsEvents.jsff</page>
+    </view>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

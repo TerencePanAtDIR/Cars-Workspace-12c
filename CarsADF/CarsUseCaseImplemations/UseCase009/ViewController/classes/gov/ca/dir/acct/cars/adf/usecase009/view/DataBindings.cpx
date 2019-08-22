@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://xmlns.oracle.com/adfm/application"
+             version="11.1.1.64.93" id="DataBindings" SeparateXMLFiles="false"
+             Package="gov.ca.dir.acct.cars.adf.usecase009.view" ClientType="Generic">
+  <definitionFactories>
+    <factory nameSpace="http://xmlns.oracle.com/adf/controller/binding"
+             className="oracle.adf.controller.internal.binding.TaskFlowBindingDefFactoryImpl"/>
+    <dtfactory className="oracle.adf.controller.internal.dtrt.binding.BindingDTObjectFactory"/>
+  </definitionFactories>
+  <pageMap>
+    <page path="/UseCase009BatchSearch.jsff"
+          usageId="gov_ca_dir_acct_cars_adf_usecase009_view_BatchSearchPageDef"/>
+    <page path="/MainUseCase009.jspx"
+          usageId="gov_ca_dir_acct_cars_adf_usecase009_view_MainUseCase009PageDef"/>
+    <page path="/WEB-INF/Infar-Search-tf.xml#Infar-Search-tf@setBatchIdBindVC"
+          usageId="gov_ca_dir_acct_cars_adf_usecase009_view_Infar_Search_tf_Infar_Search_tf_setBatchIdBindVCPageDef"/>
+    <page path="/UseCase009Infar006Search.jsff"
+          usageId="gov_ca_dir_acct_cars_adf_usecase009_view_Infar006SearchPageDef"/>
+    <page path="/UseCase009Infar001Search.jsff"
+          usageId="gov_ca_dir_acct_cars_adf_usecase009_view_Infar001SearchPageDef"/>
+    <page path="/WEB-INF/Infar-Search-tf.xml#Infar-Search-tf@set001BatchIdVC1"
+          usageId="gov_ca_dir_acct_cars_adf_usecase009_view_Infar_Search_tf_Infar_Search_tf_set001BatchIdVC1PageDef"/>
+    <page path="/MainUseCase009CustomerSearch.jspx"
+          usageId="gov_ca_dir_acct_cars_adf_usecase009_view_MainUseCase009CustomerSearchPageDef"/>
+    <page path="/UseCase009CustomerSearch.jsff"
+          usageId="gov_ca_dir_acct_cars_adf_usecase009_view_UseCase009CustomerSearchPageDef"/>
+    <page path="/UseCase009Infar037Search.jsff"
+          usageId="gov_ca_dir_acct_cars_adf_usecase009_view_UseCase009Infar037SearchPageDef"/>
+  </pageMap>
+  <pageDefinitionUsages>
+    <page id="gov_ca_dir_acct_cars_adf_usecase009_view_BatchSearchPageDef"
+          path="gov.ca.dir.acct.cars.adf.usecase009.view.pageDefs.BatchSearchPageDef"/>
+    <page id="gov_ca_dir_acct_cars_adf_usecase009_view_MainUseCase009PageDef"
+          path="gov.ca.dir.acct.cars.adf.usecase009.view.pageDefs.MainUseCase009PageDef"/>
+    <page id="gov_ca_dir_acct_cars_adf_usecase009_view_Infar_Search_tf_Infar_Search_tf_setBatchIdBindVCPageDef"
+          path="gov.ca.dir.acct.cars.adf.usecase009.view.pageDefs.Infar_Search_tf_Infar_Search_tf_setBatchIdBindVCPageDef"/>
+    <page id="gov_ca_dir_acct_cars_adf_usecase009_view_Infar006SearchPageDef"
+          path="gov.ca.dir.acct.cars.adf.usecase009.view.pageDefs.Infar006SearchPageDef"/>
+    <page id="gov_ca_dir_acct_cars_adf_usecase009_view_Infar001SearchPageDef"
+          path="gov.ca.dir.acct.cars.adf.usecase009.view.pageDefs.Infar001SearchPageDef"/>
+    <page id="gov_ca_dir_acct_cars_adf_usecase009_view_Infar_Search_tf_Infar_Search_tf_set001BatchIdVC1PageDef"
+          path="gov.ca.dir.acct.cars.adf.usecase009.view.pageDefs.Infar_Search_tf_Infar_Search_tf_set001BatchIdVC1PageDef"/>
+    <page id="gov_ca_dir_acct_cars_adf_usecase009_view_MainUseCase009CustomerSearchPageDef"
+          path="gov.ca.dir.acct.cars.adf.usecase009.view.pageDefs.MainUseCase009CustomerSearchPageDef"/>
+    <page id="gov_ca_dir_acct_cars_adf_usecase009_view_UseCase009CustomerSearchPageDef"
+          path="gov.ca.dir.acct.cars.adf.usecase009.view.pageDefs.UseCase009CustomerSearchPageDef"/>
+    <page id="gov_ca_dir_acct_cars_adf_usecase009_view_UseCase009Infar037SearchPageDef"
+          path="gov.ca.dir.acct.cars.adf.usecase009.view.pageDefs.UseCase009Infar037SearchPageDef"/>
+  </pageDefinitionUsages>
+  <dataControlUsages>
+    <BC4JDataControl id="InfarAMDataControl"
+                     Package="gov.ca.dir.acct.cars.adf.usecase009.model.appModules"
+                     FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl"
+                     SupportsTransactions="true" SupportsFindMode="true"
+                     SupportsRangesize="true" SupportsResetState="true"
+                     SupportsSortCollection="true" Configuration="InfarAMLocal"
+                     syncMode="Immediate"
+                     xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+  </dataControlUsages>
+</Application>

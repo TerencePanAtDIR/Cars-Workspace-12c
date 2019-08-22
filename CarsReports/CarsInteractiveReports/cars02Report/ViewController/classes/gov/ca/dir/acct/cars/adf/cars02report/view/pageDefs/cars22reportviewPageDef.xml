@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.64.93" id="cars22reportviewPageDef"
+                Package="gov.ca.dir.acct.cars.adf.cars02report.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="cars02reportVO1" RangeSize="25"
+              DataControl="cars02ReportAMDataControl"
+              id="cars02reportVO1Iterator"/>
+    <searchRegion Binds="cars02reportVO1Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="cars02reportVO1Query"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="cars02reportVO1Iterator" id="cars02reportVO1">
+      <nodeDefinition DefName="gov.ca.dir.acct.cars.adf.cars02report.model.view.cars02reportVO"
+                      Name="cars02reportVO10">
+        <AttrNames>
+          <Item Value="DailyPostingDate"/>
+          <Item Value="CountArRootDocument"/>
+          <Item Value="SumAmount"/>
+          <Item Value="SumCount"/>
+          <Item Value="SumTotal"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="cars02reportVO1Iterator" id="SumTotal">
+      <AttrNames>
+        <Item Value="SumTotal"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="cars02reportVO1Iterator" id="SumCount">
+      <AttrNames>
+        <Item Value="SumCount"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="cars02reportVO1Iterator" id="CurrentDate">
+      <AttrNames>
+        <Item Value="CurrentDate"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

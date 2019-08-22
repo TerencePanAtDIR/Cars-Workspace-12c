@@ -1,0 +1,36 @@
+<xsd:schema xmlns:sdoJava="commonj.sdo/java" xmlns:ns0="http://xmlns.oracle.com/adf/svc/types/" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+     targetNamespace="/gov/ca/dir/acct/cars/adf/service/view/common/" xmlns="/gov/ca/dir/acct/cars/adf/service/view/common/"
+     elementFormDefault="qualified" sdoJava:package="gov.ca.dir.acct.cars.adf.service.view.common">
+    <xsd:import schemaLocation="classpath:/META-INF/wsdl/BC4JService.xsd" namespace="http://xmlns.oracle.com/adf/svc/types/"/>
+    <xsd:import schemaLocation="classpath:/xml/sdoJava.xsd" namespace="commonj.sdo/java"/>
+    <xsd:complexType name="CarsErrorLogViewSDO">
+        <xsd:annotation>
+            <xsd:appinfo source="http://xmlns.oracle.com/adf/svc/metadata/">
+                <key xmlns="http://xmlns.oracle.com/adf/svc/metadata/">
+                    <attribute>ErrorLogId</attribute>
+                </key>
+            </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="ErrorLogId" type="xsd:decimal" minOccurs="0"/>
+            <xsd:element name="ErrorLevel" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="Severity" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="ErrorDetail" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="DataSourceCode" type="xsd:string" minOccurs="0" nillable="true"/>
+            <xsd:element name="CreatedBy" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="CreatedDate" type="ns0:dateTime-Timestamp" minOccurs="0"/>
+            <xsd:element name="ModifiedBy" type="xsd:string" minOccurs="0" nillable="true"/>
+            <xsd:element name="ModifiedDate" type="ns0:dateTime-Timestamp" minOccurs="0" nillable="true"/>
+            <xsd:element name="ErrorCode" type="xsd:string" minOccurs="0" nillable="true"/>
+            <xsd:element name="ErrorMessage" type="xsd:string" minOccurs="0" nillable="true"/>
+            <xsd:element name="Ecid" type="xsd:string" minOccurs="0" nillable="true"/>
+            <xsd:element name="FaultLocation" type="xsd:string" minOccurs="0" nillable="true"/>
+            <xsd:element name="ConversationId" type="xsd:string" minOccurs="0" nillable="true"/>
+            <xsd:element name="CompositeInstanceId" type="xsd:string" minOccurs="0" nillable="true"/>
+            <xsd:element name="ComponentInstanceId" type="xsd:decimal" minOccurs="0" nillable="true"/>
+            <xsd:element name="ComponentName" type="xsd:string" minOccurs="0" nillable="true"/>
+            <xsd:element name="IsReviewed" type="xsd:string" minOccurs="0" nillable="true"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="carsErrorLogViewSDO" type="CarsErrorLogViewSDO"/>
+</xsd:schema>

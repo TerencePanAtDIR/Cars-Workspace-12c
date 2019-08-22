@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="cars12Report"
+  Version="11.1.1.64.93"
+  InheritPersonalization="true"
+  OrderBy='"FISCAL_YEAR"'
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  PageIterMode="Full"
+  UseGlueCode="false">
+  <DesignTime>
+    <Attr Name="_isExpertMode" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="gov.ca.dir.acct.cars.adf.cars12report.model.view.cars12Report_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <SQLQuery>
+    <![CDATA[SELECT DISTINCT 
+      E.AR_ROOT_DOCUMENT INVOICE_NUMBER, 
+      NVL(O.LEGAL_NAME, P.FIRST_NAME || ' ' || P.MIDDLE_NAME || ' ' || P.LAST_NAME) EMPLOYER, 
+      FUNC_GET_ISSUE_DATE (E.AR_ROOT_DOCUMENT) ISSUE_DATE, 
+      FUNC_GET_FISCAL_YEAR(E.AR_ROOT_DOCUMENT) FISCAL_YEAR, -- EXTRACT(YEAR FROM SYSDATE) FISCAL_YEAR, 
+      AC.INDEX_CODE,
+      FUNC_GET_PPLAN_SETUP_DATE(E.AR_ROOT_DOCUMENT,'440',NULL) PAY_PLAN_SETUP_DATE,
+      TRUNC(FUNC_GET_PAID_IN_FULL_DATE(E.AR_ROOT_DOCUMENT, TRUNC(SYSDATE))) LAST_PAYMENT_DATE,
+      FUNC_GET_DELINQUENT_DATE(E.AR_ROOT_DOCUMENT,'405',NULL) DELINQUENT_DATE,
+      FUNC_GET_BALANCE (E.AR_ROOT_DOCUMENT) CURRENT_BALANCE
+FROM  RECEIVABLE R
+        INNER JOIN ACCOUNTING_ENTRY AE              ON  AE.ACCTG_TRANSACTION_ID     = R.ACCTG_TRANSACTION_ID
+        INNER JOIN ACCOUNTING_CODE AC               ON  AC.ACCOUNTING_CODE_ID       = AE.ACCOUNTING_CODE_ID
+        INNER JOIN ACCTG_TRANSACT_EVENT_ASSOC ATEA  ON  ATEA.ACCTG_TRANSACTION_ID   = AE.ACCTG_TRANSACTION_ID 
+        INNER JOIN EVENT E                          ON  E.EVENT_ID                  = ATEA.EVENT_ID
+        INNER JOIN EVENT_TYPE ET                    ON  ET.EVENT_TYPE_ID            = E.EVENT_TYPE_ID
+        INNER JOIN PARTICIPANT_ROLE PR              ON  PR.EVENT_ID                 = E.EVENT_ID
+        LEFT  JOIN ORGANIZATION O                   ON O.PARTY_ID                   = PR.PARTY_ID
+        LEFT  JOIN PERSON P                         ON P.PARTY_ID                   = PR.PARTY_ID        
+WHERE   FUNC_GET_BALANCE (E.AR_ROOT_DOCUMENT) > 0
+AND     FUNC_GET_PPLAN_SETUP_DATE(E.AR_ROOT_DOCUMENT,'440',NULL) IS NOT NULL
+AND     ET.EVENT_TYPE_CODE IN ('010','440','405')]]>
+  </SQLQuery>
+  <ViewAttribute
+    Name="InvoiceNumber"
+    IsUpdateable="false"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Precision="25"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="INVOICE_NUMBER"
+    Expression="INVOICE_NUMBER"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="25"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.cars12report.model.view.cars12Report.InvoiceNumber_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Employer"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="50"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="EMPLOYER"
+    Expression="EMPLOYER"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="152"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.cars12report.model.view.cars12Report.Employer_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="IssueDate"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    AliasName="ISSUE_DATE"
+    Expression="ISSUE_DATE"
+    SQLType="DATE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.cars12report.model.view.cars12Report.IssueDate_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="FiscalYear"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="4"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="FISCAL_YEAR"
+    Expression="FISCAL_YEAR"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="4000"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.cars12report.model.view.cars12Report.FiscalYear_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="IndexCode"
+    IsUpdateable="false"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Precision="4"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="INDEX_CODE"
+    Expression="INDEX_CODE"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="4"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.cars12report.model.view.cars12Report.IndexCode_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="PayPlanSetupDate"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    AliasName="PAY_PLAN_SETUP_DATE"
+    Expression="PAY_PLAN_SETUP_DATE"
+    SQLType="DATE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.cars12report.model.view.cars12Report.PayPlanSetupDate_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="LastPaymentDate"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    AliasName="LAST_PAYMENT_DATE"
+    Expression="LAST_PAYMENT_DATE"
+    SQLType="DATE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.cars12report.model.view.cars12Report.LastPaymentDate_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="DelinquentDate"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    AliasName="DELINQUENT_DATE"
+    Expression="DELINQUENT_DATE"
+    SQLType="DATE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.cars12report.model.view.cars12Report.DelinquentDate_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CurrentBalance"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="CURRENT_BALANCE"
+    Expression="CURRENT_BALANCE"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <FMT_FORMATTER
+          ResId="gov.ca.dir.acct.cars.adf.cars12report.model.view.cars12Report.CurrentBalance_FMT_FORMATTER"/>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.cars12report.model.view.cars12Report.CurrentBalance_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="currentDate"
+    IsUpdateable="false"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    AliasName="VIEW_ATTR"
+    SQLType="DATE">
+    <TransientExpression><![CDATA[adf.currentDate]]></TransientExpression>
+    <Properties>
+      <SchemaBasedProperties>
+        <FMT_FORMATTER
+          ResId="gov.ca.dir.acct.cars.adf.cars12report.model.view.cars12Report.currentDate_FMT_FORMATTER"/>
+        <FMT_FORMAT
+          ResId="gov.ca.dir.acct.cars.adf.cars12report.model.view.cars12Report.currentDate_FMT_FORMAT"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="TotalCurrentBalance"
+    IsUpdateable="false"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="VIEW_ATTR"
+    SQLType="NUMERIC">
+    <TransientExpression><![CDATA[adf.object.findRowSetForRow("").sum("CurrentBalance")]]></TransientExpression>
+    <Properties>
+      <SchemaBasedProperties>
+        <FMT_FORMATTER
+          ResId="gov.ca.dir.acct.cars.adf.cars12report.model.view.cars12Report.TotalCurrentBalance_FMT_FORMATTER"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="gov.ca.dir.acct.cars.adf.cars12report.model.ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

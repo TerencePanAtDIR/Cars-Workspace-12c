@@ -1,0 +1,51 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<SDM>
+   <OverallProperties
+      id="OverallProperties1"/>
+   <View
+      id="View2">
+      <property
+         name="activityId">BatchSearch</property>
+      <property
+         name="page">/UseCase009BatchSearch.jsff</property>
+      <property
+         name="start">true</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>BatchSearch&lt;/b> (Default Activity)&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">158.2002</property>
+      <property
+         name="x">202.0</property>
+      <property
+         name="pageFragment">true</property>
+   </View>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase11"
+      from="View2"
+      to="TaskFlowCall15">
+      <property
+         name="fromOutcome">goToSearch</property>
+      <property
+         name="sdm:polyPoints">R50,243.0,157.84961,502.5547,146.08594,L50</property>
+   </ControlFlowCase>
+   <TaskFlowCall
+      id="TaskFlowCall15">
+      <property
+         name="taskFlowId">Infar-Search-tf</property>
+      <property
+         name="activityId">Infar-Search-tf</property>
+      <property
+         name="documentReference">/WEB-INF/Infar-Search-tf.xml</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>Infar-Search-tf&lt;/b>&lt;/p>&lt;p>Activity Type:  Task Flow Call&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">146.43652</property>
+      <property
+         name="x">543.5547</property>
+   </TaskFlowCall>
+</SDM>

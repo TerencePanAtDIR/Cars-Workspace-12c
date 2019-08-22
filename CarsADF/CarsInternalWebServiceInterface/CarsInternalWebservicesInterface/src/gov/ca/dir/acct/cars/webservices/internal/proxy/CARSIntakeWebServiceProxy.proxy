@@ -1,0 +1,226 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<jdevws:WebServiceProxy xmlns:jdevws="http://xmlns.oracle.com/jdeveloper/10130/webserviceproxy">
+   <list n="CHILD_NODES">
+      <url path="Execute_ptt.java"/>
+      <url path="Execute_ptClient.java"/>
+      <url path="CARSIntakeWebService.xml"/>
+      <url path="../types/CARS410Event.java"/>
+      <url path="../types/CARS260Event.java"/>
+      <url path="../types/CARS125Event.java"/>
+      <url path="../types/CARS436Event.java"/>
+      <url path="../types/CARS262Event.java"/>
+      <url path="../types/CARS443Event.java"/>
+      <url path="../types/CARS321Event.java"/>
+      <url path="../types/CARS145Event.java"/>
+      <url path="../types/CARS420Event.java"/>
+      <url path="../types/CARS220Event.java"/>
+      <url path="../types/CARS131Event.java"/>
+      <url path="../types/CARS536Event.java"/>
+      <url path="../types/CARS265Event.java"/>
+      <url path="../types/CARS020Event.java"/>
+      <url path="../types/CARS331Event.java"/>
+      <url path="../types/CARS226Event.java"/>
+      <url path="../types/CARS510Event.java"/>
+      <url path="../types/CARS135Event.java"/>
+      <url path="../types/CARS442Event.java"/>
+      <url path="../types/CARS535Event.java"/>
+      <url path="../types/CARS415Event.java"/>
+      <url path="../types/CARS322Event.java"/>
+      <url path="../types/CARS215Event.java"/>
+      <url path="../types/CARS340Event.java"/>
+      <url path="../types/CARS515Event.java"/>
+      <url path="../types/CARS341Event.java"/>
+      <url path="../types/CARS245Event.java"/>
+      <url path="../types/CARS343Event.java"/>
+      <url path="../types/CARS121Event.java"/>
+      <url path="../types/CARS276Event.java"/>
+      <url path="../types/CARS344Event.java"/>
+      <url path="../types/CARS241Event.java"/>
+      <url path="../types/ObjectFactory.java"/>
+      <url path="../types/CARS530Event.java"/>
+      <url path="../types/CARS015Event.java"/>
+      <url path="../types/CARS310Event.java"/>
+      <url path="../types/CARS441Event.java"/>
+      <url path="../types/CARS160Event.java"/>
+      <url path="../types/CARS444Event.java"/>
+      <url path="../types/CARS425Event.java"/>
+      <url path="../types/CARS115Event.java"/>
+      <url path="../types/CARS320Event.java"/>
+      <url path="../types/CARS900Event.java"/>
+      <url path="../types/CARS525Event.java"/>
+      <url path="../types/CARS122Event.java"/>
+      <url path="../types/CARS261Event.java"/>
+      <url path="../types/CARS342Event.java"/>
+      <url path="../types/CARS315Event.java"/>
+      <url path="../types/CARS235Event.java"/>
+      <url path="../types/CARS150Event.java"/>
+      <url path="../types/CARS165Event.java"/>
+      <url path="../types/CARS225Event.java"/>
+      <url path="../types/CARS516Event.java"/>
+      <url path="../types/CARS446Event.java"/>
+      <url path="../types/CARS537Event.java"/>
+      <url path="CARSIntakeWebService.java"/>
+      <url path="../types/CARS325Event.java"/>
+      <url path="../types/CARS130Event.java"/>
+      <url path="../types/CARS140Event.java"/>
+      <url path="../types/CARS538Event.java"/>
+      <url path="../types/CARS010Event.java"/>
+      <url path="../types/CARS445Event.java"/>
+      <url path="../types/CARS240Event.java"/>
+      <url path="../types/CARS405Event.java"/>
+      <url path="../types/CARS435Event.java"/>
+      <url path="../types/CARS110Event.java"/>
+      <url path="../types/package-info.java"/>
+      <url path="../types/CARS440Event.java"/>
+      <url path="../types/CARS270Event.java"/>
+      <url path="../types/CARS230Event.java"/>
+      <url path="../types/CARS520Event.java"/>
+      <url path="../types/CARS275Event.java"/>
+      <url path="../types/CARS120Event.java"/>
+      <url path="../types/CARSPacket.java"/>
+      <url path="../types/CARS430Event.java"/>
+      <url path="../types/CARS330Event.java"/>
+      <url path="../types/common/TError.java"/>
+      <url path="../types/common/TUnbilledRecieptType.java"/>
+      <url path="../types/common/TProgramUnitCode.java"/>
+      <url path="../types/common/TPaymentTermsCode.java"/>
+      <url path="../types/common/TServiceMethod.java"/>
+      <url path="../types/common/TOrganization.java"/>
+      <url path="../types/common/TDataSourceCode.java"/>
+      <url path="../types/common/TPersonName.java"/>
+      <url path="../types/common/TProgramUnitCode.java"/>
+      <url path="../types/common/TPaymentTermsCode.java"/>
+      <url path="../types/common/TServiceMethod.java"/>
+      <url path="../types/common/TOrganization.java"/>
+      <url path="../types/common/TDataSourceCode.java"/>
+      <url path="../types/common/TPersonName.java"/>
+      <url path="../types/common/TOffsetPaymentCode.java"/>
+      <url path="../types/common/TAddress.java"/>
+      <url path="../types/common/TZip.java"/>
+      <url path="../types/common/TContactMethod.java"/>
+      <url path="../types/common/TNote.java"/>
+      <url path="../types/common/TAdjustmentType.java"/>
+      <url path="../types/common/TParticipant.java"/>
+      <url path="../types/common/TPerson.java"/>
+      <url path="../types/common/TEventType.java"/>
+      <url path="../types/common/TReceiptType.java"/>
+   </list>
+   <hash n="DATA_MODEL">
+      <value n="ATTACHMENT_ENCODING" v="MTOM"/>
+      <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.proxy.WebServiceProxy"/>
+      <url n="ORACLE_WEBSERVICES_XML" path="CARSIntakeWebService.xml"/>
+      <hash n="PROPERTY_GROUPS">
+         <hash n="WSDL_TO_JAVA_PROPERTIES">
+            <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.java.WSDLToJavaProperties"/>
+            <value n="WSDL2JAVA_DEFAULT_PACKAGE" v="gov.ca.dir.acct.cars.webservices.internal.proxy"/>
+            <value n="WSDL2JAVA_ROOT_VALUE_PACKAGE" v="gov.ca.dir.acct.cars.webservices.internal.types"/>
+            <value n="WSDL2JAVA_UNWRAP_PARAMETERS" v="false"/>
+         </hash>
+      </hash>
+      <value n="PROXY_ASYNC_METHODS" v="FOR_ENABLED"/>
+      <list n="PROXY_CLIENTS">
+         <url path="Execute_ptClient.java"/>
+      </list>
+      <value n="PROXY_MAPPING_URL"/>
+      <hash n="PROXY_PORTS">
+         <hash n="execute_pt">
+            <value n="ACCESSES_DOC_WRAPPPED" v="false"/>
+            <value n="ACCESSES_RPC_ENCODED" v="false"/>
+            <value n="CLASS_NAME" v="gov.ca.dir.acct.cars.webservices.internal.proxy.Execute_ptt"/>
+            <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.proxy.ProxyPort"/>
+            <value n="NAME" v="execute_pt"/>
+            <hash n="OPERATIONS">
+               <hash n="execute">
+                  <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.proxy.ProxyOperation"/>
+                  <hash n="PROPERTY_GROUPS"/>
+               </hash>
+            </hash>
+            <hash n="PROPERTY_GROUPS">
+               <hash n="WS_CLIENT_POLICY">
+                  <value n="addressing"/>
+                  <list n="management"/>
+                  <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.policy.PolicyClientModel"/>
+                  <value n="mtom"/>
+                  <hash n="POLICY_OVERRIDE_PROPERTIES"/>
+                  <list n="security"/>
+                  <value n="wsrm"/>
+               </hash>
+            </hash>
+            <url n="PROXY_ORIGINAL_PORT_ENDPOINT" protocol="http" host="CSSOADY3" port="80" path="/soa-infra/services/default/CarsEventRouterSCA/CARSIntakeWebService"/>
+         </hash>
+      </hash>
+      <value n="PROXY_SERVICE_NAME" v="CARSIntakeWebService"/>
+      <value n="PROXY_SERVICE_NAMESPACE" v="http://xmlns.oracle.com/CarsCompositeWorkspace/CarsEventRouterSCA/CARSIntakeWebService"/>
+      <url n="PROXY_TARGET_PROJECT" path="../../../../../../../../../CarsInternalWebservicesInterface.jpr"/>
+      <url n="PROXY_WSDL_URL" protocol="http" host="cssoady3.ad.dir.ca.gov" port="7777" path="/soa-infra/services/default/CarsEventRouterSCA/CARSIntakeWebService" query="WSDL"/>
+      <hash n="REFERENCED_WEBSERVICE">
+         <list n="BD_">
+            <hash>
+               <value n="BD_DEFAULT_DOCUMENT_WRAPPED" v="false"/>
+               <value n="BOUND_PORT_TYPE" v="{http://xmlns.oracle.com/CarsCompositeWorkspace/CarsEventRouterSCA/CARSIntakeWebService}execute_ptt"/>
+               <value n="DEFAULT_NAME" v="false"/>
+               <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.SOAPBinding"/>
+               <value n="NAME" v="{http://xmlns.oracle.com/CarsCompositeWorkspace/CarsEventRouterSCA/CARSIntakeWebService}execute_pttBinding"/>
+               <list n="OP_BINDINGS">
+                  <hash>
+                     <value n="BD_SOAP_ACTION" v="execute"/>
+                     <value n="BD_SOAP_INPUT_USE" v="1"/>
+                     <value n="BD_SOAP_STYLE" v="1"/>
+                     <value n="BOUND_OPERATION" v="void.execute.gov.ca.dir.acct.cars.webservices.internal.types.CARSPacket"/>
+                     <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.SOAPOperationBinding"/>
+                     <hash n="PROPERTY_GROUPS"/>
+                  </hash>
+               </list>
+               <hash n="PROPERTY_GROUPS"/>
+            </hash>
+         </list>
+         <list n="BINDING_FILES"/>
+         <value n="GUID" v="54fc81e8-0169-1000-800c-86bab59461da"/>
+         <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.proxy.WebServiceProxy$ProxyJavaWebService"/>
+         <list n="PO_">
+            <hash>
+               <value n="DEFAULT_NAME" v="false"/>
+               <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.SOAPPort"/>
+               <value n="NAME" v="execute_pt"/>
+               <value n="PORT_BINDING_NAME" v="{http://xmlns.oracle.com/CarsCompositeWorkspace/CarsEventRouterSCA/CARSIntakeWebService}execute_pttBinding"/>
+               <list n="PORT_OPS">
+                  <hash>
+                     <value n="EXPOSED_BD_OPERATION" v="void.execute.gov.ca.dir.acct.cars.webservices.internal.types.CARSPacket"/>
+                     <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.PortOperation"/>
+                     <hash n="PROPERTY_GROUPS"/>
+                  </hash>
+               </list>
+               <hash n="PROPERTY_GROUPS"/>
+               <url n="URL" protocol="http" host="CSSOADY3" port="80" path="/soa-infra/services/default/CarsEventRouterSCA/CARSIntakeWebService"/>
+            </hash>
+         </list>
+         <hash n="PROPERTY_GROUPS">
+            <hash n="WSDL_TO_JAVA_PROPERTIES">
+               <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.java.WSDLToJavaProperties"/>
+               <value n="WSDL2JAVA_DEFAULT_PACKAGE" v="gov.ca.dir.acct.cars.webservices.internal.proxy"/>
+               <value n="WSDL2JAVA_ROOT_VALUE_PACKAGE" v="gov.ca.dir.acct.cars.webservices.internal.types"/>
+               <value n="WSDL2JAVA_UNWRAP_PARAMETERS" v="false"/>
+            </hash>
+         </hash>
+         <list n="PT_">
+            <hash>
+               <value n="AUTO_SERVICE_INTERFACE"/>
+               <value n="DEFAULT_NAME" v="false"/>
+               <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.java.JavaPortType"/>
+               <value n="NAME" v="{http://xmlns.oracle.com/CarsCompositeWorkspace/CarsEventRouterSCA/CARSIntakeWebService}execute_ptt"/>
+               <hash n="PROPERTY_GROUPS"/>
+               <value n="PT_CLASS" v="gov.ca.dir.acct.cars.webservices.internal.proxy.Execute_pttImpl"/>
+               <value n="PT_SERVICE_INTERFACE" v="gov.ca.dir.acct.cars.webservices.internal.proxy.Execute_ptt"/>
+            </hash>
+         </list>
+         <url n="TARGET_PROJECT" path="../../../../../../../../../CarsInternalWebservicesInterface.jpr"/>
+         <value n="WS_CREATE_ONEWAY_OPERATIONS" v="true"/>
+         <value n="WS_ORIG_GEN_DIRECTION" v="TOP_DOWN"/>
+         <value n="WS_TARGET_NAMESPACE" v="http://xmlns.oracle.com/CarsCompositeWorkspace/CarsEventRouterSCA/CARSIntakeWebService"/>
+         <value n="WS_URI" v="CARSIntakeWebService"/>
+         <url n="WS_WSDL_FILE" protocol="http" host="cssoady3.ad.dir.ca.gov" port="7777" path="/soa-infra/services/default/CarsEventRouterSCA/CARSIntakeWebService" query="WSDL"/>
+      </hash>
+      <value n="SERVICE_ASYNC" v="false"/>
+      <value n="WSDL_IS_LOCAL_COPY" v="false"/>
+   </hash>
+</jdevws:WebServiceProxy>

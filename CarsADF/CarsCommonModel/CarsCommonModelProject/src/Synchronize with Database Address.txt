@@ -1,0 +1,22 @@
+The following Synchronization Actions were performed successfully:
+
+Entity :Address
+  Attribute :Zip4
+    Change Column type to VARCHAR2
+    Change Precision to 4
+  Attribute :ZipCode
+    Change Column type to VARCHAR2
+    Change Precision to 5
+  Attribute :Province
+    Change Column type to CHAR
+    Change Precision to 1
+  Remove Key Constraint: SysC0073688
+  Remove Key Constraint: SysC0073687
+  Remove Key Constraint: SysC0073686
+  Remove Key Constraint: SysC0073685
+  Remove Key Constraint: SysC0073684
+  Create Key for Constraint: SYS_C00117779
+  Create Key for Constraint: SYS_C00117778
+  Create Key for Constraint: SYS_C00117777
+  Create Key for Constraint: SYS_C00117776
+  Create Key for Constraint: SYS_C00117775

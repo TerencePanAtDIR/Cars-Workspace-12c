@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="AccountingEntryStatus"
+  Version="11.1.1.64.93"
+  InheritPersonalization="true"
+  DBObjectType="table"
+  DBObjectName="ACCOUNTING_ENTRY_STATUS"
+  AliasName="AccountingEntryStatus"
+  BindingStyle="OracleName"
+  UseGlueCode="false"
+  RowClass="gov.ca.dir.acct.cars.adf.common.code.EntityImpl">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access"/>
+    <AttrArray Name="_publishEvents"/>
+  </DesignTime>
+  <Attribute
+    Name="AcctgEntryId"
+    IsNotNull="true"
+    ColumnName="ACCTG_ENTRY_ID"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="ACCOUNTING_ENTRY_STATUS"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="FsProcessStatus"
+    IsNotNull="true"
+    Precision="25"
+    ColumnName="FS_PROCESS_STATUS"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="ACCOUNTING_ENTRY_STATUS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="25"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="FsProcessDate"
+    ColumnName="FS_PROCESS_DATE"
+    SQLType="TIMESTAMP"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="ACCOUNTING_ENTRY_STATUS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="DataSourceCode"
+    Precision="25"
+    ColumnName="DATA_SOURCE_CODE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="ACCOUNTING_ENTRY_STATUS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="25"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="CreatedBy"
+    IsNotNull="true"
+    Precision="25"
+    ColumnName="CREATED_BY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="ACCOUNTING_ENTRY_STATUS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="25"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="CreatedDate"
+    IsNotNull="true"
+    ColumnName="CREATED_DATE"
+    SQLType="TIMESTAMP"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="ACCOUNTING_ENTRY_STATUS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ModifiedBy"
+    Precision="25"
+    ColumnName="MODIFIED_BY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="ACCOUNTING_ENTRY_STATUS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="25"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ModifiedDate"
+    ColumnName="MODIFIED_DATE"
+    SQLType="TIMESTAMP"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="ACCOUNTING_ENTRY_STATUS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+  </Attribute>
+  <AccessorAttribute
+    Name="AccountingEntry"
+    Association="gov.ca.dir.acct.cars.adf.common.model.entity.AgeyAgesFkAssoc"
+    AssociationEnd="gov.ca.dir.acct.cars.adf.common.model.entity.AgeyAgesFkAssoc.AccountingEntry"
+    AssociationOtherEnd="gov.ca.dir.acct.cars.adf.common.model.entity.AgeyAgesFkAssoc.AccountingEntryStatus"
+    Type="gov.ca.dir.acct.cars.adf.common.code.EntityImpl"
+    IsUpdateable="true"/>
+  <Key
+    Name="AccountingEntryStatusPk"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="ACCOUNTING_ENTRY_STATUS_PK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="gov.ca.dir.acct.cars.adf.common.model.entity.AccountingEntryStatus.AcctgEntryId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC00160381">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C00160381"/>
+      <Attr Name="_checkCondition" Value='"ACCTG_ENTRY_ID" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="gov.ca.dir.acct.cars.adf.common.model.entity.AccountingEntryStatus.AcctgEntryId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC00160382">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C00160382"/>
+      <Attr Name="_checkCondition" Value='"FS_PROCESS_STATUS" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="gov.ca.dir.acct.cars.adf.common.model.entity.AccountingEntryStatus.FsProcessStatus"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC00160383">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C00160383"/>
+      <Attr Name="_checkCondition" Value='"CREATED_BY" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="gov.ca.dir.acct.cars.adf.common.model.entity.AccountingEntryStatus.CreatedBy"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC00160384">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C00160384"/>
+      <Attr Name="_checkCondition" Value='"CREATED_DATE" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="gov.ca.dir.acct.cars.adf.common.model.entity.AccountingEntryStatus.CreatedDate"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="AgeyAgesFk">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="ACCOUNTING_ENTRY_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="AGEY_AGES_FK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="gov.ca.dir.acct.cars.adf.common.model.entity.AccountingEntryStatus.AcctgEntryId"/>
+    </AttrArray>
+  </Key>
+</Entity>

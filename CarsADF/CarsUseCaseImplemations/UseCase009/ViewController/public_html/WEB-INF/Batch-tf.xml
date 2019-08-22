@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="Batch-tf">
+    <default-activity id="__1">BatchSearch</default-activity>
+    <managed-bean id="__3">
+      <managed-bean-name id="__6">BatchSearchBean</managed-bean-name>
+      <managed-bean-class id="__5">gov.ca.dir.acct.cars.adf.usecase009.view.BatchSearchBean</managed-bean-class>
+      <managed-bean-scope id="__4">pageFlow</managed-bean-scope>
+    </managed-bean>
+    <view id="BatchSearch">
+      <page>/UseCase009BatchSearch.jsff</page>
+    </view>
+    <task-flow-call id="Infar-Search-tf">
+      <task-flow-reference>
+        <document>/WEB-INF/Infar-Search-tf.xml</document>
+        <id>Infar-Search-tf</id>
+      </task-flow-reference>
+      <input-parameter id="__29">
+        <name>batchType</name>
+        <value>#{pageFlowScope.batchType}</value>
+      </input-parameter>
+      <input-parameter id="__2">
+        <name>batchId</name>
+        <value>#{pageFlowScope.batchId}</value>
+      </input-parameter>
+      <input-parameter id="__7">
+        <name>pageTitle</name>
+        <value>#{pageFlowScope.BatchSearchBean.newInfarPageTitle}</value>
+      </input-parameter>
+    </task-flow-call>
+    <control-flow-rule id="__17">
+      <from-activity-id id="__18">BatchSearch</from-activity-id>
+      <control-flow-case id="__20">
+        <from-outcome id="__21">goToSearch</from-outcome>
+        <to-activity-id id="__19">Infar-Search-tf</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

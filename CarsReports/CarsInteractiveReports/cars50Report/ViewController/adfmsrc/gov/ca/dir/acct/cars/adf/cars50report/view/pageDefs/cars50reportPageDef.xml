@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.64.93" id="cars50reportPageDef"
+                Package="gov.ca.dir.acct.cars.adf.cars50report.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="CarsCashGlBillTypeProgramUnitView2" RangeSize="-1"
+              DataControl="Cars50ReportAMDataControl"
+              id="CarsCashGlBillTypeProgramUnitView2Iterator"/>
+  </executables>
+  <bindings>
+    <graph IterBinding="CarsCashGlBillTypeProgramUnitView2Iterator"
+           id="CarsCashGlBillTypeProgramUnitView2"
+           xmlns="http://xmlns.oracle.com/adfm/dvt" type="BAR_VERT_STACK">
+      <graphDataMap leafOnly="true">
+        <series>
+          <data>
+            <item value="GlAccountNetTotal" label="Total"/>
+          </data>
+          <item value="BillTypeCode" label="BillTypeCode"/>
+        </series>
+        <groups>
+          <item value="ProgramUnitCode"/>
+        </groups>
+      </graphDataMap>
+    </graph>
+  </bindings>
+</pageDefinition>

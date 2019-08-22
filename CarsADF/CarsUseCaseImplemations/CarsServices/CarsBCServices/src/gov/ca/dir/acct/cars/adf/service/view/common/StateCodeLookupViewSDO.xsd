@@ -1,0 +1,25 @@
+<xsd:schema xmlns:sdoJava="commonj.sdo/java" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="/gov/ca/dir/acct/cars/adf/service/view/common/"
+     xmlns="/gov/ca/dir/acct/cars/adf/service/view/common/" elementFormDefault="qualified"
+     sdoJava:package="gov.ca.dir.acct.cars.adf.service.view.common">
+    <xsd:annotation>
+        <xsd:documentation>
+            <name>State Code Lookup View</name>
+        </xsd:documentation>
+    </xsd:annotation>
+    <xsd:import schemaLocation="classpath:/xml/sdoJava.xsd" namespace="commonj.sdo/java"/>
+    <xsd:complexType name="StateCodeLookupViewSDO">
+        <xsd:annotation>
+            <xsd:appinfo source="http://xmlns.oracle.com/adf/svc/metadata/">
+                <key xmlns="http://xmlns.oracle.com/adf/svc/metadata/">
+                    <attribute>StateCode</attribute>
+                    <attribute>CountryCode</attribute>
+                </key>
+            </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="StateCode" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="CountryCode" type="xsd:string" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="stateCodeLookupViewSDO" type="StateCodeLookupViewSDO"/>
+</xsd:schema>

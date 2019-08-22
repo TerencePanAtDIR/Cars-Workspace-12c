@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://xmlns.oracle.com/adfm/application"
+             version="11.1.1.64.93" id="DataBindings" SeparateXMLFiles="false"
+             Package="gov.ca.dir.acct.cars.adf.cars11report.view" ClientType="Generic">
+  <definitionFactories>
+    <factory nameSpace="http://xmlns.oracle.com/adf/controller/binding"
+             className="oracle.adf.controller.internal.binding.TaskFlowBindingDefFactoryImpl"/>
+    <dtfactory className="oracle.adf.controller.internal.dtrt.binding.BindingDTObjectFactory"/>
+  </definitionFactories>
+  <pageMap>
+    <page path="/cars11reportViewOld.jsff"
+          usageId="gov_ca_dir_acct_cars_adf_cars11report_view_cars11reportViewPageDef"/>
+    <page path="/mainOld.jspx"
+          usageId="gov_ca_dir_acct_cars_adf_cars11report_view_mainPageDef"/>
+    <page path="/cars11reportView.jsff"
+          usageId="gov_ca_dir_acct_cars_adf_cars11report_view_cars11areportPageDef"/>
+    <page path="/main.jspx"
+          usageId="gov_ca_dir_acct_cars_adf_cars11report_view_mainAPageDef"/>
+  </pageMap>
+  <pageDefinitionUsages>
+    <page id="gov_ca_dir_acct_cars_adf_cars11report_view_cars11reportViewPageDef"
+          path="gov.ca.dir.acct.cars.adf.cars11report.view.pageDefs.cars11reportViewPageDef"/>
+    <page id="gov_ca_dir_acct_cars_adf_cars11report_view_mainPageDef"
+          path="gov.ca.dir.acct.cars.adf.cars11report.view.pageDefs.mainPageDef"/>
+    <page id="gov_ca_dir_acct_cars_adf_cars11report_view_cars11areportPageDef"
+          path="gov.ca.dir.acct.cars.adf.cars11report.view.pageDefs.cars11areportPageDef"/>
+    <page id="gov_ca_dir_acct_cars_adf_cars11report_view_mainAPageDef"
+          path="gov.ca.dir.acct.cars.adf.cars11report.view.pageDefs.mainAPageDef"/>
+  </pageDefinitionUsages>
+  <dataControlUsages>
+    <BC4JDataControl id="report11AMDataControl"
+                     Package="gov.ca.dir.acct.cars.adf.cars11report.model"
+                     FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl"
+                     SupportsTransactions="true" SupportsFindMode="true"
+                     SupportsRangesize="true" SupportsResetState="true"
+                     SupportsSortCollection="true"
+                     Configuration="report11AMLocal" syncMode="Immediate"
+                     xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+  </dataControlUsages>
+</Application>

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.64.93" id="cars06report_fiscal_tfPageDef"
+                Package="gov.ca.dir.acct.cars.adf.cars06report.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="cars06FiscalReportVO1" RangeSize="25"
+              DataControl="cars06ReportAMDataControl"
+              id="cars06FiscalReportVO1Iterator"/>
+    <searchRegion Criteria="cars06FiscalReportVOCriteria"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="cars06FiscalReportVO1Iterator"
+                  id="cars06FiscalReportVOCriteriaQuery"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="cars06FiscalReportVO1Iterator"
+          id="cars06FiscalReportVO1">
+      <nodeDefinition DefName="gov.ca.dir.acct.cars.adf.cars06report.view.cars06FiscalReportVO"
+                      Name="cars06FiscalReportVO10">
+        <AttrNames>
+          <Item Value="EmployerName"/>
+          <Item Value="InvoiceNumber"/>
+          <Item Value="IssueDate"/>
+          <Item Value="FiscalYear"/>
+          <Item Value="DepositDate"/>
+          <Item Value="DepositSlipNumber"/>
+          <Item Value="BilledAmount"/>
+          <Item Value="Unapplied"/>
+          <Item Value="BilledAdjustmentAmount"/>
+          <Item Value="UnbilledAdjustmentAmount"/>
+          <Item Value="CourtFee"/>
+          <Item Value="JudgmentInterest"/>
+          <Item Value="PostJudInterest"/>
+          <Item Value="NsfFee"/>
+          <Item Value="CollectionFee"/>
+          <Item Value="PaymentAmount"/>
+          <Item Value="PaymentReferenceNbr"/>
+          <Item Value="ReceiptDate"/>
+          <Item Value="AttributeCode"/>
+          <Item Value="DepositId"/>
+          <Item Value="AccountingDt"/>
+          <Item Value="IndexCode"/>
+          <Item Value="PcaCode"/>
+          <Item Value="RevenueSourceCode"/>
+          <Item Value="AgencySourceCode"/>
+          <Item Value="Fund"/>
+          <Item Value="ProgramUnitCode"/>
+          <Item Value="DataSourceCode"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="cars06FiscalReportVO1Iterator"
+                     id="UnappliedTotal">
+      <AttrNames>
+        <Item Value="UnappliedTotal"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="cars06FiscalReportVO1Iterator"
+                     id="BilledAmountTotal">
+      <AttrNames>
+        <Item Value="BilledAmountTotal"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="cars06FiscalReportVO1Iterator"
+                     id="BilledAdjustmentTotal">
+      <AttrNames>
+        <Item Value="BilledAdjustmentTotal"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="cars06FiscalReportVO1Iterator"
+                     id="UnbilledAdjustmentTotal">
+      <AttrNames>
+        <Item Value="UnbilledAdjustmentTotal"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="cars06FiscalReportVO1Iterator"
+                     id="CourtFeeTotal">
+      <AttrNames>
+        <Item Value="CourtFeeTotal"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="cars06FiscalReportVO1Iterator"
+                     id="JudgementInterestTotal">
+      <AttrNames>
+        <Item Value="JudgementInterestTotal"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="cars06FiscalReportVO1Iterator"
+                     id="PostJudInterestTotal">
+      <AttrNames>
+        <Item Value="PostJudInterestTotal"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="cars06FiscalReportVO1Iterator"
+                     id="NsfFeeTotal">
+      <AttrNames>
+        <Item Value="NsfFeeTotal"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="cars06FiscalReportVO1Iterator"
+                     id="CollectionFeeTotal">
+      <AttrNames>
+        <Item Value="CollectionFeeTotal"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="cars06FiscalReportVO1Iterator"
+                     id="PaymentAmountTotal">
+      <AttrNames>
+        <Item Value="PaymentAmountTotal"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

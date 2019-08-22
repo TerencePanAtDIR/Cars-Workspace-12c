@@ -1,0 +1,1160 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="cars06FiscalReportVO"
+  Version="11.1.1.64.93"
+  InheritPersonalization="true"
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  PageIterMode="Full"
+  UseGlueCode="false">
+  <DesignTime>
+    <Attr Name="_isExpertMode" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="gov.ca.dir.acct.cars.adf.cars06report.view.cars06FiscalReportVO_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <ViewAccessor
+    Name="programunitVO1"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.cars06report.view.programunitVO"
+    RowLevelBinds="true"/>
+  <ListBinding
+    Name="LOV_ProgramUnitCode"
+    ListVOName="programunitVO1"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="ProgramUnitCode"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="ProgramUnitCode"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <SQLQuery>
+    <![CDATA[SELECT CREDIT_CARD.EMPLOYER_NAME,
+       CREDIT_CARD.INVOICE_NUMBER,
+       CREDIT_CARD.ISSUE_DATE,
+       CREDIT_CARD.FISCAL_YEAR,
+       CREDIT_CARD.DEPOSIT_DATE,
+       CREDIT_CARD.DEPOSIT_SLIP_NUMBER,
+       CREDIT_CARD.BILLED_AMOUNT,
+       CREDIT_CARD.UNAPPLIED,
+       CREDIT_CARD.BILLED_ADJUSTMENT_AMOUNT,
+       CREDIT_CARD.UNBILLED_ADJUSTMENT_AMOUNT,
+       CREDIT_CARD.COURT_FEE,
+       CREDIT_CARD.JUDGMENT_INTEREST,
+       CREDIT_CARD.POST_JUD_INTEREST,
+       CREDIT_CARD.NSF NSF_FEE,
+       CREDIT_CARD.COLLECTION_FEE,
+       CREDIT_CARD.PAYMENT_AMOUNT,
+       CREDIT_CARD.PAYMENT_REFERENCE_NBR,
+       CREDIT_CARD.RECEIPT_DATE,
+       CREDIT_CARD.OFFSET_PAYMENT_CODE     AS ATTRIBUTE_CODE,
+       CREDIT_CARD.DEPOSIT_ID,
+       CREDIT_CARD.ACCOUNTING_DT,
+       CREDIT_CARD.INDEX_CODE,
+       CREDIT_CARD.PCA_CODE,
+       CREDIT_CARD.REVENUE_SOURCE_CODE,
+       CREDIT_CARD.AGENCY_SOURCE_CODE,
+       CREDIT_CARD.FUND,
+       CREDIT_CARD.PROGRAM_UNIT_CODE,
+       CREDIT_CARD.DATA_SOURCE_CODE
+  FROM (SELECT LEGAL_NAME
+                   EMPLOYER_NAME,
+               e.AR_ROOT_DOCUMENT
+                   INVOICE_NUMBER,
+               R.DEPOSIT_SLIP_NUMBER,
+               R.RECEIPT_TYPE_CODE,
+               AC.AGENCY_SOURCE_CODE,
+               AC.REVENUE_SOURCE_CODE,
+               FL.PCA_CODE,
+               F.FUND,
+               ET.PROGRAM_UNIT_CODE,
+               E.DATA_SOURCE_CODE,
+               FUNC_GET_ISSUE_DATE (e.AR_ROOT_DOCUMENT)
+                   ISSUE_DATE,
+               FUNC_GET_FISCAL_YEAR (e.AR_ROOT_DOCUMENT)
+                   FISCAL_YEAR,
+               CASE R.BILL_TYPE_CODE WHEN 'UNBILLED_COURT_FEE' THEN AE.AMOUNT ELSE 0 END
+                   COURT_FEE,
+               CASE R.BILL_TYPE_CODE WHEN 'UNBILLED_INTEREST' THEN AE.AMOUNT ELSE 0 END
+                   JUDGMENT_INTEREST,
+               CASE R.BILL_TYPE_CODE WHEN 'UNBILLED_COLLECTION_FEE' THEN AE.AMOUNT ELSE 0 END
+                   COLLECTION_FEE,
+               CASE R.BILL_TYPE_CODE WHEN 'UNAPPLIED' THEN AE.AMOUNT ELSE 0 END
+                   UNAPPLIED,
+               0
+                   BILLED_ADJUSTMENT_AMOUNT,
+               0
+                   UNBILLED_ADJUSTMENT_AMOUNT,
+               CASE R.BILL_TYPE_CODE WHEN 'UNBILLED_POST_JUDGMNT_INT' THEN AE.AMOUNT ELSE 0 END
+                   POST_JUD_INTEREST,
+               CASE R.BILL_TYPE_CODE WHEN 'UNBILLED_NSF_FEE' THEN AE.AMOUNT ELSE 0 END
+                   NSF,
+               CASE R.BILL_TYPE_CODE WHEN 'BILLED' THEN AE.AMOUNT ELSE 0 END
+                   BILLED_AMOUNT,
+               TRUNC (E.EVENT_DATE)
+                   event_date,
+               TRUNC (R.RECEIPT_DATE)
+                   RECEIPT_DATE,
+               AE.AMOUNT
+                   PAYMENT_AMOUNT,
+                 CASE R.BILL_TYPE_CODE WHEN 'UNBILLED_COURT_FEE' THEN AE.AMOUNT ELSE 0 END
+               + CASE R.BILL_TYPE_CODE WHEN 'UNBILLED_INTEREST' THEN AE.AMOUNT ELSE 0 END
+               + CASE R.BILL_TYPE_CODE WHEN 'UNBILLED_COLLECTION_FEE' THEN AE.AMOUNT ELSE 0 END
+               + CASE R.BILL_TYPE_CODE WHEN 'UNAPPLIED' THEN AE.AMOUNT ELSE 0 END
+               + CASE R.BILL_TYPE_CODE WHEN 'UNBILLED_POST_JUDGMNT_INT' THEN AE.AMOUNT ELSE 0 END
+               + CASE R.BILL_TYPE_CODE WHEN 'UNBILLED_NSF_FEE' THEN AE.AMOUNT ELSE 0 END
+                   UNBILLED_AMOUNT,
+               R.RECEIPT_CONTROL_NUMBER
+                   PAYMENT_REFERENCE_NBR,
+               R.DEPOSIT_DATE,
+               AC.INDEX_CODE,
+               R.OFFSET_PAYMENT_CODE,
+               IF001.DEPOSIT_ID,
+               IF001.ACCOUNTING_DT
+          FROM receipt  R
+               INNER JOIN accounting_entry AE
+                   ON AE.ACCTG_TRANSACTION_ID = R.ACCTG_TRANSACTION_ID
+               INNER JOIN accounting_code AC
+                   ON AC.ACCOUNTING_CODE_ID = AE.ACCOUNTING_CODE_ID
+               INNER JOIN FUND_ALLOCATION FL
+                   ON AC.FUND_ALLOCATION_ID = FL.FUND_ALLOCATION_ID
+               INNER JOIN FUND F ON FL.FUND_TO_ID = F.FUND_ID
+               INNER JOIN acctg_transact_event_assoc ATES
+                   ON ATES.ACCTG_TRANSACTION_ID = R.ACCTG_TRANSACTION_ID
+               INNER JOIN EVENT E ON E.EVENT_ID = ATES.EVENT_ID
+               INNER JOIN event_type et ON ET.EVENT_TYPE_ID = E.EVENT_TYPE_ID
+               INNER JOIN participant_role PR ON PR.EVENT_ID = E.EVENT_ID
+               LEFT JOIN organization O ON O.PARTY_ID = PR.PARTY_ID
+               LEFT JOIN
+               (SELECT ACCTG_ENTRY_ID, DEPOSIT_ID, ACCOUNTING_DT
+                  FROM INFAR001_OUTBOUND
+                 WHERE     FS_ROW_ID = '002'
+                       AND STATUS = 'TRANSMITTED'
+                       AND PAYMENT_ID <> 'OFFSET') IF001
+                   ON IF001.ACCTG_ENTRY_ID = AE.ACCTG_ENTRY_ID
+               INNER JOIN accounting_entry_type aet
+                   ON     aet.ACCTG_ENTRY_TYPE_ID = AE.ACCTG_ENTRY_TYPE_ID
+                      AND AET.ACCTG_TRANSACT_CODE IN ('101', '142')
+         WHERE RECEIPT_TYPE_CODE IN
+                   ('VISA_MASTER_CREDIT_CARD',
+                    'AMEX_CREDIT_CARD',
+                    'DISCOVER_CREDIT_CARD')
+        UNION ALL
+        SELECT LEGAL_NAME EMPLOYER_NAME,
+               e.AR_ROOT_DOCUMENT INVOICE_NUMBER,
+               R.DEPOSIT_SLIP_NUMBER,
+               R.RECEIPT_TYPE_CODE,
+               AC.AGENCY_SOURCE_CODE,
+               AC.REVENUE_SOURCE_CODE,
+               FL.PCA_CODE,
+               F.FUND,
+               ET.PROGRAM_UNIT_CODE,
+               E.DATA_SOURCE_CODE,
+               FUNC_GET_ISSUE_DATE (e.AR_ROOT_DOCUMENT) ISSUE_DATE,
+               FUNC_GET_FISCAL_YEAR (e.AR_ROOT_DOCUMENT) FISCAL_YEAR,
+               0 COURT_FEE,
+               0 INTEREST,
+               0 COLLECTION_FEE,
+               0 UNAPPLIED,
+               -(  CASE R.BILL_TYPE_CODE WHEN 'UNBILLED_OTHERS' THEN AE.AMOUNT ELSE 0 END
+                 + CASE R.BILL_TYPE_CODE WHEN 'BILLED' THEN AE.AMOUNT ELSE 0 END)
+                   BILLED_ADJUSTMENT,
+               -CASE R.BILL_TYPE_CODE WHEN 'UNAPPLIED' THEN AE.AMOUNT ELSE 0 END
+                   UNBILLED_ADJUSTMENT,
+               0 POST_JUD_INTEREST,
+               0 NSF,
+               0 BILLED_AMOUNT,
+               TRUNC (E.EVENT_DATE) event_date,
+               TRUNC (R.RECEIPT_DATE) RECEIPT_DATE,
+                 -CASE R.BILL_TYPE_CODE
+                      WHEN 'BILLED' THEN AE.AMOUNT
+                      ELSE 0
+                  END
+               - CASE R.BILL_TYPE_CODE
+                     WHEN 'UNBILLED_OTHERS' THEN AE.AMOUNT
+                     ELSE 0
+                 END
+               - CASE R.BILL_TYPE_CODE
+                     WHEN 'UNAPPLIED' THEN AE.AMOUNT
+                     ELSE 0
+                 END
+                   PAYMENT_AMOUNT,
+               0
+                   UNBILLED_AMOUNT,
+               R.RECEIPT_CONTROL_NUMBER
+                   PAYMENT_REFERENCE_NBR,
+               R.DEPOSIT_DATE,
+               AC.INDEX_CODE,
+               RR.OFFSET_PAYMENT_CODE,
+               IF001.DEPOSIT_ID,
+               IF001.ACCOUNTING_DT
+          FROM receipt  R
+               INNER JOIN accounting_transaction_assoc
+                   ON R.ACCTG_TRANSACTION_ID =
+                      accounting_transaction_assoc.ACCTG_TRANSACTION_FROM_ID
+               --Reversal event's receipt
+               INNER JOIN receipt RR
+                   ON RR.ACCTG_TRANSACTION_ID =
+                      accounting_transaction_assoc.ACCTG_TRANSACTION_TO_ID
+               INNER JOIN acctg_transact_event_assoc ATES
+                   ON ATES.ACCTG_TRANSACTION_ID =
+                      ACCOUNTING_TRANSACTION_ASSOC.ACCTG_TRANSACTION_TO_ID
+               INNER JOIN accounting_entry AE
+                   ON ATES.ACCTG_TRANSACTION_ID = AE.ACCTG_TRANSACTION_ID
+               INNER JOIN accounting_code AC
+                   ON AC.ACCOUNTING_CODE_ID = AE.ACCOUNTING_CODE_ID
+               LEFT JOIN FUND_ALLOCATION
+                   ON (AC.FUND_ALLOCATION_ID =
+                       FUND_ALLOCATION.FUND_ALLOCATION_ID)
+               LEFT JOIN FUND ON (FUND_ALLOCATION.FUND_to_ID = FUND.FUND_ID)
+               INNER JOIN EVENT E ON E.EVENT_ID = ATES.EVENT_ID
+               INNER JOIN EVENT_TYPE ET
+                   ON (E.EVENT_TYPE_ID = ET.EVENT_TYPE_ID)
+               INNER JOIN participant_role PR ON PR.EVENT_ID = E.EVENT_ID
+               LEFT JOIN organization O ON O.PARTY_ID = PR.PARTY_ID
+               LEFT JOIN batch_transaction BT
+                   ON AE.ACCTG_ENTRY_ID = BT.ACCTG_ENTRY_ID
+               INNER JOIN FUND_ALLOCATION FL
+                   ON AC.FUND_ALLOCATION_ID = FL.FUND_ALLOCATION_ID
+               INNER JOIN FUND F ON FL.FUND_TO_ID = F.FUND_ID
+               LEFT JOIN
+               (SELECT ACCTG_ENTRY_ID, DEPOSIT_ID, ACCOUNTING_DT
+                  FROM INFAR001_OUTBOUND
+                 WHERE     FS_ROW_ID = '002'
+                       AND STATUS = 'TRANSMITTED'
+                       AND PAYMENT_ID <> 'OFFSET') IF001
+                   ON IF001.ACCTG_ENTRY_ID = AE.ACCTG_ENTRY_ID
+               INNER JOIN accounting_entry_type aet
+                   ON     aet.ACCTG_ENTRY_TYPE_ID = AE.ACCTG_ENTRY_TYPE_ID
+                      AND AET.ACCTG_TRANSACT_CODE IN ('101', '142')
+         WHERE R.RECEIPT_TYPE_CODE IN
+                   ('VISA_MASTER_CREDIT_CARD',
+                    'AMEX_CREDIT_CARD',
+                    'DISCOVER_CREDIT_CARD')
+        UNION ALL
+        SELECT LEGAL_NAME
+                   employerName,
+               E.AR_ROOT_DOCUMENT
+                   INVOICE_NUMBER,
+               R.DEPOSIT_SLIP_NUMBER,
+               R.RECEIPT_TYPE_CODE,
+               AC.AGENCY_SOURCE_CODE,
+               AC.REVENUE_SOURCE_CODE,
+               FUND_ALLOCATION.PCA_CODE,
+               FUND.FUND,
+               ET.PROGRAM_UNIT_CODE,
+               R.DATA_SOURCE_CODE,
+               FUNC_GET_ISSUE_DATE (E.AR_ROOT_DOCUMENT)
+                   ISSUE_DATE,
+               FUNC_GET_FISCAL_YEAR (E.AR_ROOT_DOCUMENT)
+                   FISCAL_YEAR,
+               0
+                   COURT_FEE,
+               0
+                   INTEREST,
+               0
+                   COLLECTION_FEE,
+               0
+                   UNAPPLIED,
+                 -CASE R.BILL_TYPE_CODE
+                      WHEN 'BILLED' THEN AE.AMOUNT
+                      ELSE 0
+                  END
+               - CASE R.BILL_TYPE_CODE
+                     WHEN 'UNBILLED_OTHERS' THEN AE.AMOUNT
+                     ELSE 0
+                 END
+                   BILLED_ADJUSTMENT,
+               -CASE R.BILL_TYPE_CODE
+                    WHEN 'UNAPPLIED' THEN AE.AMOUNT
+                    ELSE 0
+                END
+                   UNBILLED_ADJUSTMENT,
+               0
+                   POST_JUD_INTEREST,
+               0
+                   NSF,
+               0
+                   BILLED_AMOUNT,
+               TRUNC (EVENT_DATE),
+               TRUNC (R.RECEIPT_DATE)
+                   RECEIPT_DATE,
+                 -CASE R.BILL_TYPE_CODE
+                      WHEN 'BILLED' THEN AE.AMOUNT
+                      ELSE 0
+                  END
+               - CASE R.BILL_TYPE_CODE
+                     WHEN 'UNBILLED_OTHERS' THEN AE.AMOUNT
+                     ELSE 0
+                 END
+               - CASE R.BILL_TYPE_CODE
+                     WHEN 'UNAPPLIED' THEN AE.AMOUNT
+                     ELSE 0
+                 END
+                   PAYMENT_AMOUNT,
+               0
+                   UNBILLED_AMOUNT,
+               R.RECEIPT_CONTROL_NUMBER
+                   PAYMENT_REFERENCE_NBR,
+               TRUNC (R.DEPOSIT_DATE)
+                   DEPOSIT_DATE,
+               AC.INDEX_CODE,
+               R.OFFSET_PAYMENT_CODE,
+               IF001.DEPOSIT_ID,
+               IF001.ACCOUNTING_DT
+          FROM receipt  R
+               INNER JOIN accounting_entry AE
+                   ON AE.ACCTG_TRANSACTION_ID = R.ACCTG_TRANSACTION_ID
+               INNER JOIN accounting_entry_type AET
+                   ON AE.ACCTG_ENTRY_TYPE_ID = AET.ACCTG_ENTRY_TYPE_ID
+               INNER JOIN accounting_code AC
+                   ON AC.ACCOUNTING_CODE_ID = AE.ACCOUNTING_CODE_ID
+               LEFT JOIN FUND_ALLOCATION
+                   ON (AC.FUND_ALLOCATION_ID =
+                       FUND_ALLOCATION.FUND_ALLOCATION_ID)
+               LEFT JOIN FUND ON (FUND_ALLOCATION.FUND_to_ID = FUND.FUND_ID)
+               INNER JOIN acctg_transact_event_assoc ATES
+                   ON ATES.ACCTG_TRANSACTION_ID = R.ACCTG_TRANSACTION_ID
+               INNER JOIN EVENT E ON E.EVENT_ID = ATES.EVENT_ID
+               INNER JOIN EVENT_TYPE ET
+                   ON (E.EVENT_TYPE_ID = ET.EVENT_TYPE_ID)
+               INNER JOIN participant_role PR ON PR.EVENT_ID = E.EVENT_ID
+               LEFT JOIN organization O ON O.PARTY_ID = PR.PARTY_ID
+               LEFT JOIN
+               (SELECT ACCTG_ENTRY_ID, DEPOSIT_ID, ACCOUNTING_DT
+                  FROM INFAR001_OUTBOUND
+                 WHERE     FS_ROW_ID = '002'
+                       AND STATUS = 'TRANSMITTED'
+                       AND PAYMENT_ID <> 'OFFSET') IF001
+                   ON IF001.ACCTG_ENTRY_ID = AE.ACCTG_ENTRY_ID
+         WHERE     EVENT_TYPE_CODE IN ('343', '344')
+               AND (R.DEPOSIT_SLIP_NUMBER LIKE 'ZB%00')) CREDIT_CARD]]>
+  </SQLQuery>
+  <ViewAttribute
+    Name="EmployerName"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="255"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="EMPLOYER_NAME"
+    Expression="EMPLOYER_NAME"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="250"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.cars06report.view.cars06FiscalReportVO.EmployerName_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="InvoiceNumber"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="25"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="INVOICE_NUMBER"
+    Expression="INVOICE_NUMBER"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="25"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.cars06report.view.cars06FiscalReportVO.InvoiceNumber_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="IssueDate"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    AliasName="ISSUE_DATE"
+    Expression="ISSUE_DATE"
+    SQLType="DATE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.cars06report.view.cars06FiscalReportVO.IssueDate_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="FiscalYear"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="4000"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="FISCAL_YEAR"
+    Expression="FISCAL_YEAR"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="4000"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.cars06report.view.cars06FiscalReportVO.FiscalYear_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="DepositDate"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    AliasName="DEPOSIT_DATE"
+    Expression="DEPOSIT_DATE"
+    SQLType="DATE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.cars06report.view.cars06FiscalReportVO.DepositDate_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="DepositSlipNumber"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="10"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="DEPOSIT_SLIP_NUMBER"
+    Expression="DEPOSIT_SLIP_NUMBER"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="10"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.cars06report.view.cars06FiscalReportVO.DepositSlipNumber_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="BilledAmount"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="BILLED_AMOUNT"
+    Expression="BILLED_AMOUNT"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.cars06report.view.cars06FiscalReportVO.BilledAmount_LABEL"/>
+        <FMT_FORMATTER
+          ResId="gov.ca.dir.acct.cars.adf.cars06report.view.cars06FiscalReportVO.BilledAmount_FMT_FORMATTER"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Unapplied"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="UNAPPLIED"
+    Expression="UNAPPLIED"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <FMT_FORMATTER
+          ResId="gov.ca.dir.acct.cars.adf.cars06report.view.cars06FiscalReportVO.Unapplied_FMT_FORMATTER"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="BilledAdjustmentAmount"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="BILLED_ADJUSTMENT_AMOUNT"
+    Expression="BILLED_ADJUSTMENT_AMOUNT"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.cars06report.view.cars06FiscalReportVO.BilledAdjustmentAmount_LABEL"/>
+        <FMT_FORMATTER
+          ResId="gov.ca.dir.acct.cars.adf.cars06report.view.cars06FiscalReportVO.BilledAdjustmentAmount_FMT_FORMATTER"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="UnbilledAdjustmentAmount"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="UNBILLED_ADJUSTMENT_AMOUNT"
+    Expression="UNBILLED_ADJUSTMENT_AMOUNT"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.cars06report.view.cars06FiscalReportVO.UnbilledAdjustmentAmount_LABEL"/>
+        <FMT_FORMATTER
+          ResId="gov.ca.dir.acct.cars.adf.cars06report.view.cars06FiscalReportVO.UnbilledAdjustmentAmount_FMT_FORMATTER"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CourtFee"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="COURT_FEE"
+    Expression="COURT_FEE"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.cars06report.view.cars06FiscalReportVO.CourtFee_LABEL"/>
+        <FMT_FORMATTER
+          ResId="gov.ca.dir.acct.cars.adf.cars06report.view.cars06FiscalReportVO.CourtFee_FMT_FORMATTER"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="JudgmentInterest"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="JUDGMENT_INTEREST"
+    Expression="JUDGMENT_INTEREST"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.cars06report.view.cars06FiscalReportVO.JudgmentInterest_LABEL"/>
+        <FMT_FORMATTER
+          ResId="gov.ca.dir.acct.cars.adf.cars06report.view.cars06FiscalReportVO.JudgmentInterest_FMT_FORMATTER"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="PostJudInterest"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="POST_JUD_INTEREST"
+    Expression="POST_JUD_INTEREST"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.cars06report.view.cars06FiscalReportVO.PostJudInterest_LABEL"/>
+        <FMT_FORMATTER
+          ResId="gov.ca.dir.acct.cars.adf.cars06report.view.cars06FiscalReportVO.PostJudInterest_FMT_FORMATTER"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="NsfFee"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="NSF_FEE"
+    Expression="NSF_FEE"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CollectionFee"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="COLLECTION_FEE"
+    Expression="COLLECTION_FEE"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.cars06report.view.cars06FiscalReportVO.CollectionFee_LABEL"/>
+        <FMT_FORMATTER
+          ResId="gov.ca.dir.acct.cars.adf.cars06report.view.cars06FiscalReportVO.CollectionFee_FMT_FORMATTER"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="PaymentAmount"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="PAYMENT_AMOUNT"
+    Expression="PAYMENT_AMOUNT"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.cars06report.view.cars06FiscalReportVO.PaymentAmount_LABEL"/>
+        <FMT_FORMATTER
+          ResId="gov.ca.dir.acct.cars.adf.cars06report.view.cars06FiscalReportVO.PaymentAmount_FMT_FORMATTER"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="PaymentReferenceNbr"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="25"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="PAYMENT_REFERENCE_NBR"
+    Expression="PAYMENT_REFERENCE_NBR"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="25"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.cars06report.view.cars06FiscalReportVO.PaymentReferenceNbr_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ReceiptDate"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    AliasName="RECEIPT_DATE"
+    Expression="RECEIPT_DATE"
+    SQLType="DATE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.cars06report.view.cars06FiscalReportVO.ReceiptDate_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="AttributeCode"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="1"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="ATTRIBUTE_CODE"
+    Expression="ATTRIBUTE_CODE"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.cars06report.view.cars06FiscalReportVO.AttributeCode_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="DepositId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="15"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="DEPOSIT_ID"
+    Expression="DEPOSIT_ID"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.cars06report.view.cars06FiscalReportVO.DepositId_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="AccountingDt"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    AliasName="ACCOUNTING_DT"
+    Expression="ACCOUNTING_DT"
+    SQLType="DATE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.cars06report.view.cars06FiscalReportVO.AccountingDt_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="IndexCode"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="4"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="INDEX_CODE"
+    Expression="INDEX_CODE"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="4"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.cars06report.view.cars06FiscalReportVO.IndexCode_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="PcaCode"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="5"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="PCA_CODE"
+    Expression="PCA_CODE"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="5"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.cars06report.view.cars06FiscalReportVO.PcaCode_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="RevenueSourceCode"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="10"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="REVENUE_SOURCE_CODE"
+    Expression="REVENUE_SOURCE_CODE"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="10"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.cars06report.view.cars06FiscalReportVO.RevenueSourceCode_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="AgencySourceCode"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="3"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="AGENCY_SOURCE_CODE"
+    Expression="AGENCY_SOURCE_CODE"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="3"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.cars06report.view.cars06FiscalReportVO.AgencySourceCode_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Fund"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="9"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="FUND"
+    Expression="FUND"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="9"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ProgramUnitCode"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="25"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="PROGRAM_UNIT_CODE"
+    Expression="PROGRAM_UNIT_CODE"
+    SQLType="VARCHAR"
+    LOVName="LOV_ProgramUnitCode">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="25"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.cars06report.view.cars06FiscalReportVO.ProgramUnitCode_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="DataSourceCode"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="25"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="DATA_SOURCE_CODE"
+    Expression="DATA_SOURCE_CODE"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="25"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="gov.ca.dir.acct.cars.adf.cars06report.view.cars06FiscalReportVO.DataSourceCode_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="UnappliedTotal"
+    IsUpdateable="false"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="VIEW_ATTR"
+    SQLType="NUMERIC">
+    <TransientExpression><![CDATA[adf.object.findRowSetForRow("").sum("Unapplied")]]></TransientExpression>
+    <Properties>
+      <SchemaBasedProperties>
+        <FMT_FORMATTER
+          ResId="gov.ca.dir.acct.cars.adf.cars06report.view.cars06FiscalReportVO.UnappliedTotal_FMT_FORMATTER"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="BilledAmountTotal"
+    IsUpdateable="false"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="VIEW_ATTR"
+    SQLType="NUMERIC">
+    <TransientExpression><![CDATA[adf.object.findRowSetForRow("").sum("BilledAmount")]]></TransientExpression>
+    <Properties>
+      <SchemaBasedProperties>
+        <FMT_FORMATTER
+          ResId="gov.ca.dir.acct.cars.adf.cars06report.view.cars06FiscalReportVO.BilledAmountTotal_FMT_FORMATTER"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="BilledAdjustmentTotal"
+    IsUpdateable="false"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="VIEW_ATTR"
+    SQLType="NUMERIC">
+    <TransientExpression><![CDATA[adf.object.findRowSetForRow("").sum("BilledAdjustmentAmount")]]></TransientExpression>
+    <Properties>
+      <SchemaBasedProperties>
+        <FMT_FORMATTER
+          ResId="gov.ca.dir.acct.cars.adf.cars06report.view.cars06FiscalReportVO.BilledAdjustmentTotal_FMT_FORMATTER"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="UnbilledAdjustmentTotal"
+    IsUpdateable="false"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="VIEW_ATTR"
+    SQLType="NUMERIC">
+    <TransientExpression><![CDATA[adf.object.findRowSetForRow("").sum("UnbilledAdjustmentAmount")]]></TransientExpression>
+    <Properties>
+      <SchemaBasedProperties>
+        <FMT_FORMATTER
+          ResId="gov.ca.dir.acct.cars.adf.cars06report.view.cars06FiscalReportVO.UnbilledAdjustmentTotal_FMT_FORMATTER"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CourtFeeTotal"
+    IsUpdateable="false"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="VIEW_ATTR"
+    SQLType="NUMERIC">
+    <TransientExpression><![CDATA[adf.object.findRowSetForRow("").sum("CourtFee")]]></TransientExpression>
+    <Properties>
+      <SchemaBasedProperties>
+        <FMT_FORMATTER
+          ResId="gov.ca.dir.acct.cars.adf.cars06report.view.cars06FiscalReportVO.CourtFeeTotal_FMT_FORMATTER"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="JudgementInterestTotal"
+    IsUpdateable="false"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="VIEW_ATTR"
+    SQLType="NUMERIC">
+    <TransientExpression><![CDATA[adf.object.findRowSetForRow("").sum("JudgmentInterest")]]></TransientExpression>
+    <Properties>
+      <SchemaBasedProperties>
+        <FMT_FORMATTER
+          ResId="gov.ca.dir.acct.cars.adf.cars06report.view.cars06FiscalReportVO.JudgementInterestTotal_FMT_FORMATTER"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="PostJudInterestTotal"
+    IsUpdateable="false"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="VIEW_ATTR"
+    SQLType="NUMERIC">
+    <TransientExpression><![CDATA[adf.object.findRowSetForRow("").sum("PostJudInterest")]]></TransientExpression>
+    <Properties>
+      <SchemaBasedProperties>
+        <FMT_FORMATTER
+          ResId="gov.ca.dir.acct.cars.adf.cars06report.view.cars06FiscalReportVO.PostJudInterestTotal_FMT_FORMATTER"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="NsfFeeTotal"
+    IsUpdateable="false"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="VIEW_ATTR"
+    SQLType="NUMERIC">
+    <TransientExpression><![CDATA[adf.object.findRowSetForRow("").sum("NsfFee")]]></TransientExpression>
+    <Properties>
+      <SchemaBasedProperties>
+        <FMT_FORMATTER
+          ResId="gov.ca.dir.acct.cars.adf.cars06report.view.cars06FiscalReportVO.NsfFeeTotal_FMT_FORMATTER"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CollectionFeeTotal"
+    IsUpdateable="false"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="VIEW_ATTR"
+    SQLType="NUMERIC">
+    <TransientExpression><![CDATA[adf.object.findRowSetForRow("").sum("CollectionFee")]]></TransientExpression>
+    <Properties>
+      <SchemaBasedProperties>
+        <FMT_FORMATTER
+          ResId="gov.ca.dir.acct.cars.adf.cars06report.view.cars06FiscalReportVO.CollectionFeeTotal_FMT_FORMATTER"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="PaymentAmountTotal"
+    IsUpdateable="false"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="VIEW_ATTR"
+    SQLType="NUMERIC">
+    <TransientExpression><![CDATA[adf.object.findRowSetForRow("").sum("PaymentAmount")]]></TransientExpression>
+    <Properties>
+      <SchemaBasedProperties>
+        <FMT_FORMATTER
+          ResId="gov.ca.dir.acct.cars.adf.cars06report.view.cars06FiscalReportVO.PaymentAmountTotal_FMT_FORMATTER"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewCriteria
+    Name="cars06FiscalReportVOCriteria"
+    ViewObjectName="gov.ca.dir.acct.cars.adf.cars06report.view.cars06FiscalReportVO"
+    Conjunction="AND">
+    <Properties>
+      <CustomProperties>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="vcrow3"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="DepositDate"
+        ViewAttribute="DepositDate"
+        Operator="BETWEEN"
+        Conjunction="AND"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="DepositId"
+        ViewAttribute="DepositId"
+        Operator="="
+        Conjunction="AND"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="ProgramUnitCode"
+        ViewAttribute="ProgramUnitCode"
+        Operator="="
+        Conjunction="AND"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="DataSourceCode"
+        ViewAttribute="DataSourceCode"
+        Operator="="
+        Conjunction="AND"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="gov.ca.dir.acct.cars.adf.cars06report.model.ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

@@ -1,0 +1,5 @@
+Entity :Infar037Outbound
+|__Set transient, as column missing for attribute AcctgEntryId
+Entity :CountryCode
+Entity :StateCode
+

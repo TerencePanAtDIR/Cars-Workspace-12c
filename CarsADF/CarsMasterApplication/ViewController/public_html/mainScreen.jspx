@@ -1,0 +1,1240 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich" xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="viewcontrollerBundle" value="#{adfBundle['gov.ca.dir.acct.cars.adf.master.viewcontroller.ViewControllerBundle']}"/>
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document id="d1">
+      <af:messages id="m1"/>
+      <af:form id="f1">
+        <af:pageTemplate viewId="/oracle/ui/pattern/dynamicShell/dynamicTabShell.jspx"
+                         value="#{bindings.pageTemplateBinding}" id="pt1">
+          <f:facet name="about">
+            <af:group id="g2">
+              <af:commandLink text="About CARS" id="cl1"/>
+            </af:group>
+          </f:facet>
+          <f:facet name="navigation">
+            <af:panelAccordion id="pa1">
+              <af:showDetailItem text="Tasks" id="sdi1" stretchChildren="first">
+                <af:decorativeBox id="db1" topHeight="0"
+                                  centerLandmark="search">
+                  <f:facet name="center">
+                    <af:panelGroupLayout layout="scroll"
+                                         xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                                         id="pgl1">
+                      <af:panelHeader text="Search" id="ph1">
+                        <af:panelList id="pl2">
+                          <af:commandLink text="Accounts Receivables"
+                                          id="cl7"
+                                          actionListener="#{backingBeanScope.moduleLauncher.launchARSearchPage}"
+                                          partialSubmit="true"/>
+                          <af:commandLink text="CARS Events" id="cl8"
+                                          actionListener="#{backingBeanScope.moduleLauncher.launchEventsSearchPage}"
+                                          partialSubmit="true"/>
+                          <af:commandLink text="Customers"
+                                          id="commandLink40"
+                                          actionListener="#{backingBeanScope.moduleLauncher.launchCustomerSearch}"
+                                          visible="true"/>
+                        </af:panelList>
+                      </af:panelHeader>
+                      <af:panelHeader text="Interface" id="ph4">
+                        <af:panelList id="pl4">
+                          <af:commandLink text="Inbound Event Error Log" id="cl10"
+                                          actionListener="#{backingBeanScope.moduleLauncher.launchInboundTransactionsMgnt}"/>
+                          <af:commandLink text="FISCAL Batch Search" id="cl24"
+                                          actionListener="#{backingBeanScope.moduleLauncher.launchInfarBatchSearch}"/>
+                        </af:panelList>
+                      </af:panelHeader>
+                      <af:panelHeader text="Manage Events" id="ph3">
+                        <af:panelList id="pl5">
+                          <af:commandLink text="Reverse/Delete Events"
+                                          id="commandLink41"
+                                          actionListener="#{backingBeanScope.moduleLauncher.launchReverseDeleteCarsEvents}"/>
+                          <af:commandLink text="Reclass AR-Revenue Event" id="cl27"
+                                          actionListener="#{backingBeanScope.moduleLauncher.launchReclassCarsEvents}"/>
+                        </af:panelList>
+                      </af:panelHeader>
+                      <af:panelHeader text="Legacy" id="ph2">
+                        <af:panelList id="pl6">
+                          <af:commandLink id="commandLink2"
+                                          actionListener="#{backingBeanScope.moduleLauncher.launchCalstarsBatch}"
+                                          partialSubmit="true"
+                                          text="CALSTARS Batches"/>
+                        </af:panelList>
+                      </af:panelHeader>
+                    </af:panelGroupLayout>
+                  </f:facet>
+                  <f:facet name="top"/>
+                </af:decorativeBox>
+              </af:showDetailItem>
+              <af:showDetailItem text="Calstar Reports" id="sdi2"
+                                 inflexibleHeight="100" stretchChildren="first">
+                <af:panelStretchLayout id="psl1" startWidth="0" endWidth="0"
+                                       topHeight="0" bottomHeight="0"
+                                       dimensionsFrom="parent" rendered="true">
+                  <f:facet name="bottom"/>
+                  <f:facet name="center">
+                    <af:panelTabbed id="pt2" styleClass="AFStretchWidth"
+                                    dimensionsFrom="parent">
+                      <af:showDetailItem text="Static" id="sdi3"
+                                         inflexibleHeight="100" flex="0"
+                                         stretchChildren="first">
+                        <af:panelList id="pl1" maxColumns="1">
+                          <af:commandLink text="Statistics Report" id="cl9"
+                                          partialSubmit="true" useWindow="true"
+                                          windowEmbedStyle="inlineDocument"
+                                          windowModalityType="applicationModal">
+                            <af:showPopupBehavior popupId="p3"
+                                                  triggerType="action"/>
+                            <af:popup id="p3">
+                              <af:dialog id="d2" title="Report Parameter"
+                                         dialogListener="#{backingBeanScope.reportParameterBean.okActionListener}">
+                                <af:panelFormLayout id="pfl1">
+                                  <f:facet name="footer"/>
+                                  <af:inputDate label="Begin Date" id="bdate"
+                                                showRequired="true"/>
+                                  <af:inputDate label="End Date" id="edate"
+                                                showRequired="true"/>
+                                </af:panelFormLayout>
+                              </af:dialog>
+                            </af:popup>
+                          </af:commandLink>
+                          <af:commandLink text="AR Setup Summary"
+                                          id="commandLink12"
+                                          partialSubmit="true" useWindow="true"
+                                          windowEmbedStyle="inlineDocument"
+                                          windowModalityType="applicationModal">
+                            <af:showPopupBehavior popupId="p17"
+                                                  triggerType="action"/>
+                            <af:popup id="p17" childCreation="deferred"
+                                      autoCancel="disabled"
+                                      eventContext="launcher"
+                                      launcherVar="itemVar">
+                              <af:dialog id="dialog11" title="Report Parameter"
+                                         dialogListener="#{backingBeanScope.reportParameterBean.okActionListener02}">
+                                <af:panelFormLayout id="panelFormLayout11">
+                                  <f:facet name="footer"/>
+                                  <af:selectOneChoice value="#{bindings.ProgramUnitCodeView1.inputValue}" label="#{bindings.ProgramUnitCodeView1.label}"
+                                                      required="#{bindings.ProgramUnitCodeView1.hints.mandatory}" shortDesc="#{bindings.ProgramUnitCodeView1.hints.tooltip}" id="programunit_02">
+                                    <f:selectItems value="#{bindings.ProgramUnitCodeView1.items}" id="si1"/>
+                                  </af:selectOneChoice>
+                                  <af:selectOneChoice value="#{bindings.DataSourceCodeView1.inputValue}" label="#{bindings.DataSourceCodeView1.label}"
+                                                      required="#{bindings.DataSourceCodeView1.hints.mandatory}" shortDesc="#{bindings.DataSourceCodeView1.hints.tooltip}" id="datasource_02">
+                                    <f:selectItems value="#{bindings.DataSourceCodeView1.items}" id="si2"/>
+                                  </af:selectOneChoice>
+                                  <af:inputDate label="Begin Date"
+                                                id="bdate02"
+                                                showRequired="true"/>
+                                  <af:inputDate label="End Date"
+                                                id="edate02"
+                                                showRequired="true"/>
+                                </af:panelFormLayout>
+                              </af:dialog>
+                            </af:popup>
+                          </af:commandLink>
+                          <af:commandLink text="Cash Receipts Checks-Summary"
+                                          id="cl2" partialSubmit="true"
+                                          useWindow="true"
+                                          windowEmbedStyle="inlineDocument"
+                                          windowModalityType="applicationModal">
+                            <af:showPopupBehavior popupId="p4"
+                                                  triggerType="action"/>
+                            <af:popup id="p4" childCreation="deferred"
+                                      autoCancel="disabled"
+                                      eventContext="launcher"
+                                      launcherVar="itemVar">
+                              <af:dialog id="d4" title="Report Parameter"
+                                         dialogListener="#{backingBeanScope.reportParameterBean.okActionListener05}">
+                                <af:panelFormLayout id="pfl2">
+                                  <f:facet name="footer"/>
+                                  <af:selectOneChoice value="#{bindings.ProgramUnitCodeView1.inputValue}" label="#{bindings.ProgramUnitCodeView1.label}"
+                                                      required="#{bindings.ProgramUnitCodeView1.hints.mandatory}" shortDesc="#{bindings.ProgramUnitCodeView1.hints.tooltip}" id="programunit_05">
+                                    <f:selectItems value="#{bindings.ProgramUnitCodeView1.items}" id="si3"/>
+                                  </af:selectOneChoice>
+                                  <af:selectOneChoice value="#{bindings.DataSourceCodeView1.inputValue}" label="#{bindings.DataSourceCodeView1.label}"
+                                                      required="#{bindings.DataSourceCodeView1.hints.mandatory}" shortDesc="#{bindings.DataSourceCodeView1.hints.tooltip}" id="datasource_05">
+                                    <f:selectItems value="#{bindings.DataSourceCodeView1.items}" id="si4"/>
+                                  </af:selectOneChoice>
+                                  <af:inputDate label="Begin Date" id="bdate05"
+                                                showRequired="true"/>
+                                  <af:inputDate label="End Date" id="edate05"
+                                                showRequired="true"/>
+                                </af:panelFormLayout>
+                              </af:dialog>
+                            </af:popup>
+                          </af:commandLink>
+                          <af:commandLink text="Cash Receipts Checks-Summary by FY"
+                                          id="commandLink1" partialSubmit="true"
+                                          useWindow="true"
+                                          windowEmbedStyle="inlineDocument"
+                                          windowModalityType="applicationModal">
+                            <af:showPopupBehavior popupId="p7"
+                                                  triggerType="action"/>
+                            <af:popup id="p7" childCreation="deferred"
+                                      autoCancel="disabled"
+                                      eventContext="launcher"
+                                      launcherVar="itemVar">
+                              <af:dialog id="dialog1" title="Report Parameter"
+                                         dialogListener="#{backingBeanScope.reportParameterBean.okActionListener05_2}">
+                                <af:panelFormLayout id="panelFormLayout1">
+                                  <f:facet name="footer"/>
+                                  <af:inputDate label="Begin Date"
+                                                id="bdate05_2"
+                                                showRequired="true"/>
+                                  <af:inputDate label="End Date" id="edate05_2"
+                                                showRequired="true"/>
+                                </af:panelFormLayout>
+                              </af:dialog>
+                            </af:popup>
+                          </af:commandLink>
+                          <af:commandLink text="Cash Receipts Credit Card-Summary"
+                                          id="cl3" partialSubmit="true"
+                                          useWindow="true"
+                                          windowEmbedStyle="inlineDocument"
+                                          windowModalityType="applicationModal">
+                            <af:showPopupBehavior popupId="p5"
+                                                  triggerType="action"/>
+                            <af:popup id="p5" childCreation="deferred"
+                                      autoCancel="disabled"
+                                      eventContext="launcher"
+                                      launcherVar="itemVar">
+                              <af:dialog id="d5" title="Report Parameter"
+                                         dialogListener="#{backingBeanScope.reportParameterBean.okActionListener07}">
+                                <af:panelFormLayout id="pfl3">
+                                  <f:facet name="footer"/>
+                                  <af:selectOneChoice value="#{bindings.ProgramUnitCodeView1.inputValue}" label="#{bindings.ProgramUnitCodeView1.label}"
+                                                      required="#{bindings.ProgramUnitCodeView1.hints.mandatory}" shortDesc="#{bindings.ProgramUnitCodeView1.hints.tooltip}" id="programunit_07">
+                                    <f:selectItems value="#{bindings.ProgramUnitCodeView1.items}" id="si7"/>
+                                  </af:selectOneChoice>
+                                  <af:selectOneChoice value="#{bindings.DataSourceCodeView1.inputValue}" label="#{bindings.DataSourceCodeView1.label}"
+                                                      required="#{bindings.DataSourceCodeView1.hints.mandatory}" shortDesc="#{bindings.DataSourceCodeView1.hints.tooltip}" id="datasource_07">
+                                    <f:selectItems value="#{bindings.DataSourceCodeView1.items}" id="si8"/>
+                                  </af:selectOneChoice>
+                                  <af:inputDate label="Begin Date" id="bdate07"
+                                                showRequired="true"/>
+                                  <af:inputDate label="End Date" id="edate07"
+                                                showRequired="true"/>
+                                </af:panelFormLayout>
+                              </af:dialog>
+                            </af:popup>
+                          </af:commandLink>
+                          <af:commandLink text="Cash Receipts Credit Card-Summary by FY"
+                                          id="commandLink3" partialSubmit="true"
+                                          useWindow="true"
+                                          windowEmbedStyle="inlineDocument"
+                                          windowModalityType="applicationModal">
+                            <af:showPopupBehavior popupId="p8"
+                                                  triggerType="action"/>
+                            <af:popup id="p8" childCreation="deferred"
+                                      autoCancel="disabled"
+                                      eventContext="launcher"
+                                      launcherVar="itemVar">
+                              <af:dialog id="dialog2" title="Report Parameter"
+                                         dialogListener="#{backingBeanScope.reportParameterBean.okActionListener07_2}">
+                                <af:panelFormLayout id="panelFormLayout2">
+                                  <f:facet name="footer"/>
+                                  <af:inputDate label="Begin Date"
+                                                id="bdate07_2"
+                                                showRequired="true"/>
+                                  <af:inputDate label="End Date" id="edate07_2"
+                                                showRequired="true"/>
+                                </af:panelFormLayout>
+                              </af:dialog>
+                            </af:popup>
+                          </af:commandLink>
+                          <af:commandLink text="Cash Receipts EFT-Summary"
+                                          id="cl11" partialSubmit="true"
+                                          useWindow="true"
+                                          windowEmbedStyle="inlineDocument"
+                                          windowModalityType="applicationModal">
+                            <af:showPopupBehavior popupId="p6"
+                                                  triggerType="action"/>
+                            <af:popup id="p6" childCreation="deferred"
+                                      autoCancel="disabled"
+                                      eventContext="launcher"
+                                      launcherVar="itemVar">
+                              <af:dialog id="d6" title="Report Parameter"
+                                         dialogListener="#{backingBeanScope.reportParameterBean.okActionListener09}">
+                                <af:panelFormLayout id="pfl4">
+                                  <f:facet name="footer"/>
+                                  <af:selectOneChoice value="#{bindings.ProgramUnitCodeView1.inputValue}" label="#{bindings.ProgramUnitCodeView1.label}"
+                                                      required="#{bindings.ProgramUnitCodeView1.hints.mandatory}" shortDesc="#{bindings.ProgramUnitCodeView1.hints.tooltip}" id="programunit_09">
+                                    <f:selectItems value="#{bindings.ProgramUnitCodeView1.items}" id="si11"/>
+                                  </af:selectOneChoice>
+                                  <af:selectOneChoice value="#{bindings.DataSourceCodeView1.inputValue}" label="#{bindings.DataSourceCodeView1.label}"
+                                                      required="#{bindings.DataSourceCodeView1.hints.mandatory}" shortDesc="#{bindings.DataSourceCodeView1.hints.tooltip}" id="datasource_09">
+                                    <f:selectItems value="#{bindings.DataSourceCodeView1.items}" id="si12"/>
+                                  </af:selectOneChoice>
+                                  <af:inputDate label="Begin Date" id="bdate09"
+                                                showRequired="true"/>
+                                  <af:inputDate label="End Date" id="edate09"
+                                                showRequired="true"/>
+                                </af:panelFormLayout>
+                              </af:dialog>
+                            </af:popup>
+                          </af:commandLink>
+                          <af:commandLink text="Cash Receipts EFT-Summary by FY"
+                                          id="commandLink4" partialSubmit="true"
+                                          useWindow="true"
+                                          windowEmbedStyle="inlineDocument"
+                                          windowModalityType="applicationModal">
+                            <af:showPopupBehavior popupId="p9"
+                                                  triggerType="action"/>
+                            <af:popup id="p9" childCreation="deferred"
+                                      autoCancel="disabled"
+                                      eventContext="launcher"
+                                      launcherVar="itemVar">
+                              <af:dialog id="dialog3" title="Report Parameter"
+                                         dialogListener="#{backingBeanScope.reportParameterBean.okActionListener09_2}">
+                                <af:panelFormLayout id="panelFormLayout3">
+                                  <f:facet name="footer"/>
+                                  <af:inputDate label="Begin Date"
+                                                id="bdate09_2"
+                                                showRequired="true"/>
+                                  <af:inputDate label="End Date" id="edate09_2"
+                                                showRequired="true"/>
+                                </af:panelFormLayout>
+                              </af:dialog>
+                            </af:popup>
+                          </af:commandLink>
+                          <af:commandLink text="Monthly CC Sales Summary By Location"
+                                          id="commandLink5" partialSubmit="true"
+                                          useWindow="true"
+                                          windowEmbedStyle="inlineDocument"
+                                          windowModalityType="applicationModal">
+                            <af:showPopupBehavior popupId="p10"
+                                                  triggerType="action"/>
+                            <af:popup id="p10" childCreation="deferred"
+                                      autoCancel="disabled"
+                                      eventContext="launcher"
+                                      launcherVar="itemVar">
+                              <af:dialog id="dialog4" title="Report Parameter"
+                                         dialogListener="#{backingBeanScope.reportParameterBean.okActionListener02_1_1}">
+                                <af:panelFormLayout id="panelFormLayout4">
+                                  <f:facet name="footer"/>
+                                  <af:selectOneChoice value="#{bindings.ProgramUnitCodeView1.inputValue}" label="#{bindings.ProgramUnitCodeView1.label}"
+                                                      required="#{bindings.ProgramUnitCodeView1.hints.mandatory}" shortDesc="#{bindings.ProgramUnitCodeView1.hints.tooltip}" id="programunit_02_1_1">
+                                    <f:selectItems value="#{bindings.ProgramUnitCodeView1.items}" id="si15"/>
+                                  </af:selectOneChoice>
+                                  <af:selectOneChoice value="#{bindings.DataSourceCodeView1.inputValue}" label="#{bindings.DataSourceCodeView1.label}"
+                                                      required="#{bindings.DataSourceCodeView1.hints.mandatory}" shortDesc="#{bindings.DataSourceCodeView1.hints.tooltip}" id="datasource_02_1_1">
+                                    <f:selectItems value="#{bindings.DataSourceCodeView1.items}" id="si16"/>
+                                  </af:selectOneChoice>
+                                  <af:inputDate label="Begin Date"
+                                                id="bdate02_1_1"
+                                                showRequired="true"/>
+                                  <af:inputDate label="End Date"
+                                                id="edate02_1_1"
+                                                showRequired="true"/>
+                                </af:panelFormLayout>
+                              </af:dialog>
+                            </af:popup>
+                          </af:commandLink>
+                          <af:commandLink text="CC Sales Summary By Location and Payment Type"
+                                          id="commandLink6" partialSubmit="true"
+                                          useWindow="true"
+                                          windowEmbedStyle="inlineDocument"
+                                          windowModalityType="applicationModal">
+                            <af:showPopupBehavior popupId="p11"
+                                                  triggerType="action"/>
+                            <af:popup id="p11" childCreation="deferred"
+                                      autoCancel="disabled"
+                                      eventContext="launcher"
+                                      launcherVar="itemVar">
+                              <af:dialog id="dialog5" title="Report Parameter"
+                                         dialogListener="#{backingBeanScope.reportParameterBean.okActionListener02_1_2}">
+                                <af:panelFormLayout id="panelFormLayout5">
+                                  <f:facet name="footer"/>
+                                  <af:selectOneChoice value="#{bindings.ProgramUnitCodeView1.inputValue}" label="#{bindings.ProgramUnitCodeView1.label}"
+                                                      required="#{bindings.ProgramUnitCodeView1.hints.mandatory}" shortDesc="#{bindings.ProgramUnitCodeView1.hints.tooltip}" id="programunit_02_1_2">
+                                    <f:selectItems value="#{bindings.ProgramUnitCodeView1.items}" id="si17"/>
+                                  </af:selectOneChoice>
+                                  <af:selectOneChoice value="#{bindings.DataSourceCodeView1.inputValue}" label="#{bindings.DataSourceCodeView1.label}"
+                                                      required="#{bindings.DataSourceCodeView1.hints.mandatory}" shortDesc="#{bindings.DataSourceCodeView1.hints.tooltip}" id="datasource_02_1_2">
+                                    <f:selectItems value="#{bindings.DataSourceCodeView1.items}" id="si18"/>
+                                  </af:selectOneChoice>
+                                  <af:inputDate label="Begin Date"
+                                                id="bdate02_1_2"
+                                                showRequired="true"/>
+                                  <af:inputDate label="End Date"
+                                                id="edate02_1_2"
+                                                showRequired="true"/>
+                                </af:panelFormLayout>
+                              </af:dialog>
+                            </af:popup>
+                          </af:commandLink>
+                          <af:commandLink text="20YY Credit Card Sales Summary by Location"
+                                          id="commandLink8" partialSubmit="true"
+                                          useWindow="true"
+                                          windowEmbedStyle="inlineDocument"
+                                          windowModalityType="applicationModal">
+                            <af:showPopupBehavior popupId="p12"
+                                                  triggerType="action"/>
+                            <af:popup id="p12" childCreation="deferred"
+                                      autoCancel="disabled"
+                                      eventContext="launcher"
+                                      launcherVar="itemVar">
+                              <af:dialog id="dialog7" title="Report Parameter"
+                                         dialogListener="#{backingBeanScope.reportParameterBean.okActionListener02_1_3}">
+                                <af:panelFormLayout id="panelFormLayout7">
+                                  <f:facet name="footer"/>
+                                  <af:selectOneChoice value="#{bindings.ProgramUnitCodeView1.inputValue}" label="#{bindings.ProgramUnitCodeView1.label}"
+                                                      required="#{bindings.ProgramUnitCodeView1.hints.mandatory}" shortDesc="#{bindings.ProgramUnitCodeView1.hints.tooltip}" id="programunit_02_1_3">
+                                    <f:selectItems value="#{bindings.ProgramUnitCodeView1.items}" id="si19"/>
+                                  </af:selectOneChoice>
+                                  <af:selectOneChoice value="#{bindings.DataSourceCodeView1.inputValue}" label="#{bindings.DataSourceCodeView1.label}"
+                                                      required="#{bindings.DataSourceCodeView1.hints.mandatory}" shortDesc="#{bindings.DataSourceCodeView1.hints.tooltip}" id="datasource_02_1_3">
+                                    <f:selectItems value="#{bindings.DataSourceCodeView1.items}" id="si20"/>
+                                  </af:selectOneChoice>
+                                  <af:inputDate label="Begin Date"
+                                                id="bdate02_1_3"
+                                                showRequired="true"/>
+                                  <af:inputDate label="End Date"
+                                                id="edate02_1_3"
+                                                showRequired="true"/>
+                                </af:panelFormLayout>
+                              </af:dialog>
+                            </af:popup>
+                          </af:commandLink>
+                          <af:commandLink text="Monthly EFT Sales Summary by Location"
+                                          id="commandLink7" partialSubmit="true"
+                                          useWindow="true"
+                                          windowEmbedStyle="inlineDocument"
+                                          windowModalityType="applicationModal">
+                            <af:showPopupBehavior popupId="p13"
+                                                  triggerType="action"/>
+                            <af:popup id="p13" childCreation="deferred"
+                                      autoCancel="disabled"
+                                      eventContext="launcher"
+                                      launcherVar="itemVar">
+                              <af:dialog id="dialog6" title="Report Parameter"
+                                         dialogListener="#{backingBeanScope.reportParameterBean.okActionListener02_2_1}">
+                                <af:panelFormLayout id="panelFormLayout6">
+                                  <f:facet name="footer"/>
+                                  <af:selectOneChoice value="#{bindings.ProgramUnitCodeView1.inputValue}" label="#{bindings.ProgramUnitCodeView1.label}"
+                                                      required="#{bindings.ProgramUnitCodeView1.hints.mandatory}" shortDesc="#{bindings.ProgramUnitCodeView1.hints.tooltip}" id="programunit_02_2_1">
+                                    <f:selectItems value="#{bindings.ProgramUnitCodeView1.items}" id="si21"/>
+                                  </af:selectOneChoice>
+                                  <af:selectOneChoice value="#{bindings.DataSourceCodeView1.inputValue}" label="#{bindings.DataSourceCodeView1.label}"
+                                                      required="#{bindings.DataSourceCodeView1.hints.mandatory}" shortDesc="#{bindings.DataSourceCodeView1.hints.tooltip}" id="datasource_02_2_1">
+                                    <f:selectItems value="#{bindings.DataSourceCodeView1.items}" id="si22"/>
+                                  </af:selectOneChoice>
+                                  <af:inputDate label="Begin Date"
+                                                id="bdate02_2_1"
+                                                showRequired="true"/>
+                                  <af:inputDate label="End Date"
+                                                id="edate02_2_1"
+                                                showRequired="true"/>
+                                </af:panelFormLayout>
+                              </af:dialog>
+                            </af:popup>
+                          </af:commandLink>
+                          <af:commandLink text="EFT Sales Summary by Location and Payment Type"
+                                          id="commandLink9" partialSubmit="true"
+                                          useWindow="true"
+                                          windowEmbedStyle="inlineDocument"
+                                          windowModalityType="applicationModal">
+                            <af:showPopupBehavior popupId="p14"
+                                                  triggerType="action"/>
+                            <af:popup id="p14" childCreation="deferred"
+                                      autoCancel="disabled"
+                                      eventContext="launcher"
+                                      launcherVar="itemVar">
+                              <af:dialog id="dialog8" title="Report Parameter"
+                                         dialogListener="#{backingBeanScope.reportParameterBean.okActionListener02_2_2}">
+                                <af:panelFormLayout id="panelFormLayout8">
+                                  <f:facet name="footer"/>
+                                  <af:selectOneChoice value="#{bindings.ProgramUnitCodeView1.inputValue}" label="#{bindings.ProgramUnitCodeView1.label}"
+                                                      required="#{bindings.ProgramUnitCodeView1.hints.mandatory}" shortDesc="#{bindings.ProgramUnitCodeView1.hints.tooltip}" id="programunit_02_2_2">
+                                    <f:selectItems value="#{bindings.ProgramUnitCodeView1.items}" id="si23"/>
+                                  </af:selectOneChoice>
+                                  <af:selectOneChoice value="#{bindings.DataSourceCodeView1.inputValue}" label="#{bindings.DataSourceCodeView1.label}"
+                                                      required="#{bindings.DataSourceCodeView1.hints.mandatory}" shortDesc="#{bindings.DataSourceCodeView1.hints.tooltip}" id="datasource_02_2_2">
+                                    <f:selectItems value="#{bindings.DataSourceCodeView1.items}" id="si24"/>
+                                  </af:selectOneChoice>
+                                  <af:inputDate label="Begin Date"
+                                                id="bdate02_2_2"
+                                                showRequired="true"/>
+                                  <af:inputDate label="End Date"
+                                                id="edate02_2_2"
+                                                showRequired="true"/>
+                                </af:panelFormLayout>
+                              </af:dialog>
+                            </af:popup>
+                          </af:commandLink>
+                          <af:commandLink text="20YY EFT Sales Summary by Location"
+                                          id="commandLink10"
+                                          partialSubmit="true" useWindow="true"
+                                          windowEmbedStyle="inlineDocument"
+                                          windowModalityType="applicationModal">
+                            <af:showPopupBehavior popupId="p15"
+                                                  triggerType="action"/>
+                            <af:popup id="p15" childCreation="deferred"
+                                      autoCancel="disabled"
+                                      eventContext="launcher"
+                                      launcherVar="itemVar">
+                              <af:dialog id="dialog9" title="Report Parameter"
+                                         dialogListener="#{backingBeanScope.reportParameterBean.okActionListener02_2_3}">
+                                <af:panelFormLayout id="panelFormLayout9">
+                                  <f:facet name="footer"/>
+                                  <af:selectOneChoice value="#{bindings.ProgramUnitCodeView1.inputValue}" label="#{bindings.ProgramUnitCodeView1.label}"
+                                                      required="#{bindings.ProgramUnitCodeView1.hints.mandatory}" shortDesc="#{bindings.ProgramUnitCodeView1.hints.tooltip}" id="programunit_02_2_3">
+                                    <f:selectItems value="#{bindings.ProgramUnitCodeView1.items}" id="si25"/>
+                                  </af:selectOneChoice>
+                                  <af:selectOneChoice value="#{bindings.DataSourceCodeView1.inputValue}" label="#{bindings.DataSourceCodeView1.label}"
+                                                      required="#{bindings.DataSourceCodeView1.hints.mandatory}" shortDesc="#{bindings.DataSourceCodeView1.hints.tooltip}" id="datasource_02_2_3">
+                                    <f:selectItems value="#{bindings.DataSourceCodeView1.items}" id="si26"/>
+                                  </af:selectOneChoice>
+                                  <af:inputDate label="Begin Date"
+                                                id="bdate02_2_3"
+                                                showRequired="true"/>
+                                  <af:inputDate label="End Date"
+                                                id="edate02_2_3"
+                                                showRequired="true"/>
+                                </af:panelFormLayout>
+                              </af:dialog>
+                            </af:popup>
+                          </af:commandLink>
+                          <af:commandLink text="Check Count and Amount by Location"
+                                          id="commandLink11"
+                                          partialSubmit="true" useWindow="true"
+                                          windowEmbedStyle="inlineDocument"
+                                          windowModalityType="applicationModal">
+                            <af:showPopupBehavior popupId="p16"
+                                                  triggerType="action"/>
+                            <af:popup id="p16" childCreation="deferred"
+                                      autoCancel="disabled"
+                                      eventContext="launcher"
+                                      launcherVar="itemVar">
+                              <af:dialog id="dialog10" title="Report Parameter"
+                                         dialogListener="#{backingBeanScope.reportParameterBean.okActionListener02_4}">
+                                <af:panelFormLayout id="panelFormLayout10">
+                                  <f:facet name="footer"/>
+                                  <af:inputDate label="Begin Date"
+                                                id="bdate02_4"
+                                                showRequired="true"/>
+                                  <af:inputDate label="End Date"
+                                                id="edate02_4"
+                                                showRequired="true"/>
+                                </af:panelFormLayout>
+                              </af:dialog>
+                            </af:popup>
+                          </af:commandLink>
+                        </af:panelList>
+                      </af:showDetailItem>
+                      <af:showDetailItem text="Interactive" id="sdi4"
+                                         inflexibleHeight="100"
+                                         stretchChildren="first">
+                        <af:panelList id="pl3" maxColumns="1">
+                          <af:commandLink text="AR Setup Details" id="cl12"
+                                          actionListener="#{backingBeanScope.moduleLauncher.launchCars01Report}"/>
+                          <af:commandLink text="AR Amendments and Adjusments" id="cl13"
+                                          actionListener="#{backingBeanScope.moduleLauncher.launchCars03Report}"/>
+                          <af:commandLink text="Cash Reciepts Checks - Details" id="cl14"
+                                          actionListener="#{backingBeanScope.moduleLauncher.launchCars04Report}"/>
+                          <af:commandLink text="Cash Receipts Credit Card - Details" id="cl15"
+                                          actionListener="#{backingBeanScope.moduleLauncher.launchCars06Report}"/>
+                          <af:commandLink text="Cash Receipts EFT - Details" id="cl16"
+                                          actionListener="#{backingBeanScope.moduleLauncher.launchCars08Report}"/>
+                          <af:commandLink text="Abnormal Balance Report" id="cl17"
+                                          actionListener="#{backingBeanScope.moduleLauncher.launchCars10Report}"
+                                          partialSubmit="true"/>
+                          <af:commandLink text="Aging of ARs" id="cl18"
+                                          actionListener="#{backingBeanScope.moduleLauncher.launchCars11Report}"/>
+                          <af:commandLink text="Delinquent Payment Plans" id="cl19"
+                                          actionListener="#{backingBeanScope.moduleLauncher.launchCars12Report}"/>
+                          <af:commandLink text="SCO Write-Off" id="cl20"
+                                          actionListener="#{backingBeanScope.moduleLauncher.launchCars13Report}"/>
+                          <af:commandLink text="Paid-In-Full" id="cl21"
+                                          actionListener="#{backingBeanScope.moduleLauncher.launchCars14Report}"/>
+                          <af:commandLink text="Accounts Receivable Status" id="cl25" actionListener="#{backingBeanScope.moduleLauncher.launchCars16Report}"/>
+                          <af:commandLink text="Revenue By Fund and Fund Source" id="cl26" actionListener="#{backingBeanScope.moduleLauncher.launchCars20Report}"/>
+                        </af:panelList>
+                      </af:showDetailItem>
+                    </af:panelTabbed>
+                  </f:facet>
+                  <f:facet name="start"/>
+                  <f:facet name="end"/>
+                  <f:facet name="top"/>
+                </af:panelStretchLayout>
+              </af:showDetailItem>
+              <af:showDetailItem text="Fiscal Reports" id="showDetailItem1"
+                                 inflexibleHeight="100" stretchChildren="first">
+                <af:panelStretchLayout id="panelStretchLayout1" startWidth="0"
+                                       endWidth="0" topHeight="0"
+                                       bottomHeight="0" dimensionsFrom="parent"
+                                       rendered="true">
+                  <f:facet name="bottom"/>
+                  <f:facet name="center">
+                    <af:panelTabbed id="panelTabbed1"
+                                    styleClass="AFStretchWidth"
+                                    dimensionsFrom="parent">
+                      <af:showDetailItem text="Static" id="showDetailItem2"
+                                         inflexibleHeight="100" flex="0"
+                                         stretchChildren="first">
+                        <af:panelList id="panelList1" maxColumns="1">
+                          <af:commandLink text="Statistics Report"
+                                          id="commandLink13"
+                                          partialSubmit="true" useWindow="true"
+                                          windowEmbedStyle="inlineDocument"
+                                          windowModalityType="applicationModal">
+                            <af:showPopupBehavior popupId="p3"
+                                                  triggerType="action"/>
+                            <af:popup id="popup1">
+                              <af:dialog id="dialog12" title="Report Parameter"
+                                         dialogListener="#{backingBeanScope.reportParameterBean.okActionListener}">
+                                <af:panelFormLayout id="panelFormLayout12">
+                                  <f:facet name="footer"/>
+                                  <af:inputDate label="Begin Date"
+                                                id="inputDate1"
+                                                showRequired="true"/>
+                                  <af:inputDate label="End Date" id="inputDate2"
+                                                showRequired="true"/>
+                                </af:panelFormLayout>
+                              </af:dialog>
+                            </af:popup>
+                          </af:commandLink>
+                          <af:commandLink text="AR Setup Summary"
+                                          id="commandLink14"
+                                          partialSubmit="true" useWindow="true"
+                                          windowEmbedStyle="inlineDocument"
+                                          windowModalityType="applicationModal">
+                            <af:showPopupBehavior popupId="popup2"
+                                                  triggerType="action"/>
+                            <af:popup id="popup2" childCreation="deferred"
+                                      autoCancel="disabled"
+                                      eventContext="launcher"
+                                      launcherVar="itemVar">
+                              <af:dialog id="dialog13" title="Report Parameter"
+                                         dialogListener="#{backingBeanScope.reportParameterBean.okActionListener02Fiscal}">
+                                <af:panelFormLayout id="panelFormLayout13">
+                                  <f:facet name="footer"/>
+                                  <af:selectOneChoice value="#{bindings.ProgramUnitCodeView1.inputValue}"
+                                                      label="#{bindings.ProgramUnitCodeView1.label}"
+                                                      required="#{bindings.ProgramUnitCodeView1.hints.mandatory}"
+                                                      shortDesc="#{bindings.ProgramUnitCodeView1.hints.tooltip}"
+                                                      id="selectOneChoice1">
+                                    <f:selectItems value="#{bindings.ProgramUnitCodeView1.items}"
+                                                   id="selectItems1"/>
+                                  </af:selectOneChoice>
+                                  <af:selectOneChoice value="#{bindings.DataSourceCodeView1.inputValue}"
+                                                      label="#{bindings.DataSourceCodeView1.label}"
+                                                      required="#{bindings.DataSourceCodeView1.hints.mandatory}"
+                                                      shortDesc="#{bindings.DataSourceCodeView1.hints.tooltip}"
+                                                      id="selectOneChoice2">
+                                    <f:selectItems value="#{bindings.DataSourceCodeView1.items}"
+                                                   id="selectItems2"/>
+                                  </af:selectOneChoice>
+                                  <af:inputDate label="Begin Date"
+                                                id="inputDate3"
+                                                showRequired="true"/>
+                                  <af:inputDate label="End Date" id="inputDate4"
+                                                showRequired="true"/>
+                                </af:panelFormLayout>
+                              </af:dialog>
+                            </af:popup>
+                          </af:commandLink>
+                          <af:commandLink text="Cash Receipts Checks-Summary"
+                                          id="commandLink15"
+                                          partialSubmit="true" useWindow="true"
+                                          windowEmbedStyle="inlineDocument"
+                                          windowModalityType="applicationModal">
+                            <af:showPopupBehavior popupId="popup3"
+                                                  triggerType="action"/>
+                            <af:popup id="popup3" childCreation="deferred"
+                                      autoCancel="disabled"
+                                      eventContext="launcher"
+                                      launcherVar="itemVar">
+                              <af:dialog id="dialog14" title="Report Parameter"
+                                         dialogListener="#{backingBeanScope.reportParameterBean.okActionListener05Fiscal}">
+                                <af:panelFormLayout id="panelFormLayout14">
+                                  <f:facet name="footer"/>
+                                  <af:selectOneChoice value="#{bindings.ProgramUnitCodeView1.inputValue}"
+                                                      label="#{bindings.ProgramUnitCodeView1.label}"
+                                                      required="#{bindings.ProgramUnitCodeView1.hints.mandatory}"
+                                                      shortDesc="#{bindings.ProgramUnitCodeView1.hints.tooltip}"
+                                                      id="selectOneChoice3">
+                                    <f:selectItems value="#{bindings.ProgramUnitCodeView1.items}"
+                                                   id="selectItems3"/>
+                                  </af:selectOneChoice>
+                                  <af:selectOneChoice value="#{bindings.DataSourceCodeView1.inputValue}"
+                                                      label="#{bindings.DataSourceCodeView1.label}"
+                                                      required="#{bindings.DataSourceCodeView1.hints.mandatory}"
+                                                      shortDesc="#{bindings.DataSourceCodeView1.hints.tooltip}"
+                                                      id="selectOneChoice4">
+                                    <f:selectItems value="#{bindings.DataSourceCodeView1.items}"
+                                                   id="selectItems4"/>
+                                  </af:selectOneChoice>
+                                  <af:inputDate label="Begin Date"
+                                                id="inputDate5"
+                                                showRequired="true"/>
+                                  <af:inputDate label="End Date" id="inputDate6"
+                                                showRequired="true"/>
+                                </af:panelFormLayout>
+                              </af:dialog>
+                            </af:popup>
+                          </af:commandLink>
+                          <af:commandLink text="Cash Receipts Checks-Summary by FY"
+                                          id="commandLink16"
+                                          partialSubmit="true" useWindow="true"
+                                          windowEmbedStyle="inlineDocument"
+                                          windowModalityType="applicationModal">
+                            <af:showPopupBehavior popupId="p7"
+                                                  triggerType="action"/>
+                            <af:popup id="popup4" childCreation="deferred"
+                                      autoCancel="disabled"
+                                      eventContext="launcher"
+                                      launcherVar="itemVar">
+                              <af:dialog id="dialog15" title="Report Parameter"
+                                         dialogListener="#{backingBeanScope.reportParameterBean.okActionListener05_2}">
+                                <af:panelFormLayout id="panelFormLayout15">
+                                  <f:facet name="footer"/>
+                                  <af:inputDate label="Begin Date"
+                                                id="inputDate7"
+                                                showRequired="true"/>
+                                  <af:inputDate label="End Date" id="inputDate8"
+                                                showRequired="true"/>
+                                </af:panelFormLayout>
+                              </af:dialog>
+                            </af:popup>
+                          </af:commandLink>
+                          <af:commandLink text="Cash Receipts Credit Card-Summary"
+                                          id="commandLink17"
+                                          partialSubmit="true" useWindow="true"
+                                          windowEmbedStyle="inlineDocument"
+                                          windowModalityType="applicationModal">
+                            <af:showPopupBehavior popupId="popup5"
+                                                  triggerType="action"/>
+                            <af:popup id="popup5" childCreation="deferred"
+                                      autoCancel="disabled"
+                                      eventContext="launcher"
+                                      launcherVar="itemVar">
+                              <af:dialog id="dialog16" title="Report Parameter"
+                                         dialogListener="#{backingBeanScope.reportParameterBean.okActionListener07Fiscal}">
+                                <af:panelFormLayout id="panelFormLayout16">
+                                  <f:facet name="footer"/>
+                                  <af:selectOneChoice value="#{bindings.ProgramUnitCodeView1.inputValue}"
+                                                      label="#{bindings.ProgramUnitCodeView1.label}"
+                                                      required="#{bindings.ProgramUnitCodeView1.hints.mandatory}"
+                                                      shortDesc="#{bindings.ProgramUnitCodeView1.hints.tooltip}"
+                                                      id="selectOneChoice5">
+                                    <f:selectItems value="#{bindings.ProgramUnitCodeView1.items}"
+                                                   id="selectItems5"/>
+                                  </af:selectOneChoice>
+                                  <af:selectOneChoice value="#{bindings.DataSourceCodeView1.inputValue}"
+                                                      label="#{bindings.DataSourceCodeView1.label}"
+                                                      required="#{bindings.DataSourceCodeView1.hints.mandatory}"
+                                                      shortDesc="#{bindings.DataSourceCodeView1.hints.tooltip}"
+                                                      id="selectOneChoice6">
+                                    <f:selectItems value="#{bindings.DataSourceCodeView1.items}"
+                                                   id="selectItems6"/>
+                                  </af:selectOneChoice>
+                                  <af:inputDate label="Begin Date"
+                                                id="inputDate9"
+                                                showRequired="true"/>
+                                  <af:inputDate label="End Date"
+                                                id="inputDate10"
+                                                showRequired="true"/>
+                                </af:panelFormLayout>
+                              </af:dialog>
+                            </af:popup>
+                          </af:commandLink>
+                          <af:commandLink text="Cash Receipts Credit Card-Summary by FY"
+                                          id="commandLink18"
+                                          partialSubmit="true" useWindow="true"
+                                          windowEmbedStyle="inlineDocument"
+                                          windowModalityType="applicationModal">
+                            <af:showPopupBehavior popupId="p8"
+                                                  triggerType="action"/>
+                            <af:popup id="popup6" childCreation="deferred"
+                                      autoCancel="disabled"
+                                      eventContext="launcher"
+                                      launcherVar="itemVar">
+                              <af:dialog id="dialog17" title="Report Parameter"
+                                         dialogListener="#{backingBeanScope.reportParameterBean.okActionListener07_2}">
+                                <af:panelFormLayout id="panelFormLayout17">
+                                  <f:facet name="footer"/>
+                                  <af:inputDate label="Begin Date"
+                                                id="inputDate11"
+                                                showRequired="true"/>
+                                  <af:inputDate label="End Date"
+                                                id="inputDate12"
+                                                showRequired="true"/>
+                                </af:panelFormLayout>
+                              </af:dialog>
+                            </af:popup>
+                          </af:commandLink>
+                          <af:commandLink text="Cash Receipts EFT-Summary"
+                                          id="commandLink19"
+                                          partialSubmit="true" useWindow="true"
+                                          windowEmbedStyle="inlineDocument"
+                                          windowModalityType="applicationModal">
+                            <af:showPopupBehavior popupId="popup7"
+                                                  triggerType="action"/>
+                            <af:popup id="popup7" childCreation="deferred"
+                                      autoCancel="disabled"
+                                      eventContext="launcher"
+                                      launcherVar="itemVar">
+                              <af:dialog id="dialog18" title="Report Parameter"
+                                         dialogListener="#{backingBeanScope.reportParameterBean.okActionListener09Fiscal}">
+                                <af:panelFormLayout id="panelFormLayout18">
+                                  <f:facet name="footer"/>
+                                  <af:selectOneChoice value="#{bindings.ProgramUnitCodeView1.inputValue}"
+                                                      label="#{bindings.ProgramUnitCodeView1.label}"
+                                                      required="#{bindings.ProgramUnitCodeView1.hints.mandatory}"
+                                                      shortDesc="#{bindings.ProgramUnitCodeView1.hints.tooltip}"
+                                                      id="selectOneChoice7">
+                                    <f:selectItems value="#{bindings.ProgramUnitCodeView1.items}"
+                                                   id="selectItems7"/>
+                                  </af:selectOneChoice>
+                                  <af:selectOneChoice value="#{bindings.DataSourceCodeView1.inputValue}"
+                                                      label="#{bindings.DataSourceCodeView1.label}"
+                                                      required="#{bindings.DataSourceCodeView1.hints.mandatory}"
+                                                      shortDesc="#{bindings.DataSourceCodeView1.hints.tooltip}"
+                                                      id="selectOneChoice8">
+                                    <f:selectItems value="#{bindings.DataSourceCodeView1.items}"
+                                                   id="selectItems8"/>
+                                  </af:selectOneChoice>
+                                  <af:inputDate label="Begin Date"
+                                                id="inputDate13"
+                                                showRequired="true"/>
+                                  <af:inputDate label="End Date"
+                                                id="inputDate14"
+                                                showRequired="true"/>
+                                </af:panelFormLayout>
+                              </af:dialog>
+                            </af:popup>
+                          </af:commandLink>
+                          <af:commandLink text="Cash Receipts EFT-Summary by FY"
+                                          id="commandLink20"
+                                          partialSubmit="true" useWindow="true"
+                                          windowEmbedStyle="inlineDocument"
+                                          windowModalityType="applicationModal">
+                            <af:showPopupBehavior popupId="p9"
+                                                  triggerType="action"/>
+                            <af:popup id="popup8" childCreation="deferred"
+                                      autoCancel="disabled"
+                                      eventContext="launcher"
+                                      launcherVar="itemVar">
+                              <af:dialog id="dialog19" title="Report Parameter"
+                                         dialogListener="#{backingBeanScope.reportParameterBean.okActionListener09_2}">
+                                <af:panelFormLayout id="panelFormLayout19">
+                                  <f:facet name="footer"/>
+                                  <af:inputDate label="Begin Date"
+                                                id="inputDate15"
+                                                showRequired="true"/>
+                                  <af:inputDate label="End Date"
+                                                id="inputDate16"
+                                                showRequired="true"/>
+                                </af:panelFormLayout>
+                              </af:dialog>
+                            </af:popup>
+                          </af:commandLink>
+                          <af:commandLink text="Monthly CC Sales Summary By Location"
+                                          id="commandLink21"
+                                          partialSubmit="true" useWindow="true"
+                                          windowEmbedStyle="inlineDocument"
+                                          windowModalityType="applicationModal">
+                            <af:showPopupBehavior popupId="p10"
+                                                  triggerType="action"/>
+                            <af:popup id="popup9" childCreation="deferred"
+                                      autoCancel="disabled"
+                                      eventContext="launcher"
+                                      launcherVar="itemVar">
+                              <af:dialog id="dialog20" title="Report Parameter"
+                                         dialogListener="#{backingBeanScope.reportParameterBean.okActionListener02_1_1}">
+                                <af:panelFormLayout id="panelFormLayout20">
+                                  <f:facet name="footer"/>
+                                  <af:selectOneChoice value="#{bindings.ProgramUnitCodeView1.inputValue}"
+                                                      label="#{bindings.ProgramUnitCodeView1.label}"
+                                                      required="#{bindings.ProgramUnitCodeView1.hints.mandatory}"
+                                                      shortDesc="#{bindings.ProgramUnitCodeView1.hints.tooltip}"
+                                                      id="selectOneChoice9">
+                                    <f:selectItems value="#{bindings.ProgramUnitCodeView1.items}"
+                                                   id="selectItems9"/>
+                                  </af:selectOneChoice>
+                                  <af:selectOneChoice value="#{bindings.DataSourceCodeView1.inputValue}"
+                                                      label="#{bindings.DataSourceCodeView1.label}"
+                                                      required="#{bindings.DataSourceCodeView1.hints.mandatory}"
+                                                      shortDesc="#{bindings.DataSourceCodeView1.hints.tooltip}"
+                                                      id="selectOneChoice10">
+                                    <f:selectItems value="#{bindings.DataSourceCodeView1.items}"
+                                                   id="selectItems10"/>
+                                  </af:selectOneChoice>
+                                  <af:inputDate label="Begin Date"
+                                                id="inputDate17"
+                                                showRequired="true"/>
+                                  <af:inputDate label="End Date"
+                                                id="inputDate18"
+                                                showRequired="true"/>
+                                </af:panelFormLayout>
+                              </af:dialog>
+                            </af:popup>
+                          </af:commandLink>
+                          <af:commandLink text="CC Sales Summary By Location and Payment Type"
+                                          id="commandLink22"
+                                          partialSubmit="true" useWindow="true"
+                                          windowEmbedStyle="inlineDocument"
+                                          windowModalityType="applicationModal">
+                            <af:showPopupBehavior popupId="p11"
+                                                  triggerType="action"/>
+                            <af:popup id="popup10" childCreation="deferred"
+                                      autoCancel="disabled"
+                                      eventContext="launcher"
+                                      launcherVar="itemVar">
+                              <af:dialog id="dialog21" title="Report Parameter"
+                                         dialogListener="#{backingBeanScope.reportParameterBean.okActionListener02_1_2}">
+                                <af:panelFormLayout id="panelFormLayout21">
+                                  <f:facet name="footer"/>
+                                  <af:selectOneChoice value="#{bindings.ProgramUnitCodeView1.inputValue}"
+                                                      label="#{bindings.ProgramUnitCodeView1.label}"
+                                                      required="#{bindings.ProgramUnitCodeView1.hints.mandatory}"
+                                                      shortDesc="#{bindings.ProgramUnitCodeView1.hints.tooltip}"
+                                                      id="selectOneChoice11">
+                                    <f:selectItems value="#{bindings.ProgramUnitCodeView1.items}"
+                                                   id="selectItems11"/>
+                                  </af:selectOneChoice>
+                                  <af:selectOneChoice value="#{bindings.DataSourceCodeView1.inputValue}"
+                                                      label="#{bindings.DataSourceCodeView1.label}"
+                                                      required="#{bindings.DataSourceCodeView1.hints.mandatory}"
+                                                      shortDesc="#{bindings.DataSourceCodeView1.hints.tooltip}"
+                                                      id="selectOneChoice12">
+                                    <f:selectItems value="#{bindings.DataSourceCodeView1.items}"
+                                                   id="selectItems12"/>
+                                  </af:selectOneChoice>
+                                  <af:inputDate label="Begin Date"
+                                                id="inputDate19"
+                                                showRequired="true"/>
+                                  <af:inputDate label="End Date"
+                                                id="inputDate20"
+                                                showRequired="true"/>
+                                </af:panelFormLayout>
+                              </af:dialog>
+                            </af:popup>
+                          </af:commandLink>
+                          <af:commandLink text="20YY Credit Card Sales Summary by Location"
+                                          id="commandLink23"
+                                          partialSubmit="true" useWindow="true"
+                                          windowEmbedStyle="inlineDocument"
+                                          windowModalityType="applicationModal">
+                            <af:showPopupBehavior popupId="p12"
+                                                  triggerType="action"/>
+                            <af:popup id="popup11" childCreation="deferred"
+                                      autoCancel="disabled"
+                                      eventContext="launcher"
+                                      launcherVar="itemVar">
+                              <af:dialog id="dialog22" title="Report Parameter"
+                                         dialogListener="#{backingBeanScope.reportParameterBean.okActionListener02_1_3}">
+                                <af:panelFormLayout id="panelFormLayout22">
+                                  <f:facet name="footer"/>
+                                  <af:selectOneChoice value="#{bindings.ProgramUnitCodeView1.inputValue}"
+                                                      label="#{bindings.ProgramUnitCodeView1.label}"
+                                                      required="#{bindings.ProgramUnitCodeView1.hints.mandatory}"
+                                                      shortDesc="#{bindings.ProgramUnitCodeView1.hints.tooltip}"
+                                                      id="selectOneChoice13">
+                                    <f:selectItems value="#{bindings.ProgramUnitCodeView1.items}"
+                                                   id="selectItems13"/>
+                                  </af:selectOneChoice>
+                                  <af:selectOneChoice value="#{bindings.DataSourceCodeView1.inputValue}"
+                                                      label="#{bindings.DataSourceCodeView1.label}"
+                                                      required="#{bindings.DataSourceCodeView1.hints.mandatory}"
+                                                      shortDesc="#{bindings.DataSourceCodeView1.hints.tooltip}"
+                                                      id="selectOneChoice14">
+                                    <f:selectItems value="#{bindings.DataSourceCodeView1.items}"
+                                                   id="selectItems14"/>
+                                  </af:selectOneChoice>
+                                  <af:inputDate label="Begin Date"
+                                                id="inputDate21"
+                                                showRequired="true"/>
+                                  <af:inputDate label="End Date"
+                                                id="inputDate22"
+                                                showRequired="true"/>
+                                </af:panelFormLayout>
+                              </af:dialog>
+                            </af:popup>
+                          </af:commandLink>
+                          <af:commandLink text="Monthly EFT Sales Summary by Location"
+                                          id="commandLink24"
+                                          partialSubmit="true" useWindow="true"
+                                          windowEmbedStyle="inlineDocument"
+                                          windowModalityType="applicationModal">
+                            <af:showPopupBehavior popupId="p13"
+                                                  triggerType="action"/>
+                            <af:popup id="popup12" childCreation="deferred"
+                                      autoCancel="disabled"
+                                      eventContext="launcher"
+                                      launcherVar="itemVar">
+                              <af:dialog id="dialog23" title="Report Parameter"
+                                         dialogListener="#{backingBeanScope.reportParameterBean.okActionListener02_2_1}">
+                                <af:panelFormLayout id="panelFormLayout23">
+                                  <f:facet name="footer"/>
+                                  <af:selectOneChoice value="#{bindings.ProgramUnitCodeView1.inputValue}"
+                                                      label="#{bindings.ProgramUnitCodeView1.label}"
+                                                      required="#{bindings.ProgramUnitCodeView1.hints.mandatory}"
+                                                      shortDesc="#{bindings.ProgramUnitCodeView1.hints.tooltip}"
+                                                      id="selectOneChoice15">
+                                    <f:selectItems value="#{bindings.ProgramUnitCodeView1.items}"
+                                                   id="selectItems15"/>
+                                  </af:selectOneChoice>
+                                  <af:selectOneChoice value="#{bindings.DataSourceCodeView1.inputValue}"
+                                                      label="#{bindings.DataSourceCodeView1.label}"
+                                                      required="#{bindings.DataSourceCodeView1.hints.mandatory}"
+                                                      shortDesc="#{bindings.DataSourceCodeView1.hints.tooltip}"
+                                                      id="selectOneChoice16">
+                                    <f:selectItems value="#{bindings.DataSourceCodeView1.items}"
+                                                   id="selectItems16"/>
+                                  </af:selectOneChoice>
+                                  <af:inputDate label="Begin Date"
+                                                id="inputDate23"
+                                                showRequired="true"/>
+                                  <af:inputDate label="End Date"
+                                                id="inputDate24"
+                                                showRequired="true"/>
+                                </af:panelFormLayout>
+                              </af:dialog>
+                            </af:popup>
+                          </af:commandLink>
+                          <af:commandLink text="EFT Sales Summary by Location and Payment Type"
+                                          id="commandLink25"
+                                          partialSubmit="true" useWindow="true"
+                                          windowEmbedStyle="inlineDocument"
+                                          windowModalityType="applicationModal">
+                            <af:showPopupBehavior popupId="p14"
+                                                  triggerType="action"/>
+                            <af:popup id="popup13" childCreation="deferred"
+                                      autoCancel="disabled"
+                                      eventContext="launcher"
+                                      launcherVar="itemVar">
+                              <af:dialog id="dialog24" title="Report Parameter"
+                                         dialogListener="#{backingBeanScope.reportParameterBean.okActionListener02_2_2}">
+                                <af:panelFormLayout id="panelFormLayout24">
+                                  <f:facet name="footer"/>
+                                  <af:selectOneChoice value="#{bindings.ProgramUnitCodeView1.inputValue}"
+                                                      label="#{bindings.ProgramUnitCodeView1.label}"
+                                                      required="#{bindings.ProgramUnitCodeView1.hints.mandatory}"
+                                                      shortDesc="#{bindings.ProgramUnitCodeView1.hints.tooltip}"
+                                                      id="selectOneChoice17">
+                                    <f:selectItems value="#{bindings.ProgramUnitCodeView1.items}"
+                                                   id="selectItems17"/>
+                                  </af:selectOneChoice>
+                                  <af:selectOneChoice value="#{bindings.DataSourceCodeView1.inputValue}"
+                                                      label="#{bindings.DataSourceCodeView1.label}"
+                                                      required="#{bindings.DataSourceCodeView1.hints.mandatory}"
+                                                      shortDesc="#{bindings.DataSourceCodeView1.hints.tooltip}"
+                                                      id="selectOneChoice18">
+                                    <f:selectItems value="#{bindings.DataSourceCodeView1.items}"
+                                                   id="selectItems18"/>
+                                  </af:selectOneChoice>
+                                  <af:inputDate label="Begin Date"
+                                                id="inputDate25"
+                                                showRequired="true"/>
+                                  <af:inputDate label="End Date"
+                                                id="inputDate26"
+                                                showRequired="true"/>
+                                </af:panelFormLayout>
+                              </af:dialog>
+                            </af:popup>
+                          </af:commandLink>
+                          <af:commandLink text="20YY EFT Sales Summary by Location"
+                                          id="commandLink26"
+                                          partialSubmit="true" useWindow="true"
+                                          windowEmbedStyle="inlineDocument"
+                                          windowModalityType="applicationModal">
+                            <af:showPopupBehavior popupId="p15"
+                                                  triggerType="action"/>
+                            <af:popup id="popup14" childCreation="deferred"
+                                      autoCancel="disabled"
+                                      eventContext="launcher"
+                                      launcherVar="itemVar">
+                              <af:dialog id="dialog25" title="Report Parameter"
+                                         dialogListener="#{backingBeanScope.reportParameterBean.okActionListener02_2_3}">
+                                <af:panelFormLayout id="panelFormLayout25">
+                                  <f:facet name="footer"/>
+                                  <af:selectOneChoice value="#{bindings.ProgramUnitCodeView1.inputValue}"
+                                                      label="#{bindings.ProgramUnitCodeView1.label}"
+                                                      required="#{bindings.ProgramUnitCodeView1.hints.mandatory}"
+                                                      shortDesc="#{bindings.ProgramUnitCodeView1.hints.tooltip}"
+                                                      id="selectOneChoice19">
+                                    <f:selectItems value="#{bindings.ProgramUnitCodeView1.items}"
+                                                   id="selectItems19"/>
+                                  </af:selectOneChoice>
+                                  <af:selectOneChoice value="#{bindings.DataSourceCodeView1.inputValue}"
+                                                      label="#{bindings.DataSourceCodeView1.label}"
+                                                      required="#{bindings.DataSourceCodeView1.hints.mandatory}"
+                                                      shortDesc="#{bindings.DataSourceCodeView1.hints.tooltip}"
+                                                      id="selectOneChoice20">
+                                    <f:selectItems value="#{bindings.DataSourceCodeView1.items}"
+                                                   id="selectItems20"/>
+                                  </af:selectOneChoice>
+                                  <af:inputDate label="Begin Date"
+                                                id="inputDate27"
+                                                showRequired="true"/>
+                                  <af:inputDate label="End Date"
+                                                id="inputDate28"
+                                                showRequired="true"/>
+                                </af:panelFormLayout>
+                              </af:dialog>
+                            </af:popup>
+                          </af:commandLink>
+                          <af:commandLink text="Check Count and Amount by Location"
+                                          id="commandLink27"
+                                          partialSubmit="true" useWindow="true"
+                                          windowEmbedStyle="inlineDocument"
+                                          windowModalityType="applicationModal">
+                            <af:showPopupBehavior popupId="p16"
+                                                  triggerType="action"/>
+                            <af:popup id="popup15" childCreation="deferred"
+                                      autoCancel="disabled"
+                                      eventContext="launcher"
+                                      launcherVar="itemVar">
+                              <af:dialog id="dialog26" title="Report Parameter"
+                                         dialogListener="#{backingBeanScope.reportParameterBean.okActionListener02_4}">
+                                <af:panelFormLayout id="panelFormLayout26">
+                                  <f:facet name="footer"/>
+                                  <af:inputDate label="Begin Date"
+                                                id="inputDate29"
+                                                showRequired="true"/>
+                                  <af:inputDate label="End Date"
+                                                id="inputDate30"
+                                                showRequired="true"/>
+                                </af:panelFormLayout>
+                              </af:dialog>
+                            </af:popup>
+                          </af:commandLink>
+                        </af:panelList>
+                      </af:showDetailItem>
+                      <af:showDetailItem text="Interactive" id="showDetailItem3"
+                                         inflexibleHeight="100"
+                                         stretchChildren="first">
+                        <af:panelList id="panelList2" maxColumns="1">
+                          <af:commandLink text="AR Setup Details"
+                                          id="commandLink28"
+                                          actionListener="#{backingBeanScope.moduleLauncher.launchCars01fiscalReport}"/>
+                          <af:commandLink text="AR Amendments and Adjusments"
+                                          id="commandLink29"
+                                          actionListener="#{backingBeanScope.moduleLauncher.launchCars03FiscalReport}"/>
+                          <af:commandLink text="Cash Reciepts Checks - Details"
+                                          id="commandLink30"
+                                          actionListener="#{backingBeanScope.moduleLauncher.launchCars04fiscalReport}"/>
+                          <af:commandLink text="Cash Receipts Credit Card - Details"
+                                          id="commandLink31"
+                                          actionListener="#{backingBeanScope.moduleLauncher.launchCars06FiscalReport}"/>
+                          <af:commandLink text="Cash Receipts EFT - Details"
+                                          id="commandLink32"
+                                          actionListener="#{backingBeanScope.moduleLauncher.launchCars08FiscalReport}"/>
+                          <af:commandLink text="Abnormal Balance Report"
+                                          id="commandLink33"
+                                          actionListener="#{backingBeanScope.moduleLauncher.launchCars10Report}"
+                                          partialSubmit="true"
+                                          rendered="false"/>
+                          <af:commandLink text="Aging of ARs" id="commandLink34"
+                                          actionListener="#{backingBeanScope.moduleLauncher.launchCars11Report}"
+                                          rendered="false"/>
+                          <af:commandLink text="Delinquent Payment Plans"
+                                          id="commandLink35"
+                                          actionListener="#{backingBeanScope.moduleLauncher.launchCars12Report}"
+                                          rendered="false"/>
+                          <af:commandLink text="SCO Write-Off"
+                                          id="commandLink36"
+                                          actionListener="#{backingBeanScope.moduleLauncher.launchCars13Report}"
+                                          rendered="false"/>
+                          <af:commandLink text="Paid-In-Full" id="commandLink37"
+                                          actionListener="#{backingBeanScope.moduleLauncher.launchCars14Report}"
+                                          rendered="false"/>
+                          <af:commandLink text="Accounts Receivable Status"
+                                          id="commandLink38"
+                                          actionListener="#{backingBeanScope.moduleLauncher.launchCars16Report}"
+                                          rendered="false"/>
+                          <af:commandLink text="Revenue By Fund and Fund Source"
+                                          id="commandLink39"
+                                          actionListener="#{backingBeanScope.moduleLauncher.launchCars20Report}"
+                                          rendered="false"/>
+                        </af:panelList>
+                      </af:showDetailItem>
+                    </af:panelTabbed>
+                  </f:facet>
+                  <f:facet name="start"/>
+                  <f:facet name="end"/>
+                  <f:facet name="top"/>
+                </af:panelStretchLayout>
+              </af:showDetailItem>
+            </af:panelAccordion>
+          </f:facet>
+          <f:facet name="globalLinks"/>
+          <f:facet name="status">
+            <af:inputText label="Signed In As" id="it1"
+                          value="#{securityContext.userName} on #{currentDate}"/>
+          </f:facet>
+          <f:facet name="globalToolbar"/>
+          <f:facet name="globalSearch">
+            <af:panelGroupLayout id="pgl2" layout="horizontal">
+              <af:commandLink text="Help" id="cl5"/>
+              <af:spacer width="10" height="10" id="s1"/>
+              <af:commandLink text="Preferences" id="cl4">
+                <af:popup id="p2">
+                  <af:dialog id="d3" title="Change Password" resize="off"
+                             dialogListener="#{changePasswordBean.okActionListener}">
+                    <af:inputText label="Old Password:" id="it2"
+                                  binding="#{changePasswordBean._oldPassword}"
+                                  secret="true"/>
+                    <af:inputText label="New Password:" id="it3"
+                                  binding="#{changePasswordBean._newPassword}"
+                                  secret="true"/>
+                    <af:inputText label="Confirm Password:" id="it4"
+                                  binding="#{changePasswordBean._confirmPassword}"
+                                  secret="true"/>
+                  </af:dialog>
+                </af:popup>
+                <af:showPopupBehavior triggerType="action" popupId="p2"/>
+              </af:commandLink>
+              <af:spacer width="10" height="10" id="spacer1"/>
+              <af:commandLink text="Sign Out" id="cl6"
+                              action="#{securityBean.doLogout}"/>
+            </af:panelGroupLayout>
+          </f:facet>
+          <f:facet name="globalTabs">
+            <af:navigationPane id="np1">
+              <af:commandNavigationItem text="Accounts Receivable" id="cni1"
+                                        selected="true"/>
+              <af:commandNavigationItem text="Administration" id="cni2"
+                                        action="gotoAdminScreen"/>
+            </af:navigationPane>
+          </f:facet>
+          <f:facet name="welcome">
+            <af:listView id="lv1"
+                         value="#{bindings.ReportsListView1.collectionModel}"
+                         var="item" varStatus="vs" first="1" visible="false">
+              <f:facet name="groupHeaderStamp"/>
+              <af:listItem id="li2"/>
+            </af:listView>
+          </f:facet>
+          <f:facet name="innerToolbar">
+            <af:toolbar id="t1">
+              <af:commandToolbarButton text="Close All Tabs" id="ctb1"
+                                       actionListener="#{backingBeanScope.tabManagerBean.closeAllTabs}"/>
+              <af:commandToolbarButton text="Close Other Tabs" id="ctb2"
+                                       actionListener="#{backingBeanScope.tabManagerBean.closeOtherTabs}"/>
+            </af:toolbar>
+          </f:facet>
+          <f:facet name="copyright">
+            <af:group id="g1">
+              <af:panelGroupLayout id="pgl3" layout="vertical">
+                <af:outputText value="DIR Centralized Accounts Receivable System (CARS)"
+                               id="ot2"
+                               inlineStyle="font-size:small; font-weight:bold;"/>
+                <af:outputText value="#{viewcontrollerBundle.Copyright}" id="ot1"/>
+              </af:panelGroupLayout>
+            </af:group>
+          </f:facet>
+          <f:attribute name="brandingTitle"
+                       value="Department of Industrial Relations"/>
+          <f:attribute name="navSplitterPosition" value="250"/>
+          <f:attribute name="logoImagePath" value="dirlogo.jpg"/>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+</jsp:root>

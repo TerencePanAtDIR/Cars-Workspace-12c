@@ -1,0 +1,1035 @@
+<wsdl:definitions
+     name="CarsBCDataServicesAMService"
+     targetNamespace="/gov/ca/dir/acct/cars/adf/service/appmodule/common/"
+     xmlns:errors="http://xmlns.oracle.com/adf/svc/errors/"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+     xmlns:tns="/gov/ca/dir/acct/cars/adf/service/appmodule/common/"
+     xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+     xmlns:types="/gov/ca/dir/acct/cars/adf/service/appmodule/common/types/"
+    >
+    <wsdl:import namespace="http://xmlns.oracle.com/adf/svc/errors/" location="classpath:/META-INF/wsdl/ServiceException.wsdl"/>
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="/gov/ca/dir/acct/cars/adf/service/appmodule/common/types/" schemaLocation="CarsBCDataServicesAMService.xsd"/>
+        </schema>
+    </wsdl:types>
+    <wsdl:message name="CarsBCDataServicesAMService_createAccountingReceivableStatus">
+        <wsdl:part name="parameters" element="types:createAccountingReceivableStatus"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCDataServicesAMService_createAccountingReceivableStatusResponse">
+        <wsdl:part name="parameters" element="types:createAccountingReceivableStatusResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCDataServicesAMService_createAccountingTransactionAssoc">
+        <wsdl:part name="parameters" element="types:createAccountingTransactionAssoc"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCDataServicesAMService_createAccountingTransactionAssocResponse">
+        <wsdl:part name="parameters" element="types:createAccountingTransactionAssocResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCDataServicesAMService_createAcctgTransactEventAssoc">
+        <wsdl:part name="parameters" element="types:createAcctgTransactEventAssoc"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCDataServicesAMService_createAcctgTransactEventAssocResponse">
+        <wsdl:part name="parameters" element="types:createAcctgTransactEventAssocResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCDataServicesAMService_createAddress">
+        <wsdl:part name="parameters" element="types:createAddress"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCDataServicesAMService_createAddressResponse">
+        <wsdl:part name="parameters" element="types:createAddressResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCDataServicesAMService_createAdjustment">
+        <wsdl:part name="parameters" element="types:createAdjustment"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCDataServicesAMService_createAdjustmentResponse">
+        <wsdl:part name="parameters" element="types:createAdjustmentResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCDataServicesAMService_createContactMethod">
+        <wsdl:part name="parameters" element="types:createContactMethod"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCDataServicesAMService_createContactMethodResponse">
+        <wsdl:part name="parameters" element="types:createContactMethodResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCDataServicesAMService_createEventAssociation">
+        <wsdl:part name="parameters" element="types:createEventAssociation"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCDataServicesAMService_createEventAssociationResponse">
+        <wsdl:part name="parameters" element="types:createEventAssociationResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCDataServicesAMService_createEvent">
+        <wsdl:part name="parameters" element="types:createEvent"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCDataServicesAMService_createEventResponse">
+        <wsdl:part name="parameters" element="types:createEventResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCDataServicesAMService_createGlAccountBalance">
+        <wsdl:part name="parameters" element="types:createGlAccountBalance"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCDataServicesAMService_createGlAccountBalanceResponse">
+        <wsdl:part name="parameters" element="types:createGlAccountBalanceResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCDataServicesAMService_createNote">
+        <wsdl:part name="parameters" element="types:createNote"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCDataServicesAMService_createNoteResponse">
+        <wsdl:part name="parameters" element="types:createNoteResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCDataServicesAMService_createOrganization">
+        <wsdl:part name="parameters" element="types:createOrganization"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCDataServicesAMService_createOrganizationResponse">
+        <wsdl:part name="parameters" element="types:createOrganizationResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCDataServicesAMService_createOtherAccountTrans">
+        <wsdl:part name="parameters" element="types:createOtherAccountTrans"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCDataServicesAMService_createOtherAccountTransResponse">
+        <wsdl:part name="parameters" element="types:createOtherAccountTransResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCDataServicesAMService_createParticipantRole">
+        <wsdl:part name="parameters" element="types:createParticipantRole"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCDataServicesAMService_createParticipantRoleResponse">
+        <wsdl:part name="parameters" element="types:createParticipantRoleResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCDataServicesAMService_createPartyAssociation">
+        <wsdl:part name="parameters" element="types:createPartyAssociation"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCDataServicesAMService_createPartyAssociationResponse">
+        <wsdl:part name="parameters" element="types:createPartyAssociationResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCDataServicesAMService_createParty">
+        <wsdl:part name="parameters" element="types:createParty"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCDataServicesAMService_createPartyResponse">
+        <wsdl:part name="parameters" element="types:createPartyResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCDataServicesAMService_createPerson">
+        <wsdl:part name="parameters" element="types:createPerson"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCDataServicesAMService_createPersonResponse">
+        <wsdl:part name="parameters" element="types:createPersonResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCDataServicesAMService_createAccountingTransaction">
+        <wsdl:part name="parameters" element="types:createAccountingTransaction"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCDataServicesAMService_createAccountingTransactionResponse">
+        <wsdl:part name="parameters" element="types:createAccountingTransactionResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCDataServicesAMService_updateAccountingReceivableStatus">
+        <wsdl:part name="parameters" element="types:updateAccountingReceivableStatus"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCDataServicesAMService_updateAccountingReceivableStatusResponse">
+        <wsdl:part name="parameters" element="types:updateAccountingReceivableStatusResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCDataServicesAMService_createCredit">
+        <wsdl:part name="parameters" element="types:createCredit"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCDataServicesAMService_createCreditResponse">
+        <wsdl:part name="parameters" element="types:createCreditResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCDataServicesAMService_createDebit">
+        <wsdl:part name="parameters" element="types:createDebit"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCDataServicesAMService_createDebitResponse">
+        <wsdl:part name="parameters" element="types:createDebitResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCDataServicesAMService_createReceivable">
+        <wsdl:part name="parameters" element="types:createReceivable"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCDataServicesAMService_createReceivableResponse">
+        <wsdl:part name="parameters" element="types:createReceivableResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCDataServicesAMService_updateAddress">
+        <wsdl:part name="parameters" element="types:updateAddress"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCDataServicesAMService_updateAddressResponse">
+        <wsdl:part name="parameters" element="types:updateAddressResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCDataServicesAMService_updateAdjustment">
+        <wsdl:part name="parameters" element="types:updateAdjustment"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCDataServicesAMService_updateAdjustmentResponse">
+        <wsdl:part name="parameters" element="types:updateAdjustmentResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCDataServicesAMService_updateContactMethod">
+        <wsdl:part name="parameters" element="types:updateContactMethod"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCDataServicesAMService_updateContactMethodResponse">
+        <wsdl:part name="parameters" element="types:updateContactMethodResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCDataServicesAMService_updateEvent">
+        <wsdl:part name="parameters" element="types:updateEvent"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCDataServicesAMService_updateEventResponse">
+        <wsdl:part name="parameters" element="types:updateEventResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCDataServicesAMService_updateOrganization">
+        <wsdl:part name="parameters" element="types:updateOrganization"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCDataServicesAMService_updateOrganizationResponse">
+        <wsdl:part name="parameters" element="types:updateOrganizationResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCDataServicesAMService_updateOtherAccountTrans">
+        <wsdl:part name="parameters" element="types:updateOtherAccountTrans"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCDataServicesAMService_updateOtherAccountTransResponse">
+        <wsdl:part name="parameters" element="types:updateOtherAccountTransResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCDataServicesAMService_updatePerson">
+        <wsdl:part name="parameters" element="types:updatePerson"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCDataServicesAMService_updatePersonResponse">
+        <wsdl:part name="parameters" element="types:updatePersonResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCDataServicesAMService_updateReceivable">
+        <wsdl:part name="parameters" element="types:updateReceivable"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCDataServicesAMService_updateReceivableResponse">
+        <wsdl:part name="parameters" element="types:updateReceivableResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCDataServicesAMService_updateAcctgTransactEventAssoc">
+        <wsdl:part name="parameters" element="types:updateAcctgTransactEventAssoc"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCDataServicesAMService_updateAcctgTransactEventAssocResponse">
+        <wsdl:part name="parameters" element="types:updateAcctgTransactEventAssocResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCDataServicesAMService_updateAccountingTransactionAssoc">
+        <wsdl:part name="parameters" element="types:updateAccountingTransactionAssoc"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCDataServicesAMService_updateAccountingTransactionAssocResponse">
+        <wsdl:part name="parameters" element="types:updateAccountingTransactionAssocResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCDataServicesAMService_updateAccountingTransaction">
+        <wsdl:part name="parameters" element="types:updateAccountingTransaction"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCDataServicesAMService_updateAccountingTransactionResponse">
+        <wsdl:part name="parameters" element="types:updateAccountingTransactionResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCDataServicesAMService_updateEventAssociation">
+        <wsdl:part name="parameters" element="types:updateEventAssociation"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCDataServicesAMService_updateEventAssociationResponse">
+        <wsdl:part name="parameters" element="types:updateEventAssociationResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCDataServicesAMService_updateParticipantRole">
+        <wsdl:part name="parameters" element="types:updateParticipantRole"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCDataServicesAMService_updateParticipantRoleResponse">
+        <wsdl:part name="parameters" element="types:updateParticipantRoleResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCDataServicesAMService_findContactMethodWithParam">
+        <wsdl:part name="parameters" element="types:findContactMethodWithParam"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCDataServicesAMService_findContactMethodWithParamResponse">
+        <wsdl:part name="parameters" element="types:findContactMethodWithParamResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCDataServicesAMService_findParticipantRoleWithParam">
+        <wsdl:part name="parameters" element="types:findParticipantRoleWithParam"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCDataServicesAMService_findParticipantRoleWithParamResponse">
+        <wsdl:part name="parameters" element="types:findParticipantRoleWithParamResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCDataServicesAMService_createAccountingEntry">
+        <wsdl:part name="parameters" element="types:createAccountingEntry"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCDataServicesAMService_createAccountingEntryResponse">
+        <wsdl:part name="parameters" element="types:createAccountingEntryResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCDataServicesAMService_createAccountingEntryStatus">
+        <wsdl:part name="parameters" element="types:createAccountingEntryStatus"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCDataServicesAMService_createAccountingEntryStatusResponse">
+        <wsdl:part name="parameters" element="types:createAccountingEntryStatusResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCDataServicesAMService_createReceipt">
+        <wsdl:part name="parameters" element="types:createReceipt"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCDataServicesAMService_createReceiptResponse">
+        <wsdl:part name="parameters" element="types:createReceiptResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCDataServicesAMService_updateReceipt">
+        <wsdl:part name="parameters" element="types:updateReceipt"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCDataServicesAMService_updateReceiptResponse">
+        <wsdl:part name="parameters" element="types:updateReceiptResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCDataServicesAMService_createPartyRoleFSCustStatus">
+        <wsdl:part name="parameters" element="types:createPartyRoleFSCustStatus"/>
+    </wsdl:message>
+    <wsdl:message name="CarsBCDataServicesAMService_createPartyRoleFSCustStatusResponse">
+        <wsdl:part name="parameters" element="types:createPartyRoleFSCustStatusResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="CarsBCDataServicesAMService">
+        <wsdl:documentation>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="AccountingEntryStatusView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:AccountingEntryStatusViewSDO"
+                 CreateOpName="createAccountingEntryStatus"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="AccountingEntryView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:AccountingEntryViewSDO"
+                 CreateOpName="createAccountingEntry"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="AccountingReceivableStatusView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:AccountingReceivableStatusViewSDO"
+                 CreateOpName="createAccountingReceivableStatus" UpdateOpName="updateAccountingReceivableStatus"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="AccountingTransactionAssocView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:AccountingTransactionAssocViewSDO"
+                 CreateOpName="createAccountingTransactionAssoc" UpdateOpName="updateAccountingTransactionAssoc"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="AccountingTransactionView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:AccountingTransactionViewSDO"
+                 CreateOpName="createAccountingTransaction" UpdateOpName="updateAccountingTransaction"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="AcctgTransactEventAssocView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:AcctgTransactEventAssocViewSDO"
+                 CreateOpName="createAcctgTransactEventAssoc" UpdateOpName="updateAcctgTransactEventAssoc"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="AddressView1" xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/"
+                 SDOName="ns0:AddressViewSDO" CreateOpName="createAddress" UpdateOpName="updateAddress"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="AdjustmentView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:AdjustmentViewSDO"
+                 CreateOpName="createAdjustment" UpdateOpName="updateAdjustment"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="ContactMethodView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:ContactMethodViewSDO"
+                 CreateOpName="createContactMethod" UpdateOpName="updateContactMethod"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="CreditView1" xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/"
+                 SDOName="ns0:CreditViewSDO" CreateOpName="createCredit"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="DebitView1" xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/"
+                 SDOName="ns0:DebitViewSDO" CreateOpName="createDebit"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="EventAssociationView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:EventAssociationViewSDO"
+                 CreateOpName="createEventAssociation" UpdateOpName="updateEventAssociation"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="EventView1" xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/"
+                 SDOName="ns0:EventViewSDO" CreateOpName="createEvent" UpdateOpName="updateEvent"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="GlAccountBalanceView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:GlAccountBalanceViewSDO"
+                 CreateOpName="createGlAccountBalance"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="NoteView1" xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/"
+                 SDOName="ns0:NoteViewSDO" CreateOpName="createNote"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="OrganizationView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:OrganizationViewSDO"
+                 CreateOpName="createOrganization" UpdateOpName="updateOrganization"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="OtherAccountTransView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:OtherAccountTransViewSDO"
+                 CreateOpName="createOtherAccountTrans" UpdateOpName="updateOtherAccountTrans"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="ParticipantRoleView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:ParticipantRoleViewSDO"
+                 CreateOpName="createParticipantRole" UpdateOpName="updateParticipantRole"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="PartyAssociationView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:PartyAssociationViewSDO"
+                 CreateOpName="createPartyAssociation"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="PartyRoleFSCustStatusView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:PartyRoleFSCustStatusViewSDO"
+                 CreateOpName="createPartyRoleFSCustStatus"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="PartyView1" xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/"
+                 SDOName="ns0:PartyViewSDO" CreateOpName="createParty"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="PersonView1" xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/"
+                 SDOName="ns0:PersonViewSDO" CreateOpName="createPerson" UpdateOpName="updatePerson"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="ReceiptView1" xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/"
+                 SDOName="ns0:ReceiptViewSDO" CreateOpName="createReceipt" UpdateOpName="updateReceipt"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="ReceivableView1"
+                 xmlns:ns0="/gov/ca/dir/acct/cars/adf/service/view/common/" SDOName="ns0:ReceivableViewSDO"
+                 CreateOpName="createReceivable" UpdateOpName="updateReceivable"/>
+        </wsdl:documentation>
+        <wsdl:operation name="createAccountingReceivableStatus">
+            <wsdl:input message="tns:CarsBCDataServicesAMService_createAccountingReceivableStatus"/>
+            <wsdl:output message="tns:CarsBCDataServicesAMService_createAccountingReceivableStatusResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="createAccountingTransactionAssoc">
+            <wsdl:input message="tns:CarsBCDataServicesAMService_createAccountingTransactionAssoc"/>
+            <wsdl:output message="tns:CarsBCDataServicesAMService_createAccountingTransactionAssocResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="createAcctgTransactEventAssoc">
+            <wsdl:input message="tns:CarsBCDataServicesAMService_createAcctgTransactEventAssoc"/>
+            <wsdl:output message="tns:CarsBCDataServicesAMService_createAcctgTransactEventAssocResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="createAddress">
+            <wsdl:input message="tns:CarsBCDataServicesAMService_createAddress"/>
+            <wsdl:output message="tns:CarsBCDataServicesAMService_createAddressResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="createAdjustment">
+            <wsdl:input message="tns:CarsBCDataServicesAMService_createAdjustment"/>
+            <wsdl:output message="tns:CarsBCDataServicesAMService_createAdjustmentResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="createContactMethod">
+            <wsdl:input message="tns:CarsBCDataServicesAMService_createContactMethod"/>
+            <wsdl:output message="tns:CarsBCDataServicesAMService_createContactMethodResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="createEventAssociation">
+            <wsdl:input message="tns:CarsBCDataServicesAMService_createEventAssociation"/>
+            <wsdl:output message="tns:CarsBCDataServicesAMService_createEventAssociationResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="createEvent">
+            <wsdl:input message="tns:CarsBCDataServicesAMService_createEvent"/>
+            <wsdl:output message="tns:CarsBCDataServicesAMService_createEventResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="createGlAccountBalance">
+            <wsdl:input message="tns:CarsBCDataServicesAMService_createGlAccountBalance"/>
+            <wsdl:output message="tns:CarsBCDataServicesAMService_createGlAccountBalanceResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="createNote">
+            <wsdl:input message="tns:CarsBCDataServicesAMService_createNote"/>
+            <wsdl:output message="tns:CarsBCDataServicesAMService_createNoteResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="createOrganization">
+            <wsdl:input message="tns:CarsBCDataServicesAMService_createOrganization"/>
+            <wsdl:output message="tns:CarsBCDataServicesAMService_createOrganizationResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="createOtherAccountTrans">
+            <wsdl:input message="tns:CarsBCDataServicesAMService_createOtherAccountTrans"/>
+            <wsdl:output message="tns:CarsBCDataServicesAMService_createOtherAccountTransResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="createParticipantRole">
+            <wsdl:input message="tns:CarsBCDataServicesAMService_createParticipantRole"/>
+            <wsdl:output message="tns:CarsBCDataServicesAMService_createParticipantRoleResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="createPartyAssociation">
+            <wsdl:input message="tns:CarsBCDataServicesAMService_createPartyAssociation"/>
+            <wsdl:output message="tns:CarsBCDataServicesAMService_createPartyAssociationResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="createParty">
+            <wsdl:input message="tns:CarsBCDataServicesAMService_createParty"/>
+            <wsdl:output message="tns:CarsBCDataServicesAMService_createPartyResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="createPerson">
+            <wsdl:input message="tns:CarsBCDataServicesAMService_createPerson"/>
+            <wsdl:output message="tns:CarsBCDataServicesAMService_createPersonResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="createAccountingTransaction">
+            <wsdl:input message="tns:CarsBCDataServicesAMService_createAccountingTransaction"/>
+            <wsdl:output message="tns:CarsBCDataServicesAMService_createAccountingTransactionResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="updateAccountingReceivableStatus">
+            <wsdl:input message="tns:CarsBCDataServicesAMService_updateAccountingReceivableStatus"/>
+            <wsdl:output message="tns:CarsBCDataServicesAMService_updateAccountingReceivableStatusResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="createCredit">
+            <wsdl:input message="tns:CarsBCDataServicesAMService_createCredit"/>
+            <wsdl:output message="tns:CarsBCDataServicesAMService_createCreditResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="createDebit">
+            <wsdl:input message="tns:CarsBCDataServicesAMService_createDebit"/>
+            <wsdl:output message="tns:CarsBCDataServicesAMService_createDebitResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="createReceivable">
+            <wsdl:input message="tns:CarsBCDataServicesAMService_createReceivable"/>
+            <wsdl:output message="tns:CarsBCDataServicesAMService_createReceivableResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="updateAddress">
+            <wsdl:input message="tns:CarsBCDataServicesAMService_updateAddress"/>
+            <wsdl:output message="tns:CarsBCDataServicesAMService_updateAddressResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="updateAdjustment">
+            <wsdl:input message="tns:CarsBCDataServicesAMService_updateAdjustment"/>
+            <wsdl:output message="tns:CarsBCDataServicesAMService_updateAdjustmentResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="updateContactMethod">
+            <wsdl:input message="tns:CarsBCDataServicesAMService_updateContactMethod"/>
+            <wsdl:output message="tns:CarsBCDataServicesAMService_updateContactMethodResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="updateEvent">
+            <wsdl:input message="tns:CarsBCDataServicesAMService_updateEvent"/>
+            <wsdl:output message="tns:CarsBCDataServicesAMService_updateEventResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="updateOrganization">
+            <wsdl:input message="tns:CarsBCDataServicesAMService_updateOrganization"/>
+            <wsdl:output message="tns:CarsBCDataServicesAMService_updateOrganizationResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="updateOtherAccountTrans">
+            <wsdl:input message="tns:CarsBCDataServicesAMService_updateOtherAccountTrans"/>
+            <wsdl:output message="tns:CarsBCDataServicesAMService_updateOtherAccountTransResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="updatePerson">
+            <wsdl:input message="tns:CarsBCDataServicesAMService_updatePerson"/>
+            <wsdl:output message="tns:CarsBCDataServicesAMService_updatePersonResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="updateReceivable">
+            <wsdl:input message="tns:CarsBCDataServicesAMService_updateReceivable"/>
+            <wsdl:output message="tns:CarsBCDataServicesAMService_updateReceivableResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="updateAcctgTransactEventAssoc">
+            <wsdl:input message="tns:CarsBCDataServicesAMService_updateAcctgTransactEventAssoc"/>
+            <wsdl:output message="tns:CarsBCDataServicesAMService_updateAcctgTransactEventAssocResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="updateAccountingTransactionAssoc">
+            <wsdl:input message="tns:CarsBCDataServicesAMService_updateAccountingTransactionAssoc"/>
+            <wsdl:output message="tns:CarsBCDataServicesAMService_updateAccountingTransactionAssocResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="updateAccountingTransaction">
+            <wsdl:input message="tns:CarsBCDataServicesAMService_updateAccountingTransaction"/>
+            <wsdl:output message="tns:CarsBCDataServicesAMService_updateAccountingTransactionResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="updateEventAssociation">
+            <wsdl:input message="tns:CarsBCDataServicesAMService_updateEventAssociation"/>
+            <wsdl:output message="tns:CarsBCDataServicesAMService_updateEventAssociationResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="updateParticipantRole">
+            <wsdl:input message="tns:CarsBCDataServicesAMService_updateParticipantRole"/>
+            <wsdl:output message="tns:CarsBCDataServicesAMService_updateParticipantRoleResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="findContactMethodWithParam">
+            <wsdl:input message="tns:CarsBCDataServicesAMService_findContactMethodWithParam"/>
+            <wsdl:output message="tns:CarsBCDataServicesAMService_findContactMethodWithParamResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="findParticipantRoleWithParam">
+            <wsdl:input message="tns:CarsBCDataServicesAMService_findParticipantRoleWithParam"/>
+            <wsdl:output message="tns:CarsBCDataServicesAMService_findParticipantRoleWithParamResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="createAccountingEntry">
+            <wsdl:input message="tns:CarsBCDataServicesAMService_createAccountingEntry"/>
+            <wsdl:output message="tns:CarsBCDataServicesAMService_createAccountingEntryResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="createAccountingEntryStatus">
+            <wsdl:input message="tns:CarsBCDataServicesAMService_createAccountingEntryStatus"/>
+            <wsdl:output message="tns:CarsBCDataServicesAMService_createAccountingEntryStatusResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="createReceipt">
+            <wsdl:input message="tns:CarsBCDataServicesAMService_createReceipt"/>
+            <wsdl:output message="tns:CarsBCDataServicesAMService_createReceiptResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="updateReceipt">
+            <wsdl:input message="tns:CarsBCDataServicesAMService_updateReceipt"/>
+            <wsdl:output message="tns:CarsBCDataServicesAMService_updateReceiptResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="createPartyRoleFSCustStatus">
+            <wsdl:input message="tns:CarsBCDataServicesAMService_createPartyRoleFSCustStatus"/>
+            <wsdl:output message="tns:CarsBCDataServicesAMService_createPartyRoleFSCustStatusResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="CarsBCDataServicesAMServiceSoapHttp" type="tns:CarsBCDataServicesAMService">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="createAccountingReceivableStatus">
+            <soap:operation soapAction="/gov/ca/dir/acct/cars/adf/service/appmodule/common/createAccountingReceivableStatus"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="createAccountingTransactionAssoc">
+            <soap:operation soapAction="/gov/ca/dir/acct/cars/adf/service/appmodule/common/createAccountingTransactionAssoc"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="createAcctgTransactEventAssoc">
+            <soap:operation soapAction="/gov/ca/dir/acct/cars/adf/service/appmodule/common/createAcctgTransactEventAssoc"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="createAddress">
+            <soap:operation soapAction="/gov/ca/dir/acct/cars/adf/service/appmodule/common/createAddress"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="createAdjustment">
+            <soap:operation soapAction="/gov/ca/dir/acct/cars/adf/service/appmodule/common/createAdjustment"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="createContactMethod">
+            <soap:operation soapAction="/gov/ca/dir/acct/cars/adf/service/appmodule/common/createContactMethod"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="createEventAssociation">
+            <soap:operation soapAction="/gov/ca/dir/acct/cars/adf/service/appmodule/common/createEventAssociation"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="createEvent">
+            <soap:operation soapAction="/gov/ca/dir/acct/cars/adf/service/appmodule/common/createEvent"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="createGlAccountBalance">
+            <soap:operation soapAction="/gov/ca/dir/acct/cars/adf/service/appmodule/common/createGlAccountBalance"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="createNote">
+            <soap:operation soapAction="/gov/ca/dir/acct/cars/adf/service/appmodule/common/createNote"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="createOrganization">
+            <soap:operation soapAction="/gov/ca/dir/acct/cars/adf/service/appmodule/common/createOrganization"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="createOtherAccountTrans">
+            <soap:operation soapAction="/gov/ca/dir/acct/cars/adf/service/appmodule/common/createOtherAccountTrans"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="createParticipantRole">
+            <soap:operation soapAction="/gov/ca/dir/acct/cars/adf/service/appmodule/common/createParticipantRole"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="createPartyAssociation">
+            <soap:operation soapAction="/gov/ca/dir/acct/cars/adf/service/appmodule/common/createPartyAssociation"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="createParty">
+            <soap:operation soapAction="/gov/ca/dir/acct/cars/adf/service/appmodule/common/createParty"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="createPerson">
+            <soap:operation soapAction="/gov/ca/dir/acct/cars/adf/service/appmodule/common/createPerson"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="createAccountingTransaction">
+            <soap:operation soapAction="/gov/ca/dir/acct/cars/adf/service/appmodule/common/createAccountingTransaction"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="updateAccountingReceivableStatus">
+            <soap:operation soapAction="/gov/ca/dir/acct/cars/adf/service/appmodule/common/updateAccountingReceivableStatus"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="createCredit">
+            <soap:operation soapAction="/gov/ca/dir/acct/cars/adf/service/appmodule/common/createCredit"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="createDebit">
+            <soap:operation soapAction="/gov/ca/dir/acct/cars/adf/service/appmodule/common/createDebit"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="createReceivable">
+            <soap:operation soapAction="/gov/ca/dir/acct/cars/adf/service/appmodule/common/createReceivable"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="updateAddress">
+            <soap:operation soapAction="/gov/ca/dir/acct/cars/adf/service/appmodule/common/updateAddress"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="updateAdjustment">
+            <soap:operation soapAction="/gov/ca/dir/acct/cars/adf/service/appmodule/common/updateAdjustment"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="updateContactMethod">
+            <soap:operation soapAction="/gov/ca/dir/acct/cars/adf/service/appmodule/common/updateContactMethod"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="updateEvent">
+            <soap:operation soapAction="/gov/ca/dir/acct/cars/adf/service/appmodule/common/updateEvent"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="updateOrganization">
+            <soap:operation soapAction="/gov/ca/dir/acct/cars/adf/service/appmodule/common/updateOrganization"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="updateOtherAccountTrans">
+            <soap:operation soapAction="/gov/ca/dir/acct/cars/adf/service/appmodule/common/updateOtherAccountTrans"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="updatePerson">
+            <soap:operation soapAction="/gov/ca/dir/acct/cars/adf/service/appmodule/common/updatePerson"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="updateReceivable">
+            <soap:operation soapAction="/gov/ca/dir/acct/cars/adf/service/appmodule/common/updateReceivable"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="updateAcctgTransactEventAssoc">
+            <soap:operation soapAction="/gov/ca/dir/acct/cars/adf/service/appmodule/common/updateAcctgTransactEventAssoc"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="updateAccountingTransactionAssoc">
+            <soap:operation soapAction="/gov/ca/dir/acct/cars/adf/service/appmodule/common/updateAccountingTransactionAssoc"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="updateAccountingTransaction">
+            <soap:operation soapAction="/gov/ca/dir/acct/cars/adf/service/appmodule/common/updateAccountingTransaction"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="updateEventAssociation">
+            <soap:operation soapAction="/gov/ca/dir/acct/cars/adf/service/appmodule/common/updateEventAssociation"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="updateParticipantRole">
+            <soap:operation soapAction="/gov/ca/dir/acct/cars/adf/service/appmodule/common/updateParticipantRole"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="findContactMethodWithParam">
+            <soap:operation soapAction="/gov/ca/dir/acct/cars/adf/service/appmodule/common/findContactMethodWithParam"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="findParticipantRoleWithParam">
+            <soap:operation soapAction="/gov/ca/dir/acct/cars/adf/service/appmodule/common/findParticipantRoleWithParam"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="createAccountingEntry">
+            <soap:operation soapAction="/gov/ca/dir/acct/cars/adf/service/appmodule/common/createAccountingEntry"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="createAccountingEntryStatus">
+            <soap:operation soapAction="/gov/ca/dir/acct/cars/adf/service/appmodule/common/createAccountingEntryStatus"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="createReceipt">
+            <soap:operation soapAction="/gov/ca/dir/acct/cars/adf/service/appmodule/common/createReceipt"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="updateReceipt">
+            <soap:operation soapAction="/gov/ca/dir/acct/cars/adf/service/appmodule/common/updateReceipt"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="createPartyRoleFSCustStatus">
+            <soap:operation soapAction="/gov/ca/dir/acct/cars/adf/service/appmodule/common/createPartyRoleFSCustStatus"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="CarsBCDataServicesAMService">
+        <wsdl:port name="CarsBCDataServicesAMServiceSoapHttpPort" binding="tns:CarsBCDataServicesAMServiceSoapHttp">
+            <soap:address location="http://localhost:7101/CarsServicesApplication-CarsBCServices-context-root/CarsBCDataServicesAMService"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.64.93" id="mainScreenPageDef"
+                Package="gov.ca.dir.acct.cars.adf.master.viewcontroller.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <page path="oracle.ui.pattern.dynamicShell.model.dynamicTabShellDefinition"
+          id="pageTemplateBinding" Refresh="ifNeeded"/>
+    <iterator Binds="ReportsListView1" RangeSize="10"
+              DataControl="MasterUIAMDataControl"
+              id="ReportsListView1Iterator"/>
+    <iterator Binds="ProgramUnitCodeView1" RangeSize="25" DataControl="MasterUIAMDataControl" id="ProgramUnitCodeView1Iterator"/>
+    <iterator Binds="DataSourceCodeView1" RangeSize="25" DataControl="MasterUIAMDataControl" id="DataSourceCodeView1Iterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="ReportsListView1Iterator" id="ReportsListView1">
+      <nodeDefinition DefName="gov.ca.dir.acct.cars.adf.master.view.ReportsListView"
+                      Name="ReportsListView10">
+        <AttrNames>
+          <Item Value="ReportName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <list IterBinding="ProgramUnitCodeView1Iterator" ListOperMode="navigation" ListIter="ProgramUnitCodeView1Iterator" id="ProgramUnitCodeView1" DTSupportsMRU="true">
+      <AttrNames>
+        <Item Value="ProgramUnitCode"/>
+      </AttrNames>
+    </list>
+    <list IterBinding="DataSourceCodeView1Iterator" ListOperMode="navigation" ListIter="DataSourceCodeView1Iterator" id="DataSourceCodeView1" DTSupportsMRU="true">
+      <AttrNames>
+        <Item Value="DataSourceCode"/>
+      </AttrNames>
+    </list>
+  </bindings>
+</pageDefinition>

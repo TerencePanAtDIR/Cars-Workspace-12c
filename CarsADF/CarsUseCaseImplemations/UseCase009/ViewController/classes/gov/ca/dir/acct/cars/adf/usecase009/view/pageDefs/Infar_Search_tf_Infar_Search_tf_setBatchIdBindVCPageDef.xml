@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.64.93"
+                id="Infar_Search_tf_Infar_Search_tf_setBatchIdBindVCPageDef"
+                Package="gov.ca.dir.acct.cars.adf.usecase009.view.pageDefs"
+                SkipValidation="true">
+  <parameters/>
+  <executables/>
+  <bindings>
+    <action id="setBatchIdBindVC" RequiresUpdateModel="true"
+            Action="invokeMethod" MethodName="setBatchIdBindVC"
+            IsViewObjectMethod="true" DataControl="InfarAMDataControl"
+            InstanceName="InfarAMDataControl.Infar006_1">
+      <NamedData NDName="batchId" NDValue="#{pageFlowScope.batchId}"
+                 NDType="java.math.BigDecimal"/>
+    </action>
+  </bindings>
+</pageDefinition>

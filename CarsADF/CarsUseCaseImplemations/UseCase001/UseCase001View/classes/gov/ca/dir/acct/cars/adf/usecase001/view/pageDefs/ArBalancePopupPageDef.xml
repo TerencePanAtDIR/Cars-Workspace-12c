@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.64.93" id="ArBalancePopupPageDef"
+                Package="gov.ca.dir.acct.cars.adf.usecase001.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="GetArRootDocumentGlBalancesView1" RangeSize="25"
+              DataControl="CarsSearchEventsDataControl"
+              id="GetArRootDocumentGlBalancesView1Iterator"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="GetArRootDocumentGlBalancesView1Iterator"
+                     id="ArRootDocument">
+      <AttrNames>
+        <Item Value="ArRootDocument"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="GetArRootDocumentGlBalancesView1Iterator"
+                     id="ArRevenueBalance">
+      <AttrNames>
+        <Item Value="ArRevenueBalance"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="GetArRootDocumentGlBalancesView1Iterator"
+                     id="ArContingentBalance">
+      <AttrNames>
+        <Item Value="ArContingentBalance"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="GetArRootDocumentGlBalancesView1Iterator"
+                     id="ArOthersBalance">
+      <AttrNames>
+        <Item Value="ArOthersBalance"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="GetArRootDocumentGlBalancesView1Iterator"
+                     id="ArDishonoredCheckBalance">
+      <AttrNames>
+        <Item Value="ArDishonoredCheckBalance"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

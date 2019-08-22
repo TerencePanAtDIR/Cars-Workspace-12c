@@ -1,0 +1,254 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:pageTemplate viewId="/report-template.jspx" id="pt1">
+    <f:facet name="main">
+     
+        <af:panelGroupLayout id="pgl6" layout="vertical">
+        <af:query id="qryId1" headerText="Search" disclosed="true"
+                  value="#{bindings.report11aVOCriteriaQuery.queryDescriptor}"
+                  model="#{bindings.report11aVOCriteriaQuery.queryModel}"
+                  queryListener="#{bindings.report11aVOCriteriaQuery.processQuery}"
+                  queryOperationListener="#{bindings.report11aVOCriteriaQuery.processQueryOperation}"
+                  resultComponentId="::pc1:t1"/>
+        <af:panelCollection id="pc1" styleClass="AFStretchWidth">
+            <f:facet name="menus"/>
+            <f:facet name="toolbar">
+              <af:toolbar id="t2">
+                <af:commandToolbarButton text="Export to Excel" id="ctb1"
+                                         partialTriggers="t1"
+                                         disabled="#{bindings.report11aVO1.estimatedRowCount&lt;1}"
+                                         icon="/images/export_excel_sml.png">
+                  <af:exportCollectionActionListener exportedId="t1"
+                                                     type="excelHTML"
+                                                     filename="cars_export_aging_of_ar.xls"
+                                                     title="aged balance in days"/>
+                </af:commandToolbarButton>
+              </af:toolbar>
+            </f:facet>
+            <f:facet name="statusbar"/>
+            <af:table value="#{bindings.report11aVO11.collectionModel}" var="row"
+                      rows="#{adfFacesContext.outputMode ne 'printable'? 25: bindings.report11aVO1.estimatedRowCount}"
+                      emptyText="#{bindings.report11aVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                      fetchSize="-1" rowBandingInterval="1"
+                      filterModel="#{bindings.report11aVOCriteriaQuery.queryDescriptor}"
+                      queryListener="#{bindings.report11aVOCriteriaQuery.processQuery}"
+                      filterVisible="true" varStatus="vs"
+                      selectionListener="#{bindings.report11aVO11.collectionModel.makeCurrent}"
+                      rowSelection="multiple" id="t1"
+                      columnStretching="column:c6">
+              <af:column sortProperty="#{bindings.report11aVO1.hints.CurrentDocument.name}"
+                         sortable="true" headerText="INOVICE NO." id="c8"
+                         filterable="true" width="70">
+                <af:outputText value="#{row.CurrentDocument}" id="ot7"/>
+              </af:column>
+            <af:column sortProperty="#{bindings.report11aVO1.hints.IssueDate.name}"
+                       sortable="true" headerText="ISSUE DATE" id="c7"
+                       align="center" width="100" filterable="true">
+              <f:facet name="filter">
+                <af:group id="g1">
+                  <af:inputDate value="#{vs.filterCriteria.IssueDate}" id="id1"
+                                label="pick a date:"/>
+                </af:group>
+              </f:facet>
+              <af:outputText value="#{row.EventDate}" id="ot5">
+                <af:convertDateTime type="date" pattern="MM/dd/yyyy"/>
+              </af:outputText>
+              <f:facet name="footer">
+                <af:panelGroupLayout id="fg" layout="vertical" halign="center">
+                  <af:separator id="s1"/>
+                  <af:outputText value="TOTAL" id="ot13"
+                                 inlineStyle="font-weight:bold;"/>
+                  <af:separator id="s2"/>
+                  <af:outputText value="COUNT" id="ot14"
+                                 inlineStyle="font-weight:bold;"/>
+                </af:panelGroupLayout>
+              </f:facet>
+            </af:column>
+            <af:column sortProperty="#{bindings.report11aVO1.hints.LegalName.name}"
+                         sortable="true" headerText="EMPLOYER NAME" id="c6"
+                         filterable="true">
+                <af:outputText value="#{row.LegalName}" id="ot8"/>
+              </af:column>
+            <af:column sortProperty="#{bindings.report11aVO1.hints.StreetAddress.name}"
+                       filterable="true" sortable="true" headerText="ADDRESS"
+                       id="c5">
+              <af:outputText value="#{row.StreetAddress}" id="ot10"/>
+            </af:column>
+            <af:column sortProperty="#{bindings.report11aVO1.hints.City.name}"
+                       filterable="true" sortable="true" headerText="CITY"
+                       id="c11">
+              <af:outputText value="#{row.City}" id="ot3"/>
+            </af:column>
+            <af:column id="c15" headerText="Program Unit" sortable="true"
+                         filterable="true"
+                         sortProperty="#{bindings.report11aVO1.hints.ProgramUnitCode.name}">
+                <af:outputText id="ot26" value="#{row.ProgramUnitCode}"/>
+              </af:column>
+            <af:column sortProperty="#{bindings.report11aVO1.hints.Fund.name}"
+                       sortable="true" headerText="FUND" id="c14" align="center"
+                       width="50" filterable="true">
+              <af:outputText value="#{row.Fund}" id="ot25"/>
+            </af:column>
+            <af:column sortProperty="#{bindings.report11aVO1.hints.FiscalYearName.name}"
+                         filterable="true" sortable="true"
+                         headerText="FISCAL YR." id="c12" align="center"
+                         width="70">
+                <af:outputText value="#{row.FiscalYearName}" id="ot2"/>
+              </af:column>
+              <af:column sortProperty="#{bindings.report11aVO1.hints.IndexCode.name}"
+                         filterable="true" sortable="true" headerText="INDEX"
+                         id="c1" align="center" width="50">
+                <af:outputText value="#{row.IndexCode}" id="ot4"/>
+              </af:column>
+            <af:column id="c16" headerText="PCA Code"
+                       sortProperty="#{bindings.report11aVO1.hints.PcaCode.name}"
+                       sortable="true" filterable="true" align="center">
+              <af:outputText value="#{row.PcaCode}" id="ot27"/>
+            </af:column>
+            <af:column id="c17" headerText="Revenue" sortable="true"
+                       filterable="true"
+                       sortProperty="#{bindings.report11aVO1.hints.RevenueSourceCode.name}"
+                       align="center">
+              <af:outputText value="#{row.RevenueSourceCode}" id="ot28"/>
+            </af:column>
+            <af:column id="c18" headerText="Agency" sortable="true"
+                       filterable="true"
+                       sortProperty="#{bindings.report11aVO1.hints.AgencySourceCode.name}"
+                       align="center">
+              <af:outputText value="#{row.AgencySourceCode}" id="ot29"/>
+            </af:column>
+            <af:column id="c13" headerText="AGED BALANCE IN DAYS"
+                         align="center" width="70">
+                <af:column sortProperty="#{bindings.report11aVO1.hints.Age_0_30.name}"
+                           filterable="true" sortable="true" headerText="0-30"
+                           id="c2" align="center" width="70"
+                           inlineStyle="text-align:right;">
+                  <af:outputText value="#{row.Age_0_30}" id="ot9">
+                    <af:convertNumber groupingUsed="true"
+                                      pattern="#{bindings.report11aVO1.hints.Age_0_30.format}"/>
+                  </af:outputText>
+                  <f:facet name="footer">
+                    <af:panelGroupLayout id="pgl2" halign="right"
+                                         layout="vertical">
+                      <af:separator id="s5"/>
+                    <af:outputFormatted value="#{ bindings.Age_0_30_SUM.inputValue}"
+                                        id="ot17"
+                                        inlineStyle="font-weight:bold;">
+                      <af:convertNumber/>
+                    </af:outputFormatted>
+                    <af:separator id="s6"/>
+                    <af:outputFormatted id="ot18"
+                                        value="#{ bindings.Age_0_30_Count.inputValue}"
+                                        inlineStyle="font-weight:bold;">
+                      <af:convertNumber/>
+                    </af:outputFormatted>
+                  </af:panelGroupLayout>
+                  </f:facet>
+                </af:column>
+                <af:column sortProperty="#{bindings.report11aVO1.hints.Age_31_60.name}"
+                           filterable="true" sortable="true" headerText="31-60"
+                           id="c10" align="center" width="70"
+                           inlineStyle="text-align:right;">
+                  <af:outputText value="#{row.Age_31_60}" id="ot6">
+                    <af:convertNumber groupingUsed="true"
+                                      pattern="#{bindings.report11aVO1.hints.Age_31_60.format}"/>
+                  </af:outputText>
+                  <f:facet name="footer">
+                    <af:panelGroupLayout id="pgl3" layout="vertical"
+                                         halign="right">
+                      <af:separator id="s7"/>
+                    <af:outputFormatted value="#{ bindings.Age_31_60_SUM.inputValue }"
+                                        id="ot19"
+                                        inlineStyle="font-weight:bolder;">
+                      <af:convertNumber/>
+                    </af:outputFormatted>
+                    <af:separator id="s8"/>
+                    <af:outputFormatted value=" #{bindings.Age_31_60_Count.inputValue}"
+                                        id="ot20"
+                                        inlineStyle="font-weight:bold;">
+                      <af:convertNumber/>
+                    </af:outputFormatted>
+                  </af:panelGroupLayout>
+                  </f:facet>
+                </af:column>
+                <af:column sortProperty="#{bindings.report11aVO1.hints.Age_61_90.name}"
+                           filterable="true" sortable="true" headerText="61-90"
+                           id="c3" align="center" width="70"
+                           inlineStyle="text-align:right;">
+                  <af:outputText value="#{row.Age_61_90}" id="ot1">
+                    <af:convertNumber groupingUsed="true"
+                                      pattern="#{bindings.report11aVO1.hints.Age_61_90.format}"/>
+                  </af:outputText>
+                  <f:facet name="footer">
+                    <af:panelGroupLayout id="pgl4" layout="vertical"
+                                         halign="right">
+                      <af:separator id="s9"/>
+                    <af:outputFormatted value="#{bindings.Age_61_90_SUM.inputValue}"
+                                        id="ot21"
+                                        inlineStyle="font-weight:bold;"/>
+                    <af:separator id="s10"/>
+                    <af:outputFormatted value=" #{bindings.Age_61_90_Count.inputValue}"
+                                        id="ot22"
+                                        inlineStyle="font-weight:bold;"/>
+                  </af:panelGroupLayout>
+                  </f:facet>
+                </af:column>
+                <af:column sortProperty="#{bindings.report11aVO1.hints.Age_91_120.name}"
+                           filterable="true" sortable="true" headerText="91-120"
+                           id="c9" align="center" width="70"
+                           inlineStyle="text-align:right;">
+                  <af:outputText value="#{row.Age_91_120}" id="ot12">
+                    <af:convertNumber groupingUsed="true"
+                                      pattern="#{bindings.report11aVO1.hints.Age_91_120.format}"/>
+                  </af:outputText>
+                  <f:facet name="footer">
+                    <af:panelGroupLayout id="pgl5" layout="vertical"
+                                         halign="right">
+                      <af:separator id="s11"/>
+                    <af:outputFormatted value="#{ bindings.Age_91_120_SUM.inputValue}"
+                                        id="ot23"
+                                        inlineStyle="font-weight:bold;"/>
+                    <af:separator id="s12"/>
+                    <af:outputFormatted value="#{ bindings.Age_91_120_Count.inputValue}"
+                                        id="ot24"
+                                        inlineStyle="font-weight:bold;"/>
+                  </af:panelGroupLayout>
+                  </f:facet>
+                </af:column>
+                <af:column sortProperty="#{bindings.report11aVO1.hints.Age_120.name}"
+                           filterable="true" sortable="true"
+                           headerText="OVER 120" id="c4" align="center"
+                           inlineStyle="text-align:right;" width="70">
+                  <af:outputText value="#{row.Age_120}" id="ot11">
+                    <af:convertNumber groupingUsed="true"
+                                      pattern="#{bindings.report11aVO1.hints.Age_120.format}"/>
+                  </af:outputText>
+                  <f:facet name="footer">
+                    <af:panelGroupLayout id="pgl1" layout="vertical"
+                                         halign="right">
+                      <af:separator id="s3"/>
+                    <af:outputFormatted value="#{bindings.Age_120_SUM.inputValue}"
+                                        id="ot15"
+                                        inlineStyle="font-weight:bold;"/>
+                    <af:separator id="s4"/>
+                    <af:outputFormatted value="#{bindings.Age_120_Count.inputValue}"
+                                        id="ot16"
+                                        inlineStyle="font-weight:bold;"/>
+                  </af:panelGroupLayout>
+                  </f:facet>
+                </af:column>
+              </af:column>
+            </af:table>
+          </af:panelCollection>
+        </af:panelGroupLayout>
+     
+    </f:facet>
+    <f:attribute name="title" value="ACCOUNTS RECEIVABLE AGING REPORT"/>
+    <f:attribute name="program_unit"
+                 value="#{bindings.ProgramUnitCode.attributeValue}"/>
+    <f:attribute name="report_date"
+                 value="#{bindings.ReportDate.attributeValue}"/>
+  </af:pageTemplate>
+</jsp:root>
